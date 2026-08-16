@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quran Video Generator Studio - Reels, TikTok, Shorts & Landscape</title>
+    <title>Quran Video Generator Studio - Pembuat Video Quran Reels, Shorts & Landscape</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,18 +122,13 @@
     <!-- Top Navigation Bar -->
     <header class="h-16 border-b border-slate-800/80 bg-darkbg-900/90 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
         <div class="flex items-center gap-3">
-            <a href="index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-xs font-semibold">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span class="hidden sm:inline">Portal Utama</span>
-            </a>
-            <div class="h-5 w-px bg-slate-800"></div>
             <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center shadow-lg shadow-brand-500/20 font-bold">
                     <i class="fa-solid fa-video text-sm"></i>
                 </div>
                 <div>
                     <h1 class="text-sm sm:text-base font-extrabold tracking-tight text-white flex items-center gap-2">
-                        Quran Reel Studio <span class="text-[10px] uppercase tracking-wider bg-brand-500/20 text-brand-400 font-bold px-2 py-0.5 rounded-full border border-brand-500/30">PRO HD</span>
+                        Quran Reel Studio <span class="text-[10px] uppercase tracking-wider bg-brand-500/20 text-brand-400 font-bold px-2 py-0.5 rounded-full border border-brand-500/30">MP4 PRO</span>
                     </h1>
                     <p class="text-[11px] text-slate-400 hidden sm:block">Pembuat Video Quran Reels, Shorts & Landscape dengan Sorot Warna & Audio Qari</p>
                 </div>
@@ -700,8 +695,8 @@
                     <i class="fa-solid fa-clapperboard"></i>
                 </div>
                 <div>
-                    <h3 class="text-lg font-bold text-white">Export Video Al-Quran</h3>
-                    <p class="text-xs text-slate-400">Render video reels kualitas tinggi dengan audio jernih</p>
+                    <h3 class="text-lg font-bold text-white">Export Video Al-Quran (MP4)</h3>
+                    <p class="text-xs text-slate-400">Render otomatis hingga ayat terakhir selesai dengan audio qari jernih</p>
                 </div>
             </div>
 
@@ -711,6 +706,10 @@
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-400">Format Platform:</span>
                         <span id="export-format-label" class="font-bold text-brand-400">9:16 (TikTok / Reels / Shorts)</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-400">Format File Video:</span>
+                        <span class="font-bold text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-file-video"></i> MP4 Video HD</span>
                     </div>
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-400">Resolusi Video:</span>
@@ -732,9 +731,9 @@
                     </div>
                 </div>
 
-                <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-info text-sm mt-0.5 flex-shrink-0"></i>
-                    <span>Rendering diproses langsung di browsermu dengan teknologi WebM/MP4 encoder berkecepatan tinggi tanpa batas watermark.</span>
+                <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-sm mt-0.5 flex-shrink-0"></i>
+                    <span>Sistem akan otomatis merekam dari ayat awal sampai ayat terakhir yang Anda pilih, lalu langsung siap diunduh dalam format <b>.MP4</b> tanpa perlu menekan tombol selesai manual.</span>
                 </div>
 
                 <!-- Action Button in Modal -->
@@ -743,7 +742,7 @@
                         Batal
                     </button>
                     <button onclick="startVideoExport()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 hover:to-brand-500 text-darkbg-950 font-extrabold text-sm shadow-lg shadow-brand-500/25 transition">
-                        <i class="fa-solid fa-play mr-1.5"></i> Mulai Render
+                        <i class="fa-solid fa-play mr-1.5"></i> Mulai Render Otomatis
                     </button>
                 </div>
             </div>
@@ -759,7 +758,7 @@
                 <!-- Progress Bar -->
                 <div class="space-y-1.5">
                     <div class="flex justify-between text-xs font-semibold">
-                        <span class="text-slate-400">Kemajuan</span>
+                        <span class="text-slate-400">Kemajuan Otomatis</span>
                         <span id="export-progress-percent" class="text-brand-400 font-mono">0%</span>
                     </div>
                     <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
@@ -768,10 +767,7 @@
                 </div>
 
                 <div class="flex gap-2">
-                    <button onclick="finishVideoExport()" class="flex-1 py-2.5 rounded-xl bg-brand-500/20 text-brand-300 hover:bg-brand-500/30 border border-brand-500/40 font-bold text-xs transition">
-                        <i class="fa-solid fa-check mr-1"></i> Selesaikan Sekarang
-                    </button>
-                    <button onclick="cancelVideoExport()" class="flex-1 py-2.5 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 font-bold text-xs transition">
+                    <button onclick="cancelVideoExport()" class="w-full py-2.5 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 font-bold text-xs transition">
                         Batalkan Render
                     </button>
                 </div>
@@ -783,7 +779,7 @@
                     <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto">
                         <i class="fa-solid fa-check"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white">Render Video Selesai!</h4>
+                    <h4 class="text-base font-bold text-white">Render Video MP4 Selesai!</h4>
                     <p class="text-xs text-slate-400">Videomu siap diunggah ke TikTok, Reels, atau YouTube Shorts.</p>
                 </div>
 
@@ -792,7 +788,7 @@
                     <video id="export-result-video" controls class="max-h-56 w-full object-contain"></video>
                 </div>
 
-                <!-- Modal Action Buttons: UNDUH SEKARANG -->
+                <!-- Modal Action Buttons: UNDUH MP4 SEKARANG -->
                 <div class="flex gap-3 pt-2">
                     <button onclick="closeExportModal()" class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm transition">
                         Tutup
@@ -814,7 +810,7 @@
     <script>
         /**
          * QURAN VIDEO GENERATOR ENGINE
-         * High-performance Canvas & Web Audio Recording
+         * High-performance Canvas & Web Audio Recording to MP4
          */
 
         // State Store
@@ -824,21 +820,21 @@
             verseStart: 1,
             verseEnd: 3,
             totalVersesInSurah: 7,
-            versesData: [], // Array of { verseNumber, arabic, transliteration, translation, audioUrl, duration }
+            versesData: [],
             qari: 'ar.alafasy',
             
             // Format & Dimensions
-            aspectRatio: '9:16', // '9:16', '16:9', '1:1', '4:5'
+            aspectRatio: '9:16',
             canvasWidth: 1080,
             canvasHeight: 1920,
             
             // Background
-            bgType: 'preset', // 'preset', 'custom-video', 'custom-image'
+            bgType: 'preset',
             bgPreset: 'particles',
             bgDarkness: 0.65,
             bgBlur: 0,
             customBgUrl: null,
-            customBgMedia: null, // Image or Video element
+            customBgMedia: null,
             
             // Typography & Colors
             arabicFont: "'Amiri', serif",
@@ -847,10 +843,10 @@
             baseTextColor: '#ffffff',
             transTextColor: '#cbd5e1',
             highlightColor: '#f59e0b',
-            highlightMode: 'karaoke', // 'karaoke', 'verse-glow', 'glass-card', 'gradient-fill'
+            highlightMode: 'karaoke',
             
             // Layout
-            layoutTemplate: 'center', // 'center', 'card', 'bottom-subtitle', 'minimal'
+            layoutTemplate: 'center',
             verticalOffset: 0,
             contentWidthPercent: 86,
             
@@ -932,7 +928,7 @@
             { id: 36, name: "Ya-Sin", arabic: "يس", verses: 83, type: "Makkiyah" },
             { id: 37, name: "Ash-Shaffat", arabic: "الصافات", verses: 182, type: "Makkiyah" },
             { id: 38, name: "Shad", arabic: "ص", verses: 88, type: "Makkiyah" },
-            { id: 39, name: "Az-Zumar", arabic: "الزمر", verses: 75, type: "Makkiyah" },
+            { id: 39, name: "Az-Zumar", arabic: "الزmer", verses: 75, type: "Makkiyah" },
             { id: 40, name: "Ghafir", arabic: "غافر", verses: 85, type: "Makkiyah" },
             { id: 41, name: "Fushshilat", arabic: "فصلت", verses: 54, type: "Makkiyah" },
             { id: 42, name: "Asy-Syura", arabic: "الشورى", verses: 53, type: "Makkiyah" },
@@ -1112,7 +1108,6 @@
             canvas.width = state.canvasWidth;
             canvas.height = state.canvasHeight;
 
-            // Adjust aspect ratio styling on container
             const wrapper = document.getElementById('canvas-wrapper');
             wrapper.style.aspectRatio = state.aspectRatio.replace(':', '/');
 
@@ -1131,7 +1126,6 @@
             
             document.getElementById('surah-info-badge').innerText = `${surahMeta.name} • ${surahMeta.verses} Ayat`;
 
-            // Reset start & end inputs
             const startInput = document.getElementById('input-verse-start');
             const endInput = document.getElementById('input-verse-end');
             
@@ -1322,14 +1316,12 @@
 
             audio.addEventListener('ended', () => {
                 if (state.isExporting) {
-                    // In export mode: advance verse or trigger finish cleanly!
                     if (state.currentVerseIndex < state.versesData.length - 1) {
                         state.currentVerseIndex++;
                         loadCurrentVerseAudio();
                         audio.play().catch(e => console.log(e));
                         updatePlayerUI();
                     } else {
-                        // All export verses finished!
                         finishVideoExport();
                     }
                     return;
@@ -1340,7 +1332,6 @@
                     return;
                 }
 
-                // Normal preview playback loop
                 if (state.currentVerseIndex < state.versesData.length - 1) {
                     state.currentVerseIndex++;
                     loadCurrentVerseAudio();
@@ -1422,29 +1413,19 @@
         function updatePlayerUI() {
             const playIconClass = state.isPlaying ? 'fa-pause' : 'fa-play';
             
-            // Top Preview Button
             document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-400`;
             document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
-            
-            // Sidebar Button
             document.getElementById('sidebar-play-icon').className = `fa-solid ${playIconClass}`;
-            
-            // Bottom Bar Button
             document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
             document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar Preview';
-            
-            // Overlay icon
             document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-1'}`;
 
-            // Indicator
             const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
             document.getElementById('player-verse-indicator').innerText = `Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber})`;
             
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
             const sName = surahMeta ? surahMeta.name : 'Surat';
             document.getElementById('current-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
-
-            // Audio wave animation opacity
             document.getElementById('audio-wave-anim').style.opacity = state.isPlaying ? '1' : '0.3';
         }
 
@@ -1463,7 +1444,6 @@
                     state.audioSource.connect(state.audioAnalyser);
                     state.audioAnalyser.connect(state.audioContext.destination);
 
-                    // Audio stream destination for video recorder
                     state.audioDestination = state.audioContext.createMediaStreamDestination();
                     state.audioSource.connect(state.audioDestination);
                 }
@@ -1475,7 +1455,6 @@
             }
         }
 
-        // Highlight & Style Presets
         function setHighlightColor(color, name) {
             state.highlightColor = color;
             document.querySelectorAll('.hl-swatch-btn').forEach(btn => {
@@ -1485,7 +1464,6 @@
             updateCanvas();
         }
 
-        // Background Preset Selection
         function setBackgroundPreset(presetName) {
             state.bgType = 'preset';
             state.bgPreset = presetName;
@@ -1500,7 +1478,6 @@
             updateCanvas();
         }
 
-        // Custom Background Upload (Video / Image)
         function handleCustomBgUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1537,7 +1514,6 @@
             updateCanvas();
         }
 
-        // Custom Audio Upload
         function handleCustomAudioUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1557,7 +1533,6 @@
             loadCurrentVerseAudio();
         }
 
-        // Layout Template
         function setLayoutTemplate(template) {
             state.layoutTemplate = template;
             document.querySelectorAll('.layout-tpl-btn').forEach(btn => {
@@ -1569,7 +1544,6 @@
             updateCanvas();
         }
 
-        // Helper: Format Time seconds into MM:SS
         function formatTime(seconds) {
             if (isNaN(seconds) || seconds === Infinity) return "00:00";
             const mins = Math.floor(seconds / 60);
@@ -1578,8 +1552,7 @@
         }
 
         /**
-         * CANVAS RENDERING ENGINE
-         * High FPS Graphic Pipeline with Animated Highlights, Dynamic Waveforms & Particles
+         * CANVAS RENDERING LOOP
          */
         function startCanvasLoop() {
             function render() {
@@ -1590,7 +1563,6 @@
         }
 
         function updateCanvas() {
-            // Update reactive inputs
             state.arabicFont = document.getElementById('select-arabic-font').value;
             state.arabicSize = parseInt(document.getElementById('range-arabic-size').value);
             state.transSize = parseInt(document.getElementById('range-trans-size').value);
@@ -1618,35 +1590,24 @@
 
             ctx.clearRect(0, 0, w, h);
 
-            // 1. DRAW BACKGROUND
             drawBackground(w, h);
-
-            // 2. DRAW PARTICLES & ATMOSPHERE
             drawParticles(w, h);
-
-            // 3. DRAW DARK OVERLAY & VIGNETTE
             drawOverlayVignette(w, h);
 
-            // 4. DRAW AUDIO WAVEFORM VISUALIZER
             if (state.showWaveform) {
                 drawAudioWaveform(w, h);
             }
 
-            // 5. DRAW SURAH HEADER & WATERMARK
             drawHeaderAndWatermark(w, h);
-
-            // 6. DRAW QURAN VERSE CONTENT WITH HIGHLIGHT
             drawVerseContent(w, h);
         }
 
-        // Draw Background Layer
         function drawBackground(w, h) {
             if (state.bgType === 'custom-video' && state.customBgMedia && state.customBgMedia.readyState >= 2) {
                 ctx.drawImage(state.customBgMedia, 0, 0, w, h);
             } else if (state.bgType === 'custom-image' && state.customBgMedia) {
                 ctx.drawImage(state.customBgMedia, 0, 0, w, h);
             } else {
-                // Render Built-in Procedural Gradient Presets
                 if (state.bgPreset === 'rain') {
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
                     grad.addColorStop(0, '#0a1128');
@@ -1669,7 +1630,6 @@
                     ctx.fillStyle = grad;
                     ctx.fillRect(0, 0, w, h);
 
-                    // Draw subtle mosque dome silhouette
                     ctx.save();
                     ctx.fillStyle = 'rgba(2, 20, 16, 0.6)';
                     ctx.beginPath();
@@ -1687,7 +1647,6 @@
                     ctx.fillStyle = '#05070d';
                     ctx.fillRect(0, 0, w, h);
                 } else {
-                    // Default Golden Particles dark background
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
                     grad.addColorStop(0, '#12131a');
                     grad.addColorStop(0.5, '#0b0c10');
@@ -1698,7 +1657,6 @@
             }
         }
 
-        // Draw Dynamic Particle & Rain Animation
         function drawParticles(w, h) {
             ctx.save();
             if (state.bgPreset === 'rain') {
@@ -1717,7 +1675,6 @@
                     }
                 });
             } else {
-                // Golden / Star Dust
                 state.particles.forEach(p => {
                     ctx.fillStyle = state.bgPreset === 'galaxy' ? `rgba(224, 231, 255, ${p.opacity})` : `rgba(245, 158, 11, ${p.opacity})`;
                     ctx.shadowBlur = 8;
@@ -1741,13 +1698,10 @@
             ctx.restore();
         }
 
-        // Draw Dark Tint Overlay & Cinematic Vignette
         function drawOverlayVignette(w, h) {
-            // Dark tint
             ctx.fillStyle = `rgba(0, 0, 0, ${state.bgDarkness})`;
             ctx.fillRect(0, 0, w, h);
 
-            // Radial vignette
             const vignette = ctx.createRadialGradient(w/2, h/2, w * 0.3, w/2, h/2, w * 0.85);
             vignette.addColorStop(0, 'rgba(0,0,0,0)');
             vignette.addColorStop(1, 'rgba(0,0,0,0.75)');
@@ -1755,7 +1709,6 @@
             ctx.fillRect(0, 0, w, h);
         }
 
-        // Draw Live Audio Waveform Bars
         function drawAudioWaveform(w, h) {
             if (!state.audioAnalyser || !state.audioDataArray) return;
             state.audioAnalyser.getByteFrequencyData(state.audioDataArray);
@@ -1777,7 +1730,6 @@
                 ctx.shadowColor = state.highlightColor;
                 ctx.shadowBlur = 10;
                 
-                // Draw rounded bar
                 ctx.beginPath();
                 ctx.roundRect(x, centerY - barHeight/2, barWidth, barHeight, 3);
                 ctx.fill();
@@ -1785,20 +1737,17 @@
             ctx.restore();
         }
 
-        // Draw Header & Watermark Branding
         function drawHeaderAndWatermark(w, h) {
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
             const surahName = surahMeta ? surahMeta.name : 'Al-Quran';
             const surahArabic = surahMeta ? surahMeta.arabic : '';
             
-            // Top Surah Info Header
             if (state.showSurahHeader) {
                 const headerY = state.aspectRatio === '9:16' ? 240 : 110;
                 
                 ctx.save();
                 ctx.textAlign = 'center';
                 
-                // Surah Name Badge Box
                 const badgeText = `QS. ${surahName} : Ayat ${state.verseStart}-${state.verseEnd}`;
                 ctx.font = '600 24px "Plus Jakarta Sans", sans-serif';
                 const textWidth = ctx.measureText(badgeText).width;
@@ -1814,7 +1763,6 @@
                 ctx.fillStyle = '#f8fafc';
                 ctx.fillText(badgeText, w/2, headerY);
 
-                // Small Arabic Calligraphy Name underneath
                 ctx.font = '700 28px "Amiri", serif';
                 ctx.fillStyle = state.highlightColor;
                 ctx.fillText(`سورة ${surahArabic}`, w/2, headerY + 42);
@@ -1822,7 +1770,6 @@
                 ctx.restore();
             }
 
-            // Bottom Branding Watermark
             if (state.showWatermark && state.watermarkText) {
                 const watermarkY = h - (state.aspectRatio === '9:16' ? 120 : 50);
                 ctx.save();
@@ -1834,7 +1781,6 @@
             }
         }
 
-        // Draw Quran Verse Text with Sorot Warna (Highlight) Engine
         function drawVerseContent(w, h) {
             if (!state.versesData || state.versesData.length === 0) return;
 
@@ -1846,7 +1792,6 @@
 
             ctx.save();
 
-            // Card layout background container
             if (state.layoutTemplate === 'card') {
                 ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
@@ -1859,34 +1804,27 @@
 
             let currentDrawY = centerY - 100;
 
-            // 1. ARABIC TEXT
             if (state.showArabic) {
                 ctx.direction = 'rtl';
                 ctx.textAlign = 'center';
                 ctx.font = `700 ${state.arabicSize}px ${state.arabicFont}`;
 
-                // Calculate Progress for Karaoke Sweep Highlight
                 const progress = audio.duration ? (audio.currentTime / audio.duration) : 0;
-
-                // Break Arabic text into wrapped lines
                 const arabicLines = wrapText(ctx, currentVerse.arabic, maxContentWidth);
                 const lineHeight = state.arabicSize * 2.1;
 
                 arabicLines.forEach((line, index) => {
                     const lineY = currentDrawY + (index * lineHeight);
 
-                    // Base Text Draw
                     ctx.fillStyle = state.baseTextColor;
                     ctx.shadowBlur = 0;
 
                     if (state.highlightMode === 'verse-glow') {
-                        // Pulsing Glow Mode
                         ctx.fillStyle = state.highlightColor;
                         ctx.shadowColor = state.highlightColor;
                         ctx.shadowBlur = 24 * (0.6 + Math.sin(Date.now() / 250) * 0.4);
                         ctx.fillText(line, w/2, lineY);
                     } else if (state.highlightMode === 'karaoke') {
-                        // Karaoke Gradient Sweep
                         const lineWidth = ctx.measureText(line).width;
                         const grad = ctx.createLinearGradient(w/2 + lineWidth/2, 0, w/2 - lineWidth/2, 0);
                         
@@ -1902,11 +1840,9 @@
                         ctx.shadowBlur = 15;
                         ctx.fillText(line, w/2, lineY);
                     } else {
-                        // Default Clean
                         ctx.fillText(line, w/2, lineY);
                     }
 
-                    // Verse End Ornament Circle (Ayat Badge)
                     if (state.showVerseBadge && index === arabicLines.length - 1) {
                         drawAyahEndBadge(w/2, lineY + 10, currentVerse.verseNumber);
                     }
@@ -1915,7 +1851,6 @@
                 currentDrawY += (arabicLines.length * lineHeight) + 40;
             }
 
-            // 2. TRANSLITERATION (LATIN)
             if (state.showLatin && currentVerse.transliteration) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
@@ -1933,7 +1868,6 @@
                 currentDrawY += (latinLines.length * latinLineHeight) + 20;
             }
 
-            // 3. TRANSLATION (INDONESIA)
             if (state.showTranslation && currentVerse.translation) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
@@ -1952,7 +1886,6 @@
             ctx.restore();
         }
 
-        // Draw Islamic Ayah End Ornament Number Badge
         function drawAyahEndBadge(x, y, number) {
             ctx.save();
             ctx.fillStyle = state.highlightColor;
@@ -1960,7 +1893,6 @@
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
-            // Outer small circle
             ctx.strokeStyle = state.highlightColor;
             ctx.lineWidth = 1.5;
             ctx.beginPath();
@@ -1971,13 +1903,11 @@
             ctx.restore();
         }
 
-        // Helper: Convert digits to Arabic numerals (١, ٢, ٣...)
         function toArabicNumber(num) {
             const arabicDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
             return String(num).split('').map(d => arabicDigits[d] || d).join('');
         }
 
-        // Text Line Wrapping Helper
         function wrapText(context, text, maxWidth) {
             if (!text) return [];
             const words = text.split(' ');
@@ -1999,8 +1929,7 @@
         }
 
         /**
-         * VIDEO EXPORT & DOWNLOAD ENGINE
-         * High-reliability recorder with automatic completion and audio mixing
+         * VIDEO EXPORT & MP4 DOWNLOAD ENGINE
          */
         function openExportModal() {
             document.getElementById('export-modal').classList.remove('hidden');
@@ -2016,7 +1945,6 @@
             }
         }
 
-        // Start Recording High Quality Video
         async function startVideoExport() {
             state.isExporting = true;
             document.getElementById('export-settings-panel').classList.add('hidden');
@@ -2025,11 +1953,9 @@
 
             initAudioContext();
 
-            // Set recording framerate
             const fps = parseInt(document.getElementById('export-fps-select').value) || 30;
             const canvasStream = canvas.captureStream(fps);
 
-            // Stream creation
             let combinedStream;
             if (state.audioDestination && state.audioDestination.stream.getAudioTracks().length > 0) {
                 const audioStream = state.audioDestination.stream;
@@ -2041,22 +1967,24 @@
                 combinedStream = canvasStream;
             }
 
-            // Supported Mime Types
-            let mimeType = 'video/webm;codecs=vp9,opus';
+            let mimeType = 'video/mp4;codecs=avc1,mp4a.40.2';
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+                mimeType = 'video/mp4';
+            }
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+                mimeType = 'video/webm;codecs=vp9,opus';
+            }
             if (!MediaRecorder.isTypeSupported(mimeType)) {
                 mimeType = 'video/webm;codecs=vp8,opus';
             }
             if (!MediaRecorder.isTypeSupported(mimeType)) {
                 mimeType = 'video/webm';
             }
-            if (!MediaRecorder.isTypeSupported(mimeType)) {
-                mimeType = 'video/mp4';
-            }
 
             state.recordedBlobs = [];
             state.mediaRecorder = new MediaRecorder(combinedStream, {
                 mimeType: mimeType,
-                videoBitsPerSecond: 8000000 // 8 Mbps High Quality
+                videoBitsPerSecond: 10000000
             });
 
             state.mediaRecorder.ondataavailable = (event) => {
@@ -2066,11 +1994,9 @@
             };
 
             state.mediaRecorder.onstop = () => {
-                const mime = state.mediaRecorder.mimeType || 'video/webm';
-                const superBuffer = new Blob(state.recordedBlobs, { type: mime });
+                const superBuffer = new Blob(state.recordedBlobs, { type: 'video/mp4' });
                 state.exportBlobUrl = URL.createObjectURL(superBuffer);
                 
-                // Show result player
                 const resultVideo = document.getElementById('export-result-video');
                 resultVideo.src = state.exportBlobUrl;
                 resultVideo.load();
@@ -2080,9 +2006,8 @@
                 
                 const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
                 const sName = surahMeta ? surahMeta.name : 'Quran';
-                const ext = mime.includes('mp4') ? 'mp4' : 'webm';
-                downloadBtn.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.${ext}`;
-                downloadBtn.innerHTML = `<i class="fa-solid fa-download mr-1.5"></i> Unduh Video (.${ext})`;
+                downloadBtn.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
+                downloadBtn.innerHTML = `<i class="fa-solid fa-download mr-1.5"></i> Unduh Video (.mp4)`;
 
                 document.getElementById('export-progress-panel').classList.add('hidden');
                 document.getElementById('export-complete-panel').classList.remove('hidden');
@@ -2091,7 +2016,6 @@
                 updatePlayerUI();
             };
 
-            // Start from beginning of verse range
             state.currentVerseIndex = 0;
             loadCurrentVerseAudio();
             audio.currentTime = 0;
@@ -2099,7 +2023,6 @@
             state.mediaRecorder.start(100);
             audio.play().catch(e => console.log(e));
 
-            // Progress tracking with automatic safety timeout
             if (state.exportInterval) clearInterval(state.exportInterval);
 
             state.exportInterval = setInterval(() => {
@@ -2116,21 +2039,20 @@
                 document.getElementById('export-progress-percent').innerText = `${totalPercent}%`;
                 document.getElementById('export-progress-fill').style.width = `${totalPercent}%`;
                 document.getElementById('export-progress-status').innerText = `Merender Ayat ${state.currentVerseIndex + 1} dari ${totalVerses}... (${formatTime(audio.currentTime)})`;
-            }, 150);
+            }, 100);
         }
 
-        // Clean Finish Trigger
         function finishVideoExport() {
             if (state.exportInterval) clearInterval(state.exportInterval);
             document.getElementById('export-progress-percent').innerText = `100%`;
             document.getElementById('export-progress-fill').style.width = `100%`;
-            document.getElementById('export-progress-status').innerText = `Menyelesaikan encoding video...`;
+            document.getElementById('export-progress-status').innerText = `Menyelesaikan encoding MP4...`;
 
             setTimeout(() => {
                 if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
                     state.mediaRecorder.stop();
                 }
-            }, 400);
+            }, 300);
         }
 
         function cancelVideoExport() {
@@ -2143,19 +2065,19 @@
             closeExportModal();
         }
 
-        // Quick Direct Download Button
         function quickDownload() {
             if (state.exportBlobUrl) {
                 const a = document.createElement('a');
                 a.href = state.exportBlobUrl;
-                a.download = `Quran_Reel_Video.mp4`;
+                const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
+                const sName = surahMeta ? surahMeta.name : 'Quran';
+                a.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
                 a.click();
             } else {
                 downloadImageSlide();
             }
         }
 
-        // Download Instant PNG Slide Image
         function downloadImageSlide() {
             const dataUrl = canvas.toDataURL('image/png', 1.0);
             const a = document.createElement('a');
