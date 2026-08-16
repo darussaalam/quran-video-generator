@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel - Masjid Al Muthmainnah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+        }
+        .prose img {
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            max-width: 100%;
+            height: auto;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #fff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .prose p {
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+        .prose a {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-slate-800/80 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 text-white hover:text-sky-400 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="font-bold text-sm">Kembali ke Portal</span>
+            </a>
+            <div class="font-extrabold text-slate-300 tracking-wider text-sm"><i class="fa-solid fa-mosque mr-2 text-softgold-500"></i>AL MUTHMAINNAH</div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-1 max-w-3xl mx-auto px-6 py-10 w-full">
+        <div id="loading" class="text-center py-20 text-slate-500">
+            <i class="fa-solid fa-circle-notch fa-spin text-3xl mb-4 text-sky-500"></i>
+            <p>Memuat Artikel...</p>
+        </div>
+
+        <article id="article-content" class="hidden">
+            <header class="mb-10 text-center">
+                <p id="art-date" class="text-sm font-medium text-sky-400 mb-3"></p>
+                <h1 id="art-title" class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-8"></h1>
+                <img id="art-cover" src="" class="w-full h-64 md:h-96 object-cover rounded-3xl shadow-2xl hidden" alt="Cover Artikel">
+            </header>
+            
+            <div id="art-body" class="prose prose-invert prose-lg max-w-none">
+                <!-- HTML Content diinjeksi disini -->
+            </div>
+        </article>
+
+        <div id="error-msg" class="hidden text-center py-20">
+            <div class="w-20 h-20 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Artikel Tidak Ditemukan</h2>
+            <p class="text-slate-400">Maaf, artikel yang Anda cari tidak tersedia atau telah dihapus.</p>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-500 text-sm mt-12">
+        <p>&copy; 2026 Masjid Al Muthmainnah. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('article-content');
+            const errorMsg = document.getElementById('error-msg');
+
+            if(!id) {
+                loading.classList.add('hidden');
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/articles');
+                const articles = await res.json();
+                const article = articles.find(a => a.id == id);
+
+                loading.classList.add('hidden');
+
+                if(article) {
+                    document.getElementById('art-title').innerText = article.title;
+                    document.title = article.title + " - Masjid Al Muthmainnah";
+                    
+                    const d = new Date(article.createdAt);
+                    document.getElementById('art-date').innerText = d.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                    if(article.cover) {
+                        const coverEl = document.getElementById('art-cover');
+                        coverEl.src = `/uploads/${article.cover}`;
+                        coverEl.classList.remove('hidden');
+                    }
+
+                    document.getElementById('art-body').innerHTML = article.content;
+                    content.classList.remove('hidden');
+                } else {
+                    errorMsg.classList.remove('hidden');
+                }
+            } catch(e) {
+                loading.classList.add('hidden');
+                errorMsg.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

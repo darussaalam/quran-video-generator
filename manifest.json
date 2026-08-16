@@ -1,0 +1,18 @@
+{
+  "name": "MyQuran Premium",
+  "short_name": "MyQuran",
+  "description": "Aplikasi Al-Quran dan Produktivitas Ibadah Premium",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBmaWxsPSIjRDRBRjM3Ij48cGF0aCBkPSJNMjU2IDMyYy0xMjMuNyAwLTIyNCAxMDAuMy0yMjQgMjI0czEwMC4zIDIyNCAyMjQgMjI0IDIyNC0xMDAuMyAyMjQtMjI0UzM3OS43IDMyIDI1NiAzMnptMCA0MThjLTEwNy4xIDAtMTk0LTg2LjktMTk0LTE5NFMxNDguOSA2MiAyNTYgNjJzMTk0IDg2LjkgMTk0 MTk0LTg2LjkgMTk0LTE5NCAxOTR6Ii8+PHBhdGggZD0iTTI1NiAxMjhhMTI4IDEyOCAwIDEgMCAwIDI1NiAxMjggMTI4IDAgMSAwIDAtMjU2em0wIDIxOGE5MCA5MCAwIDEgMSAwLTE4MCA5MCA5MCAwIDEgMSAwIDE4MHoiLz48L3N2Zz4=",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "masjidName": "Masjid Al Muthmainnah",
+  "welcomeText": "Selamat Datang di Portal Resmi Masjid Al Muthmainnah. Merajut Ukhuwah, Membangun Ummah.",
+  "heroBanner": "6b941eed0938490bb4d21a1c828ac34a",
+  "activities": [
+    {
+      "id": 1,
+      "title": "Kajian Rutin Ba'da Maghrib",
+      "image": "",
+      "desc": "Kajian kitab kuning bersama Ustadz setempat."
+    },
+    {
+      "id": 2,
+      "title": "TPA / TPQ Anak",
+      "image": "",
+      "desc": "Taman Pendidikan Al-Quran setiap sore hari."
+    }
+  ],
+  "contactInfo": {
+    "address": "Jl. Raya Sagulung Baru",
+    "phone": "+628123456789",
+    "email": "info@almuthmainnah.org"
+  },
+  "jumatInfo": {
+    "khatib": "Anggota PKB",
+    "imam": "Ustadz Idham"
+  },
+  "announcements": "Mohon bagi jamaah yang membawa kendaraan agar merapikan parkiran di area utara masjid. Terima Kasih.",
+  "gallery": [
+    "35f21cde021590a072d0465bf0617783",
+    "6bd43967c24a4c38c572b1c8e50e960a"
+  ]
+}
