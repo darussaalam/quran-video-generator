@@ -52,7 +52,6 @@
         }
     </script>
     <style>
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -75,13 +74,12 @@
         }
 
         .glass-panel {
-            background: rgba(19, 29, 53, 0.85);
+            background: rgba(19, 29, 53, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Range Slider Styling */
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
@@ -105,7 +103,6 @@
             transform: scale(1.2);
         }
 
-        /* Audio Wave Pulse Animation */
         @keyframes pulse-wave {
             0%, 100% { height: 6px; }
             50% { height: 24px; }
@@ -135,7 +132,7 @@
             </div>
         </div>
 
-        <!-- Quick Top Actions: Platform Switcher & Action Buttons -->
+        <!-- Platform Switcher & Action Buttons -->
         <div class="flex items-center gap-2 sm:gap-3">
             <!-- Platform Selector Pill Group -->
             <div class="flex items-center bg-darkbg-950/80 p-1 rounded-xl border border-slate-800 text-xs">
@@ -157,7 +154,7 @@
                 </button>
             </div>
 
-            <!-- Prominent Buttons: PREVIEW, EXPORT VIDEO, UNDUH -->
+            <!-- Action Buttons: PREVIEW, EXPORT VIDEO, UNDUH -->
             <div class="flex items-center gap-1.5 sm:gap-2">
                 <!-- Preview Button -->
                 <button id="btn-top-preview" onclick="togglePlayPreview()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95">
@@ -172,7 +169,7 @@
                 </button>
 
                 <!-- Unduh Button (Direct Download / Image Capture) -->
-                <button id="btn-top-download" onclick="quickDownload()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold text-xs sm:text-sm transition-all" title="Unduh Slide Gambar (PNG) / Video Terakhir">
+                <button id="btn-top-download" onclick="quickDownload()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold text-xs sm:text-sm transition-all" title="Unduh Video / Slide Gambar (PNG)">
                     <i class="fa-solid fa-download"></i>
                     <span class="hidden sm:inline">Unduh</span>
                 </button>
@@ -219,7 +216,7 @@
                             <span id="surah-info-badge" class="text-[10px] text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded-md border border-brand-500/20 font-bold">Surat ke-1</span>
                         </label>
                         <select id="select-surah" onchange="onSurahChange()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all cursor-pointer">
-                            <!-- Populated dynamically with 114 Surahs -->
+                            <!-- 114 Surahs populated -->
                         </select>
                     </div>
 
@@ -389,7 +386,6 @@
 
                     <!-- Font Size & Spacing Sliders -->
                     <div class="bg-darkbg-950/70 p-4 rounded-2xl border border-slate-800 space-y-4">
-                        <!-- Arabic Font Size -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs text-slate-300">
                                 <span>Ukuran Teks Arab:</span>
@@ -398,7 +394,6 @@
                             <input type="range" id="range-arabic-size" min="32" max="96" value="54" oninput="document.getElementById('val-arabic-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
                         </div>
 
-                        <!-- Translation Font Size -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs text-slate-300">
                                 <span>Ukuran Teks Terjemahan / Latin:</span>
@@ -407,7 +402,6 @@
                             <input type="range" id="range-trans-size" min="14" max="40" value="22" oninput="document.getElementById('val-trans-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
                         </div>
 
-                        <!-- Base Text Color & Shadow -->
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div class="space-y-1">
                                 <label class="text-[11px] text-slate-400">Warna Teks Utama:</label>
@@ -430,7 +424,7 @@
                 <!-- TAB 3: BACKGROUND & EFEK VISUAL -->
                 <div id="tab-bg" class="tab-content hidden space-y-5">
                     
-                    <!-- Background Presets (Video & Aesthetic Animation) -->
+                    <!-- Background Presets -->
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
                             <span><i class="fa-solid fa-mountain-sun text-brand-400 mr-1.5"></i> Preset Background Video / Animasi</span>
@@ -514,7 +508,6 @@
 
                     <!-- Background Overlay, Blur & Vignette Controls -->
                     <div class="bg-darkbg-950/70 p-4 rounded-2xl border border-slate-800 space-y-4">
-                        <!-- Dark Overlay Opacity -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs text-slate-300">
                                 <span>Kegelapan Latar (Overlay Dark):</span>
@@ -523,7 +516,6 @@
                             <input type="range" id="range-bg-darkness" min="0" max="95" value="65" oninput="document.getElementById('val-bg-darkness').innerText=this.value+'%'; updateCanvas();" class="w-full">
                         </div>
 
-                        <!-- Blur Amount -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs text-slate-300">
                                 <span>Efek Blur Background:</span>
@@ -532,7 +524,6 @@
                             <input type="range" id="range-bg-blur" min="0" max="25" value="0" oninput="document.getElementById('val-bg-blur').innerText=this.value+'px'; updateCanvas();" class="w-full">
                         </div>
 
-                        <!-- Audio Visualizer Waveform Overlay -->
                         <div class="flex items-center justify-between pt-2 border-t border-slate-800">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-chart-simple text-brand-400 text-sm"></i>
@@ -581,7 +572,6 @@
                             <input type="range" id="range-vertical-offset" min="-300" max="300" value="0" oninput="document.getElementById('val-vertical-offset').innerText=(this.value > 0 ? '+'+this.value : this.value)+'px'; updateCanvas();" class="w-full">
                         </div>
 
-                        <!-- Content Max Width / Margin -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs text-slate-300">
                                 <span>Lebar Konten (Margin Samping):</span>
@@ -619,11 +609,11 @@
         <!-- Center & Right: Live Canvas Studio Viewport -->
         <main class="flex-1 flex flex-col items-center justify-center p-3 sm:p-6 bg-[#070a12] relative overflow-hidden">
             
-            <!-- Canvas Container with aspect-ratio centering -->
+            <!-- Canvas Container -->
             <div class="w-full flex-1 flex flex-col items-center justify-center relative max-h-[calc(100vh-10rem)]">
                 
                 <div id="canvas-wrapper" class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-black flex items-center justify-center transition-all duration-300" style="max-height: 80vh; max-width: 90vw;">
-                    <!-- Main High-Resolution Canvas -->
+                    <!-- High-Resolution Canvas -->
                     <canvas id="video-canvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
                     
                     <!-- Overlay Play/Pause Button on Hover/Idle -->
@@ -641,7 +631,7 @@
                 <!-- Timeline Slider -->
                 <div class="flex items-center gap-3">
                     <span id="player-time-current" class="text-[11px] font-mono text-slate-400 w-10 text-right">00:00</span>
-                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekAudio(this.value)" class="flex-1 accent-brand-500">
+                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekMasterAudio(this.value)" class="flex-1 accent-brand-500">
                     <span id="player-time-duration" class="text-[11px] font-mono text-slate-400 w-10">00:00</span>
                 </div>
 
@@ -666,7 +656,7 @@
                         <span id="player-verse-indicator">Ayat 1 dari 3</span>
                     </div>
 
-                    <!-- Quick Download & Fullscreen -->
+                    <!-- Quick Download & Screenshot -->
                     <div class="flex items-center gap-1.5">
                         <button onclick="downloadImageSlide()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium transition" title="Unduh Slide Gambar (PNG)">
                             <i class="fa-solid fa-camera mr-1"></i> Screenshot
@@ -696,11 +686,11 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-bold text-white">Export Video Al-Quran (MP4)</h3>
-                    <p class="text-xs text-slate-400">Render otomatis hingga ayat terakhir selesai dengan audio qari jernih</p>
+                    <p class="text-xs text-slate-400">Audio seluruh ayat digabung mulus & tersinkronisasi penuh</p>
                 </div>
             </div>
 
-            <!-- Export Settings Form (Visible before rendering) -->
+            <!-- Export Settings Form -->
             <div id="export-settings-panel" class="space-y-4">
                 <div class="bg-darkbg-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
                     <div class="flex justify-between items-center text-xs">
@@ -726,14 +716,14 @@
                         </select>
                     </div>
                     <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Total Durasi Video:</span>
-                        <span id="export-duration-label" class="font-bold text-white font-mono">--:--</span>
+                        <span class="text-slate-400">Total Durasi Video Utuh:</span>
+                        <span id="export-duration-label" class="font-bold text-emerald-400 font-mono">00:13</span>
                     </div>
                 </div>
 
                 <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-start gap-2.5">
                     <i class="fa-solid fa-circle-check text-sm mt-0.5 flex-shrink-0"></i>
-                    <span>Sistem akan otomatis merekam dari ayat awal sampai ayat terakhir yang Anda pilih, lalu langsung siap diunduh dalam format <b>.MP4</b> tanpa perlu menekan tombol selesai manual.</span>
+                    <span>Sistem menggunakan <b>Master Audio Pipeline</b> untuk menggabungkan seluruh ayat tanpa jeda, memastikan durasi video 100% pas dan langsung siap diunduh dalam format <b>.MP4</b>.</span>
                 </div>
 
                 <!-- Action Button in Modal -->
@@ -741,24 +731,24 @@
                     <button onclick="closeExportModal()" class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm transition">
                         Batal
                     </button>
-                    <button onclick="startVideoExport()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 hover:to-brand-500 text-darkbg-950 font-extrabold text-sm shadow-lg shadow-brand-500/25 transition">
+                    <button onclick="startMasterVideoExport()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 hover:to-brand-500 text-darkbg-950 font-extrabold text-sm shadow-lg shadow-brand-500/25 transition">
                         <i class="fa-solid fa-play mr-1.5"></i> Mulai Render Otomatis
                     </button>
                 </div>
             </div>
 
-            <!-- Export Progress Panel (Visible while rendering) -->
+            <!-- Export Progress Panel -->
             <div id="export-progress-panel" class="space-y-5 py-4 hidden">
                 <div class="text-center space-y-2">
                     <div class="w-14 h-14 rounded-full border-4 border-brand-500/30 border-t-brand-500 animate-spin mx-auto"></div>
-                    <h4 class="text-base font-bold text-white">Sedang Merender Video...</h4>
-                    <p id="export-progress-status" class="text-xs text-slate-400">Menyinkronkan audio qari dan animasi sorot teks...</p>
+                    <h4 class="text-base font-bold text-white">Sedang Merender Video Lengkap...</h4>
+                    <p id="export-progress-status" class="text-xs text-slate-400">Menyinkronkan seluruh ayat hingga selesai...</p>
                 </div>
 
                 <!-- Progress Bar -->
                 <div class="space-y-1.5">
                     <div class="flex justify-between text-xs font-semibold">
-                        <span class="text-slate-400">Kemajuan Otomatis</span>
+                        <span class="text-slate-400">Kemajuan Video Utuh</span>
                         <span id="export-progress-percent" class="text-brand-400 font-mono">0%</span>
                     </div>
                     <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
@@ -773,14 +763,14 @@
                 </div>
             </div>
 
-            <!-- Export Complete Panel (Visible after rendering finished) -->
+            <!-- Export Complete Panel -->
             <div id="export-complete-panel" class="space-y-4 hidden">
                 <div class="text-center space-y-1.5">
                     <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto">
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <h4 class="text-base font-bold text-white">Render Video MP4 Selesai!</h4>
-                    <p class="text-xs text-slate-400">Videomu siap diunggah ke TikTok, Reels, atau YouTube Shorts.</p>
+                    <p class="text-xs text-slate-400">Semua ayat telah digabungkan secara utuh dan siap dibagikan.</p>
                 </div>
 
                 <!-- Video Preview inside Modal -->
@@ -788,12 +778,12 @@
                     <video id="export-result-video" controls class="max-h-56 w-full object-contain"></video>
                 </div>
 
-                <!-- Modal Action Buttons: UNDUH MP4 SEKARANG -->
+                <!-- Modal Action Buttons: UNDUH MP4 -->
                 <div class="flex gap-3 pt-2">
                     <button onclick="closeExportModal()" class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm transition">
                         Tutup
                     </button>
-                    <a id="btn-download-exported-video" href="#" download="Quran_Reels_Video.mp4" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 text-darkbg-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/30 transition hover:brightness-110">
+                    <a id="btn-download-exported-video" href="#" download="Quran_Video.mp4" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 text-darkbg-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/30 transition hover:brightness-110">
                         <i class="fa-solid fa-download"></i> Unduh Video (.mp4)
                     </a>
                 </div>
@@ -802,18 +792,16 @@
         </div>
     </div>
 
-    <!-- Hidden Video & Audio Elements for Canvas Processing -->
+    <!-- Hidden Video Element for Custom Background -->
     <video id="hidden-bg-video" loop muted playsinline crossOrigin="anonymous" class="hidden"></video>
-    <audio id="core-audio-player" crossOrigin="anonymous" class="hidden"></audio>
 
     <!-- MAIN APP JAVASCRIPT ENGINE -->
     <script>
         /**
          * QURAN VIDEO GENERATOR ENGINE
-         * High-performance Canvas & Web Audio Recording to MP4
+         * High-Precision Master Audio Pipeline & Full-Length MP4 Video Export
          */
 
-        // State Store
         const state = {
             surahList: [],
             currentSurah: 1,
@@ -860,21 +848,30 @@
             watermarkText: '@quran.daily',
             showWaveform: true,
             
-            // Playback & Animation
+            // Master Audio Pipeline State
             isPlaying: false,
+            masterAudioBuffer: null,
+            verseTimings: [],
+            totalMasterDuration: 13.2,
+            masterCurrentTime: 0,
             currentVerseIndex: 0,
-            currentTime: 0,
-            totalDuration: 0,
+            currentVerseTime: 0,
+            currentVerseDuration: 4,
+            
+            activeBufferSource: null,
+            playbackStartTime: 0,
+            playbackOffset: 0,
+            
+            // Visuals & Effects
             animationFrameId: null,
             particles: [],
             rainDrops: [],
             audioContext: null,
             audioAnalyser: null,
             audioDataArray: null,
-            audioSource: null,
             audioDestination: null,
             
-            // Export
+            // Export State
             isExporting: false,
             exportInterval: null,
             mediaRecorder: null,
@@ -882,13 +879,10 @@
             exportBlobUrl: null
         };
 
-        // DOM Element Cache
         const canvas = document.getElementById('video-canvas');
         const ctx = canvas.getContext('2d');
-        const audio = document.getElementById('core-audio-player');
         const bgVideo = document.getElementById('hidden-bg-video');
 
-        // Initialize 114 Surah Metadata
         const SURAH_NAMES = [
             { id: 1, name: "Al-Fatihah", arabic: "الفاتحة", verses: 7, type: "Makkiyah" },
             { id: 2, name: "Al-Baqarah", arabic: "البقرة", verses: 286, type: "Madaniyah" },
@@ -897,7 +891,7 @@
             { id: 5, name: "Al-Ma'idah", arabic: "المائدة", verses: 120, type: "Madaniyah" },
             { id: 6, name: "Al-An'am", arabic: "الأنعام", verses: 165, type: "Makkiyah" },
             { id: 7, name: "Al-A'raf", arabic: "الأعراف", verses: 206, type: "Makkiyah" },
-            { id: 8, name: "Al-Anfal", arabic: "الأنفال", verses: 75, type: "Madaniyah" },
+            { id: 8, name: "Al-Anfal", arabic: "الأنفal", verses: 75, type: "Madaniyah" },
             { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129, type: "Madaniyah" },
             { id: 10, name: "Yunus", arabic: "يونس", verses: 109, type: "Makkiyah" },
             { id: 11, name: "Hud", arabic: "هود", verses: 123, type: "Makkiyah" },
@@ -1006,7 +1000,6 @@
             { id: 114, name: "An-Nas", arabic: "الناس", verses: 6, type: "Makkiyah" }
         ];
 
-        // Particle System for Dynamic Backgrounds
         function initParticles() {
             state.particles = [];
             for (let i = 0; i < 60; i++) {
@@ -1033,17 +1026,14 @@
             }
         }
 
-        // Initialize Web Application
         window.addEventListener('DOMContentLoaded', async () => {
             populateSurahDropdown();
             initParticles();
             setAspectRatio('9:16');
             await loadSurahVerses(1);
-            setupAudioEvents();
             startCanvasLoop();
         });
 
-        // Populate 114 Surahs
         function populateSurahDropdown() {
             const select = document.getElementById('select-surah');
             select.innerHTML = '';
@@ -1055,7 +1045,6 @@
             });
         }
 
-        // Tab Switching
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active', 'border-brand-500', 'text-brand-400', 'bg-darkbg-900');
@@ -1074,7 +1063,6 @@
             if (activeContent) activeContent.classList.remove('hidden');
         }
 
-        // Aspect Ratio Switcher
         function setAspectRatio(ratio) {
             state.aspectRatio = ratio;
             
@@ -1115,7 +1103,6 @@
             updateCanvas();
         }
 
-        // On Surah Changed
         async function onSurahChange() {
             const surahId = parseInt(document.getElementById('select-surah').value);
             const surahMeta = SURAH_NAMES.find(s => s.id === surahId);
@@ -1141,7 +1128,6 @@
             await loadSurahVerses(surahId);
         }
 
-        // On Verse Range Changed
         async function onVerseRangeChange() {
             let start = parseInt(document.getElementById('input-verse-start').value) || 1;
             let end = parseInt(document.getElementById('input-verse-end').value) || 1;
@@ -1176,7 +1162,6 @@
             onVerseRangeChange();
         }
 
-        // Fetch Verse Content & Audio from Reliable Quran APIs
         async function loadSurahVerses(surahId) {
             try {
                 const res = await fetch(`https://equran.id/api/v2/surat/${surahId}`);
@@ -1197,12 +1182,11 @@
                     await filterSelectedVerses();
                 }
             } catch (err) {
-                console.warn("Fallback to EveryAyah / Quran CDN:", err);
+                console.warn("Fallback to Quran API Cloud:", err);
                 await loadSurahVersesFallback(surahId);
             }
         }
 
-        // Fallback Fetcher
         async function loadSurahVersesFallback(surahId) {
             try {
                 const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahId}/editions/quran-uthmani,id.indonesian,en.transliteration`);
@@ -1236,7 +1220,6 @@
             }
         }
 
-        // Filter chosen verse range
         async function filterSelectedVerses() {
             if (!state.allSurahVerses) return;
 
@@ -1245,17 +1228,19 @@
             );
 
             state.currentVerseIndex = 0;
-            state.currentTime = 0;
+            state.masterCurrentTime = 0;
+            state.playbackOffset = 0;
 
             updateQariAudioSources();
+            await buildMasterAudioBuffer();
             updatePlayerUI();
             updateCanvas();
         }
 
-        // Update Qari Audio mapping
         function onQariChange() {
             state.qari = document.getElementById('select-qari').value;
             updateQariAudioSources();
+            buildMasterAudioBuffer();
         }
 
         function updateQariAudioSources() {
@@ -1281,185 +1266,23 @@
                 const aPad = String(v.verseNumber).padStart(3, '0');
                 v.audioUrl = `https://everyayah.com/data/${cdnFolder}/${sPad}${aPad}.mp3`;
             });
-
-            loadCurrentVerseAudio();
         }
 
-        // Load Audio for Current Verse
-        function loadCurrentVerseAudio() {
-            if (!state.versesData || state.versesData.length === 0) return;
-            const curVerse = state.versesData[state.currentVerseIndex];
-            if (!curVerse) return;
-
-            if (state.customAudioFile) {
-                audio.src = state.customAudioUrl;
-            } else {
-                audio.src = curVerse.audioUrl;
-            }
-            audio.load();
-        }
-
-        // Setup Audio Events & Web Audio API
-        function setupAudioEvents() {
-            audio.addEventListener('loadedmetadata', () => {
-                document.getElementById('player-time-duration').innerText = formatTime(audio.duration || 0);
-                document.getElementById('export-duration-label').innerText = formatTime(audio.duration || 0);
-            });
-
-            audio.addEventListener('timeupdate', () => {
-                state.currentTime = audio.currentTime;
-                const progress = (audio.currentTime / (audio.duration || 1)) * 100;
-                document.getElementById('player-progress-bar').value = progress;
-                document.getElementById('player-time-current').innerText = formatTime(audio.currentTime);
-                document.getElementById('current-playing-time').innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration || 0)}`;
-            });
-
-            audio.addEventListener('ended', () => {
-                if (state.isExporting) {
-                    // Export Mode: advance verse or finish immediately when final selected verse ends!
-                    if (state.currentVerseIndex < state.versesData.length - 1) {
-                        state.currentVerseIndex++;
-                        loadCurrentVerseAudio();
-                        audio.play().catch(e => console.log(e));
-                        updatePlayerUI();
-                    } else {
-                        // EXACT END OF LAST VERSE -> AUTO FINISH!
-                        finishVideoExport();
-                    }
-                    return;
-                }
-
-                if (state.customAudioFile) {
-                    stopAudio();
-                    return;
-                }
-
-                // Normal preview playback loop
-                if (state.currentVerseIndex < state.versesData.length - 1) {
-                    state.currentVerseIndex++;
-                    loadCurrentVerseAudio();
-                    audio.play().catch(e => console.log(e));
-                    updatePlayerUI();
-                } else {
-                    state.currentVerseIndex = 0;
-                    loadCurrentVerseAudio();
-                    if (state.isPlaying) {
-                        audio.play().catch(e => console.log(e));
-                    } else {
-                        stopAudio();
-                    }
-                    updatePlayerUI();
-                }
-            });
-        }
-
-        // Playback Controls
-        function togglePlayPreview() {
-            if (state.isPlaying) {
-                pauseAudio();
-            } else {
-                playAudio();
-            }
-        }
-
-        function playAudio() {
-            initAudioContext();
-            audio.play().then(() => {
-                state.isPlaying = true;
-                updatePlayerUI();
-                if (state.bgType === 'custom-video' && state.customBgMedia) {
-                    state.customBgMedia.play();
-                }
-            }).catch(e => console.log("Audio play error:", e));
-        }
-
-        function pauseAudio() {
-            audio.pause();
-            state.isPlaying = false;
-            updatePlayerUI();
-            if (state.bgType === 'custom-video' && state.customBgMedia) {
-                state.customBgMedia.pause();
-            }
-        }
-
-        function stopAudio() {
-            audio.pause();
-            audio.currentTime = 0;
-            state.isPlaying = false;
-            updatePlayerUI();
-        }
-
-        function seekAudio(percent) {
-            if (audio.duration) {
-                audio.currentTime = (percent / 100) * audio.duration;
-            }
-        }
-
-        function prevVerse() {
-            if (state.currentVerseIndex > 0) {
-                state.currentVerseIndex--;
-                loadCurrentVerseAudio();
-                if (state.isPlaying) audio.play();
-                updatePlayerUI();
-            }
-        }
-
-        function nextVerse() {
-            if (state.currentVerseIndex < state.versesData.length - 1) {
-                state.currentVerseIndex++;
-                loadCurrentVerseAudio();
-                if (state.isPlaying) audio.play();
-                updatePlayerUI();
-            }
-        }
-
-        function updatePlayerUI() {
-            const playIconClass = state.isPlaying ? 'fa-pause' : 'fa-play';
-            
-            // Top Preview Button
-            document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-400`;
-            document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
-            
-            // Sidebar Button
-            document.getElementById('sidebar-play-icon').className = `fa-solid ${playIconClass}`;
-            
-            // Bottom Bar Button
-            document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
-            document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar Preview';
-            
-            // Overlay icon
-            document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-1'}`;
-
-            // Indicator
-            const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-            document.getElementById('player-verse-indicator').innerText = `Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber})`;
-            
-            const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
-            const sName = surahMeta ? surahMeta.name : 'Surat';
-            document.getElementById('current-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
-
-            // Audio wave animation opacity
-            document.getElementById('audio-wave-anim').style.opacity = state.isPlaying ? '1' : '0.3';
-        }
-
-        // Web Audio Context for Waveform & Recording
+        /**
+         * MASTER AUDIO BUFFER ENGINE
+         * Pre-decodes and concatenates all selected verses into a single continuous stream
+         */
         function initAudioContext() {
             try {
                 if (!state.audioContext) {
                     const AudioCtx = window.AudioContext || window.webkitAudioContext;
                     state.audioContext = new AudioCtx();
                     
-                    state.audioSource = state.audioContext.createMediaElementSource(audio);
                     state.audioAnalyser = state.audioContext.createAnalyser();
                     state.audioAnalyser.fftSize = 64;
                     state.audioDataArray = new Uint8Array(state.audioAnalyser.frequencyBinCount);
                     
-                    state.audioSource.connect(state.audioAnalyser);
-                    state.audioAnalyser.connect(state.audioContext.destination);
-
-                    // Audio stream destination for video recorder
                     state.audioDestination = state.audioContext.createMediaStreamDestination();
-                    state.audioSource.connect(state.audioDestination);
                 }
                 if (state.audioContext.state === 'suspended') {
                     state.audioContext.resume();
@@ -1469,7 +1292,257 @@
             }
         }
 
-        // Highlight & Style Presets
+        async function buildMasterAudioBuffer() {
+            initAudioContext();
+            if (!state.versesData || state.versesData.length === 0) return;
+
+            stopMasterAudio();
+
+            const timings = [];
+            let currentOffset = 0;
+            const buffers = [];
+
+            if (state.customAudioFile && state.customAudioUrl) {
+                try {
+                    const res = await fetch(state.customAudioUrl);
+                    const arrayBuf = await res.arrayBuffer();
+                    const decoded = await state.audioContext.decodeAudioData(arrayBuf.slice(0));
+                    state.masterAudioBuffer = decoded;
+                    state.totalMasterDuration = decoded.duration;
+                    
+                    const vCount = state.versesData.length;
+                    const durPerV = decoded.duration / vCount;
+                    state.versesData.forEach((v, idx) => {
+                        timings.push({
+                            index: idx,
+                            start: idx * durPerV,
+                            end: (idx + 1) * durPerV,
+                            duration: durPerV
+                        });
+                    });
+                    state.verseTimings = timings;
+                    updateDurationDisplay();
+                    return;
+                } catch (e) {
+                    console.error("Custom audio decode error:", e);
+                }
+            }
+
+            // Download & decode each verse seamlessly
+            for (let i = 0; i < state.versesData.length; i++) {
+                const v = state.versesData[i];
+                try {
+                    const res = await fetch(v.audioUrl);
+                    const arrayBuf = await res.arrayBuffer();
+                    const decoded = await state.audioContext.decodeAudioData(arrayBuf.slice(0));
+                    buffers.push(decoded);
+                    timings.push({
+                        index: i,
+                        start: currentOffset,
+                        end: currentOffset + decoded.duration,
+                        duration: decoded.duration
+                    });
+                    currentOffset += decoded.duration;
+                } catch (e) {
+                    console.warn("Error decoding verse audio", v.verseNumber, e);
+                    // Fallback artificial 4s timing if network blocked
+                    const dummyDur = 4.0;
+                    timings.push({
+                        index: i,
+                        start: currentOffset,
+                        end: currentOffset + dummyDur,
+                        duration: dummyDur
+                    });
+                    currentOffset += dummyDur;
+                }
+            }
+
+            state.verseTimings = timings;
+            state.totalMasterDuration = Math.max(1, currentOffset);
+
+            if (buffers.length > 0) {
+                const numChannels = buffers[0].numberOfChannels;
+                const sampleRate = buffers[0].sampleRate;
+                const totalLength = buffers.reduce((acc, b) => acc + b.length, 0);
+
+                const masterBuf = state.audioContext.createBuffer(numChannels, totalLength, sampleRate);
+                for (let channel = 0; channel < numChannels; channel++) {
+                    const masterChannelData = masterBuf.getChannelData(channel);
+                    let offset = 0;
+                    for (let b of buffers) {
+                        const bChannelData = b.getChannelData(Math.min(channel, b.numberOfChannels - 1));
+                        masterChannelData.set(bChannelData, offset);
+                        offset += b.length;
+                    }
+                }
+                state.masterAudioBuffer = masterBuf;
+            }
+
+            updateDurationDisplay();
+        }
+
+        function updateDurationDisplay() {
+            const formatted = formatTime(state.totalMasterDuration);
+            document.getElementById('player-time-duration').innerText = formatted;
+            document.getElementById('export-duration-label').innerText = formatted;
+            document.getElementById('current-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatted}`;
+        }
+
+        // Playback Controller using Master Audio Buffer
+        function togglePlayPreview() {
+            if (state.isPlaying) {
+                pauseMasterAudio();
+            } else {
+                playMasterAudio();
+            }
+        }
+
+        function playMasterAudio() {
+            initAudioContext();
+            if (!state.masterAudioBuffer) return;
+
+            stopActiveBufferSource();
+
+            state.activeBufferSource = state.audioContext.createBufferSource();
+            state.activeBufferSource.buffer = state.masterAudioBuffer;
+
+            state.activeBufferSource.connect(state.audioAnalyser);
+            state.audioAnalyser.connect(state.audioContext.destination);
+            state.activeBufferSource.connect(state.audioDestination);
+
+            if (state.playbackOffset >= state.totalMasterDuration) {
+                state.playbackOffset = 0;
+            }
+
+            state.playbackStartTime = state.audioContext.currentTime - state.playbackOffset;
+            state.activeBufferSource.start(0, state.playbackOffset);
+
+            state.isPlaying = true;
+            updatePlayerUI();
+
+            if (state.bgType === 'custom-video' && state.customBgMedia) {
+                state.customBgMedia.play();
+            }
+
+            state.activeBufferSource.onended = () => {
+                if (state.isPlaying && !state.isExporting) {
+                    if (state.masterCurrentTime >= state.totalMasterDuration - 0.2) {
+                        state.isPlaying = false;
+                        state.playbackOffset = 0;
+                        state.masterCurrentTime = 0;
+                        updatePlayerUI();
+                    }
+                }
+            };
+        }
+
+        function pauseMasterAudio() {
+            if (state.isPlaying) {
+                state.playbackOffset = state.audioContext.currentTime - state.playbackStartTime;
+                stopActiveBufferSource();
+                state.isPlaying = false;
+                updatePlayerUI();
+
+                if (state.bgType === 'custom-video' && state.customBgMedia) {
+                    state.customBgMedia.pause();
+                }
+            }
+        }
+
+        function stopMasterAudio() {
+            stopActiveBufferSource();
+            state.isPlaying = false;
+            state.playbackOffset = 0;
+            state.masterCurrentTime = 0;
+            updatePlayerUI();
+
+            if (state.bgType === 'custom-video' && state.customBgMedia) {
+                state.customBgMedia.pause();
+                state.customBgMedia.currentTime = 0;
+            }
+        }
+
+        function stopActiveBufferSource() {
+            if (state.activeBufferSource) {
+                try {
+                    state.activeBufferSource.stop();
+                    state.activeBufferSource.disconnect();
+                } catch (e) {}
+                state.activeBufferSource = null;
+            }
+        }
+
+        function seekMasterAudio(percent) {
+            const targetTime = (percent / 100) * state.totalMasterDuration;
+            state.playbackOffset = targetTime;
+            state.masterCurrentTime = targetTime;
+
+            if (state.isPlaying) {
+                playMasterAudio();
+            } else {
+                updateCurrentVerseFromMasterTime();
+                updatePlayerUI();
+            }
+        }
+
+        function prevVerse() {
+            if (state.currentVerseIndex > 0) {
+                const prevTiming = state.verseTimings[state.currentVerseIndex - 1];
+                if (prevTiming) {
+                    seekMasterAudio((prevTiming.start / state.totalMasterDuration) * 100);
+                }
+            }
+        }
+
+        function nextVerse() {
+            if (state.currentVerseIndex < state.versesData.length - 1) {
+                const nextTiming = state.verseTimings[state.currentVerseIndex + 1];
+                if (nextTiming) {
+                    seekMasterAudio((nextTiming.start / state.totalMasterDuration) * 100);
+                }
+            }
+        }
+
+        function updateCurrentVerseFromMasterTime() {
+            if (!state.verseTimings || state.verseTimings.length === 0) return;
+
+            const t = state.masterCurrentTime;
+            let activeTiming = state.verseTimings.find(item => t >= item.start && t < item.end);
+            if (!activeTiming) {
+                activeTiming = state.verseTimings[state.verseTimings.length - 1];
+            }
+
+            if (activeTiming) {
+                state.currentVerseIndex = activeTiming.index;
+                state.currentVerseTime = Math.max(0, t - activeTiming.start);
+                state.currentVerseDuration = activeTiming.duration;
+            }
+        }
+
+        function updatePlayerUI() {
+            const playIconClass = state.isPlaying ? 'fa-pause' : 'fa-play';
+            
+            document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-400`;
+            document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
+            document.getElementById('sidebar-play-icon').className = `fa-solid ${playIconClass}`;
+            document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
+            document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar Preview';
+            document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-1'}`;
+
+            const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
+            document.getElementById('player-verse-indicator').innerText = `Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber})`;
+            
+            const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
+            const sName = surahMeta ? surahMeta.name : 'Surat';
+            document.getElementById('current-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
+            document.getElementById('audio-wave-anim').style.opacity = state.isPlaying ? '1' : '0.3';
+            
+            const progress = (state.masterCurrentTime / (state.totalMasterDuration || 1)) * 100;
+            document.getElementById('player-progress-bar').value = progress;
+            document.getElementById('player-time-current').innerText = formatTime(state.masterCurrentTime);
+            document.getElementById('current-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatTime(state.totalMasterDuration)}`;
+        }
+
         function setHighlightColor(color, name) {
             state.highlightColor = color;
             document.querySelectorAll('.hl-swatch-btn').forEach(btn => {
@@ -1479,7 +1552,6 @@
             updateCanvas();
         }
 
-        // Background Preset Selection
         function setBackgroundPreset(presetName) {
             state.bgType = 'preset';
             state.bgPreset = presetName;
@@ -1494,7 +1566,6 @@
             updateCanvas();
         }
 
-        // Custom Background Upload (Video / Image)
         function handleCustomBgUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1531,16 +1602,14 @@
             updateCanvas();
         }
 
-        // Custom Audio Upload
         function handleCustomAudioUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
 
             state.customAudioFile = file;
             state.customAudioUrl = URL.createObjectURL(file);
-            audio.src = state.customAudioUrl;
-            audio.load();
             document.getElementById('btn-clear-custom-audio').classList.remove('hidden');
+            buildMasterAudioBuffer();
         }
 
         function clearCustomAudio() {
@@ -1548,10 +1617,9 @@
             state.customAudioUrl = null;
             document.getElementById('input-custom-audio').value = '';
             document.getElementById('btn-clear-custom-audio').classList.add('hidden');
-            loadCurrentVerseAudio();
+            buildMasterAudioBuffer();
         }
 
-        // Layout Template
         function setLayoutTemplate(template) {
             state.layoutTemplate = template;
             document.querySelectorAll('.layout-tpl-btn').forEach(btn => {
@@ -1563,7 +1631,6 @@
             updateCanvas();
         }
 
-        // Helper: Format Time seconds into MM:SS
         function formatTime(seconds) {
             if (isNaN(seconds) || seconds === Infinity) return "00:00";
             const mins = Math.floor(seconds / 60);
@@ -1572,11 +1639,17 @@
         }
 
         /**
-         * CANVAS RENDERING ENGINE
-         * High FPS Graphic Pipeline with Animated Highlights, Dynamic Waveforms & Particles
+         * ANIMATION & GRAPHIC ENGINE
          */
         function startCanvasLoop() {
             function render() {
+                if (state.isPlaying) {
+                    const elapsed = state.audioContext.currentTime - state.playbackStartTime;
+                    state.masterCurrentTime = Math.min(state.totalMasterDuration, Math.max(0, elapsed));
+                    updateCurrentVerseFromMasterTime();
+                    updatePlayerUI();
+                }
+
                 drawFrame();
                 state.animationFrameId = requestAnimationFrame(render);
             }
@@ -1611,28 +1684,18 @@
 
             ctx.clearRect(0, 0, w, h);
 
-            // 1. DRAW BACKGROUND
             drawBackground(w, h);
-
-            // 2. DRAW PARTICLES & ATMOSPHERE
             drawParticles(w, h);
-
-            // 3. DRAW DARK OVERLAY & VIGNETTE
             drawOverlayVignette(w, h);
 
-            // 4. DRAW AUDIO WAVEFORM VISUALIZER
             if (state.showWaveform) {
                 drawAudioWaveform(w, h);
             }
 
-            // 5. DRAW SURAH HEADER & WATERMARK
             drawHeaderAndWatermark(w, h);
-
-            // 6. DRAW QURAN VERSE CONTENT WITH HIGHLIGHT
             drawVerseContent(w, h);
         }
 
-        // Draw Background Layer
         function drawBackground(w, h) {
             if (state.bgType === 'custom-video' && state.customBgMedia && state.customBgMedia.readyState >= 2) {
                 ctx.drawImage(state.customBgMedia, 0, 0, w, h);
@@ -1688,7 +1751,6 @@
             }
         }
 
-        // Draw Dynamic Particle & Rain Animation
         function drawParticles(w, h) {
             ctx.save();
             if (state.bgPreset === 'rain') {
@@ -1730,7 +1792,6 @@
             ctx.restore();
         }
 
-        // Draw Dark Tint Overlay & Cinematic Vignette
         function drawOverlayVignette(w, h) {
             ctx.fillStyle = `rgba(0, 0, 0, ${state.bgDarkness})`;
             ctx.fillRect(0, 0, w, h);
@@ -1742,7 +1803,6 @@
             ctx.fillRect(0, 0, w, h);
         }
 
-        // Draw Live Audio Waveform Bars
         function drawAudioWaveform(w, h) {
             if (!state.audioAnalyser || !state.audioDataArray) return;
             state.audioAnalyser.getByteFrequencyData(state.audioDataArray);
@@ -1771,7 +1831,6 @@
             ctx.restore();
         }
 
-        // Draw Header & Watermark Branding
         function drawHeaderAndWatermark(w, h) {
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
             const surahName = surahMeta ? surahMeta.name : 'Al-Quran';
@@ -1816,7 +1875,6 @@
             }
         }
 
-        // Draw Quran Verse Text with Sorot Warna (Highlight) Engine
         function drawVerseContent(w, h) {
             if (!state.versesData || state.versesData.length === 0) return;
 
@@ -1840,13 +1898,12 @@
 
             let currentDrawY = centerY - 100;
 
-            // 1. ARABIC TEXT
             if (state.showArabic) {
                 ctx.direction = 'rtl';
                 ctx.textAlign = 'center';
                 ctx.font = `700 ${state.arabicSize}px ${state.arabicFont}`;
 
-                const progress = audio.duration ? (audio.currentTime / audio.duration) : 0;
+                const progress = state.currentVerseDuration ? (state.currentVerseTime / state.currentVerseDuration) : 0;
                 const arabicLines = wrapText(ctx, currentVerse.arabic, maxContentWidth);
                 const lineHeight = state.arabicSize * 2.1;
 
@@ -1888,7 +1945,6 @@
                 currentDrawY += (arabicLines.length * lineHeight) + 40;
             }
 
-            // 2. TRANSLITERATION (LATIN)
             if (state.showLatin && currentVerse.transliteration) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
@@ -1906,7 +1962,6 @@
                 currentDrawY += (latinLines.length * latinLineHeight) + 20;
             }
 
-            // 3. TRANSLATION (INDONESIA)
             if (state.showTranslation && currentVerse.translation) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
@@ -1925,7 +1980,6 @@
             ctx.restore();
         }
 
-        // Draw Islamic Ayah End Ornament Number Badge
         function drawAyahEndBadge(x, y, number) {
             ctx.save();
             ctx.fillStyle = state.highlightColor;
@@ -1969,14 +2023,15 @@
         }
 
         /**
-         * VIDEO EXPORT & MP4 DOWNLOAD ENGINE
-         * High-reliability recorder with automatic finish on exact end of selected verse
+         * FULL-LENGTH MASTER MP4 EXPORT PIPELINE
+         * Records continuous synchronized stream for the EXACT total duration of all selected verses
          */
         function openExportModal() {
             document.getElementById('export-modal').classList.remove('hidden');
             document.getElementById('export-settings-panel').classList.remove('hidden');
             document.getElementById('export-progress-panel').classList.add('hidden');
             document.getElementById('export-complete-panel').classList.add('hidden');
+            document.getElementById('export-duration-label').innerText = formatTime(state.totalMasterDuration);
         }
 
         function closeExportModal() {
@@ -1986,20 +2041,22 @@
             }
         }
 
-        // Start Recording High Quality MP4 Video
-        async function startVideoExport() {
+        async function startMasterVideoExport() {
             state.isExporting = true;
             document.getElementById('export-settings-panel').classList.add('hidden');
             document.getElementById('export-progress-panel').classList.remove('hidden');
             document.getElementById('export-complete-panel').classList.add('hidden');
 
+            // Make sure buffer is built
+            if (!state.masterAudioBuffer) {
+                await buildMasterAudioBuffer();
+            }
+
             initAudioContext();
 
-            // Set recording framerate
             const fps = parseInt(document.getElementById('export-fps-select').value) || 30;
             const canvasStream = canvas.captureStream(fps);
 
-            // Stream creation
             let combinedStream;
             if (state.audioDestination && state.audioDestination.stream.getAudioTracks().length > 0) {
                 const audioStream = state.audioDestination.stream;
@@ -2011,25 +2068,16 @@
                 combinedStream = canvasStream;
             }
 
-            // Detect Supported MIME Types prioritizing MP4
             let mimeType = 'video/mp4;codecs=avc1,mp4a.40.2';
-            if (!MediaRecorder.isTypeSupported(mimeType)) {
-                mimeType = 'video/mp4';
-            }
-            if (!MediaRecorder.isTypeSupported(mimeType)) {
-                mimeType = 'video/webm;codecs=vp9,opus';
-            }
-            if (!MediaRecorder.isTypeSupported(mimeType)) {
-                mimeType = 'video/webm;codecs=vp8,opus';
-            }
-            if (!MediaRecorder.isTypeSupported(mimeType)) {
-                mimeType = 'video/webm';
-            }
+            if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/mp4';
+            if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/webm;codecs=vp9,opus';
+            if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/webm;codecs=vp8,opus';
+            if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/webm';
 
             state.recordedBlobs = [];
             state.mediaRecorder = new MediaRecorder(combinedStream, {
                 mimeType: mimeType,
-                videoBitsPerSecond: 10000000 // 10 Mbps High Quality
+                videoBitsPerSecond: 12000000 // 12 Mbps
             });
 
             state.mediaRecorder.ondataavailable = (event) => {
@@ -2039,11 +2087,9 @@
             };
 
             state.mediaRecorder.onstop = () => {
-                // Ensure exported blob is formatted and delivered as MP4 video
                 const superBuffer = new Blob(state.recordedBlobs, { type: 'video/mp4' });
                 state.exportBlobUrl = URL.createObjectURL(superBuffer);
                 
-                // Show result player
                 const resultVideo = document.getElementById('export-result-video');
                 resultVideo.src = state.exportBlobUrl;
                 resultVideo.load();
@@ -2059,19 +2105,17 @@
                 document.getElementById('export-progress-panel').classList.add('hidden');
                 document.getElementById('export-complete-panel').classList.remove('hidden');
                 state.isExporting = false;
-                stopAudio();
+                stopMasterAudio();
                 updatePlayerUI();
             };
 
-            // Start from beginning of verse range
-            state.currentVerseIndex = 0;
-            loadCurrentVerseAudio();
-            audio.currentTime = 0;
+            // Start playing master buffer from 0.0s
+            state.playbackOffset = 0;
+            state.masterCurrentTime = 0;
+            playMasterAudio();
 
             state.mediaRecorder.start(100);
-            audio.play().catch(e => console.log(e));
 
-            // Automatic Progress tracking
             if (state.exportInterval) clearInterval(state.exportInterval);
 
             state.exportInterval = setInterval(() => {
@@ -2080,29 +2124,35 @@
                     return;
                 }
 
-                const totalVerses = state.versesData.length || 1;
-                const verseProgress = (state.currentVerseIndex / totalVerses);
-                const currentVerseAudioProgress = (audio.currentTime / (audio.duration || 5)) / totalVerses;
-                const totalPercent = Math.min(99, Math.max(1, Math.round((verseProgress + currentVerseAudioProgress) * 100)));
+                const totalDur = state.totalMasterDuration || 1;
+                const curTime = state.masterCurrentTime;
+                const totalPercent = Math.min(99, Math.max(1, Math.round((curTime / totalDur) * 100)));
 
                 document.getElementById('export-progress-percent').innerText = `${totalPercent}%`;
                 document.getElementById('export-progress-fill').style.width = `${totalPercent}%`;
-                document.getElementById('export-progress-status').innerText = `Merender Ayat ${state.currentVerseIndex + 1} dari ${totalVerses}... (${formatTime(audio.currentTime)})`;
+                
+                const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
+                document.getElementById('export-progress-status').innerText = `Merender Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber}) • ${formatTime(curTime)} / ${formatTime(totalDur)}`;
+
+                // When exact end is reached:
+                if (curTime >= totalDur - 0.05) {
+                    clearInterval(state.exportInterval);
+                    finishVideoExport();
+                }
             }, 100);
         }
 
-        // Automatic Finish Trigger when last verse ends
         function finishVideoExport() {
             if (state.exportInterval) clearInterval(state.exportInterval);
             document.getElementById('export-progress-percent').innerText = `100%`;
             document.getElementById('export-progress-fill').style.width = `100%`;
-            document.getElementById('export-progress-status').innerText = `Menyelesaikan encoding MP4...`;
+            document.getElementById('export-progress-status').innerText = `Menyimpan video MP4 lengkap...`;
 
             setTimeout(() => {
                 if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
                     state.mediaRecorder.stop();
                 }
-            }, 300);
+            }, 500);
         }
 
         function cancelVideoExport() {
@@ -2111,11 +2161,10 @@
                 state.mediaRecorder.stop();
             }
             state.isExporting = false;
-            stopAudio();
+            stopMasterAudio();
             closeExportModal();
         }
 
-        // Quick Direct Download Button
         function quickDownload() {
             if (state.exportBlobUrl) {
                 const a = document.createElement('a');
@@ -2129,7 +2178,6 @@
             }
         }
 
-        // Download Instant PNG Slide Image
         function downloadImageSlide() {
             const dataUrl = canvas.toDataURL('image/png', 1.0);
             const a = document.createElement('a');
