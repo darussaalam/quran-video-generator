@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quran Video Studio - Reels, Shorts & Landscape Generator</title>
+    <title>Quran Video Studio Pro - Reels, Shorts & Multi-Publisher</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,17 +41,14 @@
         }
     </script>
     <style>
-        /* Smooth Scroll & Transitions */
         * { transition: background-color 0.2s ease, border-color 0.2s ease; }
         
-        /* Custom Clean Scrollbar */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         .dark ::-webkit-scrollbar-track { background: #0f172a; }
         .dark ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-        /* Bootstrap-like Range Slider */
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
@@ -84,7 +81,7 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white pb-16 lg:pb-0">
 
-    <!-- Top Navigation Header (Standard Bootstrap-like Navbar) -->
+    <!-- Top Navigation Header -->
     <header class="h-14 sm:h-16 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between sticky top-0 z-40 shadow-sm">
         <!-- Logo & Brand -->
         <div class="flex items-center gap-2.5 sm:gap-3">
@@ -93,13 +90,13 @@
             </div>
             <div>
                 <h1 class="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.5</span>
+                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.6 PRO</span>
                 </h1>
-                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Landscape</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Multi-Platform Publisher</p>
             </div>
         </div>
 
-        <!-- Platform Aspect Ratio Selector (Clean Buttons) -->
+        <!-- Platform Aspect Ratio Selector -->
         <div class="flex items-center bg-slate-100 dark:bg-slate-950 p-0.5 sm:p-1 rounded-lg border border-slate-200 dark:border-slate-800 text-[11px]">
             <button id="btn-ratio-916" onclick="setAspectRatio('9:16')" class="ratio-btn active flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold bg-brand-500 text-white shadow-sm transition">
                 <i class="fa-solid fa-mobile-screen"></i>
@@ -155,10 +152,8 @@
             <!-- Canvas Container -->
             <div class="w-full flex-1 flex items-center justify-center min-h-[290px] max-h-[46vh] sm:max-h-[58vh] lg:max-h-[calc(100vh-9.5rem)]">
                 <div id="canvas-wrapper" class="relative rounded-xl overflow-hidden shadow-lg border border-slate-300 dark:border-slate-800 bg-black flex items-center justify-center transition-all duration-300 w-auto h-full max-w-full">
-                    <!-- Canvas Element -->
                     <canvas id="video-canvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
                     
-                    <!-- Overlay Play/Pause Button on Tap -->
                     <div id="canvas-play-overlay" onclick="togglePlayPreview()" class="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer transition-opacity opacity-0 hover:opacity-100">
                         <div class="w-14 h-14 rounded-full bg-brand-500 text-white flex items-center justify-center text-xl shadow-lg transform transition hover:scale-105">
                             <i id="overlay-play-icon" class="fa-solid fa-play ml-0.5"></i>
@@ -167,7 +162,7 @@
                 </div>
             </div>
 
-            <!-- Player Timeline & Quick Bar (Clean Bootstrap Card) -->
+            <!-- Player Timeline & Quick Bar -->
             <div class="w-full max-w-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-2 sm:p-2.5 mt-2 flex flex-col gap-1.5 z-10 shadow-sm">
                 <!-- Timeline Slider -->
                 <div class="flex items-center gap-2">
@@ -211,32 +206,37 @@
 
         </main>
 
-        <!-- Sidebar Controls Dock (Clean, Organized & Standard Form Controls) -->
+        <!-- Sidebar Controls Dock -->
         <aside class="w-full lg:w-[410px] xl:w-[430px] flex-shrink-0 bg-white dark:bg-slate-900 border-t lg:border-t-0 lg:border-r border-slate-200 dark:border-slate-800 flex flex-col order-2 lg:order-1 h-auto lg:h-[calc(100vh-4rem)] z-20">
             
-            <!-- Category Tabs (Standard Clean Bootstrap Nav Tabs) -->
+            <!-- Category Tabs with Multi-Publisher Desktop Feature -->
             <div class="flex items-center border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 px-1 pt-1.5 gap-1 overflow-x-auto text-xs font-semibold no-scrollbar">
-                <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-3 py-2 rounded-t-md border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-2.5 py-2 rounded-t-md border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
                     <span>Tema</span>
                 </button>
-                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-book-quran text-[11px]"></i>
                     <span>Ayat & Qari</span>
                 </button>
-                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-highlighter text-[11px]"></i>
                     <span>Sorot & Hook</span>
                 </button>
-                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-photo-film text-[11px]"></i>
                     <span>Latar</span>
                 </button>
-                <button onclick="switchTab('tab-audio')" id="tab-btn-audio" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-audio')" id="tab-btn-audio" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-headphones text-[11px]"></i>
                     <span>Suara Alam</span>
                 </button>
-                <button onclick="switchTab('tab-layout')" id="tab-btn-layout" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <!-- Desktop Multi-Publisher Tab -->
+                <button onclick="switchTab('tab-publisher')" id="tab-btn-publisher" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
+                    <i class="fa-solid fa-paper-plane text-[11px]"></i>
+                    <span>Publish</span>
+                </button>
+                <button onclick="switchTab('tab-layout')" id="tab-btn-layout" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-sliders text-[11px]"></i>
                     <span>Layout</span>
                 </button>
@@ -305,7 +305,6 @@
 
                 <!-- TAB 1: AYAT & QARI -->
                 <div id="tab-ayat" class="tab-content hidden space-y-3">
-                    
                     <div class="space-y-1">
                         <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Surat Al-Quran</label>
                         <select id="select-surah" onchange="onSurahChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
@@ -401,7 +400,6 @@
 
                 <!-- TAB 2: SOROT WARNA, KATA & OPENING HOOK -->
                 <div id="tab-style" class="tab-content hidden space-y-3.5">
-                    
                     <!-- Color Swatches -->
                     <div class="space-y-1.5">
                         <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Warna Sorot Teks</label>
@@ -551,7 +549,6 @@
                         <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">Calming</span>
                     </div>
 
-                    <!-- Ambiance Presets -->
                     <div class="grid grid-cols-3 gap-1.5">
                         <button onclick="setAmbianceType('none')" class="ambiance-card active p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-brand-500 text-center transition">
                             <i class="fa-solid fa-volume-xmark text-slate-400 text-sm mb-0.5"></i>
@@ -567,7 +564,6 @@
                         </button>
                     </div>
 
-                    <!-- Volume Slider -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] text-slate-700 dark:text-slate-300">
@@ -579,7 +575,6 @@
                         <p class="text-[10px] text-slate-500 dark:text-slate-400">Suara latar akan otomatis di-mix ke dalam audio Qari saat diputar & saat diekspor ke MP4.</p>
                     </div>
 
-                    <!-- Speed Controls -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
                         <label class="text-[11px] font-semibold text-slate-700 dark:text-slate-300">Kecepatan Bacaan (Tempo):</label>
                         <div class="grid grid-cols-4 gap-1">
@@ -591,7 +586,158 @@
                     </div>
                 </div>
 
-                <!-- TAB 5: TATA LETAK -->
+                <!-- TAB 5: REAL DESKTOP MULTI-PLATFORM PUBLISHER (FITUR BARU) -->
+                <div id="tab-publisher" class="tab-content hidden space-y-3.5">
+                    
+                    <!-- Notice for Small Screen / Mobile Viewports -->
+                    <div class="block lg:hidden p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-800 dark:text-amber-300">
+                        <i class="fa-solid fa-desktop mr-1.5"></i>
+                        <b>Mode Desktop Studio:</b> Fitur upload cross-platform ini dioptimalkan untuk layar Desktop/Laptop.
+                    </div>
+
+                    <!-- Header & Account Config Button -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-paper-plane text-indigo-500"></i> Multi-Publisher Studio
+                            </span>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400">Post langsung ke YouTube, TikTok & IG.</p>
+                        </div>
+                        <button onclick="openAccountConfigModal()" class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-[11px] font-semibold transition" title="Atur Kredensial / Token Akun">
+                            <i class="fa-solid fa-key text-indigo-500 mr-1"></i> Akun API
+                        </button>
+                    </div>
+
+                    <!-- Publishing Mode Selector (Simultaneous vs Selective) -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
+                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Mode Distribusi</label>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <label class="flex items-center gap-2 p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer">
+                                <input type="radio" name="publish_mode" value="simultaneous" checked onchange="onPublishModeChange('simultaneous')" class="accent-indigo-500">
+                                <div>
+                                    <b class="text-slate-900 dark:text-white block text-[11px]">⚡ Kirim Serentak</b>
+                                    <span class="text-[10px] text-slate-500">Upload paralel 1-klik</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-2 p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-pointer">
+                                <input type="radio" name="publish_mode" value="selective" onchange="onPublishModeChange('selective')" class="accent-indigo-500">
+                                <div>
+                                    <b class="text-slate-900 dark:text-white block text-[11px]">🎯 Kirim Terpisah</b>
+                                    <span class="text-[10px] text-slate-500">Pilih per platform</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Target Platforms Checklist -->
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Pilih Target Platform</label>
+                        
+                        <!-- YouTube Shorts Card -->
+                        <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <label class="flex items-center gap-2.5 cursor-pointer">
+                                <input type="checkbox" id="pub-target-youtube" checked class="accent-red-500 w-4 h-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                        <i class="fa-brands fa-youtube text-red-500 text-sm"></i> YouTube Shorts
+                                    </span>
+                                    <span id="badge-status-youtube" class="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Siap kirim via Data API</span>
+                                </div>
+                            </label>
+                            <button id="btn-single-yt" onclick="publishSingle('youtube')" class="hidden px-2.5 py-1 rounded bg-red-600 hover:bg-red-700 text-white font-bold text-[10px] shadow-sm">
+                                Upload YT
+                            </button>
+                        </div>
+
+                        <!-- TikTok Card -->
+                        <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <label class="flex items-center gap-2.5 cursor-pointer">
+                                <input type="checkbox" id="pub-target-tiktok" checked class="accent-slate-900 dark:accent-white w-4 h-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                        <i class="fa-brands fa-tiktok text-slate-800 dark:text-white text-sm"></i> TikTok
+                                    </span>
+                                    <span id="badge-status-tiktok" class="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Siap kirim via Open API</span>
+                                </div>
+                            </label>
+                            <button id="btn-single-tiktok" onclick="publishSingle('tiktok')" class="hidden px-2.5 py-1 rounded bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-[10px] shadow-sm">
+                                Upload TikTok
+                            </button>
+                        </div>
+
+                        <!-- Instagram Reels Card -->
+                        <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <label class="flex items-center gap-2.5 cursor-pointer">
+                                <input type="checkbox" id="pub-target-instagram" checked class="accent-pink-500 w-4 h-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                        <i class="fa-brands fa-instagram text-pink-500 text-sm"></i> Instagram Reels
+                                    </span>
+                                    <span id="badge-status-instagram" class="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Siap kirim via Meta API</span>
+                                </div>
+                            </label>
+                            <button id="btn-single-ig" onclick="publishSingle('instagram')" class="hidden px-2.5 py-1 rounded bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-[10px] shadow-sm">
+                                Upload IG
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Unified Caption & SEO Editor -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300">Caption & Judul Publikasi</label>
+                            <button onclick="autoGenerateSEOCaption()" class="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Buat Otomatis
+                            </button>
+                        </div>
+
+                        <input type="text" id="input-pub-title" value="Murottal QS. Al-Fatihah (Ayat 1-3) Mishary Rashid #Shorts" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Judul video YouTube Shorts (Maks 100 Karakter)">
+                        
+                        <textarea id="input-pub-desc" rows="3" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Deskripsi & Hashtag TikTok / Reels...">Dengarkan lantunan ayat suci Al-Quran dengan khusyuk. Semoga membawa ketenangan bagi hati yang lelah.
+
+#murottal #quran #alfatihah #reelsquran #shorts #selfreminder #islam</textarea>
+
+                        <div class="flex items-center justify-between pt-1 text-[10px] text-slate-500">
+                            <div class="flex items-center gap-1.5">
+                                <span>Privasi:</span>
+                                <select id="select-pub-privacy" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded px-1.5 py-0.5 outline-none">
+                                    <option value="public">Publik (Langsung Tayang)</option>
+                                    <option value="unlisted">Tidak Publik (Unlisted)</option>
+                                    <option value="private">Pribadi (Private)</option>
+                                </select>
+                            </div>
+                            <span id="pub-char-count">142 karakter</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Dispatch Button (Simultaneous Mode) -->
+                    <div id="simultaneous-action-panel" class="pt-1">
+                        <button onclick="publishMultiSimultaneous()" id="btn-publish-all" class="w-full py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Publikasikan Serentak ke Platform Terpilih</span>
+                        </button>
+                    </div>
+
+                    <!-- Live Dispatching Progress & Results Container -->
+                    <div id="pub-results-box" class="hidden p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+                        <div class="flex items-center justify-between font-bold text-slate-900 dark:text-white">
+                            <span id="pub-status-heading"><i class="fa-solid fa-spinner fa-spin text-indigo-500 mr-1.5"></i> Mengunggah...</span>
+                            <span id="pub-overall-percent" class="font-mono text-indigo-600 dark:text-indigo-400">0%</span>
+                        </div>
+                        
+                        <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div id="pub-progress-fill" class="bg-indigo-600 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+
+                        <!-- Live Result Links per Platform -->
+                        <div id="pub-links-list" class="space-y-1.5 pt-1 text-[11px]">
+                            <!-- Dynamically populated live links -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 6: TATA LETAK -->
                 <div id="tab-layout" class="tab-content hidden space-y-3.5">
                     <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Model Tampilan</label>
                     <div class="grid grid-cols-2 gap-2">
@@ -613,7 +759,6 @@
                         </button>
                     </div>
 
-                    <!-- Vertical Offset -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
                         <div class="space-y-1">
                             <div class="flex justify-between text-[11px] text-slate-700 dark:text-slate-300">
@@ -651,7 +796,66 @@
         </div>
     </div>
 
-    <!-- WHAT'S NEW / UPDATE POPUP MODAL -->
+    <!-- ACCOUNT API CONFIG MODAL -->
+    <div id="account-config-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 hidden">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in fade-in zoom-in-95 duration-150">
+            <button onclick="closeAccountConfigModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg font-bold border border-indigo-200 dark:border-indigo-500/20">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Pengaturan Akun & API Medsos</h3>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Tersimpan aman secara lokal di browser Anda.</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 my-4 text-xs">
+                <!-- YouTube Access Token -->
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <i class="fa-brands fa-youtube text-red-500"></i> YouTube Data API / OAuth Token:
+                    </label>
+                    <input type="password" id="input-cfg-youtube-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Masukkan Google/YouTube OAuth Access Token">
+                    <p class="text-[10px] text-slate-500">Diperlukan untuk upload langsung ke channel YouTube Shorts.</p>
+                </div>
+
+                <!-- TikTok API Token / Webhook -->
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <i class="fa-brands fa-tiktok text-slate-800 dark:text-white"></i> TikTok Access Token / Webhook URL:
+                    </label>
+                    <input type="text" id="input-cfg-tiktok-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="TikTok Open API Token atau Webhook Dispatcher">
+                </div>
+
+                <!-- Instagram Reels Token & Account ID -->
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                        <i class="fa-brands fa-instagram text-pink-500"></i> Instagram Meta Graph Token:
+                    </label>
+                    <input type="password" id="input-cfg-ig-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Meta Graph API Access Token (EAAB...)">
+                </div>
+                <div class="space-y-1">
+                    <label class="font-bold text-slate-700 dark:text-slate-300">Instagram Account ID (IG User ID):</label>
+                    <input type="text" id="input-cfg-ig-id" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Contoh: 17841405309211">
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                <button onclick="closeAccountConfigModal()" class="flex-1 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs">
+                    Batal
+                </button>
+                <button onclick="saveAccountCredentials()" class="flex-1 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm">
+                    Simpan Kredensial
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT'S NEW MODAL -->
     <div id="whats-new-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 hidden">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in fade-in zoom-in-95 duration-150">
             <button onclick="closeWhatsNewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
@@ -668,34 +872,26 @@
                 </div>
             </div>
 
-            <!-- Focused on latest features only -->
             <div class="space-y-2 my-4 text-xs text-slate-600 dark:text-slate-300">
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-half-stroke text-indigo-500 mt-0.5"></i>
+                    <i class="fa-solid fa-paper-plane text-indigo-500 mt-0.5"></i>
                     <div>
-                        <b class="text-slate-900 dark:text-white">Mode Gelap & Terang (Dark/Light):</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Tampilan bersih standar dengan warna natural yang nyaman di mata pada siang maupun malam.</p>
+                        <b class="text-slate-900 dark:text-white">Multi-Publisher Studio (Desktop):</b>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Unggah video langsung ke YouTube Shorts, TikTok, dan IG Reels secara serentak atau terpisah.</p>
+                    </div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-half-stroke text-amber-500 mt-0.5"></i>
+                    <div>
+                        <b class="text-slate-900 dark:text-white">Mode Gelap & Terang:</b>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Tampilan bersih standar dengan warna natural yang nyaman di mata.</p>
                     </div>
                 </div>
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
                     <i class="fa-solid fa-font text-emerald-500 mt-0.5"></i>
                     <div>
-                        <b class="text-slate-900 dark:text-white">Sorot Kata per Kata (Word-by-Word):</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Teks Arab dan arti menyala dinamis mengikuti lafal Qari.</p>
-                    </div>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-headphones text-cyan-500 mt-0.5"></i>
-                    <div>
-                        <b class="text-slate-900 dark:text-white">Suara Alam (Rintik Hujan & Angin):</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Backsound relaksasi yang ikut ter-mix otomatis saat export MP4.</p>
-                    </div>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-bullhorn text-amber-500 mt-0.5"></i>
-                    <div>
-                        <b class="text-slate-900 dark:text-white">Opening Hook (3 Detik Pertama):</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Kartu pengingat estetik pembuka video untuk algoritma medsos.</p>
+                        <b class="text-slate-900 dark:text-white">Sorot Kata & Suara Alam:</b>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Animasi sorot kata per kata + backsound suara rintik hujan relaksasi.</p>
                     </div>
                 </div>
             </div>
@@ -793,7 +989,7 @@
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <h4 class="text-sm font-bold text-slate-900 dark:text-white">Render Selesai!</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Video siap diunduh & diedit di CapCut / Galeri.</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Video siap diunduh atau dipublikasikan ke medsos.</p>
                 </div>
 
                 <div class="rounded-lg overflow-hidden bg-black max-h-48 flex items-center justify-center border border-slate-200 dark:border-slate-800">
@@ -807,6 +1003,10 @@
                     <a id="btn-download-exported-video" href="#" download="Quran_Video.mp4" class="flex-1 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm">
                         <i class="fa-solid fa-download"></i> Unduh Video (.mp4)
                     </a>
+                    <!-- Direct Go to Multi-Publisher Button -->
+                    <button onclick="closeExportModal(); switchTab('tab-publisher');" class="py-2.5 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-paper-plane"></i> Publish
+                    </button>
                 </div>
             </div>
 
@@ -997,9 +1197,9 @@
         })));
     </script>
 
-    <!-- CORE STUDIO JS ENGINE -->
+    <!-- CORE STUDIO JS ENGINE & PUBLISHER DISPATCHER -->
     <script>
-        const CURRENT_APP_VERSION = "v2.5.1-clean-bootstrap-theme";
+        const CURRENT_APP_VERSION = "v2.6.0-real-multi-publisher";
 
         const state = {
             themeMode: 'dark',
@@ -1079,12 +1279,21 @@
             audioDataArray: null,
             audioDestination: null,
             
-            // Export
+            // Export & Blob Storage for Publishing
             isExporting: false,
             exportInterval: null,
             mediaRecorder: null,
             recordedBlobs: [],
-            exportBlobUrl: null
+            latestExportedBlob: null,
+            exportBlobUrl: null,
+
+            // Multi-Publisher State
+            publishMode: 'simultaneous',
+            credentials: {
+                youtube: { token: '' },
+                tiktok: { token: '', webhook: '' },
+                instagram: { token: '', igUserId: '' }
+            }
         };
 
         const canvas = document.getElementById('video-canvas');
@@ -1113,7 +1322,7 @@
             { id: 97, name: "Al-Qadr", arabic: "القدر", verses: 5 },
             { id: 103, name: "Al-'Ashr", arabic: "العصر", verses: 3 },
             { id: 108, name: "Al-Kautsar", arabic: "الكوثر", verses: 3 },
-            { id: 109, name: "Al-Kafirun", arabic: "الكافرون", verses: 6 },
+            { id: 109, name: "Al-Kafirun", arabic: "الكافرon", verses: 6 },
             { id: 112, name: "Al-Ikhlash", arabic: "الإخلاص", verses: 4 },
             { id: 113, name: "Al-Falaq", arabic: "الفلق", verses: 5 },
             { id: 114, name: "An-Nas", arabic: "الناس", verses: 6 }
@@ -1154,17 +1363,16 @@
 
         window.addEventListener('DOMContentLoaded', async () => {
             initTheme();
+            loadAccountCredentials();
             populateSurahDropdown();
             initParticles();
             setAspectRatio('9:16');
             checkWhatsNewPopup();
             await loadSurahVerses(1);
+            autoGenerateSEOCaption();
             startCanvasLoop();
         });
 
-        /**
-         * THEME MODE TOGGLE (DARK / LIGHT)
-         */
         function initTheme() {
             const saved = localStorage.getItem('quran_studio_theme') || 'dark';
             applyTheme(saved);
@@ -1188,14 +1396,8 @@
             }
         }
 
-        /**
-         * WHAT'S NEW POPUP LOGIC (1x per day / on new version)
-         */
         function checkWhatsNewPopup() {
             const lastSeenVer = localStorage.getItem('quran_studio_version');
-            const lastSeenDate = localStorage.getItem('quran_studio_popup_date');
-            const today = new Date().toISOString().slice(0, 10);
-
             if (lastSeenVer !== CURRENT_APP_VERSION) {
                 openWhatsNewModal(false);
             }
@@ -1343,6 +1545,7 @@
             state.verseEnd = Math.min(3, surahMeta.verses);
 
             await loadSurahVerses(surahId);
+            autoGenerateSEOCaption();
         }
 
         async function onVerseRangeChange() {
@@ -1364,6 +1567,7 @@
             document.getElementById('total-verse-selected-info').innerText = `${total} ayat dipilih`;
 
             await filterSelectedVerses();
+            autoGenerateSEOCaption();
         }
 
         function setSingleVerseMode() {
@@ -1459,6 +1663,7 @@
             state.qari = document.getElementById('select-qari').value;
             updateQariAudioSources();
             buildMasterAudioBuffer();
+            autoGenerateSEOCaption();
         }
 
         function updateQariAudioSources() {
@@ -1482,9 +1687,6 @@
             });
         }
 
-        /**
-         * MASTER AUDIO PIPELINE & SYNTHESIZED AMBIANCE GENERATOR
-         */
         function initAudioContext() {
             if (!state.audioContext) {
                 const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -1502,7 +1704,7 @@
         function createSynthesizedAmbianceBuffer(type) {
             initAudioContext();
             const sampleRate = state.audioContext.sampleRate;
-            const length = sampleRate * 5; // 5s loopable
+            const length = sampleRate * 5;
             const buffer = state.audioContext.createBuffer(2, length, sampleRate);
             const left = buffer.getChannelData(0);
             const right = buffer.getChannelData(1);
@@ -1876,9 +2078,6 @@
             return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }
 
-        /**
-         * RENDER CANVAS ENGINE
-         */
         function startCanvasLoop() {
             function render() {
                 if (state.isPlaying) {
@@ -2284,7 +2483,7 @@
         }
 
         /**
-         * MASTER EXPORT PIPELINE
+         * MASTER VIDEO EXPORT WITH REAL RECORDING BLOB PERSISTENCE
          */
         function openExportModal() {
             document.getElementById('export-modal').classList.remove('hidden');
@@ -2350,6 +2549,7 @@
                     }
                 }
 
+                state.latestExportedBlob = finalBlob;
                 state.exportBlobUrl = URL.createObjectURL(finalBlob);
                 const resultVideo = document.getElementById('export-result-video');
                 resultVideo.src = state.exportBlobUrl;
@@ -2430,6 +2630,297 @@
             const curNum = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
             a.download = `Quran_${sName}_Ayat_${curNum}.png`;
             a.click();
+        }
+
+        // ==========================================
+        // REAL MULTI-PLATFORM PUBLISHER JAVASCRIPT
+        // ==========================================
+
+        function loadAccountCredentials() {
+            const saved = localStorage.getItem('quran_studio_publisher_credentials');
+            if (saved) {
+                try {
+                    state.credentials = JSON.parse(saved);
+                    updateAccountBadges();
+                } catch(e) {}
+            }
+        }
+
+        function openAccountConfigModal() {
+            document.getElementById('input-cfg-youtube-token').value = state.credentials.youtube?.token || '';
+            document.getElementById('input-cfg-tiktok-token').value = state.credentials.tiktok?.token || state.credentials.tiktok?.webhook || '';
+            document.getElementById('input-cfg-ig-token').value = state.credentials.instagram?.token || '';
+            document.getElementById('input-cfg-ig-id').value = state.credentials.instagram?.igUserId || '';
+            document.getElementById('account-config-modal').classList.remove('hidden');
+        }
+
+        function closeAccountConfigModal() {
+            document.getElementById('account-config-modal').classList.add('hidden');
+        }
+
+        function saveAccountCredentials() {
+            const ytToken = document.getElementById('input-cfg-youtube-token').value.trim();
+            const ttVal = document.getElementById('input-cfg-tiktok-token').value.trim();
+            const igToken = document.getElementById('input-cfg-ig-token').value.trim();
+            const igId = document.getElementById('input-cfg-ig-id').value.trim();
+
+            state.credentials = {
+                youtube: { token: ytToken },
+                tiktok: { token: ttVal.startsWith('http') ? '' : ttVal, webhook: ttVal.startsWith('http') ? ttVal : '' },
+                instagram: { token: igToken, igUserId: igId }
+            };
+
+            localStorage.setItem('quran_studio_publisher_credentials', JSON.stringify(state.credentials));
+            updateAccountBadges();
+            closeAccountConfigModal();
+        }
+
+        function updateAccountBadges() {
+            const ytBadge = document.getElementById('badge-status-youtube');
+            const ttBadge = document.getElementById('badge-status-tiktok');
+            const igBadge = document.getElementById('badge-status-instagram');
+
+            if (ytBadge) {
+                if (state.credentials.youtube?.token) {
+                    ytBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
+                    ytBadge.innerText = '🟢 Terhubung (OAuth Token Aktif)';
+                } else {
+                    ytBadge.className = 'text-[10px] text-slate-500 font-medium';
+                    ytBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
+                }
+            }
+
+            if (ttBadge) {
+                if (state.credentials.tiktok?.token || state.credentials.tiktok?.webhook) {
+                    ttBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
+                    ttBadge.innerText = '🟢 Terhubung (API / Webhook Aktif)';
+                } else {
+                    ttBadge.className = 'text-[10px] text-slate-500 font-medium';
+                    ttBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
+                }
+            }
+
+            if (igBadge) {
+                if (state.credentials.instagram?.token && state.credentials.instagram?.igUserId) {
+                    igBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
+                    igBadge.innerText = '🟢 Terhubung (Meta Graph Aktif)';
+                } else {
+                    igBadge.className = 'text-[10px] text-slate-500 font-medium';
+                    igBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
+                }
+            }
+        }
+
+        function onPublishModeChange(mode) {
+            state.publishMode = mode;
+            const singleYt = document.getElementById('btn-single-yt');
+            const singleTt = document.getElementById('btn-single-tiktok');
+            const singleIg = document.getElementById('btn-single-ig');
+            const allBtn = document.getElementById('simultaneous-action-panel');
+
+            if (mode === 'selective') {
+                if (singleYt) singleYt.classList.remove('hidden');
+                if (singleTt) singleTt.classList.remove('hidden');
+                if (singleIg) singleIg.classList.remove('hidden');
+                if (allBtn) allBtn.classList.add('hidden');
+            } else {
+                if (singleYt) singleYt.classList.add('hidden');
+                if (singleTt) singleTt.classList.add('hidden');
+                if (singleIg) singleIg.classList.add('hidden');
+                if (allBtn) allBtn.classList.remove('hidden');
+            }
+        }
+
+        function autoGenerateSEOCaption() {
+            const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
+            const sName = surahMeta ? surahMeta.name : 'Al-Quran';
+            const qariMap = {
+                'ar.alafasy': 'Mishary Rashid Alafasy',
+                'ar.abdulbasitmurattal': 'Abdul Basit',
+                'ar.abdurrahmaansudais': 'As-Sudais',
+                'ar.mahermuaiqly': 'Maher Al-Muaiqly',
+                'ar.saadalghamidi': 'Saad Al-Ghamdi',
+                'ar.hudhaify': 'Ali Al-Hudhaify',
+                'ar.shaatree': 'Abu Bakr Al-Shatri',
+                'ar.hanirifai': 'Hani Ar-Rifai',
+                'ar.minshawi': 'Al-Minshawi'
+            };
+            const qName = qariMap[state.qari] || 'Qari';
+
+            const title = `Murottal QS. ${sName} (Ayat ${state.verseStart}-${state.verseEnd}) ${qName} #Shorts`;
+            const desc = `Lantunan merdu Surat ${sName} ayat ${state.verseStart}-${state.verseEnd} dibacakan oleh ${qName}. Dengarkan dengan khusyuk sebagai penenang jiwa.\n\n#murottal #quran #${sName.toLowerCase().replace(/[^a-z]/g, '')} #reelsquran #shorts #fyp #islam`;
+
+            const tInput = document.getElementById('input-pub-title');
+            const dInput = document.getElementById('input-pub-desc');
+            if (tInput) tInput.value = title;
+            if (dInput) dInput.value = desc;
+
+            const charCounter = document.getElementById('pub-char-count');
+            if (charCounter) charCounter.innerText = `${desc.length} karakter`;
+        }
+
+        async function ensureVideoBlobReady() {
+            if (state.latestExportedBlob) return state.latestExportedBlob;
+            
+            // Auto trigger quick stream capture if not rendered yet
+            return new Promise((resolve) => {
+                const fps = 30;
+                const canvasStream = canvas.captureStream(fps);
+                let stream = (state.audioDestination && state.audioDestination.stream.getAudioTracks().length > 0)
+                    ? new MediaStream([...canvasStream.getVideoTracks(), ...state.audioDestination.stream.getAudioTracks()])
+                    : canvasStream;
+
+                let mime = MediaRecorder.isTypeSupported('video/mp4') ? 'video/mp4' : 'video/webm';
+                const rec = new MediaRecorder(stream, { mimeType: mime });
+                const chunks = [];
+                rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+                rec.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/mp4' });
+                    state.latestExportedBlob = blob;
+                    resolve(blob);
+                };
+                rec.start();
+                setTimeout(() => rec.stop(), 1500);
+            });
+        }
+
+        /**
+         * DISPATCH REAL MULTI-PUBLISH SIMULTANEOUS
+         */
+        async function publishMultiSimultaneous() {
+            const targets = [];
+            if (document.getElementById('pub-target-youtube').checked) targets.push('youtube');
+            if (document.getElementById('pub-target-tiktok').checked) targets.push('tiktok');
+            if (document.getElementById('pub-target-instagram').checked) targets.push('instagram');
+
+            if (targets.length === 0) {
+                alert('Pilih minimal satu platform target untuk diposting.');
+                return;
+            }
+
+            const title = document.getElementById('input-pub-title').value;
+            const desc = document.getElementById('input-pub-desc').value;
+            const privacy = document.getElementById('select-pub-privacy').value;
+
+            const resultsBox = document.getElementById('pub-results-box');
+            const statusHeading = document.getElementById('pub-status-heading');
+            const percentLabel = document.getElementById('pub-overall-percent');
+            const progressFill = document.getElementById('pub-progress-fill');
+            const linksList = document.getElementById('pub-links-list');
+
+            resultsBox.classList.remove('hidden');
+            statusHeading.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-indigo-500 mr-1.5"></i> Menyiapkan video & memproses ${targets.length} platform...`;
+            percentLabel.innerText = '20%';
+            progressFill.style.width = '20%';
+            linksList.innerHTML = '';
+
+            const videoBlob = await ensureVideoBlobReady();
+
+            percentLabel.innerText = '50%';
+            progressFill.style.width = '50%';
+            statusHeading.innerHTML = `<i class="fa-solid fa-paper-plane text-indigo-500 mr-1.5"></i> Mengirim ke API YouTube, TikTok & IG...`;
+
+            const formData = new FormData();
+            formData.append('video', videoBlob, 'quran_video.mp4');
+            formData.append('title', title);
+            formData.append('description', desc);
+            formData.append('privacyStatus', privacy);
+            formData.append('platforms', JSON.stringify(targets));
+            formData.append('credentials', JSON.stringify(state.credentials));
+
+            try {
+                const res = await fetch('/api/publish/multi', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+
+                percentLabel.innerText = '100%';
+                progressFill.style.width = '100%';
+                statusHeading.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-500 mr-1.5"></i> Selesai Diproses!`;
+
+                if (data.results) {
+                    let html = '';
+                    if (data.results.youtube) {
+                        const yt = data.results.youtube;
+                        html += `<div class="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="font-bold text-red-500"><i class="fa-brands fa-youtube mr-1"></i> YouTube: ${yt.success ? 'Berhasil' : 'Gagal'}</span>
+                            ${yt.success ? `<a href="${yt.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka Shorts <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${yt.error}</span>`}
+                        </div>`;
+                    }
+                    if (data.results.tiktok) {
+                        const tt = data.results.tiktok;
+                        html += `<div class="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="font-bold text-slate-800 dark:text-white"><i class="fa-brands fa-tiktok mr-1"></i> TikTok: ${tt.success ? 'Terkirim' : 'Gagal'}</span>
+                            ${tt.success ? `<a href="${tt.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka TikTok <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${tt.error}</span>`}
+                        </div>`;
+                    }
+                    if (data.results.instagram) {
+                        const ig = data.results.instagram;
+                        html += `<div class="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="font-bold text-pink-500"><i class="fa-brands fa-instagram mr-1"></i> Instagram: ${ig.success ? 'Terkirim' : 'Gagal'}</span>
+                            ${ig.success ? `<a href="${ig.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka Reels <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${ig.error}</span>`}
+                        </div>`;
+                    }
+                    linksList.innerHTML = html;
+                }
+
+            } catch (err) {
+                statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Gagal terhubung ke backend server.`;
+            }
+        }
+
+        /**
+         * DISPATCH SINGLE PLATFORM PUBLISH
+         */
+        async function publishSingle(platform) {
+            const title = document.getElementById('input-pub-title').value;
+            const desc = document.getElementById('input-pub-desc').value;
+            const privacy = document.getElementById('select-pub-privacy').value;
+            const videoBlob = await ensureVideoBlobReady();
+
+            const resultsBox = document.getElementById('pub-results-box');
+            const statusHeading = document.getElementById('pub-status-heading');
+            const linksList = document.getElementById('pub-links-list');
+
+            resultsBox.classList.remove('hidden');
+            statusHeading.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-indigo-500 mr-1.5"></i> Mengunggah langsung ke ${platform.toUpperCase()}...`;
+
+            const formData = new FormData();
+            formData.append('video', videoBlob, 'quran_video.mp4');
+            formData.append('title', title);
+            formData.append('description', desc);
+            formData.append('caption', desc);
+            formData.append('privacyStatus', privacy);
+            
+            if (platform === 'youtube') {
+                formData.append('accessToken', state.credentials.youtube?.token || '');
+            } else if (platform === 'tiktok') {
+                formData.append('accessToken', state.credentials.tiktok?.token || '');
+                formData.append('webhookUrl', state.credentials.tiktok?.webhook || '');
+            } else if (platform === 'instagram') {
+                formData.append('accessToken', state.credentials.instagram?.token || '');
+                formData.append('igUserId', state.credentials.instagram?.igUserId || '');
+            }
+
+            try {
+                const res = await fetch(`/api/publish/${platform}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.success) {
+                    statusHeading.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-500 mr-1.5"></i> Berhasil diunggah ke ${platform}!`;
+                    linksList.innerHTML = `<div class="p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                        <span class="text-emerald-500 font-bold">${data.message || 'Sukses'}</span>
+                        <a href="${data.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Lihat Video <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                    </div>`;
+                } else {
+                    statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Gagal: ${data.error}`;
+                }
+            } catch(e) {
+                statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Server error: ${e.message}`;
+            }
         }
     </script>
 </body>
