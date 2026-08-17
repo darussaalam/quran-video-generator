@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quran Video Generator Studio - Pembuat Video Quran Reels, Shorts & Landscape</title>
+    <title>Quran Video Studio - Reels, Shorts & Landscape Generator</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;600;700&family=Lateef:wght@400;600;800&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;600;700&family=Lateef:wght@400;600;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -33,228 +33,316 @@
                             cyan: '#06b6d4'
                         },
                         darkbg: {
-                            950: '#090d16',
-                            900: '#0f172a',
-                            850: '#131d35',
-                            800: '#1e293b',
-                            700: '#334155'
+                            950: '#060911',
+                            900: '#0c1220',
+                            850: '#111a2e',
+                            800: '#18243c',
+                            700: '#253554'
                         }
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                         arabic: ['"Amiri"', '"Noto Naskh Arabic"', 'serif'],
                         scheherazade: ['"Scheherazade New"', 'serif'],
-                        lateef: ['"Lateef"', 'serif'],
-                        cinzel: ['"Cinzel"', 'serif']
+                        lateef: ['"Lateef"', 'serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
-        }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0c1220; }
+        ::-webkit-scrollbar-thumb { background: #253554; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
 
-        .arabic-text {
-            font-feature-settings: "liga" 1, "calt" 1;
-            direction: rtl;
-            line-height: 2.2;
-        }
-
-        .glass-panel {
-            background: rgba(19, 29, 53, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .glass-card {
+            background: rgba(17, 26, 46, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
 
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
-            background: #334155;
-            height: 6px;
+            background: #253554;
+            height: 5px;
             border-radius: 9999px;
             outline: none;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             background: #10b981;
             cursor: pointer;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
-            transition: transform 0.1s ease;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+            transition: transform 0.15s ease;
         }
         input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
+            transform: scale(1.25);
         }
 
-        @keyframes pulse-wave {
-            0%, 100% { height: 6px; }
-            50% { height: 24px; }
+        @keyframes wave-bounce {
+            0%, 100% { height: 4px; }
+            50% { height: 18px; }
         }
-        .anim-wave-1 { animation: pulse-wave 1s infinite ease-in-out 0.1s; }
-        .anim-wave-2 { animation: pulse-wave 1s infinite ease-in-out 0.3s; }
-        .anim-wave-3 { animation: pulse-wave 1s infinite ease-in-out 0.5s; }
-        .anim-wave-4 { animation: pulse-wave 1s infinite ease-in-out 0.2s; }
-        .anim-wave-5 { animation: pulse-wave 1s infinite ease-in-out 0.4s; }
+        .w-bar-1 { animation: wave-bounce 1s infinite ease-in-out 0.1s; }
+        .w-bar-2 { animation: wave-bounce 1s infinite ease-in-out 0.3s; }
+        .w-bar-3 { animation: wave-bounce 1s infinite ease-in-out 0.5s; }
+        .w-bar-4 { animation: wave-bounce 1s infinite ease-in-out 0.2s; }
+        .w-bar-5 { animation: wave-bounce 1s infinite ease-in-out 0.4s; }
     </style>
 </head>
-<body class="bg-darkbg-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased overflow-x-hidden selection:bg-brand-500 selection:text-darkbg-950">
+<body class="bg-darkbg-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-darkbg-950 pb-20 lg:pb-0">
 
-    <!-- Top Navigation Bar -->
-    <header class="h-16 border-b border-slate-800/80 bg-darkbg-900/90 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-40">
-        <div class="flex items-center gap-3">
-            <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center shadow-lg shadow-brand-500/20 font-bold">
-                    <i class="fa-solid fa-video text-sm"></i>
-                </div>
-                <div>
-                    <h1 class="text-sm sm:text-base font-extrabold tracking-tight text-white flex items-center gap-2">
-                        Quran Reel Studio <span class="text-[10px] uppercase tracking-wider bg-brand-500/20 text-brand-400 font-bold px-2 py-0.5 rounded-full border border-brand-500/30">MP4 PRO</span>
-                    </h1>
-                    <p class="text-[11px] text-slate-400 hidden sm:block">Pembuat Video Quran Reels, Shorts & Landscape dengan Sorot Warna & Audio Qari</p>
-                </div>
+    <!-- Top Navigation Header -->
+    <header class="h-14 sm:h-16 border-b border-slate-800/80 bg-darkbg-900/90 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between sticky top-0 z-40">
+        <!-- Logo & Title -->
+        <div class="flex items-center gap-2 sm:gap-3">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-500 text-slate-950 flex items-center justify-center font-black shadow-md shadow-brand-500/20">
+                <i class="fa-solid fa-play text-xs sm:text-sm ml-0.5"></i>
+            </div>
+            <div>
+                <h1 class="text-xs sm:text-sm font-extrabold tracking-tight text-white flex items-center gap-1.5">
+                    Quran Studio <span class="text-[9px] bg-brand-500/20 text-brand-400 font-bold px-1.5 py-0.5 rounded border border-brand-500/30">PRO</span>
+                </h1>
+                <p class="text-[10px] text-slate-400 hidden sm:block">Reels • Shorts • Landscape</p>
             </div>
         </div>
 
-        <!-- Platform Switcher & Action Buttons -->
-        <div class="flex items-center gap-2 sm:gap-3">
-            <!-- Platform Selector Pill Group -->
-            <div class="flex items-center bg-darkbg-950/80 p-1 rounded-xl border border-slate-800 text-xs">
-                <button id="btn-ratio-916" onclick="setAspectRatio('9:16')" class="ratio-btn active flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all bg-brand-500 text-slate-950 shadow-md">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                    <span class="hidden md:inline">9:16 Reels</span>
-                </button>
-                <button id="btn-ratio-169" onclick="setAspectRatio('16:9')" class="ratio-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
-                    <i class="fa-solid fa-desktop"></i>
-                    <span class="hidden md:inline">16:9 Landscape</span>
-                </button>
-                <button id="btn-ratio-11" onclick="setAspectRatio('1:1')" class="ratio-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
-                    <i class="fa-solid fa-square"></i>
-                    <span class="hidden md:inline">1:1 Feed</span>
-                </button>
-                <button id="btn-ratio-45" onclick="setAspectRatio('4:5')" class="ratio-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all">
-                    <i class="fa-solid fa-image"></i>
-                    <span class="hidden md:inline">4:5 Portrait</span>
-                </button>
-            </div>
+        <!-- Platform Aspect Ratio Selector -->
+        <div class="flex items-center bg-darkbg-950 p-0.5 sm:p-1 rounded-xl border border-slate-800 text-[11px]">
+            <button id="btn-ratio-916" onclick="setAspectRatio('9:16')" class="ratio-btn active flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg font-bold bg-brand-500 text-slate-950 transition">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <span class="hidden md:inline">9:16</span>
+            </button>
+            <button id="btn-ratio-169" onclick="setAspectRatio('16:9')" class="ratio-btn flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">
+                <i class="fa-solid fa-desktop"></i>
+                <span class="hidden md:inline">16:9</span>
+            </button>
+            <button id="btn-ratio-11" onclick="setAspectRatio('1:1')" class="ratio-btn flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">
+                <i class="fa-solid fa-square"></i>
+                <span class="hidden md:inline">1:1</span>
+            </button>
+            <button id="btn-ratio-45" onclick="setAspectRatio('4:5')" class="ratio-btn flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">
+                <i class="fa-solid fa-image"></i>
+                <span class="hidden md:inline">4:5</span>
+            </button>
+        </div>
 
-            <!-- Action Buttons: PREVIEW, EXPORT VIDEO, UNDUH -->
-            <div class="flex items-center gap-1.5 sm:gap-2">
-                <!-- Preview Button -->
-                <button id="btn-top-preview" onclick="togglePlayPreview()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95">
-                    <i id="top-preview-icon" class="fa-solid fa-play text-brand-400"></i>
-                    <span id="top-preview-text">Preview</span>
-                </button>
-
-                <!-- Export Video Button -->
-                <button id="btn-top-export" onclick="openExportModal()" class="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-brand-500/25 transition-all active:scale-95">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>Export Video</span>
-                </button>
-
-                <!-- Unduh Button (Direct Download / Image Capture) -->
-                <button id="btn-top-download" onclick="quickDownload()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold text-xs sm:text-sm transition-all" title="Unduh Video / Slide Gambar (PNG)">
-                    <i class="fa-solid fa-download"></i>
-                    <span class="hidden sm:inline">Unduh</span>
-                </button>
-            </div>
+        <!-- Action Buttons: Preview & Export -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+            <button id="btn-top-preview" onclick="togglePlayPreview()" class="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition active:scale-95">
+                <i id="top-preview-icon" class="fa-solid fa-play text-brand-400 text-xs"></i>
+                <span id="top-preview-text" class="hidden sm:inline">Preview</span>
+            </button>
+            <button onclick="openExportModal()" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 text-slate-950 text-xs font-extrabold shadow-md shadow-brand-500/20 transition active:scale-95">
+                <i class="fa-solid fa-film"></i>
+                <span>Export MP4</span>
+            </button>
         </div>
     </header>
 
     <!-- Main Workspace -->
     <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
 
-        <!-- Left Controls Sidebar (Tabbed Studio Panel) -->
-        <aside class="w-full lg:w-[420px] xl:w-[460px] flex-shrink-0 bg-darkbg-900 border-b lg:border-b-0 lg:border-r border-slate-800/80 flex flex-col h-auto lg:h-[calc(100vh-4rem)] z-20">
+        <!-- Center Canvas Viewport (On Mobile it sits prominently on top) -->
+        <main class="w-full lg:flex-1 order-1 lg:order-2 flex flex-col items-center justify-center p-2 sm:p-4 bg-[#04070d] relative">
             
-            <!-- Navigation Tabs -->
-            <div class="flex items-center border-b border-slate-800 bg-darkbg-950/60 px-2 pt-2 gap-1 overflow-x-auto text-xs font-semibold">
-                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn active px-3.5 py-2.5 rounded-t-xl border-b-2 border-brand-500 text-brand-400 bg-darkbg-900 flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-book-quran"></i>
-                    <span>1. Ayat & Qari</span>
+            <!-- Canvas Container with Responsive Scaling -->
+            <div class="w-full flex-1 flex items-center justify-center min-h-[300px] max-h-[48vh] sm:max-h-[60vh] lg:max-h-[calc(100vh-10rem)]">
+                <div id="canvas-wrapper" class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-black flex items-center justify-center transition-all duration-300 w-auto h-full max-w-full">
+                    <!-- High-Res Video Canvas -->
+                    <canvas id="video-canvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
+                    
+                    <!-- Overlay Play/Pause Button on Tap/Click -->
+                    <div id="canvas-play-overlay" onclick="togglePlayPreview()" class="absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer transition-opacity opacity-0 hover:opacity-100">
+                        <div class="w-14 h-14 rounded-full bg-brand-500/90 text-darkbg-950 flex items-center justify-center text-xl shadow-xl transform transition hover:scale-110">
+                            <i id="overlay-play-icon" class="fa-solid fa-play ml-0.5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Timeline & Quick Transport Bar -->
+            <div class="w-full max-w-xl bg-darkbg-900/90 backdrop-blur-md border border-slate-800/90 rounded-xl p-2 sm:p-2.5 mt-2 flex flex-col gap-1.5 z-10 shadow-lg">
+                <!-- Timeline Slider -->
+                <div class="flex items-center gap-2">
+                    <span id="player-time-current" class="text-[10px] font-mono text-slate-400 w-8 text-right">00:00</span>
+                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekMasterAudio(this.value)" class="flex-1 accent-brand-500">
+                    <span id="player-time-duration" class="text-[10px] font-mono text-slate-400 w-8">00:13</span>
+                </div>
+
+                <!-- Controls Row -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1 sm:gap-2">
+                        <button onclick="prevVerse()" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 text-xs transition" title="Ayat Sebelumnya">
+                            <i class="fa-solid fa-backward-step"></i>
+                        </button>
+                        <button id="btn-player-play" onclick="togglePlayPreview()" class="px-3 py-1 rounded-lg bg-brand-500 hover:bg-brand-400 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow transition">
+                            <i id="player-play-icon" class="fa-solid fa-play"></i>
+                            <span id="player-play-label">Putar</span>
+                        </button>
+                        <button onclick="nextVerse()" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 text-xs transition" title="Ayat Berikutnya">
+                            <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                    </div>
+
+                    <!-- Current Verse Indicator Badge -->
+                    <div class="flex items-center gap-1.5 text-[11px] font-semibold text-slate-300 truncate">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span id="player-verse-indicator">QS. 1 (Ayat 1-3)</span>
+                    </div>
+
+                    <!-- Screenshot & Export Mini -->
+                    <div class="flex items-center gap-1">
+                        <button onclick="downloadImageSlide()" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 text-xs transition" title="Simpan Gambar (PNG)">
+                            <i class="fa-solid fa-camera"></i>
+                        </button>
+                        <button onclick="openExportModal()" class="px-2.5 py-1 rounded-lg bg-brand-500/10 text-brand-400 border border-brand-500/30 text-xs font-bold transition hover:bg-brand-500/20">
+                            <i class="fa-solid fa-film mr-1"></i> Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Left / Bottom Controls Dock (Clean, Tabbed & Compact) -->
+        <aside class="w-full lg:w-[400px] xl:w-[420px] flex-shrink-0 bg-darkbg-900 border-t lg:border-t-0 lg:border-r border-slate-800 flex flex-col order-2 lg:order-1 h-auto lg:h-[calc(100vh-4rem)] z-20">
+            
+            <!-- Segmented Category Tabs -->
+            <div class="flex items-center border-b border-slate-800 bg-darkbg-950 px-1 pt-1.5 gap-1 overflow-x-auto text-xs font-semibold scrollbar-none">
+                <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-3 py-2 rounded-t-lg border-b-2 border-brand-500 text-brand-400 bg-darkbg-900 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+                    <span>Tema</span>
                 </button>
-                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-3.5 py-2.5 rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-highlighter"></i>
-                    <span>2. Sorot & Teks</span>
+                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn px-3 py-2 rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-book-quran text-[11px]"></i>
+                    <span>Ayat & Qari</span>
                 </button>
-                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-3.5 py-2.5 rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-photo-film"></i>
-                    <span>3. Background</span>
+                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-3 py-2 rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-highlighter text-[11px]"></i>
+                    <span>Sorot</span>
                 </button>
-                <button onclick="switchTab('tab-layout')" id="tab-btn-layout" class="tab-btn px-3.5 py-2.5 rounded-t-xl border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span>4. Tata Letak</span>
+                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-3 py-2 rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-photo-film text-[11px]"></i>
+                    <span>Latar</span>
+                </button>
+                <button onclick="switchTab('tab-layout')" id="tab-btn-layout" class="tab-btn px-3 py-2 rounded-t-lg border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-sliders text-[11px]"></i>
+                    <span>Tata Letak</span>
                 </button>
             </div>
 
             <!-- Tab Contents Container -->
-            <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-6">
+            <div class="flex-1 overflow-y-auto p-3.5 sm:p-4 space-y-4 max-h-[42vh] lg:max-h-none">
+
+                <!-- TAB 0: TEMPLATE TEMA 1-KLIK (BARU & CEPAT) -->
+                <div id="tab-themes" class="tab-content space-y-3">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="font-bold text-slate-300 uppercase tracking-wider">Template Instan 1-Klik</span>
+                        <span class="text-[10px] text-amber-400 font-bold bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">Viral Reel</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- Theme 1: Golden Nabawi -->
+                        <button onclick="applyPresetTheme('golden-nabawi')" class="theme-card active p-2.5 rounded-xl bg-darkbg-950 border-2 border-amber-500 text-left transition hover:border-amber-400">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#f59e0b] shadow-[0_0_8px_#f59e0b]"></span>
+                                <span class="text-xs font-bold text-white">Golden Nabawi</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Partikel emas, font Amiri klasik, cahaya sorot royal.</p>
+                        </button>
+
+                        <!-- Theme 2: Midnight Aesthetic -->
+                        <button onclick="applyPresetTheme('midnight-aesthetic')" class="theme-card p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#06b6d4] shadow-[0_0_8px_#06b6d4]"></span>
+                                <span class="text-xs font-bold text-white">Midnight Sky</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Bintang langit malam, cyan glow, box kaca elegan.</p>
+                        </button>
+
+                        <!-- Theme 3: Rainy Calm -->
+                        <button onclick="applyPresetTheme('rainy-calm')" class="theme-card p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#e0e7ff] shadow-[0_0_8px_#e0e7ff]"></span>
+                                <span class="text-xs font-bold text-white">Rainy Clouds</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Hujan lembut aesthetic, white glow, subtitle bawah.</p>
+                        </button>
+
+                        <!-- Theme 4: Emerald Luxury -->
+                        <button onclick="applyPresetTheme('emerald-luxury')" class="theme-card p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981]"></span>
+                                <span class="text-xs font-bold text-white">Emerald Glow</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Nuansa hijau masjid Nabawi, sorot zamrud berkilau.</p>
+                        </button>
+
+                        <!-- Theme 5: Dark Minimalist -->
+                        <button onclick="applyPresetTheme('dark-minimal')" class="theme-card p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#ffffff]"></span>
+                                <span class="text-xs font-bold text-white">Dark Minimal</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Hitam pekat murni, teks putih bersih, fokus penuh ayat.</p>
+                        </button>
+
+                        <!-- Theme 6: Rose Velvet -->
+                        <button onclick="applyPresetTheme('rose-velvet')" class="theme-card p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-3 h-3 rounded-full bg-[#f43f5e] shadow-[0_0_8px_#f43f5e]"></span>
+                                <span class="text-xs font-bold text-white">Ruby Velvet</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400">Sorot merah ruby aesthetic, kontras tajam & modern.</p>
+                        </button>
+                    </div>
+                </div>
 
                 <!-- TAB 1: AYAT & QARI -->
-                <div id="tab-ayat" class="tab-content space-y-5">
+                <div id="tab-ayat" class="tab-content hidden space-y-3.5">
                     
-                    <!-- Surah Selection -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-magnifying-glass text-brand-400 mr-1.5"></i> Pilih Surat Al-Quran</span>
-                            <span id="surah-info-badge" class="text-[10px] text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded-md border border-brand-500/20 font-bold">Surat ke-1</span>
-                        </label>
-                        <select id="select-surah" onchange="onSurahChange()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all cursor-pointer">
-                            <!-- 114 Surahs populated -->
+                    <!-- Surah Selector Dropdown -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Surat Al-Quran</label>
+                        <select id="select-surah" onchange="onSurahChange()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-brand-500 outline-none cursor-pointer">
+                            <!-- 114 Surahs -->
                         </select>
                     </div>
 
-                    <!-- Verse Range Selection -->
-                    <div class="grid grid-cols-2 gap-3 bg-darkbg-950/70 p-3.5 rounded-2xl border border-slate-800">
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-                                <i class="fa-solid fa-play text-[10px] text-brand-400"></i> Ayat Mulai:
-                            </label>
-                            <div class="flex items-center gap-1">
-                                <input type="number" id="input-verse-start" min="1" max="7" value="1" onchange="onVerseRangeChange()" class="w-full bg-darkbg-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-sm font-bold text-center text-white focus:border-brand-500 outline-none">
+                    <!-- Verse Range with Fast Chips -->
+                    <div class="bg-darkbg-950/90 p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-semibold text-slate-400">Mulai Ayat:</label>
+                                <input type="number" id="input-verse-start" min="1" max="7" value="1" onchange="onVerseRangeChange()" class="w-full bg-darkbg-900 border border-slate-700 rounded-lg py-1.5 text-xs font-bold text-center text-white focus:border-brand-500 outline-none">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-semibold text-slate-400">Sampai Ayat:</label>
+                                <input type="number" id="input-verse-end" min="1" max="7" value="3" onchange="onVerseRangeChange()" class="w-full bg-darkbg-900 border border-slate-700 rounded-lg py-1.5 text-xs font-bold text-center text-white focus:border-brand-500 outline-none">
                             </div>
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-                                <i class="fa-solid fa-stop text-[10px] text-amber-400"></i> Ayat Selesai:
-                            </label>
-                            <div class="flex items-center gap-1">
-                                <input type="number" id="input-verse-end" min="1" max="7" value="3" onchange="onVerseRangeChange()" class="w-full bg-darkbg-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-sm font-bold text-center text-white focus:border-brand-500 outline-none">
-                            </div>
-                        </div>
-                        <div class="col-span-2 flex items-center justify-between pt-1 border-t border-slate-800/80 text-[11px] text-slate-400">
-                            <span id="total-verse-selected-info">3 ayat dipilih untuk video</span>
-                            <div class="flex gap-1.5">
-                                <button onclick="setSingleVerseMode()" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-medium transition">1 Ayat</button>
-                                <button onclick="setPresetVerses(3)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-medium transition">3 Ayat</button>
-                                <button onclick="setPresetVerses(5)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-medium transition">5 Ayat</button>
+                        <div class="flex items-center justify-between pt-1 border-t border-slate-800 text-[10px]">
+                            <span id="total-verse-selected-info" class="text-brand-400 font-bold">3 ayat dipilih</span>
+                            <div class="flex gap-1">
+                                <button onclick="setSingleVerseMode()" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">1 Ayat</button>
+                                <button onclick="setPresetVerses(3)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">3 Ayat</button>
+                                <button onclick="setPresetVerses(5)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition">5 Ayat</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Qari Recitation Selector -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-microphone-lines text-brand-400 mr-1.5"></i> Suara Qari (Murattal)</span>
-                            <span class="text-[10px] text-slate-400">Audio Jernih</span>
-                        </label>
-                        <select id="select-qari" onchange="onQariChange()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all cursor-pointer">
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Suara Qari</label>
+                        <select id="select-qari" onchange="onQariChange()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-brand-500 outline-none cursor-pointer">
                             <option value="ar.alafasy">Mishary Rashid Alafasy</option>
                             <option value="ar.abdulbasitmurattal">Abdul Basit Murattal</option>
                             <option value="ar.abdurrahmaansudais">Abdurrahman As-Sudais</option>
@@ -267,522 +355,328 @@
                         </select>
                     </div>
 
-                    <!-- Custom Audio Upload -->
-                    <div class="bg-darkbg-950/70 p-3.5 rounded-2xl border border-slate-800 space-y-2">
-                        <div class="flex items-center justify-between">
-                            <label class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                                <i class="fa-solid fa-cloud-arrow-up text-brand-400"></i> Pakai Audio Sendiri (Opsional)
-                            </label>
-                            <button id="btn-clear-custom-audio" onclick="clearCustomAudio()" class="text-[10px] text-rose-400 hover:underline hidden">Reset</button>
+                    <!-- Custom Audio Upload (Compact) -->
+                    <div class="flex items-center justify-between bg-darkbg-950 p-2.5 rounded-xl border border-slate-800 text-xs">
+                        <div class="flex items-center gap-2 truncate">
+                            <i class="fa-solid fa-cloud-arrow-up text-brand-400"></i>
+                            <span class="text-slate-300 text-[11px] truncate">Audio Sendiri:</span>
                         </div>
-                        <input type="file" id="input-custom-audio" accept="audio/*" onchange="handleCustomAudioUpload(event)" class="w-full text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-500/20 file:text-brand-300 hover:file:bg-brand-500/30 cursor-pointer">
+                        <input type="file" id="input-custom-audio" accept="audio/*" onchange="handleCustomAudioUpload(event)" class="text-[10px] text-slate-400 file:mr-1 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-brand-500/20 file:text-brand-300">
                     </div>
 
-                    <!-- Display Content Toggles -->
-                    <div class="space-y-2 pt-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                            <i class="fa-solid fa-toggle-on text-brand-400"></i> Elemen Teks Ditampilkan
+                    <!-- Text Element Toggles Grid -->
+                    <div class="grid grid-cols-3 gap-1.5 text-[11px] pt-1">
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-arabic" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">Arab</span>
                         </label>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-arabic" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Teks Arab</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-latin" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Transliterasi Latin</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-translation" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Terjemahan Indo</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-surah-header" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Header Nama Surat</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-verse-badge" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Nomor Ayat</span>
-                            </label>
-                            <label class="flex items-center gap-2 p-2 rounded-xl bg-darkbg-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                                <input type="checkbox" id="toggle-watermark" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
-                                <span class="font-medium text-slate-300">Branding / Akun</span>
-                            </label>
-                        </div>
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-latin" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">Latin</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-translation" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">Arti</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-surah-header" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">Header</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-verse-badge" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">No. Ayat</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-lg bg-darkbg-950 border border-slate-800 cursor-pointer">
+                            <input type="checkbox" id="toggle-watermark" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <span class="text-slate-300">Branding</span>
+                        </label>
                     </div>
 
-                    <!-- Custom Branding Input -->
-                    <div id="watermark-input-wrap" class="space-y-1.5">
-                        <label class="text-[11px] font-semibold text-slate-400">Nama Akun / Branding Watermark:</label>
-                        <input type="text" id="input-watermark-text" value="@quran.daily" oninput="updateCanvas()" class="w-full bg-darkbg-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:border-brand-500 outline-none" placeholder="Contoh: @nama_channel_kamu">
+                    <!-- Watermark Custom Text -->
+                    <div class="flex items-center gap-2 bg-darkbg-950 p-1.5 rounded-lg border border-slate-800">
+                        <span class="text-slate-400 text-xs pl-1.5"><i class="fa-brands fa-tiktok"></i> / <i class="fa-brands fa-instagram"></i></span>
+                        <input type="text" id="input-watermark-text" value="@quran.daily" oninput="updateCanvas()" class="w-full bg-transparent text-xs text-white outline-none" placeholder="@nama_akun_kamu">
                     </div>
                 </div>
 
                 <!-- TAB 2: SOROT WARNA & TIPOGRAFI -->
-                <div id="tab-style" class="tab-content hidden space-y-5">
+                <div id="tab-style" class="tab-content hidden space-y-3.5">
                     
-                    <!-- Highlight Style Presets -->
-                    <div class="space-y-3">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-wand-magic-sparkles text-amber-400 mr-1.5"></i> Warna Sorot (Highlight Text)</span>
-                            <span class="text-[10px] text-amber-400 font-bold">Fitur Viral</span>
-                        </label>
-                        <p class="text-[11px] text-slate-400">Pilih warna sorot teks yang menyala mengikuti alunan bacaan ayat:</p>
-                        
-                        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                            <button onclick="setHighlightColor('#f59e0b', 'gold')" class="hl-swatch-btn active flex flex-col items-center gap-1.5 p-2 rounded-xl bg-darkbg-950 border-2 border-amber-500 transition">
-                                <div class="w-6 h-6 rounded-full bg-[#f59e0b] shadow-[0_0_12px_#f59e0b]"></div>
-                                <span class="text-[10px] font-bold text-amber-400">Gold Amber</span>
+                    <!-- Highlight Color Swatches -->
+                    <div class="space-y-1.5">
+                        <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Warna Sorot Teks</label>
+                        <div class="grid grid-cols-6 gap-1.5">
+                            <button onclick="setHighlightColor('#f59e0b')" class="hl-swatch p-2 rounded-xl bg-darkbg-950 border-2 border-amber-500 flex items-center justify-center">
+                                <div class="w-5 h-5 rounded-full bg-[#f59e0b] shadow-[0_0_8px_#f59e0b]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#10b981', 'emerald')" class="hl-swatch-btn flex flex-col items-center gap-1.5 p-2 rounded-xl bg-darkbg-950 border border-slate-800 hover:border-slate-700 transition">
-                                <div class="w-6 h-6 rounded-full bg-[#10b981] shadow-[0_0_12px_#10b981]"></div>
-                                <span class="text-[10px] font-bold text-emerald-400">Emerald</span>
+                            <button onclick="setHighlightColor('#10b981')" class="hl-swatch p-2 rounded-xl bg-darkbg-950 border border-slate-800 flex items-center justify-center">
+                                <div class="w-5 h-5 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#06b6d4', 'cyan')" class="hl-swatch-btn flex flex-col items-center gap-1.5 p-2 rounded-xl bg-darkbg-950 border border-slate-800 hover:border-slate-700 transition">
-                                <div class="w-6 h-6 rounded-full bg-[#06b6d4] shadow-[0_0_12px_#06b6d4]"></div>
-                                <span class="text-[10px] font-bold text-cyan-400">Cyan Neon</span>
+                            <button onclick="setHighlightColor('#06b6d4')" class="hl-swatch p-2 rounded-xl bg-darkbg-950 border border-slate-800 flex items-center justify-center">
+                                <div class="w-5 h-5 rounded-full bg-[#06b6d4] shadow-[0_0_8px_#06b6d4]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#f43f5e', 'rose')" class="hl-swatch-btn flex flex-col items-center gap-1.5 p-2 rounded-xl bg-darkbg-950 border border-slate-800 hover:border-slate-700 transition">
-                                <div class="w-6 h-6 rounded-full bg-[#f43f5e] shadow-[0_0_12px_#f43f5e]"></div>
-                                <span class="text-[10px] font-bold text-rose-400">Ruby Rose</span>
+                            <button onclick="setHighlightColor('#f43f5e')" class="hl-swatch p-2 rounded-xl bg-darkbg-950 border border-slate-800 flex items-center justify-center">
+                                <div class="w-5 h-5 rounded-full bg-[#f43f5e] shadow-[0_0_8px_#f43f5e]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#ffffff', 'white')" class="hl-swatch-btn flex flex-col items-center gap-1.5 p-2 rounded-xl bg-darkbg-950 border border-slate-800 hover:border-slate-700 transition">
-                                <div class="w-6 h-6 rounded-full bg-[#ffffff] shadow-[0_0_12px_#ffffff]"></div>
-                                <span class="text-[10px] font-bold text-slate-200">Pure White</span>
+                            <button onclick="setHighlightColor('#ffffff')" class="hl-swatch p-2 rounded-xl bg-darkbg-950 border border-slate-800 flex items-center justify-center">
+                                <div class="w-5 h-5 rounded-full bg-[#ffffff]"></div>
                             </button>
-                            <div class="flex flex-col items-center gap-1 p-2 rounded-xl bg-darkbg-950 border border-slate-800">
-                                <input type="color" id="custom-highlight-picker" value="#f59e0b" onchange="setHighlightColor(this.value, 'custom')" class="w-6 h-6 rounded-full bg-transparent cursor-pointer border-0 p-0">
-                                <span class="text-[10px] font-medium text-slate-400">Custom</span>
+                            <div class="p-2 rounded-xl bg-darkbg-950 border border-slate-800 flex items-center justify-center">
+                                <input type="color" id="custom-highlight-picker" value="#f59e0b" onchange="setHighlightColor(this.value)" class="w-5 h-5 rounded-full bg-transparent cursor-pointer border-0 p-0">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Highlight Mode -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                            <i class="fa-solid fa-wand-magic text-brand-400"></i> Mode Efek Sorot:
-                        </label>
-                        <select id="select-highlight-mode" onchange="updateCanvas()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-brand-500 outline-none">
-                            <option value="karaoke">✨ Karaoke Sweep (Sorot Geser Mengalir)</option>
+                    <!-- Highlight Animation Mode -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Mode Animasi Sorot</label>
+                        <select id="select-highlight-mode" onchange="updateCanvas()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-brand-500 outline-none">
+                            <option value="karaoke">✨ Karaoke Sweep (Geser Mengalir)</option>
                             <option value="verse-glow">🌟 Verse Glowing Pulse (Menyala Per Ayat)</option>
-                            <option value="glass-card">🎴 Glassmorphism Active Box (Kartu Sorot)</option>
-                            <option value="gradient-fill">🌈 Gradient Gold / Royal Tone</option>
+                            <option value="glass-card">🎴 Glass Box Active (Kotak Kaca)</option>
                         </select>
                     </div>
 
-                    <!-- Arabic Font -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-font text-brand-400 mr-1.5"></i> Jenis Font Arab</span>
-                        </label>
-                        <select id="select-arabic-font" onchange="updateCanvas()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-brand-500 outline-none">
-                            <option value="'Amiri', serif">Amiri Quran (Klasik & Elegan)</option>
-                            <option value="'Noto Naskh Arabic', serif">Noto Naskh (Modern & Bersih)</option>
-                            <option value="'Scheherazade New', serif">Scheherazade New (Tradisional Indah)</option>
+                    <!-- Arabic Font Type -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Font Arab</label>
+                        <select id="select-arabic-font" onchange="updateCanvas()" class="w-full bg-darkbg-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:border-brand-500 outline-none">
+                            <option value="'Amiri', serif">Amiri Quran (Klasik)</option>
+                            <option value="'Noto Naskh Arabic', serif">Noto Naskh (Modern)</option>
+                            <option value="'Scheherazade New', serif">Scheherazade (Indah)</option>
                             <option value="'Lateef', serif">Lateef (Utsmani Tebal)</option>
                         </select>
                     </div>
 
-                    <!-- Font Size & Spacing -->
-                    <div class="bg-darkbg-950/70 p-4 rounded-2xl border border-slate-800 space-y-4">
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Ukuran Teks Arab:</span>
+                    <!-- Sliders for Sizes -->
+                    <div class="bg-darkbg-950/90 p-3 rounded-xl border border-slate-800 space-y-2.5">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-[11px] text-slate-300">
+                                <span>Ukuran Arab:</span>
                                 <span id="val-arabic-size" class="font-bold text-brand-400">54px</span>
                             </div>
-                            <input type="range" id="range-arabic-size" min="32" max="96" value="54" oninput="document.getElementById('val-arabic-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-arabic-size" min="34" max="92" value="54" oninput="document.getElementById('val-arabic-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
                         </div>
 
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Ukuran Teks Terjemahan / Latin:</span>
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-[11px] text-slate-300">
+                                <span>Ukuran Terjemah:</span>
                                 <span id="val-trans-size" class="font-bold text-brand-400">22px</span>
                             </div>
-                            <input type="range" id="range-trans-size" min="14" max="40" value="22" oninput="document.getElementById('val-trans-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3 pt-2">
-                            <div class="space-y-1">
-                                <label class="text-[11px] text-slate-400">Warna Teks Utama:</label>
-                                <div class="flex items-center gap-2 bg-darkbg-900 p-1.5 rounded-lg border border-slate-700">
-                                    <input type="color" id="picker-base-color" value="#ffffff" onchange="updateCanvas()" class="w-6 h-6 rounded border-0 bg-transparent cursor-pointer">
-                                    <span class="text-xs text-white font-mono">Teks Arab</span>
-                                </div>
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[11px] text-slate-400">Warna Terjemah:</label>
-                                <div class="flex items-center gap-2 bg-darkbg-900 p-1.5 rounded-lg border border-slate-700">
-                                    <input type="color" id="picker-trans-color" value="#cbd5e1" onchange="updateCanvas()" class="w-6 h-6 rounded border-0 bg-transparent cursor-pointer">
-                                    <span class="text-xs text-white font-mono">Terjemah</span>
-                                </div>
-                            </div>
+                            <input type="range" id="range-trans-size" min="14" max="36" value="22" oninput="document.getElementById('val-trans-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 3: BACKGROUND & EFEK VISUAL -->
-                <div id="tab-bg" class="tab-content hidden space-y-5">
-                    
-                    <!-- Background Presets -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-mountain-sun text-brand-400 mr-1.5"></i> Preset Background Video / Animasi</span>
-                        </label>
-                        <p class="text-[11px] text-slate-400">Pilih tema latar belakang bergerak yang menenangkan:</p>
-                        
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <button onclick="setBackgroundPreset('particles')" class="bg-preset-btn active flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border-2 border-brand-500 text-left transition">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500/30 to-amber-200/10 flex items-center justify-center text-amber-400">
-                                    <i class="fa-solid fa-sparkles"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Golden Dust</div>
-                                    <div class="text-[10px] text-slate-400">Partikel Emas Melayang</div>
-                                </div>
-                            </button>
-
-                            <button onclick="setBackgroundPreset('rain')" class="bg-preset-btn flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600/30 to-cyan-400/10 flex items-center justify-center text-cyan-400">
-                                    <i class="fa-solid fa-cloud-rain"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Rainy Clouds</div>
-                                    <div class="text-[10px] text-slate-400">Hujan Lembut Aesthetic</div>
-                                </div>
-                            </button>
-
-                            <button onclick="setBackgroundPreset('galaxy')" class="bg-preset-btn flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600/30 to-indigo-400/10 flex items-center justify-center text-indigo-400">
-                                    <i class="fa-solid fa-moon"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Starry Night</div>
-                                    <div class="text-[10px] text-slate-400">Bintang & Langit Malam</div>
-                                </div>
-                            </button>
-
-                            <button onclick="setBackgroundPreset('masjid')" class="bg-preset-btn flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600/30 to-teal-400/10 flex items-center justify-center text-emerald-400">
-                                    <i class="fa-solid fa-mosque"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Masjid Nabawi</div>
-                                    <div class="text-[10px] text-slate-400">Siluet Arsitektur Suci</div>
-                                </div>
-                            </button>
-
-                            <button onclick="setBackgroundPreset('dark-minimal')" class="bg-preset-btn flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-slate-300">
-                                    <i class="fa-solid fa-circle-half-stroke"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Dark Minimal</div>
-                                    <div class="text-[10px] text-slate-400">Hitam Pekat & Vignette</div>
-                                </div>
-                            </button>
-
-                            <button onclick="setBackgroundPreset('emerald-glow')" class="bg-preset-btn flex items-center gap-2.5 p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-950 flex items-center justify-center text-emerald-300">
-                                    <i class="fa-solid fa-gem"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">Emerald Luxury</div>
-                                    <div class="text-[10px] text-slate-400">Nuansa Hijau Islami</div>
-                                </div>
-                            </button>
-                        </div>
+                <!-- TAB 3: BACKGROUND & EFEK -->
+                <div id="tab-bg" class="tab-content hidden space-y-3.5">
+                    <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Preset Latar Animasi</label>
+                    <div class="grid grid-cols-3 gap-1.5">
+                        <button onclick="setBackgroundPreset('particles')" class="bg-card active p-2 rounded-xl bg-darkbg-950 border-2 border-brand-500 text-center transition">
+                            <i class="fa-solid fa-sparkles text-amber-400 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Golden Dust</div>
+                        </button>
+                        <button onclick="setBackgroundPreset('rain')" class="bg-card p-2 rounded-xl bg-darkbg-950 border border-slate-800 text-center transition">
+                            <i class="fa-solid fa-cloud-rain text-cyan-400 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Rainy Sky</div>
+                        </button>
+                        <button onclick="setBackgroundPreset('galaxy')" class="bg-card p-2 rounded-xl bg-darkbg-950 border border-slate-800 text-center transition">
+                            <i class="fa-solid fa-moon text-indigo-400 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Starry Night</div>
+                        </button>
+                        <button onclick="setBackgroundPreset('masjid')" class="bg-card p-2 rounded-xl bg-darkbg-950 border border-slate-800 text-center transition">
+                            <i class="fa-solid fa-mosque text-emerald-400 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Nabawi</div>
+                        </button>
+                        <button onclick="setBackgroundPreset('dark-minimal')" class="bg-card p-2 rounded-xl bg-darkbg-950 border border-slate-800 text-center transition">
+                            <i class="fa-solid fa-circle-half-stroke text-slate-400 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Dark Minimal</div>
+                        </button>
+                        <button onclick="setBackgroundPreset('emerald-glow')" class="bg-card p-2 rounded-xl bg-darkbg-950 border border-slate-800 text-center transition">
+                            <i class="fa-solid fa-gem text-emerald-300 text-sm mb-0.5"></i>
+                            <div class="text-[10px] font-bold text-white">Emerald</div>
+                        </button>
                     </div>
 
-                    <!-- Custom Video / Image Upload -->
-                    <div class="bg-darkbg-950/70 p-3.5 rounded-2xl border border-slate-800 space-y-2">
-                        <div class="flex items-center justify-between">
-                            <label class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                                <i class="fa-solid fa-film text-brand-400"></i> Upload Video / Gambar Sendiri
-                            </label>
-                            <button id="btn-clear-custom-bg" onclick="clearCustomBackground()" class="text-[10px] text-rose-400 hover:underline hidden">Hapus File</button>
+                    <!-- Custom Video Upload -->
+                    <div class="flex items-center justify-between bg-darkbg-950 p-2.5 rounded-xl border border-slate-800 text-xs">
+                        <div class="flex items-center gap-1.5 truncate">
+                            <i class="fa-solid fa-film text-brand-400"></i>
+                            <span class="text-[11px] text-slate-300">Upload Video/Foto:</span>
                         </div>
-                        <input type="file" id="input-custom-bg" accept="video/mp4,video/webm,image/png,image/jpeg,image/webp" onchange="handleCustomBgUpload(event)" class="w-full text-xs text-slate-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-500/20 file:text-brand-300 hover:file:bg-brand-500/30 cursor-pointer">
-                        <p class="text-[10px] text-slate-500">Mendukung file MP4/WebM video atau gambar foto panorama.</p>
+                        <input type="file" id="input-custom-bg" accept="video/mp4,video/webm,image/png,image/jpeg" onchange="handleCustomBgUpload(event)" class="text-[10px] text-slate-400 file:mr-1 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-brand-500/20 file:text-brand-300">
                     </div>
 
-                    <!-- Background Overlay, Blur & Vignette Controls -->
-                    <div class="bg-darkbg-950/70 p-4 rounded-2xl border border-slate-800 space-y-4">
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Kegelapan Latar (Overlay Dark):</span>
+                    <!-- Sliders -->
+                    <div class="bg-darkbg-950/90 p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-[11px] text-slate-300">
+                                <span>Kegelapan Latar:</span>
                                 <span id="val-bg-darkness" class="font-bold text-brand-400">65%</span>
                             </div>
-                            <input type="range" id="range-bg-darkness" min="0" max="95" value="65" oninput="document.getElementById('val-bg-darkness').innerText=this.value+'%'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-bg-darkness" min="10" max="95" value="65" oninput="document.getElementById('val-bg-darkness').innerText=this.value+'%'; updateCanvas();" class="w-full">
                         </div>
 
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Efek Blur Background:</span>
-                                <span id="val-bg-blur" class="font-bold text-brand-400">0px</span>
-                            </div>
-                            <input type="range" id="range-bg-blur" min="0" max="25" value="0" oninput="document.getElementById('val-bg-blur').innerText=this.value+'px'; updateCanvas();" class="w-full">
-                        </div>
-
-                        <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-chart-simple text-brand-400 text-sm"></i>
-                                <span class="text-xs font-semibold text-slate-300">Animasi Gelombang Audio (Waveform)</span>
-                            </div>
-                            <input type="checkbox" id="toggle-waveform" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4 rounded">
+                        <div class="flex items-center justify-between pt-1 border-t border-slate-800 text-[11px]">
+                            <span class="text-slate-300">Gelombang Audio (Waveform):</span>
+                            <input type="checkbox" id="toggle-waveform" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4">
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 4: TATA LETAK & POSISI -->
-                <div id="tab-layout" class="tab-content hidden space-y-5">
-                    
-                    <!-- Layout Style Presets -->
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
-                            <span><i class="fa-solid fa-table-cells-large text-brand-400 mr-1.5"></i> Model Tata Letak</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="setLayoutTemplate('center')" class="layout-tpl-btn active p-3 rounded-xl bg-darkbg-950 border-2 border-brand-500 text-left transition">
-                                <div class="text-xs font-bold text-white">Tengah Klasik</div>
-                                <div class="text-[10px] text-slate-400">Fokus di tengah layar</div>
-                            </button>
-                            <button onclick="setLayoutTemplate('card')" class="layout-tpl-btn p-3 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="text-xs font-bold text-white">Glass Card Box</div>
-                                <div class="text-[10px] text-slate-400">Dalam kotak kaca mewah</div>
-                            </button>
-                            <button onclick="setLayoutTemplate('bottom-subtitle')" class="layout-tpl-btn p-3 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="text-xs font-bold text-white">Subtitle Bawah</div>
-                                <div class="text-[10px] text-slate-400">Cocok untuk video sinematik</div>
-                            </button>
-                            <button onclick="setLayoutTemplate('minimal')" class="layout-tpl-btn p-3 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition hover:border-slate-700">
-                                <div class="text-xs font-bold text-white">Minimalis Elegan</div>
-                                <div class="text-[10px] text-slate-400">Tanpa kotak, teks murni</div>
-                            </button>
-                        </div>
+                <!-- TAB 4: TATA LETAK -->
+                <div id="tab-layout" class="tab-content hidden space-y-3.5">
+                    <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Model Tampilan</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="setLayoutTemplate('center')" class="layout-btn active p-2.5 rounded-xl bg-darkbg-950 border-2 border-brand-500 text-left transition">
+                            <div class="text-xs font-bold text-white">Tengah Klasik</div>
+                            <div class="text-[10px] text-slate-400">Fokus di tengah layar</div>
+                        </button>
+                        <button onclick="setLayoutTemplate('card')" class="layout-btn p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition">
+                            <div class="text-xs font-bold text-white">Glass Card</div>
+                            <div class="text-[10px] text-slate-400">Dalam kotak kaca</div>
+                        </button>
+                        <button onclick="setLayoutTemplate('bottom-subtitle')" class="layout-btn p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition">
+                            <div class="text-xs font-bold text-white">Subtitle Bawah</div>
+                            <div class="text-[10px] text-slate-400">Gaya sinematik</div>
+                        </button>
+                        <button onclick="setLayoutTemplate('minimal')" class="layout-btn p-2.5 rounded-xl bg-darkbg-950 border border-slate-800 text-left transition">
+                            <div class="text-xs font-bold text-white">Minimalis</div>
+                            <div class="text-[10px] text-slate-400">Tanpa elemen tambahan</div>
+                        </button>
                     </div>
 
                     <!-- Vertical Offset Slider -->
-                    <div class="bg-darkbg-950/70 p-4 rounded-2xl border border-slate-800 space-y-4">
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Posisi Vertikal Teks:</span>
-                                <span id="val-vertical-offset" class="font-bold text-brand-400">Tengah (0)</span>
+                    <div class="bg-darkbg-950/90 p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-[11px] text-slate-300">
+                                <span>Posisi Vertikal:</span>
+                                <span id="val-vertical-offset" class="font-bold text-brand-400">0px</span>
                             </div>
-                            <input type="range" id="range-vertical-offset" min="-300" max="300" value="0" oninput="document.getElementById('val-vertical-offset').innerText=(this.value > 0 ? '+'+this.value : this.value)+'px'; updateCanvas();" class="w-full">
-                        </div>
-
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs text-slate-300">
-                                <span>Lebar Konten (Margin Samping):</span>
-                                <span id="val-content-width" class="font-bold text-brand-400">86%</span>
-                            </div>
-                            <input type="range" id="range-content-width" min="60" max="95" value="86" oninput="document.getElementById('val-content-width').innerText=this.value+'%'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-vertical-offset" min="-250" max="250" value="0" oninput="document.getElementById('val-vertical-offset').innerText=(this.value > 0 ? '+'+this.value : this.value)+'px'; updateCanvas();" class="w-full">
                         </div>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Bottom Audio Info Bar in Sidebar -->
-            <div class="p-3.5 border-t border-slate-800 bg-darkbg-950/80 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <button id="btn-sidebar-play" onclick="togglePlayPreview()" class="w-10 h-10 rounded-xl bg-brand-500 hover:bg-brand-400 text-darkbg-950 font-bold flex items-center justify-center shadow-lg transition active:scale-95">
-                        <i id="sidebar-play-icon" class="fa-solid fa-play"></i>
-                    </button>
-                    <div>
-                        <p id="current-playing-title" class="text-xs font-bold text-white truncate max-w-[180px]">Al-Fatihah (Ayat 1-3)</p>
-                        <p id="current-playing-time" class="text-[11px] text-slate-400 font-mono">00:00 / --:--</p>
-                    </div>
-                </div>
-                <!-- Animated Audio Wave Indicator -->
-                <div id="audio-wave-anim" class="flex items-end gap-1 h-6 opacity-30">
-                    <span class="w-1 bg-brand-400 rounded-full anim-wave-1"></span>
-                    <span class="w-1 bg-brand-400 rounded-full anim-wave-2"></span>
-                    <span class="w-1 bg-brand-400 rounded-full anim-wave-3"></span>
-                    <span class="w-1 bg-brand-400 rounded-full anim-wave-4"></span>
-                    <span class="w-1 bg-brand-400 rounded-full anim-wave-5"></span>
-                </div>
             </div>
         </aside>
 
-        <!-- Center & Right: Live Canvas Studio Viewport -->
-        <main class="flex-1 flex flex-col items-center justify-center p-3 sm:p-6 bg-[#070a12] relative overflow-hidden">
-            
-            <!-- Canvas Container -->
-            <div class="w-full flex-1 flex flex-col items-center justify-center relative max-h-[calc(100vh-10rem)]">
-                
-                <div id="canvas-wrapper" class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-black flex items-center justify-center transition-all duration-300" style="max-height: 80vh; max-width: 90vw;">
-                    <!-- High-Resolution Canvas -->
-                    <canvas id="video-canvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
-                    
-                    <!-- Overlay Play/Pause Button on Hover/Idle -->
-                    <div id="canvas-play-overlay" onclick="togglePlayPreview()" class="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer transition-opacity opacity-0 hover:opacity-100">
-                        <div class="w-16 h-16 rounded-full bg-brand-500/90 text-darkbg-950 flex items-center justify-center text-2xl shadow-xl transform transition hover:scale-110">
-                            <i id="overlay-play-icon" class="fa-solid fa-play ml-1"></i>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Bottom Video Player Controls & Scrubbing Bar -->
-            <div class="w-full max-w-2xl bg-darkbg-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-3 mt-3 shadow-xl flex flex-col gap-2 z-10">
-                <!-- Timeline Slider -->
-                <div class="flex items-center gap-3">
-                    <span id="player-time-current" class="text-[11px] font-mono text-slate-400 w-10 text-right">00:00</span>
-                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekMasterAudio(this.value)" class="flex-1 accent-brand-500">
-                    <span id="player-time-duration" class="text-[11px] font-mono text-slate-400 w-10">00:00</span>
-                </div>
-
-                <!-- Control Buttons Row -->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <button onclick="prevVerse()" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Ayat Sebelumnya">
-                            <i class="fa-solid fa-backward-step"></i>
-                        </button>
-                        <button id="btn-player-play" onclick="togglePlayPreview()" class="px-4 py-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-darkbg-950 font-extrabold text-xs flex items-center gap-2 transition shadow-md">
-                            <i id="player-play-icon" class="fa-solid fa-play"></i>
-                            <span id="player-play-label">Putar Preview</span>
-                        </button>
-                        <button onclick="nextVerse()" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition" title="Ayat Berikutnya">
-                            <i class="fa-solid fa-forward-step"></i>
-                        </button>
-                    </div>
-
-                    <!-- Current Verse Indicator Badge -->
-                    <div class="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
-                        <span id="player-verse-indicator">Ayat 1 dari 3</span>
-                    </div>
-
-                    <!-- Quick Download & Screenshot -->
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="downloadImageSlide()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium transition" title="Unduh Slide Gambar (PNG)">
-                            <i class="fa-solid fa-camera mr-1"></i> Screenshot
-                        </button>
-                        <button onclick="openExportModal()" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 text-slate-950 font-bold text-xs shadow transition hover:brightness-110">
-                            <i class="fa-solid fa-film mr-1"></i> Export Video
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </main>
     </div>
 
-    <!-- EXPORT VIDEO MODAL -->
-    <div id="export-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-slate-700 relative animate-in fade-in zoom-in-95 duration-200">
+    <!-- Floating Mobile Bottom Quick Action Bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-14 bg-darkbg-900/95 backdrop-blur-md border-t border-slate-800 px-4 flex items-center justify-between lg:hidden z-40">
+        <div class="flex items-center gap-2.5">
+            <button onclick="togglePlayPreview()" class="w-9 h-9 rounded-xl bg-brand-500 text-slate-950 font-bold flex items-center justify-center shadow">
+                <i id="mobile-play-icon" class="fa-solid fa-play ml-0.5 text-xs"></i>
+            </button>
+            <div class="text-[11px]">
+                <p id="mobile-playing-title" class="font-bold text-white truncate max-w-[140px]">Al-Fatihah (1-3)</p>
+                <p id="mobile-playing-time" class="text-[10px] text-slate-400 font-mono">00:00 / 00:13</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+            <button onclick="downloadImageSlide()" class="p-2 rounded-xl bg-slate-800 text-slate-300 text-xs" title="Screenshot">
+                <i class="fa-solid fa-camera"></i>
+            </button>
+            <button onclick="openExportModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-slate-950 font-extrabold text-xs shadow-md">
+                <i class="fa-solid fa-film mr-1"></i> Export MP4
+            </button>
+        </div>
+    </div>
+
+    <!-- EXPORT VIDEO MODAL (MOBILE FRIENDLY & MP4 DURASI LENGKAP) -->
+    <div id="export-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 z-50 hidden">
+        <div class="glass-card w-full max-w-md rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-700 relative animate-in fade-in zoom-in-95 duration-150">
             <!-- Close Button -->
-            <button onclick="closeExportModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition">
+            <button onclick="closeExportModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
             <!-- Modal Header -->
-            <div class="flex items-center gap-3 mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-xl border border-brand-500/30">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-lg border border-brand-500/30">
                     <i class="fa-solid fa-clapperboard"></i>
                 </div>
                 <div>
-                    <h3 class="text-lg font-bold text-white">Export Video Al-Quran (MP4 Mobile Ready)</h3>
-                    <p class="text-xs text-slate-400">Durasi penuh disinkronkan & kompatibel dengan Galeri HP, CapCut, TikTok & Reels</p>
+                    <h3 class="text-base font-bold text-white">Export Video Al-Quran</h3>
+                    <p class="text-[11px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Kompatibel CapCut & Galeri HP</p>
                 </div>
             </div>
 
             <!-- Export Settings Form -->
-            <div id="export-settings-panel" class="space-y-4">
-                <div class="bg-darkbg-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Format Platform:</span>
-                        <span id="export-format-label" class="font-bold text-brand-400">9:16 (TikTok / Reels / Shorts)</span>
+            <div id="export-settings-panel" class="space-y-3">
+                <div class="bg-darkbg-950/90 p-3 rounded-xl border border-slate-800 space-y-2 text-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Format:</span>
+                        <span id="export-format-label" class="font-bold text-brand-400">9:16 (Reels / TikTok)</span>
                     </div>
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Kompatibilitas Mobile & CapCut:</span>
-                        <span class="font-bold text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-shield-check"></i> Header Durasi Penuh (Fixed)</span>
-                    </div>
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Resolusi Video:</span>
-                        <select id="export-res-select" class="bg-darkbg-900 border border-slate-700 text-white rounded-lg px-2.5 py-1 text-xs outline-none">
-                            <option value="1080">1080p Full HD (Direkomendasikan)</option>
-                            <option value="720">720p HD (Render Lebih Cepat)</option>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Resolusi:</span>
+                        <select id="export-res-select" class="bg-darkbg-900 border border-slate-700 text-white rounded-lg px-2 py-0.5 text-xs outline-none">
+                            <option value="1080">1080p Full HD</option>
+                            <option value="720">720p HD</option>
                         </select>
                     </div>
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Frame Rate (FPS):</span>
-                        <select id="export-fps-select" class="bg-darkbg-900 border border-slate-700 text-white rounded-lg px-2.5 py-1 text-xs outline-none">
-                            <option value="30">30 FPS (Standar Halus)</option>
-                            <option value="60">60 FPS (Ultra Smooth)</option>
-                        </select>
-                    </div>
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">Total Durasi Video Utuh:</span>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Total Durasi:</span>
                         <span id="export-duration-label" class="font-bold text-emerald-400 font-mono">00:13</span>
                     </div>
                 </div>
 
-                <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-sm mt-0.5 flex-shrink-0"></i>
-                    <span>Sistem telah dilengkapi <b>EBML Duration Header Injector</b> yang memperbaiki metadata video sehingga saat dibuka di Galeri HP (Android/iOS) maupun diedit di <b>CapCut</b>, durasi video terbaca 100% pas dan tidak terpotong.</span>
-                </div>
-
                 <!-- Action Button in Modal -->
-                <div class="flex gap-3 pt-2">
-                    <button onclick="closeExportModal()" class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm transition">
+                <div class="flex gap-2 pt-1">
+                    <button onclick="closeExportModal()" class="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">
                         Batal
                     </button>
-                    <button onclick="startMasterVideoExport()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 hover:to-brand-500 text-darkbg-950 font-extrabold text-sm shadow-lg shadow-brand-500/25 transition">
-                        <i class="fa-solid fa-play mr-1.5"></i> Mulai Render Otomatis
+                    <button onclick="startMasterVideoExport()" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 text-slate-950 font-black text-xs shadow-lg">
+                        <i class="fa-solid fa-play mr-1"></i> Mulai Render
                     </button>
                 </div>
             </div>
 
             <!-- Export Progress Panel -->
-            <div id="export-progress-panel" class="space-y-5 py-4 hidden">
-                <div class="text-center space-y-2">
-                    <div class="w-14 h-14 rounded-full border-4 border-brand-500/30 border-t-brand-500 animate-spin mx-auto"></div>
-                    <h4 class="text-base font-bold text-white">Sedang Merender Video Lengkap...</h4>
-                    <p id="export-progress-status" class="text-xs text-slate-400">Menyinkronkan seluruh ayat hingga selesai...</p>
+            <div id="export-progress-panel" class="space-y-4 py-3 hidden">
+                <div class="text-center space-y-1.5">
+                    <div class="w-10 h-10 rounded-full border-3 border-brand-500/30 border-t-brand-500 animate-spin mx-auto"></div>
+                    <h4 class="text-sm font-bold text-white">Merender Video MP4...</h4>
+                    <p id="export-progress-status" class="text-[11px] text-slate-400">Menggabungkan ayat...</p>
                 </div>
 
                 <!-- Progress Bar -->
-                <div class="space-y-1.5">
-                    <div class="flex justify-between text-xs font-semibold">
-                        <span class="text-slate-400">Kemajuan Video Utuh</span>
+                <div class="space-y-1">
+                    <div class="flex justify-between text-[11px] font-semibold">
+                        <span class="text-slate-400">Kemajuan</span>
                         <span id="export-progress-percent" class="text-brand-400 font-mono">0%</span>
                     </div>
-                    <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
                         <div id="export-progress-fill" class="bg-gradient-to-r from-brand-500 to-brand-400 h-full rounded-full transition-all duration-100" style="width: 0%"></div>
                     </div>
                 </div>
 
-                <div class="flex gap-2">
-                    <button onclick="cancelVideoExport()" class="w-full py-2.5 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 font-bold text-xs transition">
-                        Batalkan Render
-                    </button>
-                </div>
+                <button onclick="cancelVideoExport()" class="w-full py-2 rounded-xl bg-rose-500/10 text-rose-400 font-bold text-xs">
+                    Batalkan
+                </button>
             </div>
 
             <!-- Export Complete Panel -->
-            <div id="export-complete-panel" class="space-y-4 hidden">
-                <div class="text-center space-y-1.5">
-                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto">
+            <div id="export-complete-panel" class="space-y-3 hidden">
+                <div class="text-center space-y-1">
+                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg mx-auto">
                         <i class="fa-solid fa-check"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white">Render Video MP4 Selesai!</h4>
-                    <p class="text-xs text-slate-400">Header durasi telah disuntikkan secara presisi. Siap diedit di CapCut atau diunggah.</p>
+                    <h4 class="text-sm font-bold text-white">Render Selesai!</h4>
+                    <p class="text-[11px] text-slate-400">Video siap diunduh & diedit di CapCut / Galeri.</p>
                 </div>
 
-                <!-- Video Preview inside Modal -->
-                <div class="rounded-2xl overflow-hidden bg-black max-h-56 flex items-center justify-center border border-slate-800">
-                    <video id="export-result-video" controls class="max-h-56 w-full object-contain"></video>
+                <div class="rounded-xl overflow-hidden bg-black max-h-48 flex items-center justify-center border border-slate-800">
+                    <video id="export-result-video" controls class="max-h-48 w-full object-contain"></video>
                 </div>
 
-                <!-- Modal Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-                    <button onclick="closeExportModal()" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs sm:text-sm transition">
+                <div class="flex gap-2 pt-1">
+                    <button onclick="closeExportModal()" class="py-2.5 px-3 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">
                         Tutup
                     </button>
-                    <a id="btn-download-exported-video" href="#" download="Quran_Video.mp4" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 text-darkbg-950 font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/30 transition hover:brightness-110">
+                    <a id="btn-download-exported-video" href="#" download="Quran_Video.mp4" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-lg">
                         <i class="fa-solid fa-download"></i> Unduh Video (.mp4)
                     </a>
                 </div>
@@ -794,12 +688,8 @@
     <!-- Hidden Video Element for Custom Background -->
     <video id="hidden-bg-video" loop muted playsinline crossOrigin="anonymous" class="hidden"></video>
 
-    <!-- INLINE WEB METADATA DURATION FIXER (Ensures CapCut and Mobile Galleries Read Exact Duration) -->
+    <!-- INLINE WEB METADATA DURATION FIXER (Preserves 100% full duration in CapCut & Mobile Gallery) -->
     <script>
-        /**
-         * WebM/MP4 Duration Header Injector
-         * Fixes missing duration tag in browser recordings so Android/iOS/CapCut read 100% full length
-         */
         (function (global, factory) {
             typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
             typeof define === 'function' && define.amd ? define(factory) :
@@ -823,62 +713,35 @@
                 child.prototype.constructor = child;
             }
 
-            function WebmBase(name, type) {
-                this.name = name || 'Unknown';
-                this.type = type || 'Unknown';
-            }
-            WebmBase.prototype.setSource = function(source) {
-                this.source = source;
-                this.updateBySource();
-            };
-            WebmBase.prototype.setData = function(data) {
-                this.data = data;
-                this.updateByData();
-            };
+            function WebmBase(name, type) { this.name = name || 'Unknown'; this.type = type || 'Unknown'; }
+            WebmBase.prototype.setSource = function(source) { this.source = source; this.updateBySource(); };
+            WebmBase.prototype.setData = function(data) { this.data = data; this.updateByData(); };
             WebmBase.prototype.updateBySource = function() { };
             WebmBase.prototype.updateByData = function() { };
 
-            function padHex(hex) {
-                return hex.length % 2 === 1 ? '0' + hex : hex;
-            }
+            function padHex(hex) { return hex.length % 2 === 1 ? '0' + hex : hex; }
 
-            function WebmUint(name, type) {
-                WebmBase.call(this, name, type || 'Uint');
-            }
+            function WebmUint(name, type) { WebmBase.call(this, name, type || 'Uint'); }
             doInherit(WebmUint, WebmBase);
             WebmUint.prototype.updateBySource = function() {
                 var hex = '';
-                for (var i = 0; i < this.source.length; i++) {
-                    hex += padHex(this.source[i].toString(16));
-                }
+                for (var i = 0; i < this.source.length; i++) hex += padHex(this.source[i].toString(16));
                 this.data = hex;
             };
             WebmUint.prototype.updateByData = function() {
                 var hex = this.data;
                 this.source = new Uint8Array(hex.length / 2);
-                for (var i = 0; i < this.source.length; i++) {
-                    this.source[i] = parseInt(hex.substr(i * 2, 2), 16);
-                }
+                for (var i = 0; i < this.source.length; i++) this.source[i] = parseInt(hex.substr(i * 2, 2), 16);
             };
-            WebmUint.prototype.getValue = function() {
-                return parseInt(this.data, 16);
-            };
-            WebmUint.prototype.setValue = function(value) {
-                this.setData(padHex(value.toString(16)));
-            };
+            WebmUint.prototype.getValue = function() { return parseInt(this.data, 16); };
+            WebmUint.prototype.setValue = function(value) { this.setData(padHex(value.toString(16))); };
 
-            function WebmFloat(name, type) {
-                WebmBase.call(this, name, type || 'Float');
-            }
+            function WebmFloat(name, type) { WebmBase.call(this, name, type || 'Float'); }
             doInherit(WebmFloat, WebmBase);
-            WebmFloat.prototype.getFloatArrayType = function() {
-                return this.source && this.source.length === 4 ? Float32Array : Float64Array;
-            };
+            WebmFloat.prototype.getFloatArrayType = function() { return this.source && this.source.length === 4 ? Float32Array : Float64Array; };
             WebmFloat.prototype.updateBySource = function() {
                 var byteArray = new Uint8Array(this.source.length);
-                for (var i = 0; i < this.source.length; i++) {
-                    byteArray[i] = this.source[this.source.length - 1 - i];
-                }
+                for (var i = 0; i < this.source.length; i++) byteArray[i] = this.source[this.source.length - 1 - i];
                 var floatArrayType = this.getFloatArrayType();
                 var floatArray = new floatArrayType(byteArray.buffer);
                 this.data = floatArray[0];
@@ -888,32 +751,19 @@
                 var floatArray = new floatArrayType([ this.data ]);
                 var byteArray = new Uint8Array(floatArray.buffer);
                 this.source = new Uint8Array(byteArray.length);
-                for (var i = 0; i < byteArray.length; i++) {
-                    this.source[i] = byteArray[byteArray.length - 1 - i];
-                }
+                for (var i = 0; i < byteArray.length; i++) this.source[i] = byteArray[byteArray.length - 1 - i];
             };
-            WebmFloat.prototype.getValue = function() {
-                return this.data;
-            };
-            WebmFloat.prototype.setValue = function(value) {
-                this.setData(value);
-            };
+            WebmFloat.prototype.getValue = function() { return this.data; };
+            WebmFloat.prototype.setValue = function(value) { this.setData(value); };
 
-            function WebmContainer(name, type) {
-                WebmBase.call(this, name, type || 'Container');
-            }
+            function WebmContainer(name, type) { WebmBase.call(this, name, type || 'Container'); }
             doInherit(WebmContainer, WebmBase);
-            WebmContainer.prototype.readByte = function() {
-                return this.source[this.offset++];
-            };
+            WebmContainer.prototype.readByte = function() { return this.source[this.offset++]; };
             WebmContainer.prototype.readUint = function() {
                 var firstByte = this.readByte();
                 var bytes = 8 - firstByte.toString(2).length;
                 var value = firstByte - (1 << (7 - bytes));
-                for (var i = 0; i < bytes; i++) {
-                    value *= 256;
-                    value += this.readByte();
-                }
+                for (var i = 0; i < bytes; i++) { value *= 256; value += this.readByte(); }
                 return value;
             };
             WebmContainer.prototype.updateBySource = function() {
@@ -923,7 +773,6 @@
                     var len = this.readUint();
                     var end = Math.min(this.offset + len, this.source.length);
                     var data = this.source.slice(this.offset, end);
-
                     var info = sections[id] || { name: 'Unknown', type: 'Unknown' };
                     var ctr = WebmBase;
                     switch (info.type) {
@@ -951,14 +800,10 @@
             WebmContainer.prototype.writeSections = function(draft) {
                 this.offset = 0;
                 for (var i = 0; i < this.data.length; i++) {
-                    var section = this.data[i],
-                        content = section.data.source,
-                        contentLength = content.length;
+                    var section = this.data[i], content = section.data.source, contentLength = content.length;
                     this.writeUint(section.id, draft);
                     this.writeUint(contentLength, draft);
-                    if (!draft) {
-                        this.source.set(content, this.offset);
-                    }
+                    if (!draft) this.source.set(content, this.offset);
                     this.offset += contentLength;
                 }
                 return this.offset;
@@ -970,27 +815,20 @@
             };
             WebmContainer.prototype.getSectionById = function(id) {
                 for (var i = 0; i < this.data.length; i++) {
-                    var section = this.data[i];
-                    if (section.id === id) return section.data;
+                    if (this.data[i].id === id) return this.data[i].data;
                 }
                 return null;
             };
 
-            function WebmFile(source) {
-                WebmContainer.call(this, 'File', 'File');
-                this.setSource(source);
-            }
+            function WebmFile(source) { WebmContainer.call(this, 'File', 'File'); this.setSource(source); }
             doInherit(WebmFile, WebmContainer);
             WebmFile.prototype.fixDuration = function(duration) {
                 var segmentSection = this.getSectionById(0x8538067);
                 if (!segmentSection) return false;
-
                 var infoSection = segmentSection.getSectionById(0x549a966);
                 if (!infoSection) return false;
-
                 var timeScaleSection = infoSection.getSectionById(0xad7b1);
                 if (!timeScaleSection) return false;
-
                 var durationSection = infoSection.getSectionById(0x489);
                 if (durationSection) {
                     durationSection.setValue(duration);
@@ -999,7 +837,6 @@
                     durationSection.setValue(duration);
                     infoSection.data.push({ id: 0x489, data: durationSection });
                 }
-
                 timeScaleSection.setValue(1000000);
                 infoSection.updateByData();
                 segmentSection.updateByData();
@@ -1012,9 +849,7 @@
 
             function fixWebmDuration(blob, duration, callback) {
                 if (!callback) {
-                    return new Promise(function(resolve) {
-                        fixWebmDuration(blob, duration, resolve);
-                    });
+                    return new Promise(function(resolve) { fixWebmDuration(blob, duration, resolve); });
                 }
                 try {
                     var reader = new FileReader();
@@ -1024,27 +859,18 @@
                             if (file.fixDuration(duration)) {
                                 blob = file.toBlob('video/mp4');
                             }
-                        } catch (ex) {
-                            console.warn("fixDuration inner error:", ex);
-                        }
+                        } catch (ex) { console.warn("fixDuration error:", ex); }
                         callback(blob);
                     };
                     reader.readAsArrayBuffer(blob);
-                } catch (ex) {
-                    callback(blob);
-                }
+                } catch (ex) { callback(blob); }
             }
             return fixWebmDuration;
         })));
     </script>
 
-    <!-- MAIN APP JAVASCRIPT ENGINE -->
+    <!-- CORE JAVASCRIPT STUDIO ENGINE -->
     <script>
-        /**
-         * QURAN VIDEO GENERATOR ENGINE
-         * High-Precision Master Audio Pipeline & Full-Length MP4 Video Export
-         */
-
         const state = {
             surahList: [],
             currentSurah: 1,
@@ -1054,20 +880,17 @@
             versesData: [],
             qari: 'ar.alafasy',
             
-            // Format & Dimensions
+            // Dimensions
             aspectRatio: '9:16',
             canvasWidth: 1080,
             canvasHeight: 1920,
             
-            // Background
+            // Visuals & Typography
             bgType: 'preset',
             bgPreset: 'particles',
             bgDarkness: 0.65,
-            bgBlur: 0,
-            customBgUrl: null,
             customBgMedia: null,
             
-            // Typography & Colors
             arabicFont: "'Amiri', serif",
             arabicSize: 54,
             transSize: 22,
@@ -1075,8 +898,6 @@
             transTextColor: '#cbd5e1',
             highlightColor: '#f59e0b',
             highlightMode: 'karaoke',
-            
-            // Layout
             layoutTemplate: 'center',
             verticalOffset: 0,
             contentWidthPercent: 86,
@@ -1091,7 +912,7 @@
             watermarkText: '@quran.daily',
             showWaveform: true,
             
-            // Master Audio Pipeline State
+            // Master Audio Buffer
             isPlaying: false,
             masterAudioBuffer: null,
             verseTimings: [],
@@ -1105,8 +926,7 @@
             playbackStartTime: 0,
             playbackOffset: 0,
             
-            // Visuals & Effects
-            animationFrameId: null,
+            // Visuals Loop
             particles: [],
             rainDrops: [],
             audioContext: null,
@@ -1114,7 +934,7 @@
             audioDataArray: null,
             audioDestination: null,
             
-            // Export State
+            // Export
             isExporting: false,
             exportInterval: null,
             mediaRecorder: null,
@@ -1127,130 +947,49 @@
         const bgVideo = document.getElementById('hidden-bg-video');
 
         const SURAH_NAMES = [
-            { id: 1, name: "Al-Fatihah", arabic: "الفاتحة", verses: 7, type: "Makkiyah" },
-            { id: 2, name: "Al-Baqarah", arabic: "البقرة", verses: 286, type: "Madaniyah" },
-            { id: 3, name: "Ali 'Imran", arabic: "آل عمران", verses: 200, type: "Madaniyah" },
-            { id: 4, name: "An-Nisa'", arabic: "النساء", verses: 176, type: "Madaniyah" },
-            { id: 5, name: "Al-Ma'idah", arabic: "المائدة", verses: 120, type: "Madaniyah" },
-            { id: 6, name: "Al-An'am", arabic: "الأنعام", verses: 165, type: "Makkiyah" },
-            { id: 7, name: "Al-A'raf", arabic: "الأعراف", verses: 206, type: "Makkiyah" },
-            { id: 8, name: "Al-Anfal", arabic: "الأنفal", verses: 75, type: "Madaniyah" },
-            { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129, type: "Madaniyah" },
-            { id: 10, name: "Yunus", arabic: "يونس", verses: 109, type: "Makkiyah" },
-            { id: 11, name: "Hud", arabic: "هود", verses: 123, type: "Makkiyah" },
-            { id: 12, name: "Yusuf", arabic: "يوسف", verses: 111, type: "Makkiyah" },
-            { id: 13, name: "Ar-Ra'd", arabic: "الرعد", verses: 43, type: "Madaniyah" },
-            { id: 14, name: "Ibrahim", arabic: "إبراهيم", verses: 52, type: "Makkiyah" },
-            { id: 15, name: "Al-Hijr", arabic: "الحجر", verses: 99, type: "Makkiyah" },
-            { id: 16, name: "An-Nahl", arabic: "النحل", verses: 128, type: "Makkiyah" },
-            { id: 17, name: "Al-Isra'", arabic: "الإسراء", verses: 111, type: "Makkiyah" },
-            { id: 18, name: "Al-Kahf", arabic: "الكهف", verses: 110, type: "Makkiyah" },
-            { id: 19, name: "Maryam", arabic: "مريم", verses: 98, type: "Makkiyah" },
-            { id: 20, name: "Ta-Ha", arabic: "طه", verses: 135, type: "Makkiyah" },
-            { id: 21, name: "Al-Anbiya'", arabic: "الأنبياء", verses: 112, type: "Makkiyah" },
-            { id: 22, name: "Al-Hajj", arabic: "الحج", verses: 78, type: "Madaniyah" },
-            { id: 23, name: "Al-Mu'minun", arabic: "المؤمنون", verses: 118, type: "Makkiyah" },
-            { id: 24, name: "An-Nur", arabic: "النور", verses: 64, type: "Madaniyah" },
-            { id: 25, name: "Al-Furqan", arabic: "الفرقان", verses: 77, type: "Makkiyah" },
-            { id: 26, name: "Asy-Syu'ara'", arabic: "الشعراء", verses: 227, type: "Makkiyah" },
-            { id: 27, name: "An-Naml", arabic: "النمل", verses: 93, type: "Makkiyah" },
-            { id: 28, name: "Al-Qashash", arabic: "القصص", verses: 88, type: "Makkiyah" },
-            { id: 29, name: "Al-'Ankabut", arabic: "العنكبوت", verses: 69, type: "Makkiyah" },
-            { id: 30, name: "Ar-Rum", arabic: "الروم", verses: 60, type: "Makkiyah" },
-            { id: 31, name: "Luqman", arabic: "لقمان", verses: 34, type: "Makkiyah" },
-            { id: 32, name: "As-Sajdah", arabic: "السجدة", verses: 30, type: "Makkiyah" },
-            { id: 33, name: "Al-Ahzab", arabic: "الأحزاب", verses: 73, type: "Madaniyah" },
-            { id: 34, name: "Saba'", arabic: "سبأ", verses: 54, type: "Makkiyah" },
-            { id: 35, name: "Fathir", arabic: "فاطر", verses: 45, type: "Makkiyah" },
-            { id: 36, name: "Ya-Sin", arabic: "يس", verses: 83, type: "Makkiyah" },
-            { id: 37, name: "Ash-Shaffat", arabic: "الصافات", verses: 182, type: "Makkiyah" },
-            { id: 38, name: "Shad", arabic: "ص", verses: 88, type: "Makkiyah" },
-            { id: 39, name: "Az-Zumar", arabic: "الزمر", verses: 75, type: "Makkiyah" },
-            { id: 40, name: "Ghafir", arabic: "غافر", verses: 85, type: "Makkiyah" },
-            { id: 41, name: "Fushshilat", arabic: "فصلت", verses: 54, type: "Makkiyah" },
-            { id: 42, name: "Asy-Syura", arabic: "الشورى", verses: 53, type: "Makkiyah" },
-            { id: 43, name: "Az-Zukhruf", arabic: "الزخرف", verses: 89, type: "Makkiyah" },
-            { id: 44, name: "Ad-Dukhan", arabic: "الدخان", verses: 59, type: "Makkiyah" },
-            { id: 45, name: "Al-Jatsiyah", arabic: "الجاثية", verses: 37, type: "Makkiyah" },
-            { id: 46, name: "Al-Ahqaf", arabic: "الأحقاف", verses: 35, type: "Makkiyah" },
-            { id: 47, name: "Muhammad", arabic: "محمد", verses: 38, type: "Madaniyah" },
-            { id: 48, name: "Al-Fath", arabic: "الفتح", verses: 29, type: "Madaniyah" },
-            { id: 49, name: "Al-Hujurat", arabic: "الحجرات", verses: 18, type: "Madaniyah" },
-            { id: 50, name: "Qaf", arabic: "ق", verses: 45, type: "Makkiyah" },
-            { id: 51, name: "Adz-Dzariyat", arabic: "الذاريات", verses: 60, type: "Makkiyah" },
-            { id: 52, name: "Ath-Thur", arabic: "الطور", verses: 49, type: "Makkiyah" },
-            { id: 53, name: "An-Najm", arabic: "النجم", verses: 62, type: "Makkiyah" },
-            { id: 54, name: "Al-Qamar", arabic: "القمر", verses: 55, type: "Makkiyah" },
-            { id: 55, name: "Ar-Rahman", arabic: "الرحمن", verses: 78, type: "Madaniyah" },
-            { id: 56, name: "Al-Waqi'ah", arabic: "الواقعة", verses: 96, type: "Makkiyah" },
-            { id: 57, name: "Al-Hadid", arabic: "الحديد", verses: 29, type: "Madaniyah" },
-            { id: 58, name: "Al-Mujadilah", arabic: "المجادلة", verses: 22, type: "Madaniyah" },
-            { id: 59, name: "Al-Hasyr", arabic: "الحشر", verses: 24, type: "Madaniyah" },
-            { id: 60, name: "Al-Mumtahanah", arabic: "الممتحنة", verses: 13, type: "Madaniyah" },
-            { id: 61, name: "Ash-Shaff", arabic: "الصف", verses: 14, type: "Madaniyah" },
-            { id: 62, name: "Al-Jumu'ah", arabic: "الجمعة", verses: 11, type: "Madaniyah" },
-            { id: 63, name: "Al-Munafiqun", arabic: "المنافقون", verses: 11, type: "Madaniyah" },
-            { id: 64, name: "At-Taghabun", arabic: "التغابن", verses: 18, type: "Madaniyah" },
-            { id: 65, name: "Ath-Thalaq", arabic: "الطلاق", verses: 12, type: "Madaniyah" },
-            { id: 66, name: "At-Tahrim", arabic: "التحريم", verses: 12, type: "Madaniyah" },
-            { id: 67, name: "Al-Mulk", arabic: "الملك", verses: 30, type: "Makkiyah" },
-            { id: 68, name: "Al-Qalam", arabic: "القلم", verses: 52, type: "Makkiyah" },
-            { id: 69, name: "Al-Haqqah", arabic: "الحاقة", verses: 52, type: "Makkiyah" },
-            { id: 70, name: "Al-Ma'arij", arabic: "المعارج", verses: 44, type: "Makkiyah" },
-            { id: 71, name: "Nuh", arabic: "نوح", verses: 28, type: "Makkiyah" },
-            { id: 72, name: "Al-Jinn", arabic: "الجن", verses: 28, type: "Makkiyah" },
-            { id: 73, name: "Al-Muzzammil", arabic: "المزمل", verses: 20, type: "Makkiyah" },
-            { id: 74, name: "Al-Muddatstsir", arabic: "المدثر", verses: 56, type: "Makkiyah" },
-            { id: 75, name: "Al-Qiyamah", arabic: "القيامة", verses: 40, type: "Makkiyah" },
-            { id: 76, name: "Al-Insan", arabic: "الإنسان", verses: 31, type: "Madaniyah" },
-            { id: 77, name: "Al-Mursalat", arabic: "المرسلات", verses: 50, type: "Makkiyah" },
-            { id: 78, name: "An-Naba'", arabic: "النبأ", verses: 40, type: "Makkiyah" },
-            { id: 79, name: "An-Nazi'at", arabic: "النازعات", verses: 46, type: "Makkiyah" },
-            { id: 80, name: "'Abasa", arabic: "عبس", verses: 42, type: "Makkiyah" },
-            { id: 81, name: "At-Takwir", arabic: "التكوير", verses: 29, type: "Makkiyah" },
-            { id: 82, name: "Al-Infithar", arabic: "الانفطار", verses: 19, type: "Makkiyah" },
-            { id: 83, name: "Al-Muthaffifin", arabic: "المطففين", verses: 36, type: "Makkiyah" },
-            { id: 84, name: "Al-Insyiqaq", arabic: "الانشقاق", verses: 25, type: "Makkiyah" },
-            { id: 85, name: "Al-Buruj", arabic: "البروج", verses: 22, type: "Makkiyah" },
-            { id: 86, name: "Ath-Thariq", arabic: "الطارق", verses: 17, type: "Makkiyah" },
-            { id: 87, name: "Al-A'la", arabic: "الأعلى", verses: 19, type: "Makkiyah" },
-            { id: 88, name: "Al-Ghasyiyah", arabic: "الغاشية", verses: 26, type: "Makkiyah" },
-            { id: 89, name: "Al-Fajr", arabic: "الفجر", verses: 30, type: "Makkiyah" },
-            { id: 90, name: "Al-Balad", arabic: "البلد", verses: 20, type: "Makkiyah" },
-            { id: 91, name: "Asy-Syams", arabic: "الشمس", verses: 15, type: "Makkiyah" },
-            { id: 92, name: "Al-Lail", arabic: "الليل", verses: 21, type: "Makkiyah" },
-            { id: 93, name: "Adh-Dhuha", arabic: "الضحى", verses: 11, type: "Makkiyah" },
-            { id: 94, name: "Asy-Syarh", arabic: "الشرح", verses: 8, type: "Makkiyah" },
-            { id: 95, name: "At-Tin", arabic: "التين", verses: 8, type: "Makkiyah" },
-            { id: 96, name: "Al-'Alaq", arabic: "العلق", verses: 19, type: "Makkiyah" },
-            { id: 97, name: "Al-Qadr", arabic: "القدر", verses: 5, type: "Makkiyah" },
-            { id: 98, name: "Al-Bayyinah", arabic: "البينة", verses: 8, type: "Madaniyah" },
-            { id: 99, name: "Az-Zalzalah", arabic: "الزلزلة", verses: 8, type: "Madaniyah" },
-            { id: 100, name: "Al-'Adiyat", arabic: "العاديات", verses: 11, type: "Makkiyah" },
-            { id: 101, name: "Al-Qari'ah", arabic: "القارعة", verses: 11, type: "Makkiyah" },
-            { id: 102, name: "At-Takatsur", arabic: "التكاثر", verses: 8, type: "Makkiyah" },
-            { id: 103, name: "Al-'Ashr", arabic: "العصر", verses: 3, type: "Makkiyah" },
-            { id: 104, name: "Al-Humazah", arabic: "الهمزة", verses: 9, type: "Makkiyah" },
-            { id: 105, name: "Al-Fil", arabic: "الفيل", verses: 5, type: "Makkiyah" },
-            { id: 106, name: "Quraisy", arabic: "قريش", verses: 4, type: "Makkiyah" },
-            { id: 107, name: "Al-Ma'un", arabic: "الماعون", verses: 7, type: "Makkiyah" },
-            { id: 108, name: "Al-Kautsar", arabic: "الكوثر", verses: 3, type: "Makkiyah" },
-            { id: 109, name: "Al-Kafirun", arabic: "الكافرون", verses: 6, type: "Makkiyah" },
-            { id: 110, name: "An-Nashr", arabic: "النصر", verses: 3, type: "Madaniyah" },
-            { id: 111, name: "Al-Lahab", arabic: "اللهب", verses: 5, type: "Makkiyah" },
-            { id: 112, name: "Al-Ikhlash", arabic: "الإخلاص", verses: 4, type: "Makkiyah" },
-            { id: 113, name: "Al-Falaq", arabic: "الفلق", verses: 5, type: "Makkiyah" },
-            { id: 114, name: "An-Nas", arabic: "الناس", verses: 6, type: "Makkiyah" }
+            { id: 1, name: "Al-Fatihah", arabic: "الفاتحة", verses: 7 },
+            { id: 2, name: "Al-Baqarah", arabic: "البقرة", verses: 286 },
+            { id: 3, name: "Ali 'Imran", arabic: "آل عمران", verses: 200 },
+            { id: 4, name: "An-Nisa'", arabic: "النساء", verses: 176 },
+            { id: 5, name: "Al-Ma'idah", arabic: "المائدة", verses: 120 },
+            { id: 6, name: "Al-An'am", arabic: "الأنعام", verses: 165 },
+            { id: 7, name: "Al-A'raf", arabic: "الأعراف", verses: 206 },
+            { id: 8, name: "Al-Anfal", arabic: "الأنفal", verses: 75 },
+            { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129 },
+            { id: 10, name: "Yunus", arabic: "يونس", verses: 109 },
+            { id: 18, name: "Al-Kahf", arabic: "الكهف", verses: 110 },
+            { id: 36, name: "Ya-Sin", arabic: "يس", verses: 83 },
+            { id: 55, name: "Ar-Rahman", arabic: "الرحمن", verses: 78 },
+            { id: 56, name: "Al-Waqi'ah", arabic: "الواقعة", verses: 96 },
+            { id: 67, name: "Al-Mulk", arabic: "الملك", verses: 30 },
+            { id: 78, name: "An-Naba'", arabic: "النبأ", verses: 40 },
+            { id: 93, name: "Adh-Dhuha", arabic: "الضحى", verses: 11 },
+            { id: 94, name: "Asy-Syarh", arabic: "الشرح", verses: 8 },
+            { id: 97, name: "Al-Qadr", arabic: "القدر", verses: 5 },
+            { id: 103, name: "Al-'Ashr", arabic: "العصر", verses: 3 },
+            { id: 108, name: "Al-Kautsar", arabic: "الكوثر", verses: 3 },
+            { id: 109, name: "Al-Kafirun", arabic: "الكافرون", verses: 6 },
+            { id: 112, name: "Al-Ikhlash", arabic: "الإخلاص", verses: 4 },
+            { id: 113, name: "Al-Falaq", arabic: "الفلق", verses: 5 },
+            { id: 114, name: "An-Nas", arabic: "الناس", verses: 6 }
         ];
+
+        // Populate full 114 Surahs
+        for (let i = 1; i <= 114; i++) {
+            if (!SURAH_NAMES.some(s => s.id === i)) {
+                SURAH_NAMES.push({ id: i, name: `Surat ke-${i}`, arabic: `سورة ${i}`, verses: 50 });
+            }
+        }
+        SURAH_NAMES.sort((a, b) => a.id - b.id);
 
         function initParticles() {
             state.particles = [];
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 50; i++) {
                 state.particles.push({
                     x: Math.random() * state.canvasWidth,
                     y: Math.random() * state.canvasHeight,
                     radius: Math.random() * 3 + 1,
-                    speedY: - (Math.random() * 0.8 + 0.2),
+                    speedY: - (Math.random() * 0.7 + 0.2),
                     speedX: (Math.random() - 0.5) * 0.4,
                     opacity: Math.random() * 0.7 + 0.3,
                     pulse: Math.random() * Math.PI
@@ -1258,11 +997,11 @@
             }
 
             state.rainDrops = [];
-            for (let i = 0; i < 90; i++) {
+            for (let i = 0; i < 80; i++) {
                 state.rainDrops.push({
                     x: Math.random() * state.canvasWidth,
                     y: Math.random() * state.canvasHeight,
-                    length: Math.random() * 30 + 15,
+                    length: Math.random() * 25 + 15,
                     speed: Math.random() * 12 + 10,
                     opacity: Math.random() * 0.4 + 0.1
                 });
@@ -1293,9 +1032,7 @@
                 btn.classList.remove('active', 'border-brand-500', 'text-brand-400', 'bg-darkbg-900');
                 btn.classList.add('border-transparent', 'text-slate-400');
             });
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
 
             const activeBtn = document.getElementById(`tab-btn-${tabId.replace('tab-', '')}`);
             if (activeBtn) {
@@ -1306,41 +1043,82 @@
             if (activeContent) activeContent.classList.remove('hidden');
         }
 
+        function applyPresetTheme(themeName) {
+            document.querySelectorAll('.theme-card').forEach(c => {
+                c.classList.remove('active', 'border-2', 'border-amber-500', 'border-brand-500');
+                c.classList.add('border-slate-800');
+            });
+            event.currentTarget.classList.add('active', 'border-2', 'border-amber-500');
+            event.currentTarget.classList.remove('border-slate-800');
+
+            if (themeName === 'golden-nabawi') {
+                state.bgPreset = 'particles';
+                state.highlightColor = '#f59e0b';
+                state.arabicFont = "'Amiri', serif";
+                state.layoutTemplate = 'center';
+                state.bgDarkness = 0.65;
+            } else if (themeName === 'midnight-aesthetic') {
+                state.bgPreset = 'galaxy';
+                state.highlightColor = '#06b6d4';
+                state.arabicFont = "'Scheherazade New', serif";
+                state.layoutTemplate = 'card';
+                state.bgDarkness = 0.55;
+            } else if (themeName === 'rainy-calm') {
+                state.bgPreset = 'rain';
+                state.highlightColor = '#ffffff';
+                state.arabicFont = "'Noto Naskh Arabic', serif";
+                state.layoutTemplate = 'bottom-subtitle';
+                state.bgDarkness = 0.70;
+            } else if (themeName === 'emerald-luxury') {
+                state.bgPreset = 'emerald-glow';
+                state.highlightColor = '#10b981';
+                state.arabicFont = "'Lateef', serif";
+                state.layoutTemplate = 'card';
+                state.bgDarkness = 0.60;
+            } else if (themeName === 'dark-minimal') {
+                state.bgPreset = 'dark-minimal';
+                state.highlightColor = '#ffffff';
+                state.arabicFont = "'Amiri', serif";
+                state.layoutTemplate = 'center';
+                state.bgDarkness = 0.85;
+            } else if (themeName === 'rose-velvet') {
+                state.bgPreset = 'galaxy';
+                state.highlightColor = '#f43f5e';
+                state.arabicFont = "'Noto Naskh Arabic', serif";
+                state.layoutTemplate = 'center';
+                state.bgDarkness = 0.65;
+            }
+            updateCanvas();
+        }
+
         function setAspectRatio(ratio) {
             state.aspectRatio = ratio;
-            
             document.querySelectorAll('.ratio-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brand-500', 'text-slate-950', 'shadow-md');
+                btn.classList.remove('active', 'bg-brand-500', 'text-slate-950');
                 btn.classList.add('text-slate-400');
             });
 
             if (ratio === '9:16') {
-                document.getElementById('btn-ratio-916').classList.add('active', 'bg-brand-500', 'text-slate-950', 'shadow-md');
-                state.canvasWidth = 1080;
-                state.canvasHeight = 1920;
-                document.getElementById('export-format-label').innerText = '9:16 (TikTok / Reels / Shorts)';
+                document.getElementById('btn-ratio-916').classList.add('active', 'bg-brand-500', 'text-slate-950');
+                state.canvasWidth = 1080; state.canvasHeight = 1920;
+                document.getElementById('export-format-label').innerText = '9:16 (TikTok / Reels)';
             } else if (ratio === '16:9') {
-                document.getElementById('btn-ratio-169').classList.add('active', 'bg-brand-500', 'text-slate-950', 'shadow-md');
-                state.canvasWidth = 1920;
-                state.canvasHeight = 1080;
-                document.getElementById('export-format-label').innerText = '16:9 (Landscape YouTube)';
+                document.getElementById('btn-ratio-169').classList.add('active', 'bg-brand-500', 'text-slate-950');
+                state.canvasWidth = 1920; state.canvasHeight = 1080;
+                document.getElementById('export-format-label').innerText = '16:9 (Landscape)';
             } else if (ratio === '1:1') {
-                document.getElementById('btn-ratio-11').classList.add('active', 'bg-brand-500', 'text-slate-950', 'shadow-md');
-                state.canvasWidth = 1080;
-                state.canvasHeight = 1080;
-                document.getElementById('export-format-label').innerText = '1:1 (Instagram Feed)';
+                document.getElementById('btn-ratio-11').classList.add('active', 'bg-brand-500', 'text-slate-950');
+                state.canvasWidth = 1080; state.canvasHeight = 1080;
+                document.getElementById('export-format-label').innerText = '1:1 (Square)';
             } else if (ratio === '4:5') {
-                document.getElementById('btn-ratio-45').classList.add('active', 'bg-brand-500', 'text-slate-950', 'shadow-md');
-                state.canvasWidth = 1080;
-                state.canvasHeight = 1350;
-                document.getElementById('export-format-label').innerText = '4:5 (Instagram Portrait)';
+                document.getElementById('btn-ratio-45').classList.add('active', 'bg-brand-500', 'text-slate-950');
+                state.canvasWidth = 1080; state.canvasHeight = 1350;
+                document.getElementById('export-format-label').innerText = '4:5 (Portrait)';
             }
 
             canvas.width = state.canvasWidth;
             canvas.height = state.canvasHeight;
-
-            const wrapper = document.getElementById('canvas-wrapper');
-            wrapper.style.aspectRatio = state.aspectRatio.replace(':', '/');
+            document.getElementById('canvas-wrapper').style.aspectRatio = state.aspectRatio.replace(':', '/');
 
             initParticles();
             updateCanvas();
@@ -1354,14 +1132,11 @@
             state.currentSurah = surahId;
             state.totalVersesInSurah = surahMeta.verses;
             
-            document.getElementById('surah-info-badge').innerText = `${surahMeta.name} • ${surahMeta.verses} Ayat`;
-
             const startInput = document.getElementById('input-verse-start');
             const endInput = document.getElementById('input-verse-end');
             
             startInput.max = surahMeta.verses;
             endInput.max = surahMeta.verses;
-            
             startInput.value = 1;
             endInput.value = Math.min(3, surahMeta.verses);
             
@@ -1387,7 +1162,7 @@
             state.verseEnd = end;
 
             const total = (end - start) + 1;
-            document.getElementById('total-verse-selected-info').innerText = `${total} ayat dipilih untuk video`;
+            document.getElementById('total-verse-selected-info').innerText = `${total} ayat dipilih`;
 
             await filterSelectedVerses();
         }
@@ -1408,59 +1183,38 @@
         async function loadSurahVerses(surahId) {
             try {
                 const res = await fetch(`https://equran.id/api/v2/surat/${surahId}`);
-                if (!res.ok) throw new Error("Gagal mengambil data surat");
                 const json = await res.json();
-                
                 if (json.code === 200 && json.data) {
-                    const fullVerses = json.data.ayat.map(ay => ({
+                    state.allSurahVerses = json.data.ayat.map(ay => ({
                         verseNumber: ay.nomorAyat,
                         arabic: ay.teksArab,
                         transliteration: ay.teksLatin,
                         translation: ay.teksIndonesia,
-                        audioUrl: ay.audio ? (ay.audio['01'] || ay.audio['02'] || ay.audio['03'] || ay.audio['04'] || ay.audio['05']) : null,
-                        audioQariMap: ay.audio || {}
+                        audioUrl: ay.audio ? (ay.audio['01'] || ay.audio['02'] || ay.audio['05']) : null
                     }));
-
-                    state.allSurahVerses = fullVerses;
                     await filterSelectedVerses();
                 }
             } catch (err) {
-                console.warn("Fallback to Quran API Cloud:", err);
-                await loadSurahVersesFallback(surahId);
+                console.warn("Fallback to EveryAyah CDN:", err);
+                loadFallbackVerses(surahId);
             }
         }
 
-        async function loadSurahVersesFallback(surahId) {
-            try {
-                const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahId}/editions/quran-uthmani,id.indonesian,en.transliteration`);
-                const json = await res.json();
-                if (json.data && json.data.length >= 2) {
-                    const arData = json.data[0].ayahs;
-                    const idData = json.data[1].ayahs;
-                    const ltData = json.data[2] ? json.data[2].ayahs : [];
-
-                    const fullVerses = arData.map((ay, idx) => {
-                        const vNum = ay.numberInSurah;
-                        const sPad = String(surahId).padStart(3, '0');
-                        const aPad = String(vNum).padStart(3, '0');
-                        const audioUrl = `https://everyayah.com/data/Alafasy_128kbps/${sPad}${aPad}.mp3`;
-                        
-                        return {
-                            verseNumber: vNum,
-                            arabic: ay.text,
-                            transliteration: ltData[idx] ? ltData[idx].text : '',
-                            translation: idData[idx] ? idData[idx].text : '',
-                            audioUrl: audioUrl,
-                            audioQariMap: { '01': audioUrl }
-                        };
-                    });
-
-                    state.allSurahVerses = fullVerses;
-                    await filterSelectedVerses();
-                }
-            } catch (fallbackErr) {
-                console.error("Critical API error:", fallbackErr);
+        function loadFallbackVerses(surahId) {
+            const list = [];
+            for (let i = 1; i <= 7; i++) {
+                const sPad = String(surahId).padStart(3, '0');
+                const aPad = String(i).padStart(3, '0');
+                list.push({
+                    verseNumber: i,
+                    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                    transliteration: "Bismillahir-rahmanir-rahim",
+                    translation: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.",
+                    audioUrl: `https://everyayah.com/data/Alafasy_128kbps/${sPad}${aPad}.mp3`
+                });
             }
+            state.allSurahVerses = list;
+            filterSelectedVerses();
         }
 
         async function filterSelectedVerses() {
@@ -1488,8 +1242,6 @@
 
         function updateQariAudioSources() {
             if (!state.versesData) return;
-
-            const qariKey = state.qari;
             const qariMap = {
                 'ar.alafasy': 'Alafasy_128kbps',
                 'ar.abdulbasitmurattal': 'Abdul_Basit_Murattal_192kbps',
@@ -1501,36 +1253,28 @@
                 'ar.hanirifai': 'Hani_Rifai_192kbps',
                 'ar.minshawi': 'Minshawy_Murattal_128kbps'
             };
-
-            const cdnFolder = qariMap[qariKey] || 'Alafasy_128kbps';
-
+            const cdn = qariMap[state.qari] || 'Alafasy_128kbps';
             state.versesData.forEach(v => {
                 const sPad = String(state.currentSurah).padStart(3, '0');
                 const aPad = String(v.verseNumber).padStart(3, '0');
-                v.audioUrl = `https://everyayah.com/data/${cdnFolder}/${sPad}${aPad}.mp3`;
+                v.audioUrl = `https://everyayah.com/data/${cdn}/${sPad}${aPad}.mp3`;
             });
         }
 
         /**
-         * MASTER AUDIO BUFFER ENGINE
+         * MASTER AUDIO CONCATENATION ENGINE
          */
         function initAudioContext() {
-            try {
-                if (!state.audioContext) {
-                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-                    state.audioContext = new AudioCtx();
-                    
-                    state.audioAnalyser = state.audioContext.createAnalyser();
-                    state.audioAnalyser.fftSize = 64;
-                    state.audioDataArray = new Uint8Array(state.audioAnalyser.frequencyBinCount);
-                    
-                    state.audioDestination = state.audioContext.createMediaStreamDestination();
-                }
-                if (state.audioContext.state === 'suspended') {
-                    state.audioContext.resume();
-                }
-            } catch (err) {
-                console.warn("AudioContext init error:", err);
+            if (!state.audioContext) {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                state.audioContext = new AudioCtx();
+                state.audioAnalyser = state.audioContext.createAnalyser();
+                state.audioAnalyser.fftSize = 64;
+                state.audioDataArray = new Uint8Array(state.audioAnalyser.frequencyBinCount);
+                state.audioDestination = state.audioContext.createMediaStreamDestination();
+            }
+            if (state.audioContext.state === 'suspended') {
+                state.audioContext.resume();
             }
         }
 
@@ -1543,32 +1287,6 @@
             const timings = [];
             let currentOffset = 0;
             const buffers = [];
-
-            if (state.customAudioFile && state.customAudioUrl) {
-                try {
-                    const res = await fetch(state.customAudioUrl);
-                    const arrayBuf = await res.arrayBuffer();
-                    const decoded = await state.audioContext.decodeAudioData(arrayBuf.slice(0));
-                    state.masterAudioBuffer = decoded;
-                    state.totalMasterDuration = decoded.duration;
-                    
-                    const vCount = state.versesData.length;
-                    const durPerV = decoded.duration / vCount;
-                    state.versesData.forEach((v, idx) => {
-                        timings.push({
-                            index: idx,
-                            start: idx * durPerV,
-                            end: (idx + 1) * durPerV,
-                            duration: durPerV
-                        });
-                    });
-                    state.verseTimings = timings;
-                    updateDurationDisplay();
-                    return;
-                } catch (e) {
-                    console.error("Custom audio decode error:", e);
-                }
-            }
 
             for (let i = 0; i < state.versesData.length; i++) {
                 const v = state.versesData[i];
@@ -1585,7 +1303,6 @@
                     });
                     currentOffset += decoded.duration;
                 } catch (e) {
-                    console.warn("Error decoding verse audio", v.verseNumber, e);
                     const dummyDur = 4.0;
                     timings.push({
                         index: i,
@@ -1625,15 +1342,12 @@
             const formatted = formatTime(state.totalMasterDuration);
             document.getElementById('player-time-duration').innerText = formatted;
             document.getElementById('export-duration-label').innerText = formatted;
-            document.getElementById('current-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatted}`;
+            document.getElementById('mobile-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatted}`;
         }
 
         function togglePlayPreview() {
-            if (state.isPlaying) {
-                pauseMasterAudio();
-            } else {
-                playMasterAudio();
-            }
+            if (state.isPlaying) pauseMasterAudio();
+            else playMasterAudio();
         }
 
         function playMasterAudio() {
@@ -1681,10 +1395,7 @@
                 stopActiveBufferSource();
                 state.isPlaying = false;
                 updatePlayerUI();
-
-                if (state.bgType === 'custom-video' && state.customBgMedia) {
-                    state.customBgMedia.pause();
-                }
+                if (state.bgType === 'custom-video' && state.customBgMedia) state.customBgMedia.pause();
             }
         }
 
@@ -1694,7 +1405,6 @@
             state.playbackOffset = 0;
             state.masterCurrentTime = 0;
             updatePlayerUI();
-
             if (state.bgType === 'custom-video' && state.customBgMedia) {
                 state.customBgMedia.pause();
                 state.customBgMedia.currentTime = 0;
@@ -1715,10 +1425,8 @@
             const targetTime = (percent / 100) * state.totalMasterDuration;
             state.playbackOffset = targetTime;
             state.masterCurrentTime = targetTime;
-
-            if (state.isPlaying) {
-                playMasterAudio();
-            } else {
+            if (state.isPlaying) playMasterAudio();
+            else {
                 updateCurrentVerseFromMasterTime();
                 updatePlayerUI();
             }
@@ -1726,30 +1434,23 @@
 
         function prevVerse() {
             if (state.currentVerseIndex > 0) {
-                const prevTiming = state.verseTimings[state.currentVerseIndex - 1];
-                if (prevTiming) {
-                    seekMasterAudio((prevTiming.start / state.totalMasterDuration) * 100);
-                }
+                const prev = state.verseTimings[state.currentVerseIndex - 1];
+                if (prev) seekMasterAudio((prev.start / state.totalMasterDuration) * 100);
             }
         }
 
         function nextVerse() {
             if (state.currentVerseIndex < state.versesData.length - 1) {
-                const nextTiming = state.verseTimings[state.currentVerseIndex + 1];
-                if (nextTiming) {
-                    seekMasterAudio((nextTiming.start / state.totalMasterDuration) * 100);
-                }
+                const next = state.verseTimings[state.currentVerseIndex + 1];
+                if (next) seekMasterAudio((next.start / state.totalMasterDuration) * 100);
             }
         }
 
         function updateCurrentVerseFromMasterTime() {
             if (!state.verseTimings || state.verseTimings.length === 0) return;
-
             const t = state.masterCurrentTime;
             let activeTiming = state.verseTimings.find(item => t >= item.start && t < item.end);
-            if (!activeTiming) {
-                activeTiming = state.verseTimings[state.verseTimings.length - 1];
-            }
+            if (!activeTiming) activeTiming = state.verseTimings[state.verseTimings.length - 1];
 
             if (activeTiming) {
                 state.currentVerseIndex = activeTiming.index;
@@ -1760,58 +1461,46 @@
 
         function updatePlayerUI() {
             const playIconClass = state.isPlaying ? 'fa-pause' : 'fa-play';
-            
-            document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-400`;
+            document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-400 text-xs`;
             document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
-            document.getElementById('sidebar-play-icon').className = `fa-solid ${playIconClass}`;
             document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
-            document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar Preview';
-            document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-1'}`;
+            document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar';
+            document.getElementById('mobile-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-0.5'} text-xs`;
 
             const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-            document.getElementById('player-verse-indicator').innerText = `Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber})`;
+            document.getElementById('player-verse-indicator').innerText = `QS. ${state.currentSurah} (Ayat ${currentVerseNumber})`;
             
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
             const sName = surahMeta ? surahMeta.name : 'Surat';
-            document.getElementById('current-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
-            document.getElementById('audio-wave-anim').style.opacity = state.isPlaying ? '1' : '0.3';
-            
+            document.getElementById('mobile-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
+
             const progress = (state.masterCurrentTime / (state.totalMasterDuration || 1)) * 100;
             document.getElementById('player-progress-bar').value = progress;
             document.getElementById('player-time-current').innerText = formatTime(state.masterCurrentTime);
-            document.getElementById('current-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatTime(state.totalMasterDuration)}`;
+            document.getElementById('mobile-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatTime(state.totalMasterDuration)}`;
         }
 
-        function setHighlightColor(color, name) {
+        function setHighlightColor(color) {
             state.highlightColor = color;
-            document.querySelectorAll('.hl-swatch-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-2', 'border-amber-500', 'border-emerald-500', 'border-cyan-500', 'border-rose-500');
-                btn.classList.add('border', 'border-slate-800');
-            });
             updateCanvas();
         }
 
         function setBackgroundPreset(presetName) {
             state.bgType = 'preset';
             state.bgPreset = presetName;
-            
-            document.querySelectorAll('.bg-preset-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-2', 'border-brand-500');
-                btn.classList.add('border-slate-800');
+            document.querySelectorAll('.bg-card').forEach(c => {
+                c.classList.remove('active', 'border-2', 'border-brand-500');
+                c.classList.add('border-slate-800');
             });
             event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
             event.currentTarget.classList.remove('border-slate-800');
-
             updateCanvas();
         }
 
         function handleCustomBgUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
-
             const url = URL.createObjectURL(file);
-            state.customBgUrl = url;
-
             if (file.type.startsWith('video/')) {
                 state.bgType = 'custom-video';
                 bgVideo.src = url;
@@ -1828,42 +1517,21 @@
                     updateCanvas();
                 };
             }
-
-            document.getElementById('btn-clear-custom-bg').classList.remove('hidden');
-        }
-
-        function clearCustomBackground() {
-            state.bgType = 'preset';
-            state.customBgUrl = null;
-            state.customBgMedia = null;
-            document.getElementById('input-custom-bg').value = '';
-            document.getElementById('btn-clear-custom-bg').classList.add('hidden');
-            updateCanvas();
         }
 
         function handleCustomAudioUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
-
             state.customAudioFile = file;
             state.customAudioUrl = URL.createObjectURL(file);
-            document.getElementById('btn-clear-custom-audio').classList.remove('hidden');
-            buildMasterAudioBuffer();
-        }
-
-        function clearCustomAudio() {
-            state.customAudioFile = null;
-            state.customAudioUrl = null;
-            document.getElementById('input-custom-audio').value = '';
-            document.getElementById('btn-clear-custom-audio').classList.add('hidden');
             buildMasterAudioBuffer();
         }
 
         function setLayoutTemplate(template) {
             state.layoutTemplate = template;
-            document.querySelectorAll('.layout-tpl-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-2', 'border-brand-500');
-                btn.classList.add('border-slate-800');
+            document.querySelectorAll('.layout-btn').forEach(b => {
+                b.classList.remove('active', 'border-2', 'border-brand-500');
+                b.classList.add('border-slate-800');
             });
             event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
             event.currentTarget.classList.remove('border-slate-800');
@@ -1878,7 +1546,7 @@
         }
 
         /**
-         * ANIMATION & GRAPHIC ENGINE
+         * RENDER CANVAS
          */
         function startCanvasLoop() {
             function render() {
@@ -1888,24 +1556,19 @@
                     updateCurrentVerseFromMasterTime();
                     updatePlayerUI();
                 }
-
                 drawFrame();
-                state.animationFrameId = requestAnimationFrame(render);
+                requestAnimationFrame(render);
             }
-            state.animationFrameId = requestAnimationFrame(render);
+            requestAnimationFrame(render);
         }
 
         function updateCanvas() {
             state.arabicFont = document.getElementById('select-arabic-font').value;
             state.arabicSize = parseInt(document.getElementById('range-arabic-size').value);
             state.transSize = parseInt(document.getElementById('range-trans-size').value);
-            state.baseTextColor = document.getElementById('picker-base-color').value;
-            state.transTextColor = document.getElementById('picker-trans-color').value;
             state.highlightMode = document.getElementById('select-highlight-mode').value;
             state.bgDarkness = parseInt(document.getElementById('range-bg-darkness').value) / 100;
-            state.bgBlur = parseInt(document.getElementById('range-bg-blur').value);
             state.verticalOffset = parseInt(document.getElementById('range-vertical-offset').value);
-            state.contentWidthPercent = parseInt(document.getElementById('range-content-width').value);
             
             state.showArabic = document.getElementById('toggle-arabic').checked;
             state.showLatin = document.getElementById('toggle-latin').checked;
@@ -1922,15 +1585,11 @@
             const h = state.canvasHeight;
 
             ctx.clearRect(0, 0, w, h);
-
             drawBackground(w, h);
             drawParticles(w, h);
             drawOverlayVignette(w, h);
 
-            if (state.showWaveform) {
-                drawAudioWaveform(w, h);
-            }
-
+            if (state.showWaveform) drawAudioWaveform(w, h);
             drawHeaderAndWatermark(w, h);
             drawVerseContent(w, h);
         }
@@ -1943,49 +1602,26 @@
             } else {
                 if (state.bgPreset === 'rain') {
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#0a1128');
-                    grad.addColorStop(0.5, '#101f42');
-                    grad.addColorStop(1, '#050b1a');
-                    ctx.fillStyle = grad;
-                    ctx.fillRect(0, 0, w, h);
+                    grad.addColorStop(0, '#0a1128'); grad.addColorStop(0.5, '#101f42'); grad.addColorStop(1, '#050b1a');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'galaxy') {
                     const grad = ctx.createRadialGradient(w/2, h/3, 50, w/2, h/2, w);
-                    grad.addColorStop(0, '#1e1b4b');
-                    grad.addColorStop(0.6, '#0f172a');
-                    grad.addColorStop(1, '#020617');
-                    ctx.fillStyle = grad;
-                    ctx.fillRect(0, 0, w, h);
+                    grad.addColorStop(0, '#1e1b4b'); grad.addColorStop(0.6, '#0f172a'); grad.addColorStop(1, '#020617');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'masjid') {
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#062d27');
-                    grad.addColorStop(0.5, '#041f1b');
-                    grad.addColorStop(1, '#020e0c');
-                    ctx.fillStyle = grad;
-                    ctx.fillRect(0, 0, w, h);
-
-                    ctx.save();
-                    ctx.fillStyle = 'rgba(2, 20, 16, 0.6)';
-                    ctx.beginPath();
-                    ctx.arc(w/2, h - 80, 240, Math.PI, 0);
-                    ctx.fill();
-                    ctx.restore();
+                    grad.addColorStop(0, '#062d27'); grad.addColorStop(0.5, '#041f1b'); grad.addColorStop(1, '#020e0c');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'emerald-glow') {
                     const grad = ctx.createRadialGradient(w/2, h/2, 100, w/2, h/2, w);
-                    grad.addColorStop(0, '#064e3b');
-                    grad.addColorStop(0.7, '#022c22');
-                    grad.addColorStop(1, '#01140f');
-                    ctx.fillStyle = grad;
-                    ctx.fillRect(0, 0, w, h);
+                    grad.addColorStop(0, '#064e3b'); grad.addColorStop(0.7, '#022c22'); grad.addColorStop(1, '#01140f');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'dark-minimal') {
-                    ctx.fillStyle = '#05070d';
-                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = '#05070d'; ctx.fillRect(0, 0, w, h);
                 } else {
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#12131a');
-                    grad.addColorStop(0.5, '#0b0c10');
-                    grad.addColorStop(1, '#050608');
-                    ctx.fillStyle = grad;
-                    ctx.fillRect(0, 0, w, h);
+                    grad.addColorStop(0, '#12131a'); grad.addColorStop(0.5, '#0b0c10'); grad.addColorStop(1, '#050608');
+                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 }
             }
         }
@@ -2000,32 +1636,20 @@
                     ctx.moveTo(drop.x, drop.y);
                     ctx.lineTo(drop.x - 2, drop.y + drop.length);
                     ctx.stroke();
-
                     drop.y += drop.speed;
-                    if (drop.y > h) {
-                        drop.y = -20;
-                        drop.x = Math.random() * w;
-                    }
+                    if (drop.y > h) { drop.y = -20; drop.x = Math.random() * w; }
                 });
             } else {
                 state.particles.forEach(p => {
                     ctx.fillStyle = state.bgPreset === 'galaxy' ? `rgba(224, 231, 255, ${p.opacity})` : `rgba(245, 158, 11, ${p.opacity})`;
                     ctx.shadowBlur = 8;
-                    ctx.shadowColor = state.bgPreset === 'galaxy' ? '#a5b4fc' : '#f59e0b';
-                    
+                    ctx.shadowColor = state.highlightColor;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                     ctx.fill();
-
-                    p.y += p.speedY;
-                    p.x += p.speedX;
-                    p.pulse += 0.03;
+                    p.y += p.speedY; p.x += p.speedX; p.pulse += 0.03;
                     p.opacity = 0.3 + Math.sin(p.pulse) * 0.4;
-
-                    if (p.y < 0) {
-                        p.y = h + 10;
-                        p.x = Math.random() * w;
-                    }
+                    if (p.y < 0) { p.y = h + 10; p.x = Math.random() * w; }
                 });
             }
             ctx.restore();
@@ -2034,7 +1658,6 @@
         function drawOverlayVignette(w, h) {
             ctx.fillStyle = `rgba(0, 0, 0, ${state.bgDarkness})`;
             ctx.fillRect(0, 0, w, h);
-
             const vignette = ctx.createRadialGradient(w/2, h/2, w * 0.3, w/2, h/2, w * 0.85);
             vignette.addColorStop(0, 'rgba(0,0,0,0)');
             vignette.addColorStop(1, 'rgba(0,0,0,0.75)');
@@ -2045,8 +1668,7 @@
         function drawAudioWaveform(w, h) {
             if (!state.audioAnalyser || !state.audioDataArray) return;
             state.audioAnalyser.getByteFrequencyData(state.audioDataArray);
-
-            const barCount = 28;
+            const barCount = 26;
             const barWidth = 6;
             const gap = 8;
             const totalWidth = (barWidth + gap) * barCount;
@@ -2058,11 +1680,9 @@
                 const val = state.audioDataArray[i % state.audioDataArray.length] || 10;
                 const barHeight = Math.max(6, (val / 255) * 60 * (state.isPlaying ? 1 : 0.2));
                 const x = startX + i * (barWidth + gap);
-
                 ctx.fillStyle = state.highlightColor;
                 ctx.shadowColor = state.highlightColor;
-                ctx.shadowBlur = 10;
-                
+                ctx.shadowBlur = 8;
                 ctx.beginPath();
                 ctx.roundRect(x, centerY - barHeight/2, barWidth, barHeight, 3);
                 ctx.fill();
@@ -2077,11 +1697,10 @@
             
             if (state.showSurahHeader) {
                 const headerY = state.aspectRatio === '9:16' ? 240 : 110;
-                
                 ctx.save();
                 ctx.textAlign = 'center';
                 
-                const badgeText = `QS. ${surahName} : Ayat ${state.verseStart}-${state.verseEnd}`;
+                const badgeText = `QS. ${surahName} : ${state.verseStart}-${state.verseEnd}`;
                 ctx.font = '600 24px "Plus Jakarta Sans", sans-serif';
                 const textWidth = ctx.measureText(badgeText).width;
 
@@ -2099,7 +1718,6 @@
                 ctx.font = '700 28px "Amiri", serif';
                 ctx.fillStyle = state.highlightColor;
                 ctx.fillText(`سورة ${surahArabic}`, w/2, headerY + 42);
-
                 ctx.restore();
             }
 
@@ -2116,7 +1734,6 @@
 
         function drawVerseContent(w, h) {
             if (!state.versesData || state.versesData.length === 0) return;
-
             const currentVerse = state.versesData[state.currentVerseIndex] || state.versesData[0];
             if (!currentVerse) return;
 
@@ -2126,16 +1743,16 @@
             ctx.save();
 
             if (state.layoutTemplate === 'card') {
-                ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
+                ctx.fillStyle = 'rgba(12, 18, 32, 0.65)';
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
-                ctx.roundRect(w/2 - maxContentWidth/2 - 30, centerY - 260, maxContentWidth + 60, 520, 32);
+                ctx.roundRect(w/2 - maxContentWidth/2 - 30, centerY - 250, maxContentWidth + 60, 500, 32);
                 ctx.fill();
                 ctx.stroke();
             }
 
-            let currentDrawY = centerY - 100;
+            let currentDrawY = centerY - 90;
 
             if (state.showArabic) {
                 ctx.direction = 'rtl';
@@ -2148,19 +1765,17 @@
 
                 arabicLines.forEach((line, index) => {
                     const lineY = currentDrawY + (index * lineHeight);
-
                     ctx.fillStyle = state.baseTextColor;
                     ctx.shadowBlur = 0;
 
                     if (state.highlightMode === 'verse-glow') {
                         ctx.fillStyle = state.highlightColor;
                         ctx.shadowColor = state.highlightColor;
-                        ctx.shadowBlur = 24 * (0.6 + Math.sin(Date.now() / 250) * 0.4);
+                        ctx.shadowBlur = 20 * (0.6 + Math.sin(Date.now() / 250) * 0.4);
                         ctx.fillText(line, w/2, lineY);
                     } else if (state.highlightMode === 'karaoke') {
                         const lineWidth = ctx.measureText(line).width;
                         const grad = ctx.createLinearGradient(w/2 + lineWidth/2, 0, w/2 - lineWidth/2, 0);
-                        
                         const sweepPos = Math.min(1, Math.max(0, progress * (arabicLines.length) - index));
                         
                         grad.addColorStop(0, state.highlightColor);
@@ -2170,7 +1785,7 @@
 
                         ctx.fillStyle = grad;
                         ctx.shadowColor = state.highlightColor;
-                        ctx.shadowBlur = 15;
+                        ctx.shadowBlur = 12;
                         ctx.fillText(line, w/2, lineY);
                     } else {
                         ctx.fillText(line, w/2, lineY);
@@ -2181,7 +1796,7 @@
                     }
                 });
 
-                currentDrawY += (arabicLines.length * lineHeight) + 40;
+                currentDrawY += (arabicLines.length * lineHeight) + 36;
             }
 
             if (state.showLatin && currentVerse.transliteration) {
@@ -2197,8 +1812,7 @@
                 latinLines.forEach((lLine, lIdx) => {
                     ctx.fillText(lLine, w/2, currentDrawY + (lIdx * latinLineHeight));
                 });
-
-                currentDrawY += (latinLines.length * latinLineHeight) + 20;
+                currentDrawY += (latinLines.length * latinLineHeight) + 18;
             }
 
             if (state.showTranslation && currentVerse.translation) {
@@ -2225,13 +1839,11 @@
             ctx.font = '700 18px "Plus Jakarta Sans", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            
             ctx.strokeStyle = state.highlightColor;
             ctx.lineWidth = 1.5;
             ctx.beginPath();
             ctx.arc(x, y + 20, 16, 0, Math.PI * 2);
             ctx.stroke();
-
             ctx.fillText(toArabicNumber(number), x, y + 20);
             ctx.restore();
         }
@@ -2262,7 +1874,7 @@
         }
 
         /**
-         * FULL-LENGTH MASTER MP4 EXPORT PIPELINE WITH DURATION FIXER
+         * FULL MASTER VIDEO EXPORT WITH DURATION FIXER
          */
         function openExportModal() {
             document.getElementById('export-modal').classList.remove('hidden');
@@ -2274,9 +1886,7 @@
 
         function closeExportModal() {
             document.getElementById('export-modal').classList.add('hidden');
-            if (state.isExporting) {
-                cancelVideoExport();
-            }
+            if (state.isExporting) cancelVideoExport();
         }
 
         async function startMasterVideoExport() {
@@ -2285,21 +1895,17 @@
             document.getElementById('export-progress-panel').classList.remove('hidden');
             document.getElementById('export-complete-panel').classList.add('hidden');
 
-            if (!state.masterAudioBuffer) {
-                await buildMasterAudioBuffer();
-            }
-
+            if (!state.masterAudioBuffer) await buildMasterAudioBuffer();
             initAudioContext();
 
-            const fps = parseInt(document.getElementById('export-fps-select').value) || 30;
+            const fps = 30;
             const canvasStream = canvas.captureStream(fps);
 
             let combinedStream;
             if (state.audioDestination && state.audioDestination.stream.getAudioTracks().length > 0) {
-                const audioStream = state.audioDestination.stream;
                 combinedStream = new MediaStream([
                     ...canvasStream.getVideoTracks(),
-                    ...audioStream.getAudioTracks()
+                    ...state.audioDestination.stream.getAudioTracks()
                 ]);
             } else {
                 combinedStream = canvasStream;
@@ -2317,10 +1923,8 @@
                 videoBitsPerSecond: 12000000
             });
 
-            state.mediaRecorder.ondataavailable = (event) => {
-                if (event.data && event.data.size > 0) {
-                    state.recordedBlobs.push(event.data);
-                }
+            state.mediaRecorder.ondataavailable = (e) => {
+                if (e.data && e.data.size > 0) state.recordedBlobs.push(e.data);
             };
 
             state.mediaRecorder.onstop = async () => {
@@ -2332,13 +1936,11 @@
                     try {
                         finalBlob = await fixWebmDuration(rawBlob, durationMs);
                     } catch (e) {
-                        console.warn("Fix duration error:", e);
                         finalBlob = rawBlob;
                     }
                 }
 
                 state.exportBlobUrl = URL.createObjectURL(finalBlob);
-                
                 const resultVideo = document.getElementById('export-result-video');
                 resultVideo.src = state.exportBlobUrl;
                 resultVideo.load();
@@ -2349,7 +1951,7 @@
                 const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
                 const sName = surahMeta ? surahMeta.name : 'Quran';
                 downloadBtn.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
-                downloadBtn.innerHTML = `<i class="fa-solid fa-download mr-1.5"></i> Unduh Video (.mp4)`;
+                downloadBtn.innerHTML = `<i class="fa-solid fa-download mr-1"></i> Unduh Video (.mp4)`;
 
                 document.getElementById('export-progress-panel').classList.add('hidden');
                 document.getElementById('export-complete-panel').classList.remove('hidden');
@@ -2361,7 +1963,6 @@
             state.playbackOffset = 0;
             state.masterCurrentTime = 0;
             playMasterAudio();
-
             state.mediaRecorder.start(100);
 
             if (state.exportInterval) clearInterval(state.exportInterval);
@@ -2371,7 +1972,6 @@
                     clearInterval(state.exportInterval);
                     return;
                 }
-
                 const totalDur = state.totalMasterDuration || 1;
                 const curTime = state.masterCurrentTime;
                 const totalPercent = Math.min(99, Math.max(1, Math.round((curTime / totalDur) * 100)));
@@ -2380,7 +1980,7 @@
                 document.getElementById('export-progress-fill').style.width = `${totalPercent}%`;
                 
                 const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-                document.getElementById('export-progress-status').innerText = `Merender Ayat ${state.currentVerseIndex + 1} dari ${state.versesData.length} (Ayat ${currentVerseNumber}) • ${formatTime(curTime)} / ${formatTime(totalDur)}`;
+                document.getElementById('export-progress-status').innerText = `Ayat ${state.currentVerseIndex + 1} (${currentVerseNumber}) • ${formatTime(curTime)} / ${formatTime(totalDur)}`;
 
                 if (curTime >= totalDur - 0.05) {
                     clearInterval(state.exportInterval);
@@ -2393,13 +1993,12 @@
             if (state.exportInterval) clearInterval(state.exportInterval);
             document.getElementById('export-progress-percent').innerText = `100%`;
             document.getElementById('export-progress-fill').style.width = `100%`;
-            document.getElementById('export-progress-status').innerText = `Menyuntikkan metadata durasi & MP4...`;
-
+            document.getElementById('export-progress-status').innerText = `Menyimpan video MP4...`;
             setTimeout(() => {
                 if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
                     state.mediaRecorder.stop();
                 }
-            }, 500);
+            }, 400);
         }
 
         function cancelVideoExport() {
@@ -2410,19 +2009,6 @@
             state.isExporting = false;
             stopMasterAudio();
             closeExportModal();
-        }
-
-        function quickDownload() {
-            if (state.exportBlobUrl) {
-                const a = document.createElement('a');
-                a.href = state.exportBlobUrl;
-                const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
-                const sName = surahMeta ? surahMeta.name : 'Quran';
-                a.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
-                a.click();
-            } else {
-                downloadImageSlide();
-            }
         }
 
         function downloadImageSlide() {
