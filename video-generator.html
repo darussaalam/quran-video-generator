@@ -44,10 +44,16 @@
         * { transition: background-color 0.15s ease, border-color 0.15s ease; }
         
         ::-webkit-scrollbar { width: 5px; height: 5px; }
-        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        .dark ::-webkit-scrollbar-track { background: #0b0f19; }
         .dark ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Accessible Focus Indicators (antislop-human) */
+        button:focus-visible, select:focus-visible, input:focus-visible {
+            outline: 2px solid #10b981;
+            outline-offset: 2px;
+        }
 
         input[type="range"] {
             -webkit-appearance: none;
@@ -62,8 +68,8 @@
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #10b981;
             cursor: pointer;
@@ -72,82 +78,71 @@
             transition: transform 0.15s ease;
         }
         input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
+            transform: scale(1.15);
         }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white pb-16 lg:pb-0">
+<body class="bg-slate-50 dark:bg-[#070b14] text-slate-900 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Top Navigation Header -->
-    <header class="h-14 sm:h-16 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3 sm:px-6 flex items-center justify-between sticky top-0 z-40 shadow-sm">
-        <!-- Logo & Brand -->
-        <div class="flex items-center gap-2.5 sm:gap-3">
-            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold shadow-sm">
-                <i class="fa-solid fa-play text-xs sm:text-sm ml-0.5"></i>
+    <!-- Top Navigation Header (Clean, Functional, Balanced Spacing) -->
+    <header class="h-14 sm:h-15 border-b border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-md px-3 sm:px-5 flex items-center justify-between sticky top-0 z-40">
+        <!-- Logo & Product Title -->
+        <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold shadow-sm">
+                <i class="fa-solid fa-play text-xs ml-0.5"></i>
             </div>
             <div>
                 <h1 class="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.9 Pro</span>
+                    Quran Video Studio
+                    <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">Pro</span>
                 </h1>
-                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Live Mic Teleprompter</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden md:block">Studio Konten Murottal, Slide & Audio</p>
             </div>
         </div>
 
         <!-- Platform Aspect Ratio Selector -->
-        <div class="flex items-center bg-slate-100 dark:bg-slate-950 p-0.5 sm:p-1 rounded-lg border border-slate-200 dark:border-slate-800 text-[11px]">
-            <button id="btn-ratio-916" onclick="setAspectRatio('9:16')" class="ratio-btn active flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold bg-brand-500 text-white shadow-sm transition">
-                <i class="fa-solid fa-mobile-screen"></i>
-                <span class="hidden md:inline">9:16</span>
+        <div class="flex items-center bg-slate-100 dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-800 text-xs" role="group" aria-label="Pilihan Rasio Aspek Video">
+            <button id="btn-ratio-916" onclick="setAspectRatio('9:16')" class="ratio-btn active flex items-center gap-1 px-2.5 py-1 rounded-md font-semibold bg-brand-500 text-white shadow-sm transition" title="9:16 Vertikal (TikTok / Reels / Shorts)">
+                <i class="fa-solid fa-mobile-screen text-[11px]"></i>
+                <span class="hidden sm:inline">9:16</span>
             </button>
-            <button id="btn-ratio-169" onclick="setAspectRatio('16:9')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-                <i class="fa-solid fa-desktop"></i>
-                <span class="hidden md:inline">16:9</span>
+            <button id="btn-ratio-169" onclick="setAspectRatio('16:9')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition" title="16:9 Lanskap (YouTube Standar)">
+                <i class="fa-solid fa-desktop text-[11px]"></i>
+                <span class="hidden sm:inline">16:9</span>
             </button>
-            <button id="btn-ratio-11" onclick="setAspectRatio('1:1')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-                <i class="fa-solid fa-square"></i>
-                <span class="hidden md:inline">1:1</span>
+            <button id="btn-ratio-11" onclick="setAspectRatio('1:1')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition" title="1:1 Persegi (Instagram Feed)">
+                <i class="fa-solid fa-square text-[11px]"></i>
+                <span class="hidden sm:inline">1:1</span>
             </button>
-            <button id="btn-ratio-45" onclick="setAspectRatio('4:5')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-                <i class="fa-solid fa-image"></i>
-                <span class="hidden md:inline">4:5</span>
+            <button id="btn-ratio-45" onclick="setAspectRatio('4:5')" class="ratio-btn flex items-center gap-1 px-2.5 py-1 rounded-md font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition" title="4:5 Potret (Instagram Feed)">
+                <i class="fa-solid fa-image text-[11px]"></i>
+                <span class="hidden sm:inline">4:5</span>
             </button>
         </div>
 
-        <!-- Action Items: Theme Switcher, Update Pop-up, Preview & Export -->
+        <!-- Header Actions: Theme & Export -->
         <div class="flex items-center gap-1.5 sm:gap-2">
             <!-- Dark / Light Mode Switcher -->
-            <button onclick="toggleThemeMode()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-xs transition" title="Ganti Mode Gelap/Terang">
+            <button onclick="toggleThemeMode()" class="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700/80 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-xs transition" title="Ganti Mode Gelap/Terang" aria-label="Ganti Mode Gelap/Terang">
                 <i id="theme-icon" class="fa-solid fa-moon"></i>
             </button>
 
-            <!-- Whats New Button -->
-            <button onclick="openWhatsNewModal(true)" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition" title="Lihat Update Terbaru">
-                <i class="fa-solid fa-bell text-brand-500 sm:mr-1"></i>
-                <span class="hidden md:inline">Update</span>
-            </button>
-
-            <!-- Preview Button -->
-            <button id="btn-top-preview" onclick="togglePlayPreview()" class="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition">
-                <i id="top-preview-icon" class="fa-solid fa-play text-brand-500 text-xs"></i>
-                <span id="top-preview-text" class="hidden sm:inline">Preview</span>
-            </button>
-
-            <!-- Export MP4 Button -->
-            <button onclick="openExportModal()" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold shadow-sm transition">
-                <i class="fa-solid fa-film"></i>
-                <span>Export MP4</span>
+            <!-- Export Dialog Trigger -->
+            <button onclick="openExportModal()" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white text-xs font-bold shadow-sm transition">
+                <i class="fa-solid fa-download"></i>
+                <span>Ekspor</span>
             </button>
         </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Main Workspace Layout -->
     <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
 
         <!-- Center Canvas Viewport -->
-        <main class="w-full lg:flex-1 order-1 lg:order-2 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-100 dark:bg-[#060a12] relative">
+        <main class="w-full lg:flex-1 order-1 lg:order-2 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-100 dark:bg-[#050811] relative">
             
             <!-- Top Mode Switcher Bar (Motion vs Slide) -->
             <div class="w-full max-w-xl flex items-center justify-between mb-1.5 px-1 text-xs">
@@ -164,20 +159,20 @@
 
                 <div class="flex items-center gap-1.5">
                     <span id="slide-count-badge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20">Slide 1 dari 3</span>
-                    <button onclick="downloadAllSlidesBatch()" class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold transition flex items-center gap-1" title="Unduh Semua Ayat sebagai Paket Gambar HD">
-                        <i class="fa-solid fa-file-zipper text-brand-500"></i>
+                    <button onclick="downloadAllSlidesBatch()" class="px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold transition flex items-center gap-1.5" title="Unduh Semua Ayat sebagai Paket Gambar HD">
+                        <i class="fa-solid fa-images text-brand-500"></i>
                         <span class="hidden sm:inline">Unduh Semua Slide</span>
                     </button>
                 </div>
             </div>
 
             <!-- Canvas Container -->
-            <div class="w-full flex-1 flex items-center justify-center min-h-[280px] max-h-[44vh] sm:max-h-[56vh] lg:max-h-[calc(100vh-12rem)]">
-                <div id="canvas-wrapper" class="relative rounded-xl overflow-hidden shadow-lg border border-slate-300 dark:border-slate-800 bg-black flex items-center justify-center transition-all duration-300 w-auto h-full max-w-full">
+            <div class="w-full flex-1 flex items-center justify-center min-h-[270px] max-h-[44vh] sm:max-h-[56vh] lg:max-h-[calc(100vh-11.5rem)]">
+                <div id="canvas-wrapper" class="relative rounded-xl overflow-hidden shadow-md border border-slate-300 dark:border-slate-800 bg-black flex items-center justify-center transition-all duration-300 w-auto h-full max-w-full">
                     <canvas id="video-canvas" width="1080" height="1920" class="w-full h-full object-contain block"></canvas>
                     
                     <div id="canvas-play-overlay" onclick="togglePlayPreview()" class="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer transition-opacity opacity-0 hover:opacity-100">
-                        <div class="w-14 h-14 rounded-full bg-brand-500 text-white flex items-center justify-center text-xl shadow-lg transform transition hover:scale-105">
+                        <div class="w-13 h-13 rounded-full bg-brand-500 text-white flex items-center justify-center text-lg shadow-lg transform transition hover:scale-105">
                             <i id="overlay-play-icon" class="fa-solid fa-play ml-0.5"></i>
                         </div>
                     </div>
@@ -192,7 +187,7 @@
                         </button>
                     </div>
 
-                    <!-- Floating Fullscreen Close Button (Shows in Fullscreen Mode) -->
+                    <!-- Floating Fullscreen Close Button -->
                     <button id="btn-fullscreen-exit-float" onclick="toggleFullscreenPreview()" class="hidden absolute top-4 right-4 z-30 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white text-xs font-semibold backdrop-blur-md border border-white/20 shadow-lg flex items-center gap-1.5 transition">
                         <i class="fa-solid fa-compress text-xs"></i>
                         <span>Keluar Layar Penuh (ESC)</span>
@@ -210,41 +205,38 @@
                 <!-- Timeline Slider -->
                 <div class="flex items-center gap-2">
                     <span id="player-time-current" class="text-[10px] font-mono text-slate-500 dark:text-slate-400 w-8 text-right">00:00</span>
-                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekMasterAudio(this.value)" class="flex-1 accent-brand-500">
+                    <input type="range" id="player-progress-bar" min="0" max="100" value="0" step="0.1" oninput="seekMasterAudio(this.value)" class="flex-1 accent-brand-500" aria-label="Progres Waktu Murottal">
                     <span id="player-time-duration" class="text-[10px] font-mono text-slate-500 dark:text-slate-400 w-8">00:13</span>
                 </div>
 
                 <!-- Controls Row -->
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-1 sm:gap-2">
-                        <button onclick="prevVerse()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Ayat Sebelumnya">
+                    <div class="flex items-center gap-1 sm:gap-1.5">
+                        <button onclick="prevVerse()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition min-w-[32px] min-h-[32px] flex items-center justify-center" title="Ayat Sebelumnya" aria-label="Ayat Sebelumnya">
                             <i class="fa-solid fa-backward-step"></i>
                         </button>
-                        <button id="btn-player-play" onclick="togglePlayPreview()" class="px-3 py-1 rounded-md bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition">
+                        <button id="btn-player-play" onclick="togglePlayPreview()" class="px-3.5 py-1.5 rounded-md bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition min-h-[32px]">
                             <i id="player-play-icon" class="fa-solid fa-play"></i>
                             <span id="player-play-label">Putar</span>
                         </button>
-                        <button onclick="nextVerse()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Ayat Berikutnya">
+                        <button onclick="nextVerse()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition min-w-[32px] min-h-[32px] flex items-center justify-center" title="Ayat Berikutnya" aria-label="Ayat Berikutnya">
                             <i class="fa-solid fa-forward-step"></i>
                         </button>
                     </div>
 
-                    <!-- Indicator -->
+                    <!-- Verse Indicator -->
                     <div class="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 truncate">
                         <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
                         <span id="player-verse-indicator">QS. 1 (Ayat 1-3)</span>
                     </div>
 
-                    <!-- Tools -->
+                    <!-- Quick Tools -->
                     <div class="flex items-center gap-1">
-                        <button id="btn-fullscreen-toggle" onclick="toggleFullscreenPreview()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Layar Penuh Preview (Fullscreen / F)">
+                        <button id="btn-fullscreen-toggle" onclick="toggleFullscreenPreview()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition min-w-[32px] min-h-[32px] flex items-center justify-center" title="Layar Penuh (F)" aria-label="Layar Penuh">
                             <i id="fullscreen-btn-icon" class="fa-solid fa-expand"></i>
                         </button>
-                        <button onclick="downloadImageSlide()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Unduh Poster Gambar HD">
+                        <button onclick="downloadImageSlide()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition min-w-[32px] min-h-[32px] flex items-center justify-center" title="Unduh Slide Gambar Ini" aria-label="Unduh Gambar Slide">
                             <i class="fa-solid fa-image"></i>
-                        </button>
-                        <button onclick="openExportModal()" class="px-2.5 py-1 rounded-md bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold hover:bg-brand-100 dark:hover:bg-brand-500/20 transition">
-                            <i class="fa-solid fa-film mr-1"></i> Export
                         </button>
                     </div>
                 </div>
@@ -253,36 +245,36 @@
         </main>
 
         <!-- Sidebar Controls Dock -->
-        <aside class="w-full lg:w-[410px] xl:w-[430px] flex-shrink-0 bg-white dark:bg-slate-900 border-t lg:border-t-0 lg:border-r border-slate-200 dark:border-slate-800 flex flex-col order-2 lg:order-1 h-auto lg:h-[calc(100vh-4rem)] z-20">
+        <aside class="w-full lg:w-[410px] xl:w-[430px] flex-shrink-0 bg-white dark:bg-slate-900 border-t lg:border-t-0 lg:border-r border-slate-200 dark:border-slate-800 flex flex-col order-2 lg:order-1 h-auto lg:h-[calc(100vh-3.5rem)] z-20">
             
-            <!-- Category Tabs with Clean Ergonomic Flow -->
+            <!-- Category Tabs with Minimal, Clean, Solid Hierarchy -->
             <div class="flex items-center border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 px-1 pt-1.5 gap-1 overflow-x-auto text-xs font-semibold no-scrollbar">
-                <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-2.5 py-2 rounded-t-md border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-3 py-2 rounded-t-md border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
                     <span>Tema</span>
                 </button>
-                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                <button onclick="switchTab('tab-ayat')" id="tab-btn-ayat" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-book-quran text-[11px]"></i>
                     <span>Ayat & Qari</span>
                 </button>
-                <button onclick="switchTab('tab-custom-voice')" id="tab-btn-custom-voice" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
-                    <i class="fa-solid fa-microphone-lines text-[11px]"></i>
-                    <span>Suara Sendiri</span>
+                <button onclick="switchTab('tab-custom-voice')" id="tab-btn-custom-voice" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                    <i class="fa-solid fa-microphone text-[11px]"></i>
+                    <span>Rekam Suara</span>
                 </button>
-                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
-                    <i class="fa-solid fa-highlighter text-[11px]"></i>
-                    <span>Teks & Hook</span>
+                <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                    <i class="fa-solid fa-font text-[11px]"></i>
+                    <span>Teks & Layout</span>
                 </button>
-                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
-                    <i class="fa-solid fa-photo-film text-[11px]"></i>
+                <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                    <i class="fa-solid fa-image text-[11px]"></i>
                     <span>Latar</span>
                 </button>
-                <button onclick="switchTab('tab-copyright')" id="tab-btn-copyright" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
-                    <i class="fa-solid fa-shield-halved text-[11px]"></i>
-                    <span>Anti-Copyright</span>
+                <button onclick="switchTab('tab-copyright')" id="tab-btn-copyright" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                    <i class="fa-solid fa-sliders text-[11px]"></i>
+                    <span>Audio FX</span>
                 </button>
-                <button onclick="switchTab('tab-publisher')" id="tab-btn-publisher" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
-                    <i class="fa-solid fa-paper-plane text-[11px]"></i>
+                <button onclick="switchTab('tab-publisher')" id="tab-btn-publisher" class="tab-btn px-3 py-2 rounded-t-md border-b-2 border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
+                    <i class="fa-solid fa-share-nodes text-[11px]"></i>
                     <span>Publish</span>
                 </button>
             </div>
@@ -349,120 +341,112 @@
                 </div>
 
                 <!-- TAB 1: AYAT & QARI -->
-                <div id="tab-ayat" class="tab-content hidden space-y-3">
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Surat Al-Quran</label>
+                <div id="tab-ayat" class="tab-content hidden space-y-3.5">
+                    <div class="space-y-1.5">
+                        <label for="select-surah" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Pilih Surat Al-Quran</label>
                         <select id="select-surah" onchange="onSurahChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <!-- 114 Surahs -->
                         </select>
                     </div>
 
                     <!-- Verse Range Selection -->
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
-                        <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                        <div class="grid grid-cols-2 gap-2.5">
                             <div class="space-y-1">
-                                <label class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Mulai Ayat:</label>
-                                <input type="number" id="input-verse-start" min="1" max="7" value="1" onchange="onVerseRangeChange()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md py-1.5 text-xs font-bold text-center text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
+                                <label for="input-verse-start" class="text-[11px] font-medium text-slate-600 dark:text-slate-400">Mulai Ayat</label>
+                                <input type="number" id="input-verse-start" min="1" max="7" value="1" onchange="onVerseRangeChange()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md py-1.5 px-2 text-xs font-bold text-center text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
                             </div>
                             <div class="space-y-1">
-                                <label class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Sampai Ayat:</label>
-                                <input type="number" id="input-verse-end" min="1" max="7" value="3" onchange="onVerseRangeChange()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md py-1.5 text-xs font-bold text-center text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
+                                <label for="input-verse-end" class="text-[11px] font-medium text-slate-600 dark:text-slate-400">Sampai Ayat</label>
+                                <input type="number" id="input-verse-end" min="1" max="7" value="3" onchange="onVerseRangeChange()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md py-1.5 px-2 text-xs font-bold text-center text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
                             </div>
                         </div>
-                        <div class="flex items-center justify-between pt-1 border-t border-slate-200 dark:border-slate-800 text-[10px]">
+                        <div class="flex items-center justify-between pt-1.5 border-t border-slate-200 dark:border-slate-800 text-[11px]">
                             <span id="total-verse-selected-info" class="text-brand-600 dark:text-brand-400 font-bold">3 ayat dipilih</span>
                             <div class="flex gap-1">
-                                <button onclick="setSingleVerseMode()" class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">1 Ayat</button>
-                                <button onclick="setPresetVerses(3)" class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">3 Ayat</button>
-                                <button onclick="setPresetVerses(5)" class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">5 Ayat</button>
+                                <button onclick="setSingleVerseMode()" class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">1 Ayat</button>
+                                <button onclick="setPresetVerses(3)" class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">3 Ayat</button>
+                                <button onclick="setPresetVerses(5)" class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold transition">5 Ayat</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Qari Selector with License Indicator -->
-                    <div class="space-y-1">
+                    <!-- Qari Selector with Clear Distinction -->
+                    <div class="space-y-1.5">
                         <div class="flex items-center justify-between">
-                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Suara Qari Internasional</label>
-                            <span id="qari-license-badge" class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">🟢 Public Domain / Safe</span>
+                            <label for="select-qari" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Suara Qari</label>
+                            <span id="qari-license-badge" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">Lisensi Aman</span>
                         </div>
                         <select id="select-qari" onchange="onQariChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <option value="ar.alafasy">Mishary Rashid Alafasy</option>
-                            <option value="ar.abdulbasitmurattal">Abdul Basit Murattal (Safe CC0)</option>
+                            <option value="ar.abdulbasitmurattal">Abdul Basit Murattal (Classic)</option>
                             <option value="ar.abdurrahmaansudais">Abdurrahman As-Sudais</option>
                             <option value="ar.mahermuaiqly">Maher Al-Muaiqly</option>
                             <option value="ar.saadalghamidi">Saad Al-Ghamdi</option>
-                            <option value="ar.hudhaify">Ali Al-Hudhaify (High Safe)</option>
+                            <option value="ar.hudhaify">Ali Al-Hudhaify</option>
                             <option value="ar.shaatree">Abu Bakr Al-Shatri</option>
                             <option value="ar.hanirifai">Hani Ar-Rifai</option>
-                            <option value="ar.minshawi">Muhammad Siddiq Al-Minshawi (Classic)</option>
+                            <option value="ar.minshawi">Muhammad Siddiq Al-Minshawi</option>
                         </select>
                     </div>
 
                     <!-- Translation Language -->
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Bahasa Terjemahan</label>
+                    <div class="space-y-1.5">
+                        <label for="select-translation-lang" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Bahasa Terjemahan</label>
                         <select id="select-translation-lang" onchange="onTranslationLangChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <option value="id">Bahasa Indonesia (Kemenag)</option>
-                            <option value="en">English Translation (Sahih Int.)</option>
+                            <option value="en">English Translation (Sahih International)</option>
                         </select>
                     </div>
 
-                    <!-- Text Toggles -->
-                    <div class="grid grid-cols-3 gap-1.5 text-[11px] pt-1">
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-arabic" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">Arab</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-latin" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">Latin</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-translation" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">Arti</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-surah-header" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">Header</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-verse-badge" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">No. Ayat</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-watermark" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
-                            <span class="text-slate-700 dark:text-slate-300">Branding</span>
-                        </label>
-                    </div>
-
-                    <!-- Watermark Custom Text -->
-                    <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 p-1.5 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <select id="select-watermark-icon" onchange="onWatermarkChange()" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-brand-600 dark:text-brand-400 rounded px-1.5 py-1 outline-none">
-                            <option value="tiktok">🎵 TikTok</option>
-                            <option value="instagram">📸 IG Reels</option>
-                            <option value="youtube">▶ YouTube</option>
-                        </select>
-                        <input type="text" id="input-watermark-text" value="@quran.daily" oninput="onWatermarkChange()" class="w-full bg-transparent text-xs text-slate-800 dark:text-white outline-none" placeholder="@nama_akun">
+                    <!-- Text Element Toggles -->
+                    <div class="space-y-1.5">
+                        <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">Elemen Teks di Kanvas</span>
+                        <div class="grid grid-cols-3 gap-1.5 text-xs">
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-arabic" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Arab</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-latin" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Latin</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-translation" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Terjemah</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-surah-header" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Header Surat</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-verse-badge" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Nomor Ayat</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
+                                <input type="checkbox" id="toggle-waveform-switch" checked onchange="onWaveformToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
+                                <span class="text-slate-700 dark:text-slate-300">Gelombang</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
                 <!-- TAB: SUARA SENDIRI (REKAM INTERAKTIF DENGAN PANDUAN AYAT) -->
                 <div id="tab-custom-voice" class="tab-content hidden space-y-3.5">
-                    <div class="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 space-y-1.5">
-                        <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-300">
-                            <i class="fa-solid fa-microphone-lines"></i>
-                            <span>Studio Rekam Suara Langsung (Live Teleprompter)</span>
-                        </div>
-                        <p class="text-[11px] text-emerald-700 dark:text-emerald-400">
-                            Pilih surat & rentang ayat di tab <b>Ayat & Qari</b>, lalu baca langsung ke mic sambil melihat teks Arab dan visualizer live!
+                    <div class="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 space-y-1">
+                        <span class="text-xs font-bold text-emerald-900 dark:text-emerald-300 flex items-center gap-1.5">
+                            <i class="fa-solid fa-microphone text-emerald-600"></i> Rekam Suara Langsung (Live Teleprompter)
+                        </span>
+                        <p class="text-[11px] text-emerald-800 dark:text-emerald-400">
+                            Pilih surat & rentang ayat di tab <b>Ayat & Qari</b>, lalu baca langsung ke mic sambil melihat teks Arab dan visualizer live.
                         </p>
                     </div>
 
                     <!-- Voice Recorder & Teleprompter Box -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                                <i class="fa-solid fa-microphone text-emerald-500"></i> Rekam Bacaan Sendiri
+                            <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-dot text-emerald-500"></i> Perekam Suara
                             </span>
                             <span id="record-timer" class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">00:00</span>
                         </div>
@@ -472,152 +456,142 @@
                             <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
                                 <span>Panduan Bacaan:</span>
                                 <div class="flex items-center gap-1">
-                                    <button onclick="prevTeleprompterVerse()" class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px]"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <button onclick="prevTeleprompterVerse()" class="p-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px] min-w-[24px] min-h-[24px]" aria-label="Ayat Panduan Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
                                     <span id="teleprompter-verse-badge" class="font-bold text-brand-600">Ayat 1</span>
-                                    <button onclick="nextTeleprompterVerse()" class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px]"><i class="fa-solid fa-chevron-right"></i></button>
+                                    <button onclick="nextTeleprompterVerse()" class="p-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px] min-w-[24px] min-h-[24px]" aria-label="Ayat Panduan Berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
                                 </div>
                             </div>
                             <div id="teleprompter-arabic" class="text-center font-arabic text-lg font-bold text-slate-900 dark:text-white py-1 leading-loose">
                                 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
                             </div>
-                            <div id="teleprompter-translation" class="text-center text-[11px] text-slate-500 dark:text-slate-400 italic">
+                            <div id="teleprompter-translation" class="text-center text-[11px] text-slate-600 dark:text-slate-400 italic">
                                 "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
                             </div>
                         </div>
 
                         <!-- Mic Controls -->
                         <div class="space-y-2">
-                            <button id="btn-record-mic" onclick="toggleVoiceRecording()" class="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                            <button id="btn-record-mic" onclick="toggleVoiceRecording()" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
                                 <i id="record-mic-icon" class="fa-solid fa-microphone"></i>
                                 <span id="record-mic-label">Mulai Rekam Suara ke Mic</span>
                             </button>
 
                             <div id="mic-live-indicator" class="hidden flex items-center justify-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 animate-pulse">
                                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                                <span>Mikrofon aktif! Visualizer gelombang merespon suara Anda.</span>
+                                <span>Mikrofon aktif. Silakan mulai membaca.</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Upload Audio File -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
-                        <label class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                            <i class="fa-solid fa-file-audio text-brand-500"></i> Atau Upload File Audio Sendiri (.mp3 / .wav / .m4a)
+                        <label for="input-custom-audio-file" class="text-xs font-semibold text-slate-800 dark:text-slate-200 block">
+                            Atau Upload File Audio (.mp3 / .wav / .m4a)
                         </label>
                         <input type="file" id="input-custom-audio-file" accept="audio/*" onchange="handleCustomAudioUpload(event)" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 dark:file:bg-brand-500/20 file:text-brand-600 dark:file:text-brand-300 hover:file:bg-brand-100 cursor-pointer">
                         <div id="custom-audio-status" class="hidden flex items-center justify-between p-2 rounded bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
                             <span><i class="fa-solid fa-circle-check mr-1 text-emerald-500"></i> Audio suara kustom terpasang aktif.</span>
                             <button onclick="resetVoiceRecording()" class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/40 text-[10px] font-bold transition flex items-center gap-1">
-                                <i class="fa-solid fa-trash-can"></i> Hapus Rekaman
+                                <i class="fa-solid fa-trash-can"></i> Hapus
                             </button>
                         </div>
                     </div>
 
-                    <!-- Voice Processing & Studio Vocal Cleaner Suite -->
+                    <!-- Studio Vocal Cleaner Suite -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Studio Voice Processing & Filter
-                            </span>
-                            <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 px-1.5 py-0.5 rounded border border-brand-200 dark:border-brand-500/20">Studio Quality</span>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">Studio Voice Processing</span>
+                            <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 px-1.5 py-0.5 rounded border border-brand-200 dark:border-brand-500/20">Studio Master</span>
                         </div>
                         
                         <div class="space-y-1.5 pt-0.5">
-                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer">
                                 <div class="flex items-center gap-2">
                                     <input type="checkbox" id="toggle-voice-denoise" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
                                     <div class="flex flex-col">
-                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">De-Noise & Low-Cut (80Hz)</span>
-                                        <span class="text-[10px] text-slate-500">Menghilangkan dengung, hembusan angin & suara gemuruh mic</span>
+                                        <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">De-Noise & Low-Cut (80Hz)</span>
+                                        <span class="text-[10px] text-slate-500">Menghilangkan dengung & gemuruh mic</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ON</span>
                             </label>
 
-                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer">
                                 <div class="flex items-center gap-2">
                                     <input type="checkbox" id="toggle-voice-clarity" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
                                     <div class="flex flex-col">
-                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Vocal Air & Clarity Boost (3.5kHz)</span>
-                                        <span class="text-[10px] text-slate-500">Menambah kejernihan tajwid & kemerduan artikulasi suara</span>
+                                        <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">Vocal Air & Clarity Boost (3.5kHz)</span>
+                                        <span class="text-[10px] text-slate-500">Menambah kejernihan artikulasi bacaan</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ON</span>
                             </label>
 
-                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer">
                                 <div class="flex items-center gap-2">
                                     <input type="checkbox" id="toggle-voice-compressor" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
                                     <div class="flex flex-col">
-                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Studio Dynamics Compressor</span>
-                                        <span class="text-[10px] text-slate-500">Menstabilkan volume vokal agar rata dan empuk seperti rekaman studio</span>
+                                        <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">Studio Dynamics Compressor</span>
+                                        <span class="text-[10px] text-slate-500">Menjaga level volume vokal tetap konsisten</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ON</span>
                             </label>
-                        </div>
-
-                        <!-- Clarity Gain Slider -->
-                        <div class="space-y-1 pt-1">
-                            <div class="flex justify-between text-[11px]">
-                                <span class="font-bold text-slate-700 dark:text-slate-300">Intensitas Kejernihan (Air Boost)</span>
-                                <span id="val-voice-clarity" class="font-mono text-brand-600 dark:text-brand-400 font-bold">+4.0 dB</span>
-                            </div>
-                            <input type="range" id="slider-voice-clarity" min="0" max="10" step="0.5" value="4" oninput="onVoiceClarityGainChange(this.value)" class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
                         </div>
                     </div>
 
                     <!-- Switch Back to Qari -->
                     <div class="pt-1">
-                        <button onclick="resetToOfficialQari()" class="w-full py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition">
+                        <button onclick="resetToOfficialQari()" class="w-full py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition">
                             <i class="fa-solid fa-rotate-left mr-1"></i> Kembali ke Suara Qari Standar
                         </button>
                     </div>
                 </div>
 
-                <!-- TAB 2: TEKS, SOROT WARNA & OPENING HOOK -->
+                <!-- TAB 2: TEKS & LAYOUT -->
                 <div id="tab-style" class="tab-content hidden space-y-3.5">
+                    
                     <!-- Color Swatches -->
                     <div class="space-y-1.5">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Warna Sorot Teks</label>
+                        <label class="text-xs font-semibold text-slate-800 dark:text-slate-200">Warna Sorot Teks</label>
                         <div class="grid grid-cols-6 gap-1.5">
-                            <button onclick="setHighlightColor('#f59e0b')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-amber-500 flex items-center justify-center">
+                            <button onclick="setHighlightColor('#f59e0b')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-amber-500 flex items-center justify-center" aria-label="Warna Emas">
                                 <div class="w-5 h-5 rounded-full bg-[#f59e0b]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#10b981')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                            <button onclick="setHighlightColor('#10b981')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center" aria-label="Warna Hijau Zamrud">
                                 <div class="w-5 h-5 rounded-full bg-[#10b981]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#06b6d4')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                            <button onclick="setHighlightColor('#06b6d4')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center" aria-label="Warna Cyan Biru">
                                 <div class="w-5 h-5 rounded-full bg-[#06b6d4]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#f43f5e')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                            <button onclick="setHighlightColor('#f43f5e')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center" aria-label="Warna Merah Rose">
                                 <div class="w-5 h-5 rounded-full bg-[#f43f5e]"></div>
                             </button>
-                            <button onclick="setHighlightColor('#ffffff')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                            <button onclick="setHighlightColor('#ffffff')" class="hl-swatch p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center" aria-label="Warna Putih Bersih">
                                 <div class="w-5 h-5 rounded-full bg-[#ffffff] border border-slate-400"></div>
                             </button>
-                            <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
-                                <input type="color" id="custom-highlight-picker" value="#f59e0b" oninput="setHighlightColor(this.value)" onchange="setHighlightColor(this.value)" class="w-5 h-5 rounded-full bg-transparent cursor-pointer border-0 p-0">
+                            <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center" title="Pilih Warna Kustom">
+                                <input type="color" id="custom-highlight-picker" value="#f59e0b" oninput="setHighlightColor(this.value)" onchange="setHighlightColor(this.value)" class="w-5 h-5 rounded-full bg-transparent cursor-pointer border-0 p-0" aria-label="Warna Sorot Kustom">
                             </div>
                         </div>
                     </div>
 
                     <!-- Highlight Mode -->
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Mode Animasi Sorot</label>
+                    <div class="space-y-1.5">
+                        <label for="select-highlight-mode" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Mode Animasi Sorot</label>
                         <select id="select-highlight-mode" onchange="onHighlightModeChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
-                            <option value="word-by-word">🔤 Sorot Kata per Kata (Word-by-Word)</option>
-                            <option value="karaoke">✨ Karaoke Sweep (Geser Mengalir)</option>
-                            <option value="verse-glow">🌟 Verse Glowing Pulse (Menyala Per Ayat)</option>
-                            <option value="glass-card">🎴 Glass Box Active (Kotak Kaca)</option>
+                            <option value="word-by-word">Sorot Kata per Kata (Word-by-Word)</option>
+                            <option value="karaoke">Karaoke Sweep (Mengalir Halus)</option>
+                            <option value="verse-glow">Verse Glowing Pulse (Menyala Per Ayat)</option>
+                            <option value="glass-card">Glass Card Active (Kotak Kaca)</option>
                         </select>
                     </div>
 
                     <!-- Opening Hook Card -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
                         <div class="flex items-center justify-between">
-                            <label class="text-[11px] font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-                                <i class="fa-solid fa-bullhorn"></i> Opening Hook (3 Detik Pertama)
+                            <label for="toggle-hook" class="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                                Opening Hook (3 Detik Awal)
                             </label>
                             <input type="checkbox" id="toggle-hook" checked onchange="onHookToggleChange()" class="accent-brand-500 w-4 h-4">
                         </div>
@@ -628,17 +602,17 @@
                                 <option value="Baca ini sebelum kamu tidur malam ini...">"Baca ini sebelum tidur malam ini..."</option>
                                 <option value="custom">Tulis Hook Sendiri...</option>
                             </select>
-                            <input type="text" id="input-hook-custom" value="Dengarkan ayat ini saat hatimu sedang lelah..." oninput="onHookCustomInputChange(this.value)" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none">
+                            <input type="text" id="input-hook-custom" value="Dengarkan ayat ini saat hatimu sedang lelah..." oninput="onHookCustomInputChange(this.value)" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Teks hook pembuka...">
                         </div>
                     </div>
 
-                    <!-- Arabic Font -->
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Font Arab</label>
+                    <!-- Arabic Font Selection -->
+                    <div class="space-y-1.5">
+                        <label for="select-arabic-font" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Font Kaligrafi Arab</label>
                         <select id="select-arabic-font" onchange="onArabicFontChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
-                            <option value="'Amiri', serif">Amiri Quran (Klasik)</option>
-                            <option value="'Noto Naskh Arabic', serif">Noto Naskh (Modern)</option>
-                            <option value="'Scheherazade New', serif">Scheherazade (Indah)</option>
+                            <option value="'Amiri', serif">Amiri Quran (Klasik Standar)</option>
+                            <option value="'Noto Naskh Arabic', serif">Noto Naskh (Modern Bersih)</option>
+                            <option value="'Scheherazade New', serif">Scheherazade (Indah Tradisional)</option>
                             <option value="'Lateef', serif">Lateef (Utsmani Tebal)</option>
                         </select>
                     </div>
@@ -646,48 +620,48 @@
                     <!-- Layout Position Presets & Vertical Offset -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Tata Letak & Posisi Teks</label>
+                            <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">Tata Letak & Posisi Teks</span>
                             <span class="text-[10px] text-brand-600 dark:text-brand-400 font-bold">Preset Posisi</span>
                         </div>
 
                         <div class="grid grid-cols-3 gap-1.5 text-xs">
                             <button id="btn-layout-top" onclick="setLayoutPreset('top')" class="layout-preset-btn p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center hover:border-brand-500 transition">
                                 <i class="fa-solid fa-align-left text-slate-400 text-xs mb-0.5 block"></i>
-                                <span class="text-[10px] font-bold text-slate-800 dark:text-slate-200">Fokus Atas</span>
+                                <span class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Fokus Atas</span>
                             </button>
                             <button id="btn-layout-center" onclick="setLayoutPreset('center')" class="layout-preset-btn active p-2 rounded-lg bg-white dark:bg-slate-900 border-2 border-brand-500 text-center transition">
                                 <i class="fa-solid fa-align-center text-brand-500 text-xs mb-0.5 block"></i>
-                                <span class="text-[10px] font-bold text-slate-800 dark:text-slate-200">Tengah Layar</span>
+                                <span class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Tengah Layar</span>
                             </button>
                             <button id="btn-layout-bottom" onclick="setLayoutPreset('bottom')" class="layout-preset-btn p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center hover:border-brand-500 transition">
                                 <i class="fa-solid fa-closed-captioning text-slate-400 text-xs mb-0.5 block"></i>
-                                <span class="text-[10px] font-bold text-slate-800 dark:text-slate-200">Subtitle Bawah</span>
+                                <span class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Subtitle Bawah</span>
                             </button>
                         </div>
 
                         <!-- Vertical Offset Fine Tuner -->
-                        <div class="space-y-1 pt-1 border-t border-slate-200 dark:border-slate-800">
+                        <div class="space-y-1 pt-1.5 border-t border-slate-200 dark:border-slate-800">
                             <div class="flex justify-between text-[11px] text-slate-700 dark:text-slate-300">
                                 <span>Geser Posisi Vertikal (Y):</span>
                                 <span id="val-vertical-offset" class="font-mono font-bold text-brand-600 dark:text-brand-400">0 px</span>
                             </div>
-                            <input type="range" id="range-vertical-offset" min="-300" max="300" value="0" step="5" oninput="onVerticalOffsetChange(this.value)" class="w-full">
+                            <input type="range" id="range-vertical-offset" min="-300" max="300" value="0" step="5" oninput="onVerticalOffsetChange(this.value)" class="w-full" aria-label="Geser Posisi Vertikal">
                         </div>
                     </div>
 
-                    <!-- Branding, Watermark & Logo Channel Overlay -->
+                    <!-- Branding & Watermark Overlay -->
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Branding & Logo Akun</label>
+                            <label for="toggle-watermark-switch" class="text-xs font-semibold text-slate-800 dark:text-slate-200">Branding & Logo Akun</label>
                             <input type="checkbox" id="toggle-watermark-switch" checked onchange="onWatermarkToggleChange()" class="accent-brand-500 w-4 h-4">
                         </div>
 
                         <div class="space-y-2">
                             <div class="grid grid-cols-3 gap-1.5">
                                 <select id="select-watermark-icon" onchange="onWatermarkIconChange()" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none">
-                                    <option value="tiktok">🎵 TikTok</option>
-                                    <option value="instagram">📸 Instagram</option>
-                                    <option value="youtube">▶ YouTube</option>
+                                    <option value="tiktok">TikTok</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="youtube">YouTube</option>
                                     <option value="none">Tanpa Ikon</option>
                                 </select>
                                 <input type="text" id="input-watermark-text" value="@quran.daily" oninput="onWatermarkTextChange(this.value)" class="col-span-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Username akun...">
@@ -704,8 +678,8 @@
                             </div>
 
                             <!-- Custom PNG Logo File Upload -->
-                            <div class="pt-1 border-t border-slate-200 dark:border-slate-800">
-                                <label class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 block mb-1">Upload Logo Gambar Transparan (.PNG):</label>
+                            <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800">
+                                <label for="input-logo-file" class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 block mb-1">Upload Logo Transparan (.PNG):</label>
                                 <input type="file" id="input-logo-file" accept="image/png,image/webp" onchange="handleLogoImageUpload(event)" class="w-full text-[10px] text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-slate-200 dark:file:bg-slate-800 file:text-slate-700 dark:file:text-slate-200 cursor-pointer">
                             </div>
                         </div>
@@ -715,16 +689,16 @@
                     <div class="p-3 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 space-y-2">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
-                                <i class="fa-solid fa-floppy-disk"></i> Simpan Template Saya
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan Setelan Default
                             </span>
                             <span id="save-status-badge" class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">Tersimpan otomatis</span>
                         </div>
-                        <p class="text-[10px] text-emerald-700 dark:text-emerald-400">Simpan warna sorot, font, ukuran, dan nama akun ini agar otomatis dimuat saat Anda membuka web di lain waktu.</p>
+                        <p class="text-[10px] text-emerald-700 dark:text-emerald-400">Pengaturan warna, font, dan branding ini otomatis dimuat setiap kali Anda membuka studio.</p>
                         <div class="flex gap-1.5 pt-0.5">
                             <button onclick="saveProjectToLocalStorage()" class="flex-1 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition">
-                                Simpan Sebagai Default
+                                Simpan Setelan
                             </button>
-                            <button onclick="resetPreferencesToDefault()" class="px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Reset ke setelan pabrik">
+                            <button onclick="resetPreferencesToDefault()" class="px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                                 Reset
                             </button>
                         </div>
