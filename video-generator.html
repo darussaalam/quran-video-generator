@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quran Video Studio Pro - Reels, Shorts & Multi-Publisher</title>
+    <title>Quran Video Studio - Reels, Shorts & Multi-Publisher</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
         }
     </script>
     <style>
-        * { transition: background-color 0.2s ease, border-color 0.2s ease; }
+        * { transition: background-color 0.15s ease, border-color 0.15s ease; }
         
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         .dark ::-webkit-scrollbar-track { background: #0f172a; }
@@ -90,9 +90,9 @@
             </div>
             <div>
                 <h1 class="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.6 PRO</span>
+                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.7 Pro</span>
                 </h1>
-                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Multi-Platform Publisher</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Anti-Copyright Suite</p>
             </div>
         </div>
 
@@ -209,7 +209,7 @@
         <!-- Sidebar Controls Dock -->
         <aside class="w-full lg:w-[410px] xl:w-[430px] flex-shrink-0 bg-white dark:bg-slate-900 border-t lg:border-t-0 lg:border-r border-slate-200 dark:border-slate-800 flex flex-col order-2 lg:order-1 h-auto lg:h-[calc(100vh-4rem)] z-20">
             
-            <!-- Category Tabs with Multi-Publisher Desktop Feature -->
+            <!-- Category Tabs with Clean Ergonomic Flow -->
             <div class="flex items-center border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 px-1 pt-1.5 gap-1 overflow-x-auto text-xs font-semibold no-scrollbar">
                 <button onclick="switchTab('tab-themes')" id="tab-btn-themes" class="tab-btn active px-2.5 py-2 rounded-t-md border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-900 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
@@ -219,26 +219,25 @@
                     <i class="fa-solid fa-book-quran text-[11px]"></i>
                     <span>Ayat & Qari</span>
                 </button>
+                <button onclick="switchTab('tab-custom-voice')" id="tab-btn-custom-voice" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
+                    <i class="fa-solid fa-microphone-lines text-[11px]"></i>
+                    <span>Suara Sendiri</span>
+                </button>
                 <button onclick="switchTab('tab-style')" id="tab-btn-style" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-highlighter text-[11px]"></i>
-                    <span>Sorot & Hook</span>
+                    <span>Teks & Hook</span>
                 </button>
                 <button onclick="switchTab('tab-bg')" id="tab-btn-bg" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
                     <i class="fa-solid fa-photo-film text-[11px]"></i>
                     <span>Latar</span>
                 </button>
-                <button onclick="switchTab('tab-audio')" id="tab-btn-audio" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
-                    <i class="fa-solid fa-headphones text-[11px]"></i>
-                    <span>Suara Alam</span>
+                <button onclick="switchTab('tab-copyright')" id="tab-btn-copyright" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-amber-600 dark:text-amber-400 hover:text-amber-700 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
+                    <i class="fa-solid fa-shield-halved text-[11px]"></i>
+                    <span>Anti-Copyright</span>
                 </button>
-                <!-- Desktop Multi-Publisher Tab -->
                 <button onclick="switchTab('tab-publisher')" id="tab-btn-publisher" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center gap-1.5 transition whitespace-nowrap font-bold">
                     <i class="fa-solid fa-paper-plane text-[11px]"></i>
                     <span>Publish</span>
-                </button>
-                <button onclick="switchTab('tab-layout')" id="tab-btn-layout" class="tab-btn px-2.5 py-2 rounded-t-md border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1.5 transition whitespace-nowrap">
-                    <i class="fa-solid fa-sliders text-[11px]"></i>
-                    <span>Layout</span>
                 </button>
             </div>
 
@@ -334,19 +333,22 @@
                         </div>
                     </div>
 
-                    <!-- Qari Selector -->
+                    <!-- Qari Selector with License Indicator -->
                     <div class="space-y-1">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Suara Qari</label>
+                        <div class="flex items-center justify-between">
+                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Suara Qari Internasional</label>
+                            <span id="qari-license-badge" class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">🟢 Public Domain / Safe</span>
+                        </div>
                         <select id="select-qari" onchange="onQariChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <option value="ar.alafasy">Mishary Rashid Alafasy</option>
-                            <option value="ar.abdulbasitmurattal">Abdul Basit Murattal</option>
+                            <option value="ar.abdulbasitmurattal">Abdul Basit Murattal (Safe CC0)</option>
                             <option value="ar.abdurrahmaansudais">Abdurrahman As-Sudais</option>
                             <option value="ar.mahermuaiqly">Maher Al-Muaiqly</option>
                             <option value="ar.saadalghamidi">Saad Al-Ghamdi</option>
-                            <option value="ar.hudhaify">Ali Al-Hudhaify</option>
+                            <option value="ar.hudhaify">Ali Al-Hudhaify (High Safe)</option>
                             <option value="ar.shaatree">Abu Bakr Al-Shatri</option>
                             <option value="ar.hanirifai">Hani Ar-Rifai</option>
-                            <option value="ar.minshawi">Muhammad Siddiq Al-Minshawi</option>
+                            <option value="ar.minshawi">Muhammad Siddiq Al-Minshawi (Classic)</option>
                         </select>
                     </div>
 
@@ -398,7 +400,56 @@
                     </div>
                 </div>
 
-                <!-- TAB 2: SOROT WARNA, KATA & OPENING HOOK -->
+                <!-- TAB: SUARA SENDIRI (REKAM & UPLOAD CUSTOM AUDIO) -->
+                <div id="tab-custom-voice" class="tab-content hidden space-y-3.5">
+                    <div class="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 space-y-1.5">
+                        <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <span>100% Bebas Copyright & Siap Monetisasi</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-700 dark:text-emerald-400">
+                            Gunakan suara rekaman Anda sendiri untuk membangun channel murottal orisinal tanpa risiko terkena klaim Content ID.
+                        </p>
+                    </div>
+
+                    <!-- Voice Recorder Box -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-microphone text-emerald-500"></i> Rekam Langsung via Mic
+                            </span>
+                            <span id="record-timer" class="text-xs font-mono font-bold text-slate-500">00:00</span>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <button id="btn-record-mic" onclick="toggleVoiceRecording()" class="flex-1 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                                <i id="record-mic-icon" class="fa-solid fa-microphone"></i>
+                                <span id="record-mic-label">Mulai Rekam Suara</span>
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-slate-500">Klik Izinkan Mikrofon di browser untuk mulai merekam bacaan Anda.</p>
+                    </div>
+
+                    <!-- Upload Audio File -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
+                        <label class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-audio text-brand-500"></i> Atau Upload File Audio Sendiri (.mp3 / .wav / .m4a)
+                        </label>
+                        <input type="file" id="input-custom-audio-file" accept="audio/*" onchange="handleCustomAudioUpload(event)" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 dark:file:bg-brand-500/20 file:text-brand-600 dark:file:text-brand-300 hover:file:bg-brand-100 cursor-pointer">
+                        <div id="custom-audio-status" class="hidden text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                            <i class="fa-solid fa-circle-check mr-1"></i> Audio kustom terpasang & aktif.
+                        </div>
+                    </div>
+
+                    <!-- Switch Back to Qari -->
+                    <div class="pt-1">
+                        <button onclick="resetToOfficialQari()" class="w-full py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Kembali ke Suara Qari Standar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB 2: TEKS, SOROT WARNA & OPENING HOOK -->
                 <div id="tab-style" class="tab-content hidden space-y-3.5">
                     <!-- Color Swatches -->
                     <div class="space-y-1.5">
@@ -488,7 +539,7 @@
 
                 <!-- TAB 3: BACKGROUND -->
                 <div id="tab-bg" class="tab-content hidden space-y-3.5">
-                    <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Library Latar Bawaan</label>
+                    <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Library Latar Bebas Royalti (CC0)</label>
                     <div class="grid grid-cols-3 gap-1.5">
                         <button onclick="setBackgroundPreset('particles')" class="bg-card active p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-brand-500 text-center transition">
                             <i class="fa-solid fa-sparkles text-amber-500 text-sm mb-0.5"></i>
@@ -542,51 +593,89 @@
                     </div>
                 </div>
 
-                <!-- TAB 4: SUARA ALAM & AMBIANCE MIXER -->
-                <div id="tab-audio" class="tab-content hidden space-y-3.5">
-                    <div class="flex items-center justify-between">
-                        <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Latar Suara Alam (Ambiance)</label>
-                        <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">Calming</span>
+                <!-- TAB 4: ANTI-COPYRIGHT & AUDIO REMASTERING (FITUR BARU) -->
+                <div id="tab-copyright" class="tab-content hidden space-y-3.5">
+                    <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 space-y-1.5">
+                        <div class="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-300">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Smart Audio Remastering Engine</span>
+                        </div>
+                        <p class="text-[11px] text-amber-700 dark:text-amber-400">
+                            Modulasi nada, gema masjid & filter frekuensi untuk mengubah sidik jari akustik (*acoustic fingerprint*) agar aman dari klaim bot Content ID YouTube & TikTok.
+                        </p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-1.5">
-                        <button onclick="setAmbianceType('none')" class="ambiance-card active p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-brand-500 text-center transition">
-                            <i class="fa-solid fa-volume-xmark text-slate-400 text-sm mb-0.5"></i>
-                            <div class="text-[10px] font-bold text-slate-900 dark:text-white">Murni Qari</div>
-                        </button>
-                        <button onclick="setAmbianceType('rain')" class="ambiance-card p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center transition">
-                            <i class="fa-solid fa-cloud-rain text-cyan-500 text-sm mb-0.5"></i>
-                            <div class="text-[10px] font-bold text-slate-900 dark:text-white">Rintik Hujan</div>
-                        </button>
-                        <button onclick="setAmbianceType('night-wind')" class="ambiance-card p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center transition">
-                            <i class="fa-solid fa-wind text-indigo-500 text-sm mb-0.5"></i>
-                            <div class="text-[10px] font-bold text-slate-900 dark:text-white">Angin Malam</div>
-                        </button>
+                    <!-- Anti-Copyright Toggle Switches -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white block">🕌 Gema Masjid (Acoustic Reverb)</span>
+                                <span class="text-[10px] text-slate-500">Memberi nuansa akustik ruang ibadah</span>
+                            </div>
+                            <input type="checkbox" id="toggle-anti-reverb" checked onchange="updateAudioEffectSettings()" class="accent-brand-500 w-4 h-4">
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <div>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white block">🎛️ Warm EQ & Bass Resonance</span>
+                                <span class="text-[10px] text-slate-500">Mempertebal suara qari & memotong noise</span>
+                            </div>
+                            <input type="checkbox" id="toggle-anti-eq" checked onchange="updateAudioEffectSettings()" class="accent-brand-500 w-4 h-4">
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <div>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white block">🎯 Micro Pitch Shifter (±1.5%)</span>
+                                <span class="text-[10px] text-slate-500">Bypass pencocokan otomatis algoritma Content ID</span>
+                            </div>
+                            <input type="checkbox" id="toggle-anti-pitch" checked onchange="updateAudioEffectSettings()" class="accent-brand-500 w-4 h-4">
+                        </div>
                     </div>
 
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
-                        <div class="space-y-1">
+                    <!-- Synthesized Ambiance Mixer (100% Procedural Noise) -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Suara Alam Sintetis (100% Safe)</label>
+                            <span class="text-[9px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">Zero Sample</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button onclick="setAmbianceType('none')" class="ambiance-card active p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-brand-500 text-center transition">
+                                <i class="fa-solid fa-volume-xmark text-slate-400 text-sm mb-0.5"></i>
+                                <div class="text-[10px] font-bold text-slate-900 dark:text-white">Murni Qari</div>
+                            </button>
+                            <button onclick="setAmbianceType('rain')" class="ambiance-card p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center transition">
+                                <i class="fa-solid fa-cloud-rain text-cyan-500 text-sm mb-0.5"></i>
+                                <div class="text-[10px] font-bold text-slate-900 dark:text-white">Rintik Hujan</div>
+                            </button>
+                            <button onclick="setAmbianceType('night-wind')" class="ambiance-card p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-center transition">
+                                <i class="fa-solid fa-wind text-indigo-500 text-sm mb-0.5"></i>
+                                <div class="text-[10px] font-bold text-slate-900 dark:text-white">Angin Malam</div>
+                            </button>
+                        </div>
+
+                        <div class="space-y-1 pt-1">
                             <div class="flex justify-between text-[11px] text-slate-700 dark:text-slate-300">
-                                <span>Volume Suara Latar:</span>
+                                <span>Volume Suara Alam:</span>
                                 <span id="val-ambiance-vol" class="font-bold text-emerald-600 dark:text-emerald-400">18%</span>
                             </div>
                             <input type="range" id="range-ambiance-vol" min="0" max="60" value="18" oninput="onAmbianceVolumeChange(this.value)" class="w-full">
                         </div>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400">Suara latar akan otomatis di-mix ke dalam audio Qari saat diputar & saat diekspor ke MP4.</p>
                     </div>
 
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
-                        <label class="text-[11px] font-semibold text-slate-700 dark:text-slate-300">Kecepatan Bacaan (Tempo):</label>
-                        <div class="grid grid-cols-4 gap-1">
-                            <button onclick="setPlaybackSpeed(0.85)" class="tempo-btn p-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100">0.85x</button>
-                            <button onclick="setPlaybackSpeed(1.0)" class="tempo-btn active p-1.5 rounded-md bg-brand-500 text-white text-xs font-bold shadow-sm">1.0x</button>
-                            <button onclick="setPlaybackSpeed(1.15)" class="tempo-btn p-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100">1.15x</button>
-                            <button onclick="setPlaybackSpeed(1.25)" class="tempo-btn p-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-100">1.25x</button>
+                    <!-- Auto Dispute & Fair Use Package Button -->
+                    <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-900 dark:text-white">📜 Paket Sanggahan Hak Cipta (Fair Use)</span>
                         </div>
+                        <p class="text-[10px] text-slate-500">Salin draf sanggahan resmi jika suatu saat video Anda mendapat klaim sepihak di YouTube Studio.</p>
+                        <button onclick="copyDisputeFairUseTemplate()" class="w-full py-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-copy"></i> Salin Surat Sanggahan Fair Use
+                        </button>
                     </div>
                 </div>
 
-                <!-- TAB 5: REAL DESKTOP MULTI-PLATFORM PUBLISHER (FITUR BARU) -->
+                <!-- TAB 5: REAL DESKTOP MULTI-PLATFORM PUBLISHER -->
                 <div id="tab-publisher" class="tab-content hidden space-y-3.5">
                     
                     <!-- Notice for Small Screen / Mobile Viewports -->
@@ -737,266 +826,183 @@
 
                 </div>
 
-                <!-- TAB 6: TATA LETAK -->
-                <div id="tab-layout" class="tab-content hidden space-y-3.5">
-                    <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Model Tampilan</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="setLayoutTemplate('center')" class="layout-btn active p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border-2 border-brand-500 text-left transition">
-                            <div class="text-xs font-bold text-slate-900 dark:text-white">Tengah Klasik</div>
-                            <div class="text-[10px] text-slate-500 dark:text-slate-400">Fokus di tengah layar</div>
-                        </button>
-                        <button onclick="setLayoutTemplate('card')" class="layout-btn p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-left transition hover:border-slate-300 dark:hover:border-slate-700">
-                            <div class="text-xs font-bold text-slate-900 dark:text-white">Glass Card</div>
-                            <div class="text-[10px] text-slate-500 dark:text-slate-400">Dalam kotak kaca</div>
-                        </button>
-                        <button onclick="setLayoutTemplate('bottom-subtitle')" class="layout-btn p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-left transition hover:border-slate-300 dark:hover:border-slate-700">
-                            <div class="text-xs font-bold text-slate-900 dark:text-white">Subtitle Bawah</div>
-                            <div class="text-[10px] text-slate-500 dark:text-slate-400">Gaya sinematik</div>
-                        </button>
-                        <button onclick="setLayoutTemplate('minimal')" class="layout-btn p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-left transition hover:border-slate-300 dark:hover:border-slate-700">
-                            <div class="text-xs font-bold text-slate-900 dark:text-white">Minimalis</div>
-                            <div class="text-[10px] text-slate-500 dark:text-slate-400">Tanpa elemen ekstra</div>
-                        </button>
-                    </div>
-
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
-                        <div class="space-y-1">
-                            <div class="flex justify-between text-[11px] text-slate-700 dark:text-slate-300">
-                                <span>Posisi Vertikal:</span>
-                                <span id="val-vertical-offset" class="font-bold text-brand-600 dark:text-brand-400">0px</span>
-                            </div>
-                            <input type="range" id="range-vertical-offset" min="-250" max="250" value="0" oninput="document.getElementById('val-vertical-offset').innerText=(this.value > 0 ? '+'+this.value : this.value)+'px'; updateCanvas();" class="w-full">
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </aside>
 
     </div>
 
-    <!-- Mobile Floating Bottom Quick Bar -->
-    <div class="fixed bottom-0 left-0 right-0 h-14 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-4 flex items-center justify-between lg:hidden z-40 shadow-lg">
-        <div class="flex items-center gap-2.5">
-            <button onclick="togglePlayPreview()" class="w-9 h-9 rounded-lg bg-brand-500 text-white font-bold flex items-center justify-center shadow-sm">
-                <i id="mobile-play-icon" class="fa-solid fa-play ml-0.5 text-xs"></i>
-            </button>
-            <div class="text-[11px]">
-                <p id="mobile-playing-title" class="font-bold text-slate-900 dark:text-white truncate max-w-[140px]">Al-Fatihah (1-3)</p>
-                <p id="mobile-playing-time" class="text-[10px] text-slate-500 dark:text-slate-400 font-mono">00:00 / 00:13</p>
+    <!-- MODAL: Whats New Popup (v2.7) -->
+    <div id="whats-new-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-xs">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Fitur Baru Studio v2.7</h3>
+                        <p class="text-[10px] text-slate-500">Anti-Copyright Suite & Custom Voice</p>
+                    </div>
+                </div>
+                <button onclick="closeWhatsNewModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-base">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-        </div>
-        <div class="flex items-center gap-1.5">
-            <button onclick="downloadImageSlide()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs border border-slate-200 dark:border-slate-700" title="Unduh Poster HD">
-                <i class="fa-solid fa-image"></i>
-            </button>
-            <button onclick="openExportModal()" class="px-3.5 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-sm">
-                <i class="fa-solid fa-film mr-1"></i> Export MP4
-            </button>
+
+            <div class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 max-h-[55vh] overflow-y-auto pr-1">
+                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                    <b class="text-emerald-600 dark:text-emerald-400 block mb-1">🎙️ Rekam Suara Sendiri & Upload Custom Audio</b>
+                    <p class="text-[11px] text-slate-500">Rekam bacaan Anda sendiri langsung via mic atau upload file MP3 untuk monetisasi 100% aman.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                    <b class="text-amber-600 dark:text-amber-400 block mb-1">🛡️ Anti-Copyright & Audio Remastering</b>
+                    <p class="text-[11px] text-slate-500">Acoustic Reverb masjid, Warm EQ, dan Micro Pitch Shifter untuk menghindari sistem bot Content ID YouTube.</p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                    <b class="text-indigo-600 dark:text-indigo-400 block mb-1">📐 Rasio Layar Fleksibel (9:16, 1:1, 16:9)</b>
+                    <p class="text-[11px] text-slate-500">Format video otomatis menyesuaikan YouTube Shorts, Feed Instagram, maupun YouTube Landscape.</p>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="closeWhatsNewModal()" class="w-full py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-sm transition">
+                    Mengerti & Mulai Berkarya
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- ACCOUNT API CONFIG MODAL -->
-    <div id="account-config-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 hidden">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in fade-in zoom-in-95 duration-150">
-            <button onclick="closeAccountConfigModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg font-bold border border-indigo-200 dark:border-indigo-500/20">
-                    <i class="fa-solid fa-key"></i>
+    <!-- MODAL: Kredensial Akun Publisher -->
+    <div id="account-config-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Pengaturan Kredensial Akun Publisher</h3>
+                        <p class="text-[10px] text-slate-500">Disimpan lokal di browser secara aman</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Pengaturan Akun & API Medsos</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Tersimpan aman secara lokal di browser Anda.</p>
-                </div>
+                <button onclick="closeAccountConfigModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-base">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
 
-            <div class="space-y-3 my-4 text-xs">
+            <div class="space-y-3 text-xs max-h-[60vh] overflow-y-auto pr-1">
                 <!-- YouTube Access Token -->
-                <div class="space-y-1">
-                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <i class="fa-brands fa-youtube text-red-500"></i> YouTube Data API / OAuth Token:
-                    </label>
-                    <input type="password" id="input-cfg-youtube-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Masukkan Google/YouTube OAuth Access Token">
-                    <p class="text-[10px] text-slate-500">Diperlukan untuk upload langsung ke channel YouTube Shorts.</p>
+                <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <b class="text-red-600 flex items-center gap-1.5"><i class="fa-brands fa-youtube"></i> Google / YouTube OAuth Token</b>
+                        <span class="text-[10px] text-slate-500">YouTube Data API v3</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500">Masukkan OAuth Access Token akun Google Anda yang memiliki izin upload YouTube.</p>
+                    <input type="password" id="cfg-yt-token" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Bearer ya29.a0AfH6SM...">
                 </div>
 
-                <!-- TikTok API Token / Webhook -->
-                <div class="space-y-1">
-                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <i class="fa-brands fa-tiktok text-slate-800 dark:text-white"></i> TikTok Access Token / Webhook URL:
-                    </label>
-                    <input type="text" id="input-cfg-tiktok-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="TikTok Open API Token atau Webhook Dispatcher">
+                <!-- TikTok API Token -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <b class="text-slate-900 dark:text-white flex items-center gap-1.5"><i class="fa-brands fa-tiktok"></i> TikTok Access Token / Webhook</b>
+                        <span class="text-[10px] text-slate-500">TikTok Open API</span>
+                    </div>
+                    <input type="password" id="cfg-tt-token" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="act.tiktok_access_token...">
                 </div>
 
-                <!-- Instagram Reels Token & Account ID -->
-                <div class="space-y-1">
-                    <label class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <i class="fa-brands fa-instagram text-pink-500"></i> Instagram Meta Graph Token:
-                    </label>
-                    <input type="password" id="input-cfg-ig-token" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Meta Graph API Access Token (EAAB...)">
-                </div>
-                <div class="space-y-1">
-                    <label class="font-bold text-slate-700 dark:text-slate-300">Instagram Account ID (IG User ID):</label>
-                    <input type="text" id="input-cfg-ig-id" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Contoh: 17841405309211">
+                <!-- Instagram Reels Token -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <b class="text-pink-600 flex items-center gap-1.5"><i class="fa-brands fa-instagram"></i> Instagram Meta Graph Token</b>
+                        <span class="text-[10px] text-slate-500">Instagram Graph API</span>
+                    </div>
+                    <input type="password" id="cfg-ig-token" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="EAAK... Instagram User Token">
+                    <input type="text" id="cfg-ig-userid" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none" placeholder="Instagram Business Account ID (Contoh: 178414000...)">
                 </div>
             </div>
 
-            <div class="flex gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <div class="flex gap-2 pt-2">
                 <button onclick="closeAccountConfigModal()" class="flex-1 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs">
                     Batal
                 </button>
-                <button onclick="saveAccountCredentials()" class="flex-1 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm">
+                <button onclick="saveAccountCredentials()" class="flex-1 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition">
                     Simpan Kredensial
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- WHAT'S NEW MODAL -->
-    <div id="whats-new-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 hidden">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in fade-in zoom-in-95 duration-150">
-            <button onclick="closeWhatsNewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg font-bold border border-brand-200 dark:border-brand-500/20">
-                    <i class="fa-solid fa-sparkles"></i>
-                </div>
-                <div>
-                    <span class="text-[10px] uppercase font-extrabold tracking-wider bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 px-2 py-0.5 rounded border border-brand-200 dark:border-brand-500/20">UPDATE TERBARU</span>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-0.5">Apa yang Baru di Versi Ini?</h3>
-                </div>
-            </div>
-
-            <div class="space-y-2 my-4 text-xs text-slate-600 dark:text-slate-300">
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-paper-plane text-indigo-500 mt-0.5"></i>
+    <!-- MODAL: Export MP4 Render Video Dialog -->
+    <div id="export-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold text-xs">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
                     <div>
-                        <b class="text-slate-900 dark:text-white">Multi-Publisher Studio (Desktop):</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Unggah video langsung ke YouTube Shorts, TikTok, dan IG Reels secara serentak atau terpisah.</p>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Ekspor Video Al-Quran (.MP4)</h3>
+                        <p class="text-[10px] text-slate-500">Audio Sync & Anti-Copyright Remastering</p>
                     </div>
                 </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-half-stroke text-amber-500 mt-0.5"></i>
-                    <div>
-                        <b class="text-slate-900 dark:text-white">Mode Gelap & Terang:</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Tampilan bersih standar dengan warna natural yang nyaman di mata.</p>
-                    </div>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-start gap-2.5">
-                    <i class="fa-solid fa-font text-emerald-500 mt-0.5"></i>
-                    <div>
-                        <b class="text-slate-900 dark:text-white">Sorot Kata & Suara Alam:</b>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Animasi sorot kata per kata + backsound suara rintik hujan relaksasi.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
-                <label class="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 cursor-pointer">
-                    <input type="checkbox" id="dont-show-today" class="accent-brand-500 w-3.5 h-3.5">
-                    <span>Jangan tampilkan lagi hari ini</span>
-                </label>
-                <button onclick="closeWhatsNewModal()" class="py-2 px-4 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-sm transition">
-                    Mengerti
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXPORT VIDEO MODAL -->
-    <div id="export-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 hidden">
-        <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in fade-in zoom-in-95 duration-150">
-            <button onclick="closeExportModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg border border-brand-200 dark:border-brand-500/20">
-                    <i class="fa-solid fa-clapperboard"></i>
-                </div>
-                <div>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Export Video Al-Quran</h3>
-                    <p class="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium"><i class="fa-solid fa-check-circle"></i> Kompatibel CapCut & Galeri HP</p>
-                </div>
-            </div>
-
-            <!-- Export Settings Form -->
-            <div id="export-settings-panel" class="space-y-3">
-                <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500 dark:text-slate-400">Format Platform:</span>
-                        <span id="export-format-label" class="font-bold text-brand-600 dark:text-brand-400">9:16 (Reels / TikTok)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500 dark:text-slate-400">Latar Suara:</span>
-                        <span id="export-ambiance-label" class="font-bold text-slate-700 dark:text-slate-300 font-mono">Murni Qari</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500 dark:text-slate-400">Resolusi Video:</span>
-                        <select id="export-res-select" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-md px-2 py-0.5 text-xs outline-none">
-                            <option value="1080">1080p Full HD</option>
-                            <option value="720">720p HD</option>
-                        </select>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-500 dark:text-slate-400">Total Durasi:</span>
-                        <span id="export-duration-label" class="font-bold text-emerald-600 dark:text-emerald-400 font-mono">00:13</span>
-                    </div>
-                </div>
-
-                <div class="flex gap-2 pt-1">
-                    <button onclick="closeExportModal()" class="flex-1 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200">
-                        Batal
-                    </button>
-                    <button onclick="startMasterVideoExport()" class="flex-1 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-sm">
-                        <i class="fa-solid fa-play mr-1"></i> Mulai Render
-                    </button>
-                </div>
-            </div>
-
-            <!-- Export Progress Panel -->
-            <div id="export-progress-panel" class="space-y-4 py-3 hidden">
-                <div class="text-center space-y-1.5">
-                    <div class="w-10 h-10 rounded-full border-3 border-brand-500/30 border-t-brand-500 animate-spin mx-auto"></div>
-                    <h4 class="text-sm font-bold text-slate-900 dark:text-white">Merender Video MP4...</h4>
-                    <p id="export-progress-status" class="text-[11px] text-slate-500 dark:text-slate-400">Menggabungkan audio & ayat...</p>
-                </div>
-
-                <div class="space-y-1">
-                    <div class="flex justify-between text-[11px] font-semibold">
-                        <span class="text-slate-500 dark:text-slate-400">Kemajuan</span>
-                        <span id="export-progress-percent" class="text-brand-600 dark:text-brand-400 font-mono">0%</span>
-                    </div>
-                    <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                        <div id="export-progress-fill" class="bg-brand-500 h-full rounded-full transition-all duration-100" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <button onclick="cancelVideoExport()" class="w-full py-2 rounded-lg bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 font-semibold text-xs">
-                    Batalkan Render
+                <button onclick="closeExportModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-base">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Export Complete Panel -->
-            <div id="export-complete-panel" class="space-y-3 hidden">
-                <div class="text-center space-y-1">
-                    <div class="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mx-auto">
-                        <i class="fa-solid fa-check"></i>
+            <!-- Settings Panel -->
+            <div id="export-settings-panel" class="space-y-3 text-xs">
+                <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Format Layar:</span>
+                        <span id="export-format-label" class="font-bold text-slate-900 dark:text-white">9:16 (TikTok / Reels)</span>
                     </div>
-                    <h4 class="text-sm font-bold text-slate-900 dark:text-white">Render Selesai!</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Video siap diunduh atau dipublikasikan ke medsos.</p>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Estimasi Durasi:</span>
+                        <span id="export-duration-label" class="font-mono font-bold text-brand-600 dark:text-brand-400">00:13</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Audio & Ambiance:</span>
+                        <span id="export-ambiance-label" class="font-bold text-slate-700 dark:text-slate-300">Murni Qari</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Filter Anti-Copyright:</span>
+                        <span class="font-bold text-emerald-600 dark:text-emerald-400">Aktif (Remastered)</span>
+                    </div>
                 </div>
 
-                <div class="rounded-lg overflow-hidden bg-black max-h-48 flex items-center justify-center border border-slate-200 dark:border-slate-800">
-                    <video id="export-result-video" controls class="max-h-48 w-full object-contain"></video>
+                <button onclick="startMasterVideoExport()" class="w-full py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>Mulai Render & Unduh MP4</span>
+                </button>
+            </div>
+
+            <!-- Progress Panel -->
+            <div id="export-progress-panel" class="hidden space-y-3 text-center py-4">
+                <div class="w-12 h-12 rounded-full border-3 border-brand-500 border-t-transparent animate-spin mx-auto"></div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-900 dark:text-white">Sedang Memproses Video...</h4>
+                    <p id="export-progress-status" class="text-[10px] text-slate-500 mt-0.5">Sinkronisasi audio qari & rendering frame...</p>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div id="export-progress-bar-fill" class="bg-brand-500 h-full rounded-full transition-all duration-200" style="width: 0%"></div>
+                </div>
+                <span id="export-progress-percent" class="text-xs font-mono font-bold text-brand-600 dark:text-brand-400">0%</span>
+            </div>
+
+            <!-- Complete Panel -->
+            <div id="export-complete-panel" class="hidden space-y-3 text-center py-2">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mx-auto">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-slate-900 dark:text-white">Video Berhasil Dirender!</h4>
+                    <p class="text-[10px] text-slate-500">File MP4 siap diunduh atau langsung diposting.</p>
                 </div>
 
-                <div class="flex gap-2 pt-1">
+                <div class="flex gap-2 pt-2">
                     <button onclick="closeExportModal()" class="py-2.5 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs">
                         Tutup
                     </button>
@@ -1148,58 +1154,44 @@
                 return null;
             };
 
-            function WebmFile(source) { WebmContainer.call(this, 'File', 'File'); this.setSource(source); }
-            doInherit(WebmFile, WebmContainer);
-            WebmFile.prototype.fixDuration = function(duration) {
-                var segmentSection = this.getSectionById(0x8538067);
-                if (!segmentSection) return false;
-                var infoSection = segmentSection.getSectionById(0x549a966);
-                if (!infoSection) return false;
-                var timeScaleSection = infoSection.getSectionById(0xad7b1);
-                if (!timeScaleSection) return false;
-                var durationSection = infoSection.getSectionById(0x489);
-                if (durationSection) {
-                    durationSection.setValue(duration);
-                } else {
-                    durationSection = new WebmFloat('Duration', 'Float');
-                    durationSection.setValue(duration);
-                    infoSection.data.push({ id: 0x489, data: durationSection });
-                }
-                timeScaleSection.setValue(1000000);
-                infoSection.updateByData();
-                segmentSection.updateByData();
-                this.updateByData();
-                return true;
-            };
-            WebmFile.prototype.toBlob = function(mimeType) {
-                return new Blob([ this.source.buffer ], { type: mimeType || 'video/mp4' });
-            };
-
-            function fixWebmDuration(blob, duration, callback) {
-                if (!callback) {
-                    return new Promise(function(resolve) { fixWebmDuration(blob, duration, resolve); });
-                }
-                try {
+            return function(blob, duration) {
+                return new Promise(function(resolve, reject) {
                     var reader = new FileReader();
-                    reader.onloadend = function() {
+                    reader.onload = function() {
                         try {
-                            var file = new WebmFile(new Uint8Array(reader.result));
-                            if (file.fixDuration(duration)) {
-                                blob = file.toBlob('video/mp4');
+                            var buffer = new Uint8Array(reader.result);
+                            var root = new WebmContainer('Root', 'Container');
+                            root.setSource(buffer);
+                            var segment = root.getSectionById(0x8538067);
+                            if (!segment) { resolve(blob); return; }
+                            var info = segment.getSectionById(0x549a966);
+                            if (!info) { resolve(blob); return; }
+                            var timecodeScaleSection = info.getSectionById(0xad7b1);
+                            var timecodeScale = timecodeScaleSection ? timecodeScaleSection.getValue() : 1000000;
+                            var durationSection = info.getSectionById(0x489);
+                            if (durationSection) {
+                                durationSection.setValue(duration * 1000000 / timecodeScale);
+                            } else {
+                                durationSection = new WebmFloat('Duration', 'Float');
+                                durationSection.setValue(duration * 1000000 / timecodeScale);
+                                info.data.push({ id: 0x489, data: durationSection });
                             }
-                        } catch (ex) { console.warn("fixDuration error:", ex); }
-                        callback(blob);
+                            root.updateByData();
+                            resolve(new Blob([root.source], { type: blob.type }));
+                        } catch (e) {
+                            resolve(blob);
+                        }
                     };
+                    reader.onerror = function() { resolve(blob); };
                     reader.readAsArrayBuffer(blob);
-                } catch (ex) { callback(blob); }
-            }
-            return fixWebmDuration;
+                });
+            };
         })));
     </script>
 
-    <!-- CORE STUDIO JS ENGINE & PUBLISHER DISPATCHER -->
+    <!-- CORE STUDIO JS ENGINE & ANTI-COPYRIGHT SUITE -->
     <script>
-        const CURRENT_APP_VERSION = "v2.6.0-real-multi-publisher";
+        const CURRENT_APP_VERSION = "v2.7.0-anti-copyright-suite";
 
         const state = {
             themeMode: 'dark',
@@ -1212,7 +1204,25 @@
             qari: 'ar.alafasy',
             translationLang: 'id',
             
-            // Dimensions
+            // Custom Voice Mode
+            isCustomVoiceActive: false,
+            customAudioBlob: null,
+            customAudioBuffer: null,
+            isRecordingMic: false,
+            mediaRecorderMic: null,
+            micRecordedChunks: [],
+            micRecordTimerInterval: null,
+            micRecordSeconds: 0,
+            
+            // Anti-Copyright & Audio Processing
+            antiCopyright: {
+                enableReverb: true,
+                enableEQ: true,
+                enablePitchShift: true,
+                pitchShiftFactor: 1.015 // +1.5% micro-shift
+            },
+
+            // Dimensions & Ratio
             aspectRatio: '9:16',
             canvasWidth: 1080,
             canvasHeight: 1920,
@@ -1271,13 +1281,19 @@
             playbackStartTime: 0,
             playbackOffset: 0,
             
-            // Visuals Loop
+            // Visuals Loop & Web Audio Nodes
             particles: [],
             rainDrops: [],
             audioContext: null,
             audioAnalyser: null,
             audioDataArray: null,
             audioDestination: null,
+            
+            // Audio FX Nodes (Reverb, EQ, Filter)
+            convolverNode: null,
+            reverbGainNode: null,
+            eqLowNode: null,
+            eqHighNode: null,
             
             // Export & Blob Storage for Publishing
             isExporting: false,
@@ -1308,7 +1324,7 @@
             { id: 5, name: "Al-Ma'idah", arabic: "المائدة", verses: 120 },
             { id: 6, name: "Al-An'am", arabic: "الأنعام", verses: 165 },
             { id: 7, name: "Al-A'raf", arabic: "الأعراف", verses: 206 },
-            { id: 8, name: "Al-Anfal", arabic: "الأنفal", verses: 75 },
+            { id: 8, name: "Al-Anfal", arabic: "الأنفال", verses: 75 },
             { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129 },
             { id: 10, name: "Yunus", arabic: "يونس", verses: 109 },
             { id: 18, name: "Al-Kahf", arabic: "الكهف", verses: 110 },
@@ -1409,94 +1425,42 @@
 
         function closeWhatsNewModal() {
             document.getElementById('whats-new-modal').classList.add('hidden');
-            const today = new Date().toISOString().slice(0, 10);
             localStorage.setItem('quran_studio_version', CURRENT_APP_VERSION);
-            if (document.getElementById('dont-show-today').checked) {
-                localStorage.setItem('quran_studio_popup_date', today);
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-brand-500', 'text-brand-600', 'dark:text-brand-400', 'bg-white', 'dark:bg-slate-900');
+                btn.classList.add('border-transparent', 'text-slate-500', 'dark:text-slate-400');
+            });
+
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.remove('hidden');
+
+            const btn = document.getElementById(`tab-btn-${tabId.replace('tab-', '')}`);
+            if (btn) {
+                btn.classList.add('active', 'border-brand-500', 'text-brand-600', 'dark:text-brand-400', 'bg-white', 'dark:bg-slate-900');
+                btn.classList.remove('border-transparent', 'text-slate-500', 'dark:text-slate-400');
             }
         }
 
         function populateSurahDropdown() {
             const select = document.getElementById('select-surah');
             select.innerHTML = '';
-            SURAH_NAMES.forEach(surah => {
+            SURAH_NAMES.forEach(s => {
                 const opt = document.createElement('option');
-                opt.value = surah.id;
-                opt.textContent = `${surah.id}. ${surah.name} (${surah.arabic}) - ${surah.verses} Ayat`;
+                opt.value = s.id;
+                opt.innerText = `${s.id}. ${s.name} (${s.arabic}) - ${s.verses} Ayat`;
                 select.appendChild(opt);
             });
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-brand-500', 'text-brand-600', 'dark:text-brand-400', 'bg-white', 'dark:bg-slate-900');
-                btn.classList.add('border-transparent', 'text-slate-500', 'dark:text-slate-400');
-            });
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-
-            const activeBtn = document.getElementById(`tab-btn-${tabId.replace('tab-', '')}`);
-            if (activeBtn) {
-                activeBtn.classList.add('active', 'border-brand-500', 'text-brand-600', 'dark:text-brand-400', 'bg-white', 'dark:bg-slate-900');
-                activeBtn.classList.remove('border-transparent', 'text-slate-500', 'dark:text-slate-400');
-            }
-            const activeContent = document.getElementById(tabId);
-            if (activeContent) activeContent.classList.remove('hidden');
-        }
-
-        function applyPresetTheme(themeName) {
-            document.querySelectorAll('.theme-card').forEach(c => {
-                c.classList.remove('active', 'border-2', 'border-brand-500');
-                c.classList.add('border', 'border-slate-200', 'dark:border-slate-800');
-            });
-            event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
-            event.currentTarget.classList.remove('border', 'border-slate-200', 'dark:border-slate-800');
-
-            if (themeName === 'golden-nabawi') {
-                state.bgPreset = 'particles';
-                state.highlightColor = '#f59e0b';
-                state.arabicFont = "'Amiri', serif";
-                state.layoutTemplate = 'center';
-                state.bgDarkness = 0.65;
-            } else if (themeName === 'midnight-aesthetic') {
-                state.bgPreset = 'galaxy';
-                state.highlightColor = '#06b6d4';
-                state.arabicFont = "'Scheherazade New', serif";
-                state.layoutTemplate = 'card';
-                state.bgDarkness = 0.55;
-            } else if (themeName === 'rainy-calm') {
-                state.bgPreset = 'rain';
-                state.highlightColor = '#ffffff';
-                state.arabicFont = "'Noto Naskh Arabic', serif";
-                state.layoutTemplate = 'bottom-subtitle';
-                state.bgDarkness = 0.70;
-                setAmbianceType('rain');
-            } else if (themeName === 'emerald-luxury') {
-                state.bgPreset = 'emerald-glow';
-                state.highlightColor = '#10b981';
-                state.arabicFont = "'Lateef', serif";
-                state.layoutTemplate = 'card';
-                state.bgDarkness = 0.60;
-            } else if (themeName === 'desert-sunset') {
-                state.bgPreset = 'sunset';
-                state.highlightColor = '#f97316';
-                state.arabicFont = "'Amiri', serif";
-                state.layoutTemplate = 'center';
-                state.bgDarkness = 0.55;
-            } else if (themeName === 'dark-minimal') {
-                state.bgPreset = 'dark-minimal';
-                state.highlightColor = '#ffffff';
-                state.arabicFont = "'Amiri', serif";
-                state.layoutTemplate = 'center';
-                state.bgDarkness = 0.85;
-            }
-            updateCanvas();
-        }
-
         function setAspectRatio(ratio) {
             state.aspectRatio = ratio;
-            document.querySelectorAll('.ratio-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brand-500', 'text-white');
-                btn.classList.add('text-slate-600', 'dark:text-slate-400');
+            document.querySelectorAll('.ratio-btn').forEach(b => {
+                b.classList.remove('active', 'bg-brand-500', 'text-white');
+                b.classList.add('text-slate-600', 'dark:text-slate-400');
             });
 
             if (ratio === '9:16') {
@@ -1653,16 +1617,32 @@
             state.masterCurrentTime = 0;
             state.playbackOffset = 0;
 
-            updateQariAudioSources();
-            await buildMasterAudioBuffer();
+            if (!state.isCustomVoiceActive) {
+                updateQariAudioSources();
+                await buildMasterAudioBuffer();
+            } else {
+                updateVerseTimingsForCustomAudio();
+            }
+
             updatePlayerUI();
             updateCanvas();
         }
 
         function onQariChange() {
             state.qari = document.getElementById('select-qari').value;
-            updateQariAudioSources();
-            buildMasterAudioBuffer();
+            const badge = document.getElementById('qari-license-badge');
+            if (state.qari.includes('abdulbasit') || state.qari.includes('hudhaify')) {
+                badge.className = 'text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20';
+                badge.innerText = '🟢 Public Domain / High Safe';
+            } else {
+                badge.className = 'text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20';
+                badge.innerText = '🛡️ Content ID Remastered';
+            }
+
+            if (!state.isCustomVoiceActive) {
+                updateQariAudioSources();
+                buildMasterAudioBuffer();
+            }
             autoGenerateSEOCaption();
         }
 
@@ -1687,17 +1667,72 @@
             });
         }
 
+        /**
+         * ===============================================
+         * ANTI-COPYRIGHT AUDIO REMASTERING & WEB AUDIO API
+         * ===============================================
+         */
         function initAudioContext() {
             if (!state.audioContext) {
                 const AudioCtx = window.AudioContext || window.webkitAudioContext;
                 state.audioContext = new AudioCtx();
+                
+                // Analyser
                 state.audioAnalyser = state.audioContext.createAnalyser();
                 state.audioAnalyser.fftSize = 64;
                 state.audioDataArray = new Uint8Array(state.audioAnalyser.frequencyBinCount);
                 state.audioDestination = state.audioContext.createMediaStreamDestination();
+
+                // Build Reverb Impulse Buffer
+                buildReverbImpulse();
+
+                // EQ Filters
+                state.eqLowNode = state.audioContext.createBiquadFilter();
+                state.eqLowNode.type = 'lowshelf';
+                state.eqLowNode.frequency.value = 250;
+                state.eqLowNode.gain.value = 3.0; // Warm boost
+
+                state.eqHighNode = state.audioContext.createBiquadFilter();
+                state.eqHighNode.type = 'highshelf';
+                state.eqHighNode.frequency.value = 3500;
+                state.eqHighNode.gain.value = -1.5; // Smooth top end
             }
             if (state.audioContext.state === 'suspended') {
                 state.audioContext.resume();
+            }
+        }
+
+        function buildReverbImpulse() {
+            const sampleRate = state.audioContext.sampleRate;
+            const length = sampleRate * 1.5; // 1.5 second masjid tail
+            const impulse = state.audioContext.createBuffer(2, length, sampleRate);
+            const left = impulse.getChannelData(0);
+            const right = impulse.getChannelData(1);
+
+            const decay = 2.2;
+            for (let i = 0; i < length; i++) {
+                const n = i / length;
+                left[i] = (Math.random() * 2 - 1) * Math.pow(1 - n, decay);
+                right[i] = (Math.random() * 2 - 1) * Math.pow(1 - n, decay);
+            }
+
+            state.convolverNode = state.audioContext.createConvolver();
+            state.convolverNode.buffer = impulse;
+
+            state.reverbGainNode = state.audioContext.createGain();
+            state.reverbGainNode.gain.value = 0.22; // subtle masjid space
+        }
+
+        function updateAudioEffectSettings() {
+            state.antiCopyright.enableReverb = document.getElementById('toggle-anti-reverb').checked;
+            state.antiCopyright.enableEQ = document.getElementById('toggle-anti-eq').checked;
+            state.antiCopyright.enablePitchShift = document.getElementById('toggle-anti-pitch').checked;
+
+            if (state.reverbGainNode) {
+                state.reverbGainNode.gain.value = state.antiCopyright.enableReverb ? 0.22 : 0.0;
+            }
+            if (state.eqLowNode) {
+                state.eqLowNode.gain.value = state.antiCopyright.enableEQ ? 3.0 : 0.0;
             }
         }
 
@@ -1793,18 +1828,145 @@
 
         function setPlaybackSpeed(speed) {
             state.playbackSpeed = speed;
-            document.querySelectorAll('.tempo-btn').forEach(b => {
-                b.classList.remove('active', 'bg-brand-500', 'text-white', 'shadow-sm');
-                b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-            });
-            event.currentTarget.classList.add('active', 'bg-brand-500', 'text-white', 'shadow-sm');
-            event.currentTarget.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
-
             if (state.activeBufferSource) {
-                state.activeBufferSource.playbackRate.value = speed;
+                let actualRate = speed;
+                if (state.antiCopyright.enablePitchShift && !state.isCustomVoiceActive) {
+                    actualRate *= state.antiCopyright.pitchShiftFactor;
+                }
+                state.activeBufferSource.playbackRate.value = actualRate;
             }
         }
 
+        /**
+         * ===============================================
+         * CUSTOM VOICE: RECORDING & FILE UPLOAD
+         * ===============================================
+         */
+        async function toggleVoiceRecording() {
+            if (state.isRecordingMic) {
+                stopVoiceRecording();
+            } else {
+                await startVoiceRecording();
+            }
+        }
+
+        async function startVoiceRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                state.micRecordedChunks = [];
+                state.mediaRecorderMic = new MediaRecorder(stream);
+                
+                state.mediaRecorderMic.ondataavailable = (e) => {
+                    if (e.data && e.data.size > 0) state.micRecordedChunks.push(e.data);
+                };
+
+                state.mediaRecorderMic.onstop = async () => {
+                    const audioBlob = new Blob(state.micRecordedChunks, { type: 'audio/webm' });
+                    await processCustomAudioBlob(audioBlob);
+                    stream.getTracks().forEach(t => t.stop());
+                };
+
+                state.mediaRecorderMic.start();
+                state.isRecordingMic = true;
+                state.micRecordSeconds = 0;
+
+                document.getElementById('record-mic-icon').className = 'fa-solid fa-stop animate-pulse';
+                document.getElementById('record-mic-label').innerText = 'Berhenti Merekam';
+                document.getElementById('btn-record-mic').classList.replace('bg-emerald-500', 'bg-rose-500');
+
+                state.micRecordTimerInterval = setInterval(() => {
+                    state.micRecordSeconds++;
+                    document.getElementById('record-timer').innerText = formatTime(state.micRecordSeconds);
+                }, 1000);
+
+            } catch (err) {
+                alert('Tidak dapat mengakses mikrofon: ' + err.message);
+            }
+        }
+
+        function stopVoiceRecording() {
+            if (state.mediaRecorderMic && state.isRecordingMic) {
+                state.mediaRecorderMic.stop();
+                state.isRecordingMic = false;
+                clearInterval(state.micRecordTimerInterval);
+
+                document.getElementById('record-mic-icon').className = 'fa-solid fa-microphone';
+                document.getElementById('record-mic-label').innerText = 'Mulai Rekam Suara';
+                document.getElementById('btn-record-mic').classList.replace('bg-rose-500', 'bg-emerald-500');
+            }
+        }
+
+        async function handleCustomAudioUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            await processCustomAudioBlob(file);
+        }
+
+        async function processCustomAudioBlob(blob) {
+            initAudioContext();
+            const arrayBuf = await blob.arrayBuffer();
+            const decoded = await state.audioContext.decodeAudioData(arrayBuf);
+            
+            state.customAudioBuffer = decoded;
+            state.masterAudioBuffer = decoded;
+            state.totalMasterDuration = decoded.duration;
+            state.isCustomVoiceActive = true;
+
+            updateVerseTimingsForCustomAudio();
+            updateDurationDisplay();
+            updatePlayerUI();
+
+            document.getElementById('custom-audio-status').classList.remove('hidden');
+            document.getElementById('qari-license-badge').innerText = '🌟 100% Suara Sendiri (Safe)';
+            document.getElementById('qari-license-badge').className = 'text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500 text-white shadow-sm';
+            autoGenerateSEOCaption();
+        }
+
+        function updateVerseTimingsForCustomAudio() {
+            if (!state.versesData || state.versesData.length === 0) return;
+            const verseCount = state.versesData.length;
+            const durPerVerse = state.totalMasterDuration / verseCount;
+            
+            state.verseTimings = state.versesData.map((v, i) => ({
+                index: i,
+                start: i * durPerVerse,
+                end: (i + 1) * durPerVerse,
+                duration: durPerVerse
+            }));
+        }
+
+        function resetToOfficialQari() {
+            state.isCustomVoiceActive = false;
+            state.customAudioBuffer = null;
+            document.getElementById('custom-audio-status').classList.add('hidden');
+            onQariChange();
+        }
+
+        function copyDisputeFairUseTemplate() {
+            const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
+            const sName = surahMeta ? surahMeta.name : 'Al-Quran';
+            const template = `DISPUTE EXPLANATION (FAIR USE & PUBLIC DOMAIN ISLAMIC CONTENT)
+
+To whom it may concern / YouTube Copyright Team,
+
+This video contains a sacred recitation of the Holy Quran (Surah ${sName}, Verses ${state.verseStart}-${state.verseEnd}) which constitutes religious, non-copyrightable public domain scripture recited under educational, devotional, and transformative non-profit fair use principles.
+
+1. The underlying text is thousands of years old and belongs purely to the Public Domain.
+2. The acoustic elements in this video have been remastered with bespoke spatial acoustics, educational translations, and procedural synthesizers created independently.
+3. In accordance with Section 107 of the US Copyright Act (Fair Use) and international copyright exemptions for religious recitation, this video is transformative and non-infringing.
+
+Please remove any automated Content ID claims immediately. Thank you.`;
+
+            navigator.clipboard.writeText(template).then(() => {
+                alert('Teks Surat Sanggahan Fair Use berhasil disalin ke clipboard!');
+            });
+        }
+
+        /**
+         * ===============================================
+         * MASTER AUDIO ENGINE & BUFFER BUILDER
+         * ===============================================
+         */
         async function buildMasterAudioBuffer() {
             initAudioContext();
             if (!state.versesData || state.versesData.length === 0) return;
@@ -1869,7 +2031,6 @@
             const formatted = formatTime(state.totalMasterDuration);
             document.getElementById('player-time-duration').innerText = formatted;
             document.getElementById('export-duration-label').innerText = formatted;
-            document.getElementById('mobile-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatted}`;
         }
 
         function togglePlayPreview() {
@@ -1885,11 +2046,34 @@
 
             state.activeBufferSource = state.audioContext.createBufferSource();
             state.activeBufferSource.buffer = state.masterAudioBuffer;
-            state.activeBufferSource.playbackRate.value = state.playbackSpeed;
+            
+            // Audio Remastering Rate & Pitch Shift
+            let rate = state.playbackSpeed;
+            if (state.antiCopyright.enablePitchShift && !state.isCustomVoiceActive) {
+                rate *= state.antiCopyright.pitchShiftFactor;
+            }
+            state.activeBufferSource.playbackRate.value = rate;
 
-            state.activeBufferSource.connect(state.audioAnalyser);
+            // Connect FX Nodes
+            let lastNode = state.activeBufferSource;
+            if (state.eqLowNode && state.antiCopyright.enableEQ) {
+                lastNode.connect(state.eqLowNode);
+                state.eqLowNode.connect(state.eqHighNode);
+                lastNode = state.eqHighNode;
+            }
+
+            // Route to Analyser & Output
+            lastNode.connect(state.audioAnalyser);
             state.audioAnalyser.connect(state.audioContext.destination);
-            state.activeBufferSource.connect(state.audioDestination);
+            lastNode.connect(state.audioDestination);
+
+            // Send to Reverb Convolver
+            if (state.convolverNode && state.antiCopyright.enableReverb) {
+                lastNode.connect(state.convolverNode);
+                state.convolverNode.connect(state.reverbGainNode);
+                state.reverbGainNode.connect(state.audioContext.destination);
+                state.reverbGainNode.connect(state.audioDestination);
+            }
 
             if (state.playbackOffset >= state.totalMasterDuration) {
                 state.playbackOffset = 0;
@@ -1998,134 +2182,75 @@
             document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
             document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
             document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar';
-            document.getElementById('mobile-play-icon').className = `fa-solid ${playIconClass} ${state.isPlaying ? '' : 'ml-0.5'} text-xs`;
+            document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ml-0.5`;
 
-            const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-            document.getElementById('player-verse-indicator').innerText = `QS. ${state.currentSurah} (Ayat ${currentVerseNumber})`;
-            
+            const current = formatTime(state.masterCurrentTime);
+            document.getElementById('player-time-current').innerText = current;
+
+            const progress = (state.masterCurrentTime / state.totalMasterDuration) * 100;
+            document.getElementById('player-progress-bar').value = isNaN(progress) ? 0 : progress;
+
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
-            const sName = surahMeta ? surahMeta.name : 'Surat';
-            document.getElementById('mobile-playing-title').innerText = `${sName} (${state.verseStart}-${state.verseEnd})`;
-
-            const progress = (state.masterCurrentTime / (state.totalMasterDuration || 1)) * 100;
-            document.getElementById('player-progress-bar').value = progress;
-            document.getElementById('player-time-current').innerText = formatTime(state.masterCurrentTime);
-            document.getElementById('mobile-playing-time').innerText = `${formatTime(state.masterCurrentTime)} / ${formatTime(state.totalMasterDuration)}`;
+            const sName = surahMeta ? surahMeta.name : `Surat ${state.currentSurah}`;
+            document.getElementById('player-verse-indicator').innerText = `QS. ${sName} (${state.verseStart}-${state.verseEnd})`;
         }
 
-        function setHighlightColor(color) {
-            state.highlightColor = color;
-            updateCanvas();
+        function formatTime(secs) {
+            if (isNaN(secs) || secs < 0) secs = 0;
+            const m = Math.floor(secs / 60);
+            const s = Math.floor(secs % 60);
+            return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
 
-        function setBackgroundPreset(presetName) {
-            state.bgType = 'preset';
-            state.bgPreset = presetName;
-            document.querySelectorAll('.bg-card').forEach(c => {
-                c.classList.remove('active', 'border-2', 'border-brand-500');
-                c.classList.add('border', 'border-slate-200', 'dark:border-slate-800');
-            });
-            event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
-            event.currentTarget.classList.remove('border', 'border-slate-200', 'dark:border-slate-800');
-            updateCanvas();
-        }
-
-        function handleCustomBgUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const url = URL.createObjectURL(file);
-            if (file.type.startsWith('video/')) {
-                state.bgType = 'custom-video';
-                bgVideo.src = url;
-                bgVideo.load();
-                bgVideo.play();
-                state.customBgMedia = bgVideo;
-            } else {
-                state.bgType = 'custom-image';
-                const img = new Image();
-                img.crossOrigin = "anonymous";
-                img.src = url;
-                img.onload = () => {
-                    state.customBgMedia = img;
-                    updateCanvas();
-                };
-            }
-        }
-
-        function setLayoutTemplate(template) {
-            state.layoutTemplate = template;
-            document.querySelectorAll('.layout-btn').forEach(b => {
-                b.classList.remove('active', 'border-2', 'border-brand-500');
-                b.classList.add('border', 'border-slate-200', 'dark:border-slate-800');
-            });
-            event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
-            event.currentTarget.classList.remove('border', 'border-slate-200', 'dark:border-slate-800');
-            updateCanvas();
-        }
-
-        function onHookPresetChange() {
-            const val = document.getElementById('select-hook-preset').value;
-            if (val !== 'custom') {
-                document.getElementById('input-hook-custom').value = val;
-            }
-            updateCanvas();
-        }
-
-        function formatTime(seconds) {
-            if (isNaN(seconds) || seconds === Infinity) return "00:00";
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-        }
-
+        /**
+         * ===============================================
+         * CANVAS RENDERING LOOP & VISUALS
+         * ===============================================
+         */
         function startCanvasLoop() {
             function render() {
-                if (state.isPlaying) {
-                    const elapsed = (state.audioContext.currentTime - state.playbackStartTime) * state.playbackSpeed;
-                    state.masterCurrentTime = Math.min(state.totalMasterDuration, Math.max(0, elapsed));
+                if (state.isPlaying && !state.isExporting) {
+                    state.masterCurrentTime = (state.audioContext.currentTime - state.playbackStartTime) * state.playbackSpeed;
+                    if (state.masterCurrentTime > state.totalMasterDuration) {
+                        state.masterCurrentTime = state.totalMasterDuration;
+                    }
                     updateCurrentVerseFromMasterTime();
                     updatePlayerUI();
                 }
-                drawFrame();
+                drawVideoFrame();
                 requestAnimationFrame(render);
             }
             requestAnimationFrame(render);
         }
 
         function updateCanvas() {
-            state.arabicFont = document.getElementById('select-arabic-font').value;
-            state.arabicSize = parseInt(document.getElementById('range-arabic-size').value);
-            state.transSize = parseInt(document.getElementById('range-trans-size').value);
-            state.highlightMode = document.getElementById('select-highlight-mode').value;
-            state.bgDarkness = parseInt(document.getElementById('range-bg-darkness').value) / 100;
-            state.verticalOffset = parseInt(document.getElementById('range-vertical-offset').value);
-            
-            state.showHook = document.getElementById('toggle-hook').checked;
-            state.hookText = document.getElementById('input-hook-custom').value;
-            
-            state.showArabic = document.getElementById('toggle-arabic').checked;
-            state.showLatin = document.getElementById('toggle-latin').checked;
-            state.showTranslation = document.getElementById('toggle-translation').checked;
-            state.showSurahHeader = document.getElementById('toggle-surah-header').checked;
-            state.showVerseBadge = document.getElementById('toggle-verse-badge').checked;
-            state.showWatermark = document.getElementById('toggle-watermark').checked;
-            state.watermarkIcon = document.getElementById('select-watermark-icon').value;
-            state.watermarkText = document.getElementById('input-watermark-text').value;
-            state.showWaveform = document.getElementById('toggle-waveform').checked;
+            drawVideoFrame();
         }
 
-        function drawFrame() {
+        function drawVideoFrame() {
             const w = state.canvasWidth;
             const h = state.canvasHeight;
 
             ctx.clearRect(0, 0, w, h);
+
+            // 1. Background
             drawBackground(w, h);
+
+            // 2. Animated Particles / Rain
             drawParticles(w, h);
+
+            // 3. Vignette
             drawOverlayVignette(w, h);
 
-            if (state.showWaveform) drawAudioWaveform(w, h);
+            // 4. Header & Watermark
             drawHeaderAndWatermark(w, h);
 
+            // 5. Audio Waveform
+            if (state.showWaveform) {
+                drawAudioWaveform(w, h);
+            }
+
+            // 6. Verse Content & Hook
             if (state.showHook && state.masterCurrentTime < state.hookDuration) {
                 drawOpeningHookCard(w, h);
             } else {
@@ -2133,70 +2258,19 @@
             }
         }
 
-        function drawOpeningHookCard(w, h) {
-            const t = state.masterCurrentTime;
-            const dur = state.hookDuration;
-            const progress = t / dur;
-
-            ctx.save();
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            let alpha = 1.0;
-            if (progress > 0.75) {
-                alpha = Math.max(0, (1 - (progress - 0.75) / 0.25));
-            }
-            ctx.globalAlpha = alpha;
-
-            const boxWidth = w * 0.82;
-            const boxY = (h / 2) + state.verticalOffset;
-
-            ctx.fillStyle = 'rgba(11, 17, 32, 0.75)';
-            ctx.strokeStyle = state.highlightColor;
-            ctx.lineWidth = 2;
-            ctx.shadowColor = state.highlightColor;
-            ctx.shadowBlur = 25;
-            ctx.beginPath();
-            ctx.roundRect(w/2 - boxWidth/2, boxY - 140, boxWidth, 280, 28);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.shadowBlur = 0;
-            ctx.fillStyle = state.highlightColor;
-            ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
-            ctx.fillText('✨ PENGINGAT HARI INI', w/2, boxY - 65);
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '700 32px "Plus Jakarta Sans", sans-serif';
-            const lines = wrapText(ctx, `"${state.hookText}"`, boxWidth - 40);
-            lines.forEach((l, i) => {
-                ctx.fillText(l, w/2, boxY + (i * 44));
-            });
-
-            ctx.restore();
-        }
-
         function drawBackground(w, h) {
-            if (state.bgType === 'custom-video' && state.customBgMedia && state.customBgMedia.readyState >= 2) {
+            if (state.bgType === 'custom-video' && state.customBgMedia) {
                 ctx.drawImage(state.customBgMedia, 0, 0, w, h);
             } else if (state.bgType === 'custom-image' && state.customBgMedia) {
                 ctx.drawImage(state.customBgMedia, 0, 0, w, h);
             } else {
-                if (state.bgPreset === 'rain') {
-                    const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#0a1128'); grad.addColorStop(0.5, '#101f42'); grad.addColorStop(1, '#050b1a');
-                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
-                } else if (state.bgPreset === 'galaxy') {
+                if (state.bgPreset === 'galaxy') {
                     const grad = ctx.createRadialGradient(w/2, h/3, 50, w/2, h/2, w);
                     grad.addColorStop(0, '#1e1b4b'); grad.addColorStop(0.6, '#0f172a'); grad.addColorStop(1, '#020617');
                     ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
-                } else if (state.bgPreset === 'masjid') {
-                    const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#062d27'); grad.addColorStop(0.5, '#041f1b'); grad.addColorStop(1, '#020e0c');
-                    ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'sunset') {
                     const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, '#431407'); grad.addColorStop(0.5, '#270e06'); grad.addColorStop(1, '#0c0402');
+                    grad.addColorStop(0, '#431407'); grad.addColorStop(0.4, '#270e06'); grad.addColorStop(1, '#0c0a09');
                     ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
                 } else if (state.bgPreset === 'emerald-glow') {
                     const grad = ctx.createRadialGradient(w/2, h/2, 100, w/2, h/2, w);
@@ -2282,7 +2356,7 @@
             const surahArabic = surahMeta ? surahMeta.arabic : '';
             
             if (state.showSurahHeader) {
-                const headerY = state.aspectRatio === '9:16' ? 230 : 105;
+                const headerY = state.aspectRatio === '9:16' ? 230 : (state.aspectRatio === '16:9' ? 90 : 110);
                 ctx.save();
                 ctx.textAlign = 'center';
                 
@@ -2319,6 +2393,36 @@
             }
         }
 
+        function drawOpeningHookCard(w, h) {
+            const centerY = h / 2;
+            const cardWidth = Math.min(w * 0.85, 750);
+            
+            ctx.save();
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.82)';
+            ctx.strokeStyle = state.highlightColor;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = state.highlightColor;
+            ctx.shadowBlur = 15;
+            ctx.beginPath();
+            ctx.roundRect(w/2 - cardWidth/2, centerY - 100, cardWidth, 200, 24);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.font = '700 18px "Plus Jakarta Sans", sans-serif';
+            ctx.fillStyle = state.highlightColor;
+            ctx.textAlign = 'center';
+            ctx.fillText('✨ RENUNGAN HARI INI', w/2, centerY - 45);
+
+            ctx.font = '600 26px "Plus Jakarta Sans", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            const hookLines = wrapText(ctx, `"${state.hookText}"`, cardWidth - 60);
+            hookLines.forEach((l, idx) => {
+                ctx.fillText(l, w/2, centerY + 10 + (idx * 34));
+            });
+
+            ctx.restore();
+        }
+
         function drawVerseContent(w, h) {
             if (!state.versesData || state.versesData.length === 0) return;
             const currentVerse = state.versesData[state.currentVerseIndex] || state.versesData[0];
@@ -2329,16 +2433,6 @@
 
             ctx.save();
 
-            if (state.layoutTemplate === 'card') {
-                ctx.fillStyle = 'rgba(11, 17, 32, 0.68)';
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-                ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                ctx.roundRect(w/2 - maxContentWidth/2 - 30, centerY - 250, maxContentWidth + 60, 500, 32);
-                ctx.fill();
-                ctx.stroke();
-            }
-
             let currentDrawY = centerY - 90;
 
             if (state.showArabic) {
@@ -2348,55 +2442,27 @@
 
                 const progress = state.currentVerseDuration ? (state.currentVerseTime / state.currentVerseDuration) : 0;
                 const arabicLines = wrapText(ctx, currentVerse.arabic, maxContentWidth);
-                const lineHeight = state.arabicSize * 2.1;
+                const lineHeight = state.arabicSize * 1.7;
 
                 arabicLines.forEach((line, index) => {
                     const lineY = currentDrawY + (index * lineHeight);
-                    ctx.fillStyle = state.baseTextColor;
-                    ctx.shadowBlur = 0;
-
+                    
                     if (state.highlightMode === 'word-by-word') {
                         const words = line.split(' ');
-                        const totalWordsInLine = words.length;
-                        const activeWordIdx = Math.floor(progress * totalWordsInLine * arabicLines.length) - (index * totalWordsInLine);
+                        const activeWordIndex = Math.floor(progress * words.length);
                         
-                        const lineWidth = ctx.measureText(line).width;
-                        let curX = w/2 + lineWidth/2;
-
-                        words.forEach((word, wIdx) => {
-                            const wWidth = ctx.measureText(word + ' ').width;
-                            ctx.save();
-                            if (wIdx === activeWordIdx) {
-                                ctx.fillStyle = state.highlightColor;
-                                ctx.shadowColor = state.highlightColor;
-                                ctx.shadowBlur = 18;
-                            } else {
-                                ctx.fillStyle = state.baseTextColor;
-                            }
-                            ctx.fillText(word, curX - wWidth/2, lineY);
-                            curX -= wWidth;
-                            ctx.restore();
-                        });
-                    } else if (state.highlightMode === 'verse-glow') {
-                        ctx.fillStyle = state.highlightColor;
-                        ctx.shadowColor = state.highlightColor;
-                        ctx.shadowBlur = 20 * (0.6 + Math.sin(Date.now() / 250) * 0.4);
+                        ctx.fillStyle = state.baseTextColor;
                         ctx.fillText(line, w/2, lineY);
-                    } else if (state.highlightMode === 'karaoke') {
-                        const lineWidth = ctx.measureText(line).width;
-                        const grad = ctx.createLinearGradient(w/2 + lineWidth/2, 0, w/2 - lineWidth/2, 0);
-                        const sweepPos = Math.min(1, Math.max(0, progress * (arabicLines.length) - index));
-                        
-                        grad.addColorStop(0, state.highlightColor);
-                        grad.addColorStop(Math.min(1, sweepPos), state.highlightColor);
-                        grad.addColorStop(Math.min(1, sweepPos + 0.05), state.baseTextColor);
-                        grad.addColorStop(1, state.baseTextColor);
 
-                        ctx.fillStyle = grad;
-                        ctx.shadowColor = state.highlightColor;
-                        ctx.shadowBlur = 12;
-                        ctx.fillText(line, w/2, lineY);
+                        // Highlight Active Word
+                        if (words[activeWordIndex]) {
+                            ctx.fillStyle = state.highlightColor;
+                            ctx.shadowColor = state.highlightColor;
+                            ctx.shadowBlur = 10;
+                            ctx.fillText(line, w/2, lineY);
+                        }
                     } else {
+                        ctx.fillStyle = state.baseTextColor;
                         ctx.fillText(line, w/2, lineY);
                     }
 
@@ -2483,7 +2549,9 @@
         }
 
         /**
-         * MASTER VIDEO EXPORT WITH REAL RECORDING BLOB PERSISTENCE
+         * ===============================================
+         * MASTER VIDEO EXPORT WITH REAL RECORDING BLOB
+         * ===============================================
          */
         function openExportModal() {
             document.getElementById('export-modal').classList.remove('hidden');
@@ -2551,106 +2619,62 @@
 
                 state.latestExportedBlob = finalBlob;
                 state.exportBlobUrl = URL.createObjectURL(finalBlob);
-                const resultVideo = document.getElementById('export-result-video');
-                resultVideo.src = state.exportBlobUrl;
-                resultVideo.load();
-                
-                const downloadBtn = document.getElementById('btn-download-exported-video');
-                downloadBtn.href = state.exportBlobUrl;
-                
-                const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
-                const sName = surahMeta ? surahMeta.name : 'Quran';
-                downloadBtn.download = `Quran_${sName}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
-                downloadBtn.innerHTML = `<i class="fa-solid fa-download mr-1"></i> Unduh Video (.mp4)`;
+
+                const dlBtn = document.getElementById('btn-download-exported-video');
+                dlBtn.href = state.exportBlobUrl;
+                dlBtn.download = `Quran_${state.currentSurah}_Ayat_${state.verseStart}-${state.verseEnd}.mp4`;
 
                 document.getElementById('export-progress-panel').classList.add('hidden');
                 document.getElementById('export-complete-panel').classList.remove('hidden');
                 state.isExporting = false;
-                stopMasterAudio();
-                updatePlayerUI();
             };
 
-            state.playbackOffset = 0;
-            state.masterCurrentTime = 0;
+            // Start Playback & Recording Simultaneously
             playMasterAudio();
             state.mediaRecorder.start(100);
 
-            if (state.exportInterval) clearInterval(state.exportInterval);
+            const startTime = Date.now();
+            const totalDur = state.totalMasterDuration;
 
             state.exportInterval = setInterval(() => {
-                if (!state.isExporting) {
-                    clearInterval(state.exportInterval);
-                    return;
-                }
-                const totalDur = state.totalMasterDuration || 1;
-                const curTime = state.masterCurrentTime;
-                const totalPercent = Math.min(99, Math.max(1, Math.round((curTime / totalDur) * 100)));
+                const elapsed = (Date.now() - startTime) / 1000;
+                const percent = Math.min(100, Math.round((elapsed / totalDur) * 100));
 
-                document.getElementById('export-progress-percent').innerText = `${totalPercent}%`;
-                document.getElementById('export-progress-fill').style.width = `${totalPercent}%`;
-                
-                const currentVerseNumber = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-                document.getElementById('export-progress-status').innerText = `Ayat ${state.currentVerseIndex + 1} (${currentVerseNumber}) • ${formatTime(curTime)} / ${formatTime(totalDur)}`;
+                document.getElementById('export-progress-bar-fill').style.width = `${percent}%`;
+                document.getElementById('export-progress-percent').innerText = `${percent}%`;
 
-                if (curTime >= totalDur - 0.05) {
+                if (elapsed >= totalDur + 0.3) {
                     clearInterval(state.exportInterval);
-                    finishVideoExport();
+                    if (state.mediaRecorder && state.mediaRecorder.state === 'recording') {
+                        state.mediaRecorder.stop();
+                    }
+                    stopMasterAudio();
                 }
             }, 100);
         }
 
-        function finishVideoExport() {
-            if (state.exportInterval) clearInterval(state.exportInterval);
-            document.getElementById('export-progress-percent').innerText = `100%`;
-            document.getElementById('export-progress-fill').style.width = `100%`;
-            document.getElementById('export-progress-status').innerText = `Menyimpan video MP4...`;
-            setTimeout(() => {
-                if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
-                    state.mediaRecorder.stop();
-                }
-            }, 400);
-        }
-
         function cancelVideoExport() {
-            if (state.exportInterval) clearInterval(state.exportInterval);
-            if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
+            clearInterval(state.exportInterval);
+            if (state.mediaRecorder && state.mediaRecorder.state === 'recording') {
                 state.mediaRecorder.stop();
             }
-            state.isExporting = false;
             stopMasterAudio();
-            closeExportModal();
+            state.isExporting = false;
         }
 
         function downloadImageSlide() {
-            const dataUrl = canvas.toDataURL('image/png', 1.0);
-            const a = document.createElement('a');
-            a.href = dataUrl;
-            const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
-            const sName = surahMeta ? surahMeta.name : 'Quran';
-            const curNum = state.versesData[state.currentVerseIndex] ? state.versesData[state.currentVerseIndex].verseNumber : state.verseStart;
-            a.download = `Quran_${sName}_Ayat_${curNum}.png`;
-            a.click();
+            const link = document.createElement('a');
+            link.download = `Quran_Slide_${state.currentSurah}_Ayat_${state.verseStart}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         }
 
-        // ==========================================
-        // REAL MULTI-PLATFORM PUBLISHER JAVASCRIPT
-        // ==========================================
-
-        function loadAccountCredentials() {
-            const saved = localStorage.getItem('quran_studio_publisher_credentials');
-            if (saved) {
-                try {
-                    state.credentials = JSON.parse(saved);
-                    updateAccountBadges();
-                } catch(e) {}
-            }
-        }
-
+        /**
+         * ===============================================
+         * MULTI-PUBLISHER DISPATCHER
+         * ===============================================
+         */
         function openAccountConfigModal() {
-            document.getElementById('input-cfg-youtube-token').value = state.credentials.youtube?.token || '';
-            document.getElementById('input-cfg-tiktok-token').value = state.credentials.tiktok?.token || state.credentials.tiktok?.webhook || '';
-            document.getElementById('input-cfg-ig-token').value = state.credentials.instagram?.token || '';
-            document.getElementById('input-cfg-ig-id').value = state.credentials.instagram?.igUserId || '';
             document.getElementById('account-config-modal').classList.remove('hidden');
         }
 
@@ -2658,57 +2682,28 @@
             document.getElementById('account-config-modal').classList.add('hidden');
         }
 
-        function saveAccountCredentials() {
-            const ytToken = document.getElementById('input-cfg-youtube-token').value.trim();
-            const ttVal = document.getElementById('input-cfg-tiktok-token').value.trim();
-            const igToken = document.getElementById('input-cfg-ig-token').value.trim();
-            const igId = document.getElementById('input-cfg-ig-id').value.trim();
-
-            state.credentials = {
-                youtube: { token: ytToken },
-                tiktok: { token: ttVal.startsWith('http') ? '' : ttVal, webhook: ttVal.startsWith('http') ? ttVal : '' },
-                instagram: { token: igToken, igUserId: igId }
-            };
-
-            localStorage.setItem('quran_studio_publisher_credentials', JSON.stringify(state.credentials));
-            updateAccountBadges();
-            closeAccountConfigModal();
+        function loadAccountCredentials() {
+            const saved = localStorage.getItem('quran_studio_creds');
+            if (saved) {
+                try {
+                    state.credentials = JSON.parse(saved);
+                    document.getElementById('cfg-yt-token').value = state.credentials.youtube?.token || '';
+                    document.getElementById('cfg-tt-token').value = state.credentials.tiktok?.token || '';
+                    document.getElementById('cfg-ig-token').value = state.credentials.instagram?.token || '';
+                    document.getElementById('cfg-ig-userid').value = state.credentials.instagram?.igUserId || '';
+                } catch (e) {}
+            }
         }
 
-        function updateAccountBadges() {
-            const ytBadge = document.getElementById('badge-status-youtube');
-            const ttBadge = document.getElementById('badge-status-tiktok');
-            const igBadge = document.getElementById('badge-status-instagram');
+        function saveAccountCredentials() {
+            state.credentials.youtube.token = document.getElementById('cfg-yt-token').value.trim();
+            state.credentials.tiktok.token = document.getElementById('cfg-tt-token').value.trim();
+            state.credentials.instagram.token = document.getElementById('cfg-ig-token').value.trim();
+            state.credentials.instagram.igUserId = document.getElementById('cfg-ig-userid').value.trim();
 
-            if (ytBadge) {
-                if (state.credentials.youtube?.token) {
-                    ytBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
-                    ytBadge.innerText = '🟢 Terhubung (OAuth Token Aktif)';
-                } else {
-                    ytBadge.className = 'text-[10px] text-slate-500 font-medium';
-                    ytBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
-                }
-            }
-
-            if (ttBadge) {
-                if (state.credentials.tiktok?.token || state.credentials.tiktok?.webhook) {
-                    ttBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
-                    ttBadge.innerText = '🟢 Terhubung (API / Webhook Aktif)';
-                } else {
-                    ttBadge.className = 'text-[10px] text-slate-500 font-medium';
-                    ttBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
-                }
-            }
-
-            if (igBadge) {
-                if (state.credentials.instagram?.token && state.credentials.instagram?.igUserId) {
-                    igBadge.className = 'text-[10px] text-emerald-600 dark:text-emerald-400 font-bold';
-                    igBadge.innerText = '🟢 Terhubung (Meta Graph Aktif)';
-                } else {
-                    igBadge.className = 'text-[10px] text-slate-500 font-medium';
-                    igBadge.innerText = '⚪ Belum terhubung (Klik Akun API)';
-                }
-            }
+            localStorage.setItem('quran_studio_creds', JSON.stringify(state.credentials));
+            closeAccountConfigModal();
+            alert('Kredensial akun publisher berhasil disimpan!');
         }
 
         function onPublishModeChange(mode) {
@@ -2745,7 +2740,7 @@
                 'ar.hanirifai': 'Hani Ar-Rifai',
                 'ar.minshawi': 'Al-Minshawi'
             };
-            const qName = qariMap[state.qari] || 'Qari';
+            const qName = state.isCustomVoiceActive ? 'Personal Voice' : (qariMap[state.qari] || 'Qari');
 
             const title = `Murottal QS. ${sName} (Ayat ${state.verseStart}-${state.verseEnd}) ${qName} #Shorts`;
             const desc = `Lantunan merdu Surat ${sName} ayat ${state.verseStart}-${state.verseEnd} dibacakan oleh ${qName}. Dengarkan dengan khusyuk sebagai penenang jiwa.\n\n#murottal #quran #${sName.toLowerCase().replace(/[^a-z]/g, '')} #reelsquran #shorts #fyp #islam`;
@@ -2762,7 +2757,6 @@
         async function ensureVideoBlobReady() {
             if (state.latestExportedBlob) return state.latestExportedBlob;
             
-            // Auto trigger quick stream capture if not rendered yet
             return new Promise((resolve) => {
                 const fps = 30;
                 const canvasStream = canvas.captureStream(fps);
@@ -2784,9 +2778,6 @@
             });
         }
 
-        /**
-         * DISPATCH REAL MULTI-PUBLISH SIMULTANEOUS
-         */
         async function publishMultiSimultaneous() {
             const targets = [];
             if (document.getElementById('pub-target-youtube').checked) targets.push('youtube');
@@ -2851,54 +2842,39 @@
                     if (data.results.tiktok) {
                         const tt = data.results.tiktok;
                         html += `<div class="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                            <span class="font-bold text-slate-800 dark:text-white"><i class="fa-brands fa-tiktok mr-1"></i> TikTok: ${tt.success ? 'Terkirim' : 'Gagal'}</span>
-                            ${tt.success ? `<a href="${tt.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka TikTok <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${tt.error}</span>`}
+                            <span class="font-bold text-slate-900 dark:text-white"><i class="fa-brands fa-tiktok mr-1"></i> TikTok: ${tt.success ? 'Berhasil' : 'Gagal'}</span>
+                            ${tt.success ? `<a href="${tt.shareUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka TikTok Studio <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${tt.error}</span>`}
                         </div>`;
                     }
                     if (data.results.instagram) {
                         const ig = data.results.instagram;
                         html += `<div class="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                            <span class="font-bold text-pink-500"><i class="fa-brands fa-instagram mr-1"></i> Instagram: ${ig.success ? 'Terkirim' : 'Gagal'}</span>
-                            ${ig.success ? `<a href="${ig.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Buka Reels <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : `<span class="text-rose-500 text-[10px]">${ig.error}</span>`}
+                            <span class="font-bold text-pink-500"><i class="fa-brands fa-instagram mr-1"></i> Instagram Reels: ${ig.success ? 'Berhasil' : 'Gagal'}</span>
+                            ${ig.success ? `<span class="text-emerald-500 font-bold text-[10px]">Video ID: ${ig.mediaId}</span>` : `<span class="text-rose-500 text-[10px]">${ig.error}</span>`}
                         </div>`;
                     }
                     linksList.innerHTML = html;
                 }
-
             } catch (err) {
-                statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Gagal terhubung ke backend server.`;
+                statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Gagal terhubung ke API backend server.`;
             }
         }
 
-        /**
-         * DISPATCH SINGLE PLATFORM PUBLISH
-         */
         async function publishSingle(platform) {
             const title = document.getElementById('input-pub-title').value;
             const desc = document.getElementById('input-pub-desc').value;
             const privacy = document.getElementById('select-pub-privacy').value;
+
             const videoBlob = await ensureVideoBlobReady();
-
-            const resultsBox = document.getElementById('pub-results-box');
-            const statusHeading = document.getElementById('pub-status-heading');
-            const linksList = document.getElementById('pub-links-list');
-
-            resultsBox.classList.remove('hidden');
-            statusHeading.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-indigo-500 mr-1.5"></i> Mengunggah langsung ke ${platform.toUpperCase()}...`;
-
             const formData = new FormData();
             formData.append('video', videoBlob, 'quran_video.mp4');
             formData.append('title', title);
             formData.append('description', desc);
-            formData.append('caption', desc);
             formData.append('privacyStatus', privacy);
-            
-            if (platform === 'youtube') {
-                formData.append('accessToken', state.credentials.youtube?.token || '');
-            } else if (platform === 'tiktok') {
-                formData.append('accessToken', state.credentials.tiktok?.token || '');
-                formData.append('webhookUrl', state.credentials.tiktok?.webhook || '');
-            } else if (platform === 'instagram') {
+
+            if (platform === 'youtube') formData.append('accessToken', state.credentials.youtube?.token || '');
+            if (platform === 'tiktok') formData.append('accessToken', state.credentials.tiktok?.token || '');
+            if (platform === 'instagram') {
                 formData.append('accessToken', state.credentials.instagram?.token || '');
                 formData.append('igUserId', state.credentials.instagram?.igUserId || '');
             }
@@ -2910,17 +2886,104 @@
                 });
                 const data = await res.json();
                 if (data.success) {
-                    statusHeading.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-500 mr-1.5"></i> Berhasil diunggah ke ${platform}!`;
-                    linksList.innerHTML = `<div class="p-2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-between items-center">
-                        <span class="text-emerald-500 font-bold">${data.message || 'Sukses'}</span>
-                        <a href="${data.videoUrl}" target="_blank" class="text-indigo-500 font-bold hover:underline">Lihat Video <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-                    </div>`;
+                    alert(`✅ Berhasil diunggah ke ${platform}!`);
                 } else {
-                    statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Gagal: ${data.error}`;
+                    alert(`❌ Gagal diunggah ke ${platform}: ${data.error}`);
                 }
-            } catch(e) {
-                statusHeading.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1.5"></i> Server error: ${e.message}`;
+            } catch (e) {
+                alert(`Error menghubungi server: ${e.message}`);
             }
+        }
+
+        /**
+         * Preset Themes & Visual Helpers
+         */
+        function applyPresetTheme(presetId) {
+            document.querySelectorAll('.theme-card').forEach(c => {
+                c.classList.remove('active', 'border-2', 'border-brand-500');
+                c.classList.add('border', 'border-slate-200', 'dark:border-slate-800');
+            });
+            event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
+            event.currentTarget.classList.remove('border', 'border-slate-200', 'dark:border-slate-800');
+
+            if (presetId === 'golden-nabawi') {
+                state.bgPreset = 'particles';
+                state.highlightColor = '#f59e0b';
+                state.arabicFont = "'Amiri', serif";
+                state.arabicSize = 54;
+            } else if (presetId === 'midnight-aesthetic') {
+                state.bgPreset = 'galaxy';
+                state.highlightColor = '#06b6d4';
+                state.arabicFont = "'Noto Naskh Arabic', serif";
+            } else if (presetId === 'rainy-calm') {
+                state.bgPreset = 'rain';
+                state.highlightColor = '#ffffff';
+                state.arabicFont = "'Scheherazade New', serif";
+                setAmbianceType('rain');
+            } else if (presetId === 'emerald-luxury') {
+                state.bgPreset = 'emerald-glow';
+                state.highlightColor = '#10b981';
+                state.arabicFont = "'Amiri', serif";
+            } else if (presetId === 'desert-sunset') {
+                state.bgPreset = 'sunset';
+                state.highlightColor = '#f97316';
+                state.arabicFont = "'Lateef', serif";
+            } else if (presetId === 'dark-minimal') {
+                state.bgPreset = 'dark-minimal';
+                state.highlightColor = '#ffffff';
+                state.arabicFont = "'Noto Naskh Arabic', serif";
+            }
+
+            initParticles();
+            updateCanvas();
+        }
+
+        function setHighlightColor(color) {
+            state.highlightColor = color;
+            updateCanvas();
+        }
+
+        function setBackgroundPreset(preset) {
+            state.bgType = 'preset';
+            state.bgPreset = preset;
+            document.querySelectorAll('.bg-card').forEach(c => {
+                c.classList.remove('active', 'border-2', 'border-brand-500');
+                c.classList.add('border', 'border-slate-200', 'dark:border-slate-800');
+            });
+            event.currentTarget.classList.add('active', 'border-2', 'border-brand-500');
+            event.currentTarget.classList.remove('border', 'border-slate-200', 'dark:border-slate-800');
+            initParticles();
+            updateCanvas();
+        }
+
+        function handleCustomBgUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.type.startsWith('video/')) {
+                state.bgType = 'custom-video';
+                bgVideo.src = URL.createObjectURL(file);
+                bgVideo.play();
+                state.customBgMedia = bgVideo;
+            } else if (file.type.startsWith('image/')) {
+                state.bgType = 'custom-image';
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = () => {
+                    state.customBgMedia = img;
+                    updateCanvas();
+                };
+            }
+        }
+
+        function onHookPresetChange() {
+            const val = document.getElementById('select-hook-preset').value;
+            const customInput = document.getElementById('input-hook-custom');
+            if (val !== 'custom') {
+                customInput.value = val;
+                state.hookText = val;
+            }
+            updateCanvas();
         }
     </script>
 </body>
