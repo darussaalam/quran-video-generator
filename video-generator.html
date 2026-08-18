@@ -90,9 +90,9 @@
             </div>
             <div>
                 <h1 class="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.7 Pro</span>
+                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.8 Pro</span>
                 </h1>
-                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Anti-Copyright Suite</p>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Live Mic Teleprompter</p>
             </div>
         </div>
 
@@ -364,70 +364,93 @@
                     <!-- Text Toggles -->
                     <div class="grid grid-cols-3 gap-1.5 text-[11px] pt-1">
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-arabic" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-arabic" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">Arab</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-latin" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-latin" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">Latin</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-translation" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-translation" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">Arti</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-surah-header" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-surah-header" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">Header</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-verse-badge" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-verse-badge" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">No. Ayat</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-md bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 cursor-pointer">
-                            <input type="checkbox" id="toggle-watermark" checked onchange="updateCanvas()" class="accent-brand-500 w-3.5 h-3.5">
+                            <input type="checkbox" id="toggle-watermark" checked onchange="onTextToggleChange()" class="accent-brand-500 w-3.5 h-3.5">
                             <span class="text-slate-700 dark:text-slate-300">Branding</span>
                         </label>
                     </div>
 
                     <!-- Watermark Custom Text -->
                     <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 p-1.5 rounded-lg border border-slate-200 dark:border-slate-800">
-                        <select id="select-watermark-icon" onchange="updateCanvas()" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-brand-600 dark:text-brand-400 rounded px-1.5 py-1 outline-none">
+                        <select id="select-watermark-icon" onchange="onWatermarkChange()" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-brand-600 dark:text-brand-400 rounded px-1.5 py-1 outline-none">
                             <option value="tiktok">🎵 TikTok</option>
                             <option value="instagram">📸 IG Reels</option>
                             <option value="youtube">▶ YouTube</option>
                         </select>
-                        <input type="text" id="input-watermark-text" value="@quran.daily" oninput="updateCanvas()" class="w-full bg-transparent text-xs text-slate-800 dark:text-white outline-none" placeholder="@nama_akun">
+                        <input type="text" id="input-watermark-text" value="@quran.daily" oninput="onWatermarkChange()" class="w-full bg-transparent text-xs text-slate-800 dark:text-white outline-none" placeholder="@nama_akun">
                     </div>
                 </div>
 
-                <!-- TAB: SUARA SENDIRI (REKAM & UPLOAD CUSTOM AUDIO) -->
+                <!-- TAB: SUARA SENDIRI (REKAM INTERAKTIF DENGAN PANDUAN AYAT) -->
                 <div id="tab-custom-voice" class="tab-content hidden space-y-3.5">
                     <div class="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/40 space-y-1.5">
                         <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-300">
-                            <i class="fa-solid fa-shield-check"></i>
-                            <span>100% Bebas Copyright & Siap Monetisasi</span>
+                            <i class="fa-solid fa-microphone-lines"></i>
+                            <span>Studio Rekam Suara Langsung (Live Teleprompter)</span>
                         </div>
                         <p class="text-[11px] text-emerald-700 dark:text-emerald-400">
-                            Gunakan suara rekaman Anda sendiri untuk membangun channel murottal orisinal tanpa risiko terkena klaim Content ID.
+                            Pilih surat & rentang ayat di tab <b>Ayat & Qari</b>, lalu baca langsung ke mic sambil melihat teks Arab dan visualizer live!
                         </p>
                     </div>
 
-                    <!-- Voice Recorder Box -->
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                    <!-- Voice Recorder & Teleprompter Box -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 space-y-3">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                                <i class="fa-solid fa-microphone text-emerald-500"></i> Rekam Langsung via Mic
+                                <i class="fa-solid fa-microphone text-emerald-500"></i> Rekam Bacaan Sendiri
                             </span>
-                            <span id="record-timer" class="text-xs font-mono font-bold text-slate-500">00:00</span>
+                            <span id="record-timer" class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">00:00</span>
                         </div>
 
-                        <div class="flex items-center gap-2">
-                            <button id="btn-record-mic" onclick="toggleVoiceRecording()" class="flex-1 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
-                                <i id="record-mic-icon" class="fa-solid fa-microphone"></i>
-                                <span id="record-mic-label">Mulai Rekam Suara</span>
-                            </button>
+                        <!-- Live Teleprompter Reading Guide -->
+                        <div id="recording-teleprompter" class="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
+                                <span>Panduan Bacaan:</span>
+                                <div class="flex items-center gap-1">
+                                    <button onclick="prevTeleprompterVerse()" class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px]"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <span id="teleprompter-verse-badge" class="font-bold text-brand-600">Ayat 1</span>
+                                    <button onclick="nextTeleprompterVerse()" class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-[10px]"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div id="teleprompter-arabic" class="text-center font-arabic text-lg font-bold text-slate-900 dark:text-white py-1 leading-loose">
+                                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                            </div>
+                            <div id="teleprompter-translation" class="text-center text-[11px] text-slate-500 dark:text-slate-400 italic">
+                                "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+                            </div>
                         </div>
-                        <p class="text-[10px] text-slate-500">Klik Izinkan Mikrofon di browser untuk mulai merekam bacaan Anda.</p>
+
+                        <!-- Mic Controls -->
+                        <div class="space-y-2">
+                            <button id="btn-record-mic" onclick="toggleVoiceRecording()" class="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                                <i id="record-mic-icon" class="fa-solid fa-microphone"></i>
+                                <span id="record-mic-label">Mulai Rekam Suara ke Mic</span>
+                            </button>
+
+                            <div id="mic-live-indicator" class="hidden flex items-center justify-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 animate-pulse">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span>Mikrofon aktif! Visualizer gelombang merespon suara Anda.</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Upload Audio File -->
@@ -593,7 +616,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 4: ANTI-COPYRIGHT & AUDIO REMASTERING (FITUR BARU) -->
+                <!-- TAB 4: ANTI-COPYRIGHT & AUDIO REMASTERING -->
                 <div id="tab-copyright" class="tab-content hidden space-y-3.5">
                     <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 space-y-1.5">
                         <div class="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-300">
@@ -831,17 +854,17 @@
 
     </div>
 
-    <!-- MODAL: Whats New Popup (v2.7) -->
+    <!-- MODAL: Whats New Popup (v2.8) -->
     <div id="whats-new-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-xs">
-                        <i class="fa-solid fa-shield-halved"></i>
+                        <i class="fa-solid fa-microphone-lines"></i>
                     </div>
                     <div>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Fitur Baru Studio v2.7</h3>
-                        <p class="text-[10px] text-slate-500">Anti-Copyright Suite & Custom Voice</p>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Fitur Baru Studio v2.8</h3>
+                        <p class="text-[10px] text-slate-500">Live Mic Teleprompter & Real-Time Waveform</p>
                     </div>
                 </div>
                 <button onclick="closeWhatsNewModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-base">
@@ -851,16 +874,12 @@
 
             <div class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 max-h-[55vh] overflow-y-auto pr-1">
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                    <b class="text-emerald-600 dark:text-emerald-400 block mb-1">🎙️ Rekam Suara Sendiri & Upload Custom Audio</b>
-                    <p class="text-[11px] text-slate-500">Rekam bacaan Anda sendiri langsung via mic atau upload file MP3 untuk monetisasi 100% aman.</p>
+                    <b class="text-emerald-600 dark:text-emerald-400 block mb-1">🎙️ Live Teleprompter Panduan Ayat Mic</b>
+                    <p class="text-[11px] text-slate-500">Ketika merekam suara sendiri, studio memunculkan teks Arab dan terjemahan ayat yang dipilih sebagai panduan membaca, dan gelombang audio merespon suara asli Anda secara langsung!</p>
                 </div>
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                    <b class="text-amber-600 dark:text-amber-400 block mb-1">🛡️ Anti-Copyright & Audio Remastering</b>
-                    <p class="text-[11px] text-slate-500">Acoustic Reverb masjid, Warm EQ, dan Micro Pitch Shifter untuk menghindari sistem bot Content ID YouTube.</p>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                    <b class="text-indigo-600 dark:text-indigo-400 block mb-1">📐 Rasio Layar Fleksibel (9:16, 1:1, 16:9)</b>
-                    <p class="text-[11px] text-slate-500">Format video otomatis menyesuaikan YouTube Shorts, Feed Instagram, maupun YouTube Landscape.</p>
+                    <b class="text-brand-600 dark:text-brand-400 block mb-1">✨ Sinkronisasi Teks & Branding 100% Responsif</b>
+                    <p class="text-[11px] text-slate-500">Perbaikan menyeluruh pada toggle Teks Arab, Latin, Terjemahan, Header Surat, dan Branding Akun Medsos.</p>
                 </div>
             </div>
 
@@ -1191,7 +1210,7 @@
 
     <!-- CORE STUDIO JS ENGINE & ANTI-COPYRIGHT SUITE -->
     <script>
-        const CURRENT_APP_VERSION = "v2.7.0-anti-copyright-suite";
+        const CURRENT_APP_VERSION = "v2.8.0-live-teleprompter";
 
         const state = {
             themeMode: 'dark',
@@ -1204,7 +1223,7 @@
             qari: 'ar.alafasy',
             translationLang: 'id',
             
-            // Custom Voice Mode
+            // Custom Voice & Live Mic
             isCustomVoiceActive: false,
             customAudioBlob: null,
             customAudioBuffer: null,
@@ -1213,6 +1232,9 @@
             micRecordedChunks: [],
             micRecordTimerInterval: null,
             micRecordSeconds: 0,
+            micStream: null,
+            micSourceNode: null,
+            teleprompterVerseIndex: 0,
             
             // Anti-Copyright & Audio Processing
             antiCopyright: {
@@ -1443,6 +1465,10 @@
                 btn.classList.add('active', 'border-brand-500', 'text-brand-600', 'dark:text-brand-400', 'bg-white', 'dark:bg-slate-900');
                 btn.classList.remove('border-transparent', 'text-slate-500', 'dark:text-slate-400');
             }
+
+            if (tabId === 'tab-custom-voice') {
+                updateTeleprompterUI();
+            }
         }
 
         function populateSurahDropdown() {
@@ -1510,6 +1536,7 @@
 
             await loadSurahVerses(surahId);
             autoGenerateSEOCaption();
+            updateTeleprompterUI();
         }
 
         async function onVerseRangeChange() {
@@ -1532,6 +1559,7 @@
 
             await filterSelectedVerses();
             autoGenerateSEOCaption();
+            updateTeleprompterUI();
         }
 
         function setSingleVerseMode() {
@@ -1550,6 +1578,23 @@
         async function onTranslationLangChange() {
             state.translationLang = document.getElementById('select-translation-lang').value;
             await loadSurahVerses(state.currentSurah);
+            updateTeleprompterUI();
+        }
+
+        function onTextToggleChange() {
+            state.showArabic = document.getElementById('toggle-arabic').checked;
+            state.showLatin = document.getElementById('toggle-latin').checked;
+            state.showTranslation = document.getElementById('toggle-translation').checked;
+            state.showSurahHeader = document.getElementById('toggle-surah-header').checked;
+            state.showVerseBadge = document.getElementById('toggle-verse-badge').checked;
+            state.showWatermark = document.getElementById('toggle-watermark').checked;
+            updateCanvas();
+        }
+
+        function onWatermarkChange() {
+            state.watermarkIcon = document.getElementById('select-watermark-icon').value;
+            state.watermarkText = document.getElementById('input-watermark-text').value;
+            updateCanvas();
         }
 
         async function loadSurahVerses(surahId) {
@@ -1625,6 +1670,7 @@
             }
 
             updatePlayerUI();
+            updateTeleprompterUI();
             updateCanvas();
         }
 
@@ -1839,9 +1885,40 @@
 
         /**
          * ===============================================
-         * CUSTOM VOICE: RECORDING & FILE UPLOAD
+         * CUSTOM VOICE: LIVE MIC WITH TELEPROMPTER & VISUALIZER
          * ===============================================
          */
+        function updateTeleprompterUI() {
+            if (!state.versesData || state.versesData.length === 0) return;
+            if (state.teleprompterVerseIndex >= state.versesData.length) {
+                state.teleprompterVerseIndex = 0;
+            }
+            const activeV = state.versesData[state.teleprompterVerseIndex] || state.versesData[0];
+            if (activeV) {
+                document.getElementById('teleprompter-verse-badge').innerText = `Ayat ${activeV.verseNumber}`;
+                document.getElementById('teleprompter-arabic').innerText = activeV.arabic;
+                document.getElementById('teleprompter-translation').innerText = `"${activeV.translation}"`;
+            }
+        }
+
+        function prevTeleprompterVerse() {
+            if (state.teleprompterVerseIndex > 0) {
+                state.teleprompterVerseIndex--;
+                state.currentVerseIndex = state.teleprompterVerseIndex;
+                updateTeleprompterUI();
+                updateCanvas();
+            }
+        }
+
+        function nextTeleprompterVerse() {
+            if (state.teleprompterVerseIndex < state.versesData.length - 1) {
+                state.teleprompterVerseIndex++;
+                state.currentVerseIndex = state.teleprompterVerseIndex;
+                updateTeleprompterUI();
+                updateCanvas();
+            }
+        }
+
         async function toggleVoiceRecording() {
             if (state.isRecordingMic) {
                 stopVoiceRecording();
@@ -1852,9 +1929,15 @@
 
         async function startVoiceRecording() {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                initAudioContext();
+                state.micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                // Connect Live Mic to Analyser for real-time waveform animation
+                state.micSourceNode = state.audioContext.createMediaStreamSource(state.micStream);
+                state.micSourceNode.connect(state.audioAnalyser);
+
                 state.micRecordedChunks = [];
-                state.mediaRecorderMic = new MediaRecorder(stream);
+                state.mediaRecorderMic = new MediaRecorder(state.micStream);
                 
                 state.mediaRecorderMic.ondataavailable = (e) => {
                     if (e.data && e.data.size > 0) state.micRecordedChunks.push(e.data);
@@ -1863,7 +1946,13 @@
                 state.mediaRecorderMic.onstop = async () => {
                     const audioBlob = new Blob(state.micRecordedChunks, { type: 'audio/webm' });
                     await processCustomAudioBlob(audioBlob);
-                    stream.getTracks().forEach(t => t.stop());
+                    
+                    if (state.micStream) {
+                        state.micStream.getTracks().forEach(t => t.stop());
+                    }
+                    if (state.micSourceNode) {
+                        try { state.micSourceNode.disconnect(); } catch (e) {}
+                    }
                 };
 
                 state.mediaRecorderMic.start();
@@ -1871,8 +1960,9 @@
                 state.micRecordSeconds = 0;
 
                 document.getElementById('record-mic-icon').className = 'fa-solid fa-stop animate-pulse';
-                document.getElementById('record-mic-label').innerText = 'Berhenti Merekam';
+                document.getElementById('record-mic-label').innerText = 'Selesai Membaca & Simpan';
                 document.getElementById('btn-record-mic').classList.replace('bg-emerald-500', 'bg-rose-500');
+                document.getElementById('mic-live-indicator').classList.remove('hidden');
 
                 state.micRecordTimerInterval = setInterval(() => {
                     state.micRecordSeconds++;
@@ -1891,8 +1981,9 @@
                 clearInterval(state.micRecordTimerInterval);
 
                 document.getElementById('record-mic-icon').className = 'fa-solid fa-microphone';
-                document.getElementById('record-mic-label').innerText = 'Mulai Rekam Suara';
+                document.getElementById('record-mic-label').innerText = 'Mulai Rekam Ulang Suara';
                 document.getElementById('btn-record-mic').classList.replace('bg-rose-500', 'bg-emerald-500');
+                document.getElementById('mic-live-indicator').classList.add('hidden');
             }
         }
 
@@ -1915,6 +2006,7 @@
             updateVerseTimingsForCustomAudio();
             updateDurationDisplay();
             updatePlayerUI();
+            updateCanvas();
 
             document.getElementById('custom-audio-status').classList.remove('hidden');
             document.getElementById('qari-license-badge').innerText = '🌟 100% Suara Sendiri (Safe)';
@@ -2338,7 +2430,8 @@ Please remove any automated Content ID claims immediately. Thank you.`;
             ctx.save();
             for (let i = 0; i < barCount; i++) {
                 const val = state.audioDataArray[i % state.audioDataArray.length] || 10;
-                const barHeight = Math.max(6, (val / 255) * 60 * (state.isPlaying ? 1 : 0.2));
+                const isLiveResponsive = state.isPlaying || state.isRecordingMic;
+                const barHeight = Math.max(6, (val / 255) * 60 * (isLiveResponsive ? 1.2 : 0.2));
                 const x = startX + i * (barWidth + gap);
                 ctx.fillStyle = state.highlightColor;
                 ctx.shadowColor = state.highlightColor;
@@ -2386,7 +2479,7 @@ Please remove any automated Content ID claims immediately. Thank you.`;
                 ctx.save();
                 ctx.textAlign = 'center';
                 ctx.font = '600 20px "Plus Jakarta Sans", sans-serif';
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
                 const iconPrefix = state.watermarkIcon === 'tiktok' ? '🎵 ' : (state.watermarkIcon === 'instagram' ? '📸 ' : '▶ ');
                 ctx.fillText(`${iconPrefix}${state.watermarkText}`, w/2, watermarkY);
                 ctx.restore();
@@ -2431,21 +2524,47 @@ Please remove any automated Content ID claims immediately. Thank you.`;
             const maxContentWidth = w * (state.contentWidthPercent / 100);
             const centerY = (h / 2) + state.verticalOffset;
 
+            // Measure height of all elements to perfectly center vertically
+            let totalHeight = 0;
+            let arabicLines = [];
+            let latinLines = [];
+            let transLines = [];
+            const arabicLineHeight = state.arabicSize * 1.7;
+            const latinLineHeight = state.transSize * 1.5;
+            const transLineHeight = state.transSize * 1.6;
+
+            if (state.showArabic && currentVerse.arabic) {
+                ctx.font = `700 ${state.arabicSize}px ${state.arabicFont}`;
+                arabicLines = wrapText(ctx, currentVerse.arabic, maxContentWidth);
+                totalHeight += (arabicLines.length * arabicLineHeight) + 20;
+            }
+
+            if (state.showLatin && currentVerse.transliteration) {
+                ctx.font = `italic 500 ${Math.round(state.transSize * 0.95)}px "Plus Jakarta Sans", sans-serif`;
+                latinLines = wrapText(ctx, `"${currentVerse.transliteration}"`, maxContentWidth);
+                totalHeight += (latinLines.length * latinLineHeight) + 16;
+            }
+
+            if (state.showTranslation && currentVerse.translation) {
+                ctx.font = `400 ${state.transSize}px "Plus Jakarta Sans", sans-serif`;
+                transLines = wrapText(ctx, currentVerse.translation, maxContentWidth);
+                totalHeight += (transLines.length * transLineHeight);
+            }
+
+            let currentDrawY = centerY - (totalHeight / 2) + (state.arabicSize * 0.6);
+
             ctx.save();
 
-            let currentDrawY = centerY - 90;
-
-            if (state.showArabic) {
+            // 1. Draw Arabic
+            if (state.showArabic && arabicLines.length > 0) {
                 ctx.direction = 'rtl';
                 ctx.textAlign = 'center';
                 ctx.font = `700 ${state.arabicSize}px ${state.arabicFont}`;
 
                 const progress = state.currentVerseDuration ? (state.currentVerseTime / state.currentVerseDuration) : 0;
-                const arabicLines = wrapText(ctx, currentVerse.arabic, maxContentWidth);
-                const lineHeight = state.arabicSize * 1.7;
 
                 arabicLines.forEach((line, index) => {
-                    const lineY = currentDrawY + (index * lineHeight);
+                    const lineY = currentDrawY + (index * arabicLineHeight);
                     
                     if (state.highlightMode === 'word-by-word') {
                         const words = line.split(' ');
@@ -2471,34 +2590,30 @@ Please remove any automated Content ID claims immediately. Thank you.`;
                     }
                 });
 
-                currentDrawY += (arabicLines.length * lineHeight) + 36;
+                currentDrawY += (arabicLines.length * arabicLineHeight) + 24;
             }
 
-            if (state.showLatin && currentVerse.transliteration) {
+            // 2. Draw Latin
+            if (state.showLatin && latinLines.length > 0) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
                 ctx.font = `italic 500 ${Math.round(state.transSize * 0.95)}px "Plus Jakarta Sans", sans-serif`;
                 ctx.fillStyle = state.highlightColor;
                 ctx.shadowBlur = 0;
 
-                const latinLines = wrapText(ctx, `"${currentVerse.transliteration}"`, maxContentWidth);
-                const latinLineHeight = state.transSize * 1.5;
-
                 latinLines.forEach((lLine, lIdx) => {
                     ctx.fillText(lLine, w/2, currentDrawY + (lIdx * latinLineHeight));
                 });
-                currentDrawY += (latinLines.length * latinLineHeight) + 18;
+                currentDrawY += (latinLines.length * latinLineHeight) + 16;
             }
 
-            if (state.showTranslation && currentVerse.translation) {
+            // 3. Draw Translation
+            if (state.showTranslation && transLines.length > 0) {
                 ctx.direction = 'ltr';
                 ctx.textAlign = 'center';
                 ctx.font = `400 ${state.transSize}px "Plus Jakarta Sans", sans-serif`;
                 ctx.fillStyle = state.transTextColor;
                 ctx.shadowBlur = 0;
-
-                const transLines = wrapText(ctx, currentVerse.translation, maxContentWidth);
-                const transLineHeight = state.transSize * 1.6;
 
                 transLines.forEach((tLine, tIdx) => {
                     ctx.fillText(tLine, w/2, currentDrawY + (tIdx * transLineHeight));
