@@ -159,6 +159,12 @@
                             <i id="overlay-play-icon" class="fa-solid fa-play ml-0.5"></i>
                         </div>
                     </div>
+
+                    <!-- Floating Fullscreen Close Button (Shows in Fullscreen Mode) -->
+                    <button id="btn-fullscreen-exit-float" onclick="toggleFullscreenPreview()" class="hidden absolute top-4 right-4 z-30 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white text-xs font-semibold backdrop-blur-md border border-white/20 shadow-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-compress text-xs"></i>
+                        <span>Keluar Layar Penuh (ESC)</span>
+                    </button>
                 </div>
             </div>
 
@@ -194,6 +200,9 @@
 
                     <!-- Tools -->
                     <div class="flex items-center gap-1">
+                        <button id="btn-fullscreen-toggle" onclick="toggleFullscreenPreview()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Layar Penuh Preview (Fullscreen / F)">
+                            <i id="fullscreen-btn-icon" class="fa-solid fa-expand"></i>
+                        </button>
                         <button onclick="downloadImageSlide()" class="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-xs transition" title="Unduh Poster Gambar HD">
                             <i class="fa-solid fa-image"></i>
                         </button>
@@ -2516,6 +2525,60 @@ Please remove any automated Content ID claims immediately. Thank you.`;
             const s = Math.floor(secs % 60);
             return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
+
+        /**
+         * ===============================================
+         * FULLSCREEN PREVIEW CONTROLLER
+         * ===============================================
+         */
+        function toggleFullscreenPreview() {
+            const wrapper = document.getElementById('canvas-wrapper');
+            if (!wrapper) return;
+
+            if (!document.fullscreenElement) {
+                if (wrapper.requestFullscreen) {
+                    wrapper.requestFullscreen();
+                } else if (wrapper.webkitRequestFullscreen) {
+                    wrapper.webkitRequestFullscreen();
+                } else if (wrapper.msRequestFullscreen) {
+                    wrapper.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        function onFullscreenStateChanged() {
+            const isFull = !!document.fullscreenElement;
+            const exitFloatBtn = document.getElementById('btn-fullscreen-exit-float');
+            const iconEl = document.getElementById('fullscreen-btn-icon');
+
+            if (exitFloatBtn) {
+                if (isFull) exitFloatBtn.classList.remove('hidden');
+                else exitFloatBtn.classList.add('hidden');
+            }
+
+            if (iconEl) {
+                iconEl.className = isFull ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+            }
+        }
+
+        document.addEventListener('fullscreenchange', onFullscreenStateChanged);
+        document.addEventListener('webkitfullscreenchange', onFullscreenStateChanged);
+
+        document.addEventListener('keydown', (e) => {
+            // Shortcut F / f for Fullscreen (ketika tidak sedang mengetik di form)
+            if ((e.key === 'f' || e.key === 'F') && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+                e.preventDefault();
+                toggleFullscreenPreview();
+            }
+        });
 
         /**
          * ===============================================
