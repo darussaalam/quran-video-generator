@@ -464,6 +464,60 @@
                         </div>
                     </div>
 
+                    <!-- Voice Processing & Studio Vocal Cleaner Suite -->
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Studio Voice Processing & Filter
+                            </span>
+                            <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 px-1.5 py-0.5 rounded border border-brand-200 dark:border-brand-500/20">Studio Quality</span>
+                        </div>
+                        
+                        <div class="space-y-1.5 pt-0.5">
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="toggle-voice-denoise" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">De-Noise & Low-Cut (80Hz)</span>
+                                        <span class="text-[10px] text-slate-500">Menghilangkan dengung, hembusan angin & suara gemuruh mic</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="toggle-voice-clarity" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Vocal Air & Clarity Boost (3.5kHz)</span>
+                                        <span class="text-[10px] text-slate-500">Menambah kejernihan tajwid & kemerduan artikulasi suara</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-2 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-brand-500/50 transition">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="toggle-voice-compressor" checked onchange="updateVoiceCleanerSettings()" class="accent-brand-500 w-3.5 h-3.5">
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Studio Dynamics Compressor</span>
+                                        <span class="text-[10px] text-slate-500">Menstabilkan volume vokal agar rata dan empuk seperti rekaman studio</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-emerald-500 font-bold">ACTIVE</span>
+                            </label>
+                        </div>
+
+                        <!-- Clarity Gain Slider -->
+                        <div class="space-y-1 pt-1">
+                            <div class="flex justify-between text-[11px]">
+                                <span class="font-bold text-slate-700 dark:text-slate-300">Intensitas Kejernihan (Air Boost)</span>
+                                <span id="val-voice-clarity" class="font-mono text-brand-600 dark:text-brand-400 font-bold">+4.0 dB</span>
+                            </div>
+                            <input type="range" id="slider-voice-clarity" min="0" max="10" step="0.5" value="4" oninput="onVoiceClarityGainChange(this.value)" class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                        </div>
+                    </div>
+
                     <!-- Switch Back to Qari -->
                     <div class="pt-1">
                         <button onclick="resetToOfficialQari()" class="w-full py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition">
@@ -1311,11 +1365,20 @@
             audioDataArray: null,
             audioDestination: null,
             
-            // Audio FX Nodes (Reverb, EQ, Filter)
+            // Audio FX Nodes (Reverb, EQ, Filter & Voice Cleaner Suite)
             convolverNode: null,
             reverbGainNode: null,
             eqLowNode: null,
             eqHighNode: null,
+            voiceLowCutNode: null,
+            voicePresenceNode: null,
+            voiceCompressorNode: null,
+            voiceCleaner: {
+                enableDenoise: true,
+                enableClarity: true,
+                enableCompressor: true,
+                clarityGain: 4.0
+            },
             
             // Export & Blob Storage for Publishing
             isExporting: false,
@@ -1349,7 +1412,7 @@
             { id: 8, name: "Al-Anfal", arabic: "الأنفال", verses: 75 },
             { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129 },
             { id: 10, name: "Yunus", arabic: "يونس", verses: 109 },
-            { id: 18, name: "Al-Kahf", arabic: "الكهf", verses: 110 },
+            { id: 18, name: "Al-Kahf", arabic: "الكهف", verses: 110 },
             { id: 36, name: "Ya-Sin", arabic: "يس", verses: 83 },
             { id: 55, name: "Ar-Rahman", arabic: "الرحمن", verses: 78 },
             { id: 56, name: "Al-Waqi'ah", arabic: "الواقعة", verses: 96 },
@@ -1785,6 +1848,24 @@
                 state.eqHighNode.type = 'highshelf';
                 state.eqHighNode.frequency.value = 3500;
                 state.eqHighNode.gain.value = -1.5; // Smooth top end
+
+                // Studio Voice Cleaner Suite Nodes
+                state.voiceLowCutNode = state.audioContext.createBiquadFilter();
+                state.voiceLowCutNode.type = 'highpass';
+                state.voiceLowCutNode.frequency.value = 85; // 85Hz High-pass de-noise
+
+                state.voicePresenceNode = state.audioContext.createBiquadFilter();
+                state.voicePresenceNode.type = 'peaking';
+                state.voicePresenceNode.frequency.value = 3500; // 3.5kHz clarity
+                state.voicePresenceNode.Q.value = 1.0;
+                state.voicePresenceNode.gain.value = 4.0; // +4dB boost
+
+                state.voiceCompressorNode = state.audioContext.createDynamicsCompressor();
+                state.voiceCompressorNode.threshold.value = -22;
+                state.voiceCompressorNode.knee.value = 12;
+                state.voiceCompressorNode.ratio.value = 4;
+                state.voiceCompressorNode.attack.value = 0.005;
+                state.voiceCompressorNode.release.value = 0.06;
             }
             if (state.audioContext.state === 'suspended') {
                 state.audioContext.resume();
@@ -1822,6 +1903,33 @@
             }
             if (state.eqLowNode) {
                 state.eqLowNode.gain.value = state.antiCopyright.enableEQ ? 3.0 : 0.0;
+            }
+        }
+
+        function updateVoiceCleanerSettings() {
+            const denoiseEl = document.getElementById('toggle-voice-denoise');
+            const clarityEl = document.getElementById('toggle-voice-clarity');
+            const compEl = document.getElementById('toggle-voice-compressor');
+
+            if (denoiseEl) state.voiceCleaner.enableDenoise = denoiseEl.checked;
+            if (clarityEl) state.voiceCleaner.enableClarity = clarityEl.checked;
+            if (compEl) state.voiceCleaner.enableCompressor = compEl.checked;
+
+            if (state.voiceLowCutNode) {
+                state.voiceLowCutNode.frequency.value = state.voiceCleaner.enableDenoise ? 85 : 10;
+            }
+            if (state.voicePresenceNode) {
+                state.voicePresenceNode.gain.value = state.voiceCleaner.enableClarity ? state.voiceCleaner.clarityGain : 0.0;
+            }
+        }
+
+        function onVoiceClarityGainChange(val) {
+            const num = parseFloat(val);
+            state.voiceCleaner.clarityGain = num;
+            const label = document.getElementById('val-voice-clarity');
+            if (label) label.innerText = `+${num.toFixed(1)} dB`;
+            if (state.voicePresenceNode && state.voiceCleaner.enableClarity) {
+                state.voicePresenceNode.gain.value = num;
             }
         }
 
@@ -2191,10 +2299,28 @@ Please remove any automated Content ID claims immediately. Thank you.`;
 
             // Connect FX Nodes
             let lastNode = state.activeBufferSource;
-            if (state.eqLowNode && state.antiCopyright.enableEQ) {
-                lastNode.connect(state.eqLowNode);
-                state.eqLowNode.connect(state.eqHighNode);
-                lastNode = state.eqHighNode;
+
+            if (state.isCustomVoiceActive) {
+                // Route through Voice Processing & Studio Cleaning suite
+                if (state.voiceLowCutNode && state.voiceCleaner.enableDenoise) {
+                    lastNode.connect(state.voiceLowCutNode);
+                    lastNode = state.voiceLowCutNode;
+                }
+                if (state.voicePresenceNode && state.voiceCleaner.enableClarity) {
+                    lastNode.connect(state.voicePresenceNode);
+                    lastNode = state.voicePresenceNode;
+                }
+                if (state.voiceCompressorNode && state.voiceCleaner.enableCompressor) {
+                    lastNode.connect(state.voiceCompressorNode);
+                    lastNode = state.voiceCompressorNode;
+                }
+            } else {
+                // Official Qari Anti-Copyright FX
+                if (state.eqLowNode && state.antiCopyright.enableEQ) {
+                    lastNode.connect(state.eqLowNode);
+                    state.eqLowNode.connect(state.eqHighNode);
+                    lastNode = state.eqHighNode;
+                }
             }
 
             // Route to Analyser & Output
@@ -2203,7 +2329,7 @@ Please remove any automated Content ID claims immediately. Thank you.`;
             lastNode.connect(state.audioDestination);
 
             // Send to Reverb Convolver
-            if (state.convolverNode && state.antiCopyright.enableReverb) {
+            if (state.convolverNode && (state.antiCopyright.enableReverb || state.isCustomVoiceActive)) {
                 lastNode.connect(state.convolverNode);
                 state.convolverNode.connect(state.reverbGainNode);
                 state.reverbGainNode.connect(state.audioContext.destination);
@@ -2344,7 +2470,7 @@ Please remove any automated Content ID claims immediately. Thank you.`;
          */
         function startCanvasLoop() {
             function render() {
-                if (state.isPlaying && !state.isExporting) {
+                if (state.isPlaying) {
                     state.masterCurrentTime = (state.audioContext.currentTime - state.playbackStartTime) * state.playbackSpeed;
                     if (state.masterCurrentTime > state.totalMasterDuration) {
                         state.masterCurrentTime = state.totalMasterDuration;
@@ -2876,6 +3002,13 @@ Please remove any automated Content ID claims immediately. Thank you.`;
                 document.getElementById('export-complete-panel').classList.remove('hidden');
                 state.isExporting = false;
             };
+
+            // Reset timeline to beginning before export
+            stopActiveBufferSource();
+            state.masterCurrentTime = 0;
+            state.playbackOffset = 0;
+            updateCurrentVerseFromMasterTime();
+            drawVideoFrame();
 
             // Start Playback & Recording Simultaneously
             playMasterAudio();
