@@ -90,7 +90,7 @@
             </div>
             <div>
                 <h1 class="text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.8 Pro</span>
+                    Quran Video Studio <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-1.5 py-0.5 rounded border border-slate-300 dark:border-slate-700">v2.9 Pro</span>
                 </h1>
                 <p class="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block">Reels • Shorts • Live Mic Teleprompter</p>
             </div>
@@ -494,7 +494,7 @@
                                 <div class="w-5 h-5 rounded-full bg-[#ffffff] border border-slate-400"></div>
                             </button>
                             <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 flex items-center justify-center">
-                                <input type="color" id="custom-highlight-picker" value="#f59e0b" onchange="setHighlightColor(this.value)" class="w-5 h-5 rounded-full bg-transparent cursor-pointer border-0 p-0">
+                                <input type="color" id="custom-highlight-picker" value="#f59e0b" oninput="setHighlightColor(this.value)" onchange="setHighlightColor(this.value)" class="w-5 h-5 rounded-full bg-transparent cursor-pointer border-0 p-0">
                             </div>
                         </div>
                     </div>
@@ -502,7 +502,7 @@
                     <!-- Highlight Mode -->
                     <div class="space-y-1">
                         <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Mode Animasi Sorot</label>
-                        <select id="select-highlight-mode" onchange="updateCanvas()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
+                        <select id="select-highlight-mode" onchange="onHighlightModeChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <option value="word-by-word">🔤 Sorot Kata per Kata (Word-by-Word)</option>
                             <option value="karaoke">✨ Karaoke Sweep (Geser Mengalir)</option>
                             <option value="verse-glow">🌟 Verse Glowing Pulse (Menyala Per Ayat)</option>
@@ -516,7 +516,7 @@
                             <label class="text-[11px] font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
                                 <i class="fa-solid fa-bullhorn"></i> Opening Hook (3 Detik Pertama)
                             </label>
-                            <input type="checkbox" id="toggle-hook" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4">
+                            <input type="checkbox" id="toggle-hook" checked onchange="onHookToggleChange()" class="accent-brand-500 w-4 h-4">
                         </div>
                         <div class="space-y-1.5">
                             <select id="select-hook-preset" onchange="onHookPresetChange()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none">
@@ -525,14 +525,14 @@
                                 <option value="Baca ini sebelum kamu tidur malam ini...">"Baca ini sebelum tidur malam ini..."</option>
                                 <option value="custom">Tulis Hook Sendiri...</option>
                             </select>
-                            <input type="text" id="input-hook-custom" value="Dengarkan ayat ini saat hatimu sedang lelah..." oninput="updateCanvas()" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none">
+                            <input type="text" id="input-hook-custom" value="Dengarkan ayat ini saat hatimu sedang lelah..." oninput="onHookCustomInputChange(this.value)" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-100 outline-none">
                         </div>
                     </div>
 
                     <!-- Arabic Font -->
                     <div class="space-y-1">
                         <label class="text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Font Arab</label>
-                        <select id="select-arabic-font" onchange="updateCanvas()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none">
+                        <select id="select-arabic-font" onchange="onArabicFontChange()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-800 dark:text-slate-100 focus:border-brand-500 outline-none cursor-pointer">
                             <option value="'Amiri', serif">Amiri Quran (Klasik)</option>
                             <option value="'Noto Naskh Arabic', serif">Noto Naskh (Modern)</option>
                             <option value="'Scheherazade New', serif">Scheherazade (Indah)</option>
@@ -547,7 +547,7 @@
                                 <span>Ukuran Arab:</span>
                                 <span id="val-arabic-size" class="font-bold text-brand-600 dark:text-brand-400">54px</span>
                             </div>
-                            <input type="range" id="range-arabic-size" min="34" max="92" value="54" oninput="document.getElementById('val-arabic-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-arabic-size" min="34" max="92" value="54" oninput="onArabicSizeChange(this.value)" class="w-full">
                         </div>
 
                         <div class="space-y-1">
@@ -555,7 +555,7 @@
                                 <span>Ukuran Terjemah:</span>
                                 <span id="val-trans-size" class="font-bold text-brand-600 dark:text-brand-400">22px</span>
                             </div>
-                            <input type="range" id="range-trans-size" min="14" max="36" value="22" oninput="document.getElementById('val-trans-size').innerText=this.value+'px'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-trans-size" min="14" max="36" value="22" oninput="onTransSizeChange(this.value)" class="w-full">
                         </div>
                     </div>
                 </div>
@@ -606,12 +606,12 @@
                                 <span>Kegelapan Latar:</span>
                                 <span id="val-bg-darkness" class="font-bold text-brand-600 dark:text-brand-400">65%</span>
                             </div>
-                            <input type="range" id="range-bg-darkness" min="10" max="95" value="65" oninput="document.getElementById('val-bg-darkness').innerText=this.value+'%'; updateCanvas();" class="w-full">
+                            <input type="range" id="range-bg-darkness" min="10" max="95" value="65" oninput="onBgDarknessChange(this.value)" class="w-full">
                         </div>
 
                         <div class="flex items-center justify-between pt-1 border-t border-slate-200 dark:border-slate-800 text-[11px]">
                             <span class="text-slate-700 dark:text-slate-300">Gelombang Audio (Waveform):</span>
-                            <input type="checkbox" id="toggle-waveform" checked onchange="updateCanvas()" class="accent-brand-500 w-4 h-4">
+                            <input type="checkbox" id="toggle-waveform" checked onchange="onWaveformToggleChange()" class="accent-brand-500 w-4 h-4">
                         </div>
                     </div>
                 </div>
@@ -854,17 +854,17 @@
 
     </div>
 
-    <!-- MODAL: Whats New Popup (v2.8) -->
+    <!-- MODAL: Whats New Popup (v2.9) -->
     <div id="whats-new-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-4">
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div class="flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-xs">
-                        <i class="fa-solid fa-microphone-lines"></i>
+                    <div class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold text-xs">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
                     <div>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Fitur Baru Studio v2.8</h3>
-                        <p class="text-[10px] text-slate-500">Live Mic Teleprompter & Real-Time Waveform</p>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Fitur Baru Studio v2.9</h3>
+                        <p class="text-[10px] text-slate-500">Animasi Sorot Real-Time & Slider Presisi</p>
                     </div>
                 </div>
                 <button onclick="closeWhatsNewModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-base">
@@ -874,12 +874,12 @@
 
             <div class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 max-h-[55vh] overflow-y-auto pr-1">
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                    <b class="text-emerald-600 dark:text-emerald-400 block mb-1">🎙️ Live Teleprompter Panduan Ayat Mic</b>
-                    <p class="text-[11px] text-slate-500">Ketika merekam suara sendiri, studio memunculkan teks Arab dan terjemahan ayat yang dipilih sebagai panduan membaca, dan gelombang audio merespon suara asli Anda secara langsung!</p>
+                    <b class="text-brand-600 dark:text-brand-400 block mb-1">✨ 4 Mode Animasi Sorot Aktif & Bekerja Sempurna</b>
+                    <p class="text-[11px] text-slate-500">Sorot Kata per Kata (RTL presisi), Karaoke Sweep mengalir, Verse Glowing Pulse (menyala per ayat), dan Kotak Kaca Glass Card kini berfungsi 100%.</p>
                 </div>
                 <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-                    <b class="text-brand-600 dark:text-brand-400 block mb-1">✨ Sinkronisasi Teks & Branding 100% Responsif</b>
-                    <p class="text-[11px] text-slate-500">Perbaikan menyeluruh pada toggle Teks Arab, Latin, Terjemahan, Header Surat, dan Branding Akun Medsos.</p>
+                    <b class="text-amber-600 dark:text-amber-400 block mb-1">🎛️ Pengaturan Font & Ukuran Teks Responsif</b>
+                    <p class="text-[11px] text-slate-500">Pilihan font Arab (Amiri, Noto, Scheherazade, Lateef) dan slider ukuran teks Arab serta Terjemahan langsung merender canvas tanpa delay.</p>
                 </div>
             </div>
 
@@ -1210,7 +1210,7 @@
 
     <!-- CORE STUDIO JS ENGINE & ANTI-COPYRIGHT SUITE -->
     <script>
-        const CURRENT_APP_VERSION = "v2.8.0-live-teleprompter";
+        const CURRENT_APP_VERSION = "v2.9.0-highlight-enhancement";
 
         const state = {
             themeMode: 'dark',
@@ -1349,7 +1349,7 @@
             { id: 8, name: "Al-Anfal", arabic: "الأنفال", verses: 75 },
             { id: 9, name: "At-Taubah", arabic: "التوبة", verses: 129 },
             { id: 10, name: "Yunus", arabic: "يونس", verses: 109 },
-            { id: 18, name: "Al-Kahf", arabic: "الكهف", verses: 110 },
+            { id: 18, name: "Al-Kahf", arabic: "الكهf", verses: 110 },
             { id: 36, name: "Ya-Sin", arabic: "يس", verses: 83 },
             { id: 55, name: "Ar-Rahman", arabic: "الرحمن", verses: 78 },
             { id: 56, name: "Al-Waqi'ah", arabic: "الواقعة", verses: 96 },
@@ -1597,6 +1597,49 @@
             updateCanvas();
         }
 
+        function onHighlightModeChange() {
+            state.highlightMode = document.getElementById('select-highlight-mode').value;
+            updateCanvas();
+        }
+
+        function onArabicFontChange() {
+            state.arabicFont = document.getElementById('select-arabic-font').value;
+            updateCanvas();
+        }
+
+        function onArabicSizeChange(val) {
+            state.arabicSize = parseInt(val);
+            document.getElementById('val-arabic-size').innerText = `${val}px`;
+            updateCanvas();
+        }
+
+        function onTransSizeChange(val) {
+            state.transSize = parseInt(val);
+            document.getElementById('val-trans-size').innerText = `${val}px`;
+            updateCanvas();
+        }
+
+        function onBgDarknessChange(val) {
+            state.bgDarkness = parseInt(val) / 100;
+            document.getElementById('val-bg-darkness').innerText = `${val}%`;
+            updateCanvas();
+        }
+
+        function onWaveformToggleChange() {
+            state.showWaveform = document.getElementById('toggle-waveform').checked;
+            updateCanvas();
+        }
+
+        function onHookToggleChange() {
+            state.showHook = document.getElementById('toggle-hook').checked;
+            updateCanvas();
+        }
+
+        function onHookCustomInputChange(val) {
+            state.hookText = val;
+            updateCanvas();
+        }
+
         async function loadSurahVerses(surahId) {
             try {
                 if (state.translationLang === 'en') {
@@ -1804,7 +1847,7 @@
                     left[i] = (lastOutL * 1.5 + drop);
                     right[i] = (lastOutR * 1.5 + drop);
                 } else if (type === 'night-wind') {
-                    lastOutL = (lastOutL * 0.985) + (whiteL * 0.015);
+                    lastOutL = (lastOutR * 0.985) + (whiteL * 0.015);
                     lastOutR = (lastOutR * 0.985) + (whiteR * 0.015);
                     const mod = Math.sin((i / sampleRate) * Math.PI * 0.4) * 0.2;
                     left[i] = lastOutL * (1 + mod);
@@ -2555,34 +2598,124 @@ Please remove any automated Content ID claims immediately. Thank you.`;
 
             ctx.save();
 
-            // 1. Draw Arabic
+            // Highlight calculations
+            const progress = state.currentVerseDuration ? Math.min(1, Math.max(0, state.currentVerseTime / state.currentVerseDuration)) : 0;
+
+            // Optional: Glass Card Active Mode
+            if (state.highlightMode === 'glass-card') {
+                const cardPadX = 36;
+                const cardPadY = 32;
+                const cardW = Math.min(w * 0.92, maxContentWidth + cardPadX * 2);
+                const cardH = totalHeight + cardPadY * 2 + 10;
+                const cardX = (w - cardW) / 2;
+                const cardY = currentDrawY - (state.arabicSize * 0.7) - cardPadY/2;
+
+                ctx.save();
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.65)';
+                ctx.strokeStyle = state.highlightColor;
+                ctx.lineWidth = 1.5;
+                ctx.shadowColor = state.highlightColor;
+                ctx.shadowBlur = 12;
+                ctx.beginPath();
+                ctx.roundRect(cardX, cardY, cardW, cardH, 20);
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            // 1. Draw Arabic with All 4 Animation Modes
             if (state.showArabic && arabicLines.length > 0) {
-                ctx.direction = 'rtl';
-                ctx.textAlign = 'center';
                 ctx.font = `700 ${state.arabicSize}px ${state.arabicFont}`;
 
-                const progress = state.currentVerseDuration ? (state.currentVerseTime / state.currentVerseDuration) : 0;
+                // Calculate total word count across lines for continuous word-by-word
+                const allWords = currentVerse.arabic.split(' ');
+                const activeGlobalWordIdx = Math.floor(progress * allWords.length);
+                let cumulativeWordCount = 0;
 
                 arabicLines.forEach((line, index) => {
                     const lineY = currentDrawY + (index * arabicLineHeight);
-                    
+                    const lineWords = line.split(' ');
+                    const lineStartWordIdx = cumulativeWordCount;
+                    cumulativeWordCount += lineWords.length;
+
                     if (state.highlightMode === 'word-by-word') {
-                        const words = line.split(' ');
-                        const activeWordIndex = Math.floor(progress * words.length);
-                        
+                        // Segmented RTL line drawing with precise per-word active highlight
+                        const fullLineWidth = ctx.measureText(line).width;
+                        let curX = (w / 2) + (fullLineWidth / 2); // Start from right
+
+                        lineWords.forEach((word, wIdx) => {
+                            const globalWIdx = lineStartWordIdx + wIdx;
+                            const wordWidth = ctx.measureText(word + ' ').width;
+                            const wordOnlyWidth = ctx.measureText(word).width;
+                            const wordRightX = curX;
+
+                            ctx.save();
+                            ctx.direction = 'rtl';
+                            ctx.textAlign = 'right';
+
+                            if (globalWIdx === activeGlobalWordIdx) {
+                                ctx.fillStyle = state.highlightColor;
+                                ctx.shadowColor = state.highlightColor;
+                                ctx.shadowBlur = 14;
+                            } else if (globalWIdx < activeGlobalWordIdx) {
+                                ctx.fillStyle = '#ffffff';
+                                ctx.shadowBlur = 0;
+                            } else {
+                                ctx.fillStyle = state.baseTextColor;
+                                ctx.shadowBlur = 0;
+                            }
+
+                            ctx.fillText(word, wordRightX, lineY);
+                            ctx.restore();
+
+                            curX -= wordWidth;
+                        });
+
+                    } else if (state.highlightMode === 'karaoke') {
+                        // Smooth gradient sweep from right to left (RTL)
+                        const fullLineWidth = ctx.measureText(line).width;
+                        const lineLeft = (w / 2) - (fullLineWidth / 2);
+                        const lineRight = (w / 2) + (fullLineWidth / 2);
+                        const sweepX = lineRight - (progress * fullLineWidth);
+
+                        // Base text
+                        ctx.save();
+                        ctx.direction = 'rtl';
+                        ctx.textAlign = 'center';
                         ctx.fillStyle = state.baseTextColor;
                         ctx.fillText(line, w/2, lineY);
 
-                        // Highlight Active Word
-                        if (words[activeWordIndex]) {
-                            ctx.fillStyle = state.highlightColor;
-                            ctx.shadowColor = state.highlightColor;
-                            ctx.shadowBlur = 10;
-                            ctx.fillText(line, w/2, lineY);
-                        }
-                    } else {
-                        ctx.fillStyle = state.baseTextColor;
+                        // Highlight sweep overlay using clip
+                        ctx.beginPath();
+                        ctx.rect(sweepX, lineY - arabicLineHeight, fullLineWidth + 50, arabicLineHeight * 1.5);
+                        ctx.clip();
+
+                        ctx.fillStyle = state.highlightColor;
+                        ctx.shadowColor = state.highlightColor;
+                        ctx.shadowBlur = 12;
                         ctx.fillText(line, w/2, lineY);
+                        ctx.restore();
+
+                    } else if (state.highlightMode === 'verse-glow') {
+                        // Glowing pulse across entire active verse
+                        const pulse = (Math.sin(Date.now() / 250) + 1) / 2; // 0 to 1
+                        ctx.save();
+                        ctx.direction = 'rtl';
+                        ctx.textAlign = 'center';
+                        ctx.fillStyle = state.highlightColor;
+                        ctx.shadowColor = state.highlightColor;
+                        ctx.shadowBlur = 8 + (pulse * 16);
+                        ctx.fillText(line, w/2, lineY);
+                        ctx.restore();
+
+                    } else {
+                        // Normal / Glass card mode
+                        ctx.save();
+                        ctx.direction = 'rtl';
+                        ctx.textAlign = 'center';
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillText(line, w/2, lineY);
+                        ctx.restore();
                     }
 
                     if (state.showVerseBadge && index === arabicLines.length - 1) {
@@ -3048,6 +3181,14 @@ Please remove any automated Content ID claims immediately. Thank you.`;
                 state.highlightColor = '#ffffff';
                 state.arabicFont = "'Noto Naskh Arabic', serif";
             }
+
+            // Sync inputs in tab-style
+            const fontSelect = document.getElementById('select-arabic-font');
+            if (fontSelect) fontSelect.value = state.arabicFont;
+            const arSizeInput = document.getElementById('range-arabic-size');
+            if (arSizeInput) arSizeInput.value = state.arabicSize;
+            const valArSize = document.getElementById('val-arabic-size');
+            if (valArSize) valArSize.innerText = `${state.arabicSize}px`;
 
             initParticles();
             updateCanvas();
