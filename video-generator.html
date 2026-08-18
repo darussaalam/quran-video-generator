@@ -123,8 +123,14 @@
             </button>
         </div>
 
-        <!-- Header Actions: Theme & Export -->
+        <!-- Header Actions: Preview, Theme & Export -->
         <div class="flex items-center gap-1.5 sm:gap-2">
+            <!-- Preview Button -->
+            <button id="btn-top-preview" onclick="togglePlayPreview()" class="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition" aria-label="Putar Preview">
+                <i id="top-preview-icon" class="fa-solid fa-play text-brand-500 text-xs"></i>
+                <span id="top-preview-text" class="hidden sm:inline">Preview</span>
+            </button>
+
             <!-- Dark / Light Mode Switcher -->
             <button onclick="toggleThemeMode()" class="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700/80 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-xs transition" title="Ganti Mode Gelap/Terang" aria-label="Ganti Mode Gelap/Terang">
                 <i id="theme-icon" class="fa-solid fa-moon"></i>
@@ -2413,36 +2419,42 @@ Please remove any automated Content ID claims immediately. Thank you.`;
 
             for (let i = 0; i < state.versesData.length; i++) {
                 const v = state.versesData[i];
-                try {
-                    const res = await fetch(v.audioUrl);
-                    const arrayBuf = await res.arrayBuffer();
-                    const decoded = await state.audioContext.decodeAudioData(arrayBuf.slice(0));
-                    buffers.push(decoded);
-                    timings.push({
-                        index: i,
-                        start: currentOffset,
-                        end: currentOffset + decoded.duration,
-                        duration: decoded.duration
-                    });
-                    currentOffset += decoded.duration;
-                } catch (e) {
-                    const dummyDur = 4.0;
-                    timings.push({
-                        index: i,
-                        start: currentOffset,
-                        end: currentOffset + dummyDur,
-                        duration: dummyDur
-                    });
-                    currentOffset += dummyDur;
+                let decoded = null;
+                if (v.audioUrl) {
+                    try {
+                        const res = await fetch(v.audioUrl);
+                        if (res.ok) {
+                            const arrayBuf = await res.arrayBuffer();
+                            decoded = await state.audioContext.decodeAudioData(arrayBuf.slice(0));
+                        }
+                    } catch (e) {
+                        console.warn("Gagal load audio ayat " + v.verseNumber + ", gunakan sintesis dummy:", e);
+                    }
                 }
+                
+                if (!decoded) {
+                    // Buat dummy silent buffer 4.5 detik agar playback tetap jalan mulus
+                    const dummyDur = 4.5;
+                    const sampleRate = state.audioContext.sampleRate || 44100;
+                    decoded = state.audioContext.createBuffer(2, Math.floor(sampleRate * dummyDur), sampleRate);
+                }
+
+                buffers.push(decoded);
+                timings.push({
+                    index: i,
+                    start: currentOffset,
+                    end: currentOffset + decoded.duration,
+                    duration: decoded.duration
+                });
+                currentOffset += decoded.duration;
             }
 
             state.verseTimings = timings;
             state.totalMasterDuration = Math.max(1, currentOffset);
 
             if (buffers.length > 0) {
-                const numChannels = buffers[0].numberOfChannels;
-                const sampleRate = buffers[0].sampleRate;
+                const numChannels = buffers[0].numberOfChannels || 2;
+                const sampleRate = buffers[0].sampleRate || 44100;
                 const totalLength = buffers.reduce((acc, b) => acc + b.length, 0);
 
                 const masterBuf = state.audioContext.createBuffer(numChannels, totalLength, sampleRate);
@@ -2467,103 +2479,142 @@ Please remove any automated Content ID claims immediately. Thank you.`;
             document.getElementById('export-duration-label').innerText = formatted;
         }
 
-        function togglePlayPreview() {
-            if (state.isPlaying) pauseMasterAudio();
-            else playMasterAudio();
+        async function togglePlayPreview() {
+            if (state.isPlaying) {
+                pauseMasterAudio();
+            } else {
+                await playMasterAudio();
+            }
         }
 
-        function playMasterAudio() {
+        async function playMasterAudio() {
             initAudioContext();
-            if (!state.masterAudioBuffer) return;
+            if (state.audioContext && state.audioContext.state === 'suspended') {
+                try {
+                    await state.audioContext.resume();
+                } catch (e) {}
+            }
+
+            if (!state.masterAudioBuffer) {
+                // Buffer audio belum siap, coba bangun terlebih dahulu
+                const playerLabel = document.getElementById('player-play-label');
+                if (playerLabel) playerLabel.innerText = 'Memuat...';
+                await buildMasterAudioBuffer();
+            }
+
+            if (!state.masterAudioBuffer) {
+                console.warn('Audio buffer masih belum siap.');
+                updatePlayerUI();
+                return;
+            }
 
             stopActiveBufferSource();
 
-            state.activeBufferSource = state.audioContext.createBufferSource();
-            state.activeBufferSource.buffer = state.masterAudioBuffer;
-            
-            // Audio Remastering Rate & Pitch Shift
-            let rate = state.playbackSpeed;
-            if (state.antiCopyright.enablePitchShift && !state.isCustomVoiceActive) {
-                rate *= state.antiCopyright.pitchShiftFactor;
-            }
-            state.activeBufferSource.playbackRate.value = rate;
-
-            // Connect FX Nodes
-            let lastNode = state.activeBufferSource;
-
-            if (state.isCustomVoiceActive) {
-                // Route through Voice Processing & Studio Cleaning suite
-                if (state.voiceLowCutNode && state.voiceCleaner.enableDenoise) {
-                    lastNode.connect(state.voiceLowCutNode);
-                    lastNode = state.voiceLowCutNode;
+            try {
+                state.activeBufferSource = state.audioContext.createBufferSource();
+                state.activeBufferSource.buffer = state.masterAudioBuffer;
+                
+                // Audio Remastering Rate & Pitch Shift
+                let rate = state.playbackSpeed || 1.0;
+                if (state.antiCopyright && state.antiCopyright.enablePitchShift && !state.isCustomVoiceActive) {
+                    rate *= (state.antiCopyright.pitchShiftFactor || 1.0);
                 }
-                if (state.voicePresenceNode && state.voiceCleaner.enableClarity) {
-                    lastNode.connect(state.voicePresenceNode);
-                    lastNode = state.voicePresenceNode;
-                }
-                if (state.voiceCompressorNode && state.voiceCleaner.enableCompressor) {
-                    lastNode.connect(state.voiceCompressorNode);
-                    lastNode = state.voiceCompressorNode;
-                }
-            } else {
-                // Official Qari Anti-Copyright FX
-                if (state.eqLowNode && state.antiCopyright.enableEQ) {
-                    lastNode.connect(state.eqLowNode);
-                    state.eqLowNode.connect(state.eqHighNode);
-                    lastNode = state.eqHighNode;
-                }
-            }
+                state.activeBufferSource.playbackRate.value = rate;
 
-            // Route to Analyser & Output
-            lastNode.connect(state.audioAnalyser);
-            state.audioAnalyser.connect(state.audioContext.destination);
-            lastNode.connect(state.audioDestination);
+                // Connect FX Nodes
+                let lastNode = state.activeBufferSource;
 
-            // Send to Reverb Convolver
-            if (state.convolverNode && (state.antiCopyright.enableReverb || state.isCustomVoiceActive)) {
-                lastNode.connect(state.convolverNode);
-                state.convolverNode.connect(state.reverbGainNode);
-                state.reverbGainNode.connect(state.audioContext.destination);
-                state.reverbGainNode.connect(state.audioDestination);
-            }
-
-            if (state.playbackOffset >= state.totalMasterDuration) {
-                state.playbackOffset = 0;
-            }
-
-            state.playbackStartTime = state.audioContext.currentTime - (state.playbackOffset / state.playbackSpeed);
-            state.activeBufferSource.start(0, state.playbackOffset);
-
-            startAmbianceNode();
-
-            state.isPlaying = true;
-            updatePlayerUI();
-
-            if (state.bgType === 'custom-video' && state.customBgMedia) {
-                state.customBgMedia.play();
-            }
-
-            state.activeBufferSource.onended = () => {
-                if (state.isPlaying && !state.isExporting) {
-                    if (state.masterCurrentTime >= state.totalMasterDuration - 0.2) {
-                        state.isPlaying = false;
-                        state.playbackOffset = 0;
-                        state.masterCurrentTime = 0;
-                        stopAmbianceNode();
-                        updatePlayerUI();
+                if (state.isCustomVoiceActive) {
+                    // Route through Voice Processing & Studio Cleaning suite
+                    if (state.voiceLowCutNode && state.voiceCleaner && state.voiceCleaner.enableDenoise) {
+                        lastNode.connect(state.voiceLowCutNode);
+                        lastNode = state.voiceLowCutNode;
+                    }
+                    if (state.voicePresenceNode && state.voiceCleaner && state.voiceCleaner.enableClarity) {
+                        lastNode.connect(state.voicePresenceNode);
+                        lastNode = state.voicePresenceNode;
+                    }
+                    if (state.voiceCompressorNode && state.voiceCleaner && state.voiceCleaner.enableCompressor) {
+                        lastNode.connect(state.voiceCompressorNode);
+                        lastNode = state.voiceCompressorNode;
+                    }
+                } else {
+                    // Official Qari Anti-Copyright FX
+                    if (state.eqLowNode && state.antiCopyright && state.antiCopyright.enableEQ) {
+                        lastNode.connect(state.eqLowNode);
+                        state.eqLowNode.connect(state.eqHighNode);
+                        lastNode = state.eqHighNode;
                     }
                 }
-            };
+
+                // Route to Analyser & Output
+                if (state.audioAnalyser) {
+                    lastNode.connect(state.audioAnalyser);
+                    state.audioAnalyser.connect(state.audioContext.destination);
+                } else {
+                    lastNode.connect(state.audioContext.destination);
+                }
+
+                if (state.audioDestination) {
+                    lastNode.connect(state.audioDestination);
+                }
+
+                // Send to Reverb Convolver
+                if (state.convolverNode && state.reverbGainNode && ((state.antiCopyright && state.antiCopyright.enableReverb) || state.isCustomVoiceActive)) {
+                    lastNode.connect(state.convolverNode);
+                    state.convolverNode.connect(state.reverbGainNode);
+                    state.reverbGainNode.connect(state.audioContext.destination);
+                    if (state.audioDestination) {
+                        state.reverbGainNode.connect(state.audioDestination);
+                    }
+                }
+
+                if (state.playbackOffset >= state.totalMasterDuration) {
+                    state.playbackOffset = 0;
+                }
+
+                state.playbackStartTime = state.audioContext.currentTime - (state.playbackOffset / (state.playbackSpeed || 1.0));
+                state.activeBufferSource.start(0, state.playbackOffset);
+
+                startAmbianceNode();
+
+                state.isPlaying = true;
+                updatePlayerUI();
+
+                if (state.bgType === 'custom-video' && state.customBgMedia) {
+                    try { state.customBgMedia.play(); } catch (e) {}
+                }
+
+                state.activeBufferSource.onended = () => {
+                    if (state.isPlaying && !state.isExporting) {
+                        if (state.masterCurrentTime >= state.totalMasterDuration - 0.2) {
+                            state.isPlaying = false;
+                            state.playbackOffset = 0;
+                            state.masterCurrentTime = 0;
+                            stopAmbianceNode();
+                            updatePlayerUI();
+                        }
+                    }
+                };
+            } catch (err) {
+                console.error('Error saat memulai audio playback:', err);
+                state.isPlaying = false;
+                updatePlayerUI();
+            }
         }
 
         function pauseMasterAudio() {
             if (state.isPlaying) {
-                state.playbackOffset = (state.audioContext.currentTime - state.playbackStartTime) * state.playbackSpeed;
+                if (state.audioContext) {
+                    state.playbackOffset = (state.audioContext.currentTime - state.playbackStartTime) * (state.playbackSpeed || 1.0);
+                }
                 stopActiveBufferSource();
                 stopAmbianceNode();
                 state.isPlaying = false;
                 updatePlayerUI();
-                if (state.bgType === 'custom-video' && state.customBgMedia) state.customBgMedia.pause();
+                if (state.bgType === 'custom-video' && state.customBgMedia) {
+                    try { state.customBgMedia.pause(); } catch (e) {}
+                }
             }
         }
 
@@ -2630,21 +2681,36 @@ Please remove any automated Content ID claims immediately. Thank you.`;
 
         function updatePlayerUI() {
             const playIconClass = state.isPlaying ? 'fa-pause' : 'fa-play';
-            document.getElementById('top-preview-icon').className = `fa-solid ${playIconClass} text-brand-500 text-xs`;
-            document.getElementById('top-preview-text').innerText = state.isPlaying ? 'Jeda' : 'Preview';
-            document.getElementById('player-play-icon').className = `fa-solid ${playIconClass}`;
-            document.getElementById('player-play-label').innerText = state.isPlaying ? 'Jeda' : 'Putar';
-            document.getElementById('overlay-play-icon').className = `fa-solid ${playIconClass} ml-0.5`;
+            
+            const topPreviewIcon = document.getElementById('top-preview-icon');
+            if (topPreviewIcon) topPreviewIcon.className = `fa-solid ${playIconClass} text-brand-500 text-xs`;
+
+            const topPreviewText = document.getElementById('top-preview-text');
+            if (topPreviewText) topPreviewText.innerText = state.isPlaying ? 'Jeda' : 'Preview';
+
+            const playerPlayIcon = document.getElementById('player-play-icon');
+            if (playerPlayIcon) playerPlayIcon.className = `fa-solid ${playIconClass}`;
+
+            const playerPlayLabel = document.getElementById('player-play-label');
+            if (playerPlayLabel) playerPlayLabel.innerText = state.isPlaying ? 'Jeda' : 'Putar';
+
+            const overlayPlayIcon = document.getElementById('overlay-play-icon');
+            if (overlayPlayIcon) overlayPlayIcon.className = `fa-solid ${playIconClass} ml-0.5`;
 
             const current = formatTime(state.masterCurrentTime);
-            document.getElementById('player-time-current').innerText = current;
+            const timeCurrentEl = document.getElementById('player-time-current');
+            if (timeCurrentEl) timeCurrentEl.innerText = current;
 
-            const progress = (state.masterCurrentTime / state.totalMasterDuration) * 100;
-            document.getElementById('player-progress-bar').value = isNaN(progress) ? 0 : progress;
+            const progressBar = document.getElementById('player-progress-bar');
+            if (progressBar && state.totalMasterDuration > 0) {
+                const progress = (state.masterCurrentTime / state.totalMasterDuration) * 100;
+                progressBar.value = isNaN(progress) ? 0 : progress;
+            }
 
             const surahMeta = SURAH_NAMES.find(s => s.id === state.currentSurah);
             const sName = surahMeta ? surahMeta.name : `Surat ${state.currentSurah}`;
-            document.getElementById('player-verse-indicator').innerText = `QS. ${sName} (${state.verseStart}-${state.verseEnd})`;
+            const indicator = document.getElementById('player-verse-indicator');
+            if (indicator) indicator.innerText = `QS. ${sName} (${state.verseStart}-${state.verseEnd})`;
         }
 
         function formatTime(secs) {
